@@ -46,31 +46,31 @@
   </body>
 
 
-    <style>
-      .truepopup {
-        position: absolute;
-        transform: translate(-30px, 15px);
-      }
-      .popup {
-        cursor: pointer;
-      }
-      .hidden {
-        display: none;
-      }
-    </style>
-    <script>
+  <style>
+    .truepopup {
+      position: absolute;
+      transform: translate(-30px, 15px);
+    }
+    .popup {
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+  <script>
 
-      function showPopup() {
-        document.getElementById("popup").classList.remove("hidden");
-      }
-      function hidePopup() {
-        document.getElementById("popup").classList.add("hidden");
-      }
-      function delayedHidePopup() {
-        timer = setTimeout(hidePopup, 500);              
-      }
-      function delayHidePopup() {
-        clearTimeout(timer);
-      }
-    </script>
+    function showPopup() {
+      document.getElementById("popup").classList.remove("hidden");
+    }
+    function hidePopup() {
+      document.getElementById("popup").classList.add("hidden");
+    }
+    function delayedHidePopup() {
+      timer = setTimeout(hidePopup, 500);              
+    }
+    function delayHidePopup() {
+      clearTimeout(timer);
+    }
+  </script>
 </html>
