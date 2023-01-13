@@ -1,14 +1,48 @@
 {% extends "base.html" %}
 
-{% block background %}
-<div class="bg-local h-screen bg-cover" style="background-image: url(https://static.wixstatic.com/media/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg/v1/fill/w_1225,h_1100,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg)"> 
-{% endblock %}
 
 {% block content %}
-    <link href="https://fonts.cdnfonts.com/css/courier-prime-sans" rel="stylesheet">
-    <div>
-        <h1 class =  "text-white text-7xl" style="font-family: Arial">
-        It's Just Rocket <br> Science. 
-        </h1>
+    <div class="z-10 flex flex-nowrap h-256 flex-col bg-local bg-cover bg-[center-10rem] justify-between" style="background-image: url(https://static.wixstatic.com/media/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg/v1/fill/w_1225,h_1100,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg)"> 
+        <div></div>
+        <link href="https://fonts.cdnfonts.com/css/courier-prime-sans" rel="stylesheet">
+        <div class = "pl-14">
+            <div class = "flex items-center">
+                <img class = "flex-none" src="https://static.wixstatic.com/media/9dc5ac_9f8bf55beebd499998549f9a7b2b2d23~mv2.png/v1/fill/w_152,h_152,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/STARRVectorIconSquare(TRANSP).png">
+                <h1 class =  "text-white text-8xl whitespace-nowrap" style="font-family: Arial">
+                It's Just Rocket <br> Science. 
+                </h1>
+            </div>
+            <p class ="text-2xl text-white pl-4">Student Team for Alberta Rocketry Research, University of Alberta</p>
+        </div>
+        <div class="flex px-5">
+            <div class="flex justify-between w-screen px-3 py-3 bg-black bg-opacity-70 basis-1 grow"> <!-- Textboxes -->
+                <div class = "flex items-center">
+                    <div class="bg-green-800 h-20 w-2 rounded-full"></div>
+                    <p class="text-white text-xl px-3 whitespace-nowrap">70+ students</p>
+                </div>
+                <div class = "flex items-center">
+                    <div class="bg-green-800 h-20 w-2 rounded-full"></div>
+                    <p class="text-white text-xl px-3 whitespace-nowrap">6 Sub-Teams</p>
+                </div>
+                <div class = "flex items-center">
+                    <div class="bg-green-800 h-20 w-2 rounded-full"></div>
+                    <p class="text-white text-xl px-3 whitespace-nowrap">Est. in 2018</p>
+                </div>
+                <div class = "flex items-center">
+                    <div class="bg-green-800 h-20 w-2 rounded-full"></div>
+                    <p class="text-white text-xl px-3 whitespace-nowrap">1 rocket launched</p>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
+
+{% block extra %}
+<div class ="z--10">
+    <video autoplay muted loop class="fixed">
+      <source src="https://video.wixstatic.com/video/c837a6_6459a5bb7e28481a83ac6e09537ee8a9/1080p/mp4/file.mp4" type="video/mp4" />
+    </video>
+    <h1 class="text-2xl">Hello</h1>
+</div>
+{% endblock %}
+
