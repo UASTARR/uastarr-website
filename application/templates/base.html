@@ -59,13 +59,13 @@
     }
     .fade_in{
       opacity: 0;
-      transition: opacity 1s;
-      
+      transition: 1s;
+
     }
     .flow_in{
       opacity: 0;
-      transition: opacity 2s;
-      transform: translateX(-50%);
+      transition: opacity 1s, transform 2s;
+      transform: translateX(-5%);
     }
 
     .visible{
@@ -89,7 +89,7 @@
       clearTimeout(timer);
     }
 
-    const transition_elements = document.querySelectorAll('.fade_in', '.flow_in');
+    const transition_elements = document.querySelectorAll('.flow_in, .fade_in');
 
     function isInViewport(el) {
       const rect = el.getBoundingClientRect();
