@@ -7,10 +7,9 @@
     <link rel="stylesheet" href="./../static/dist/main.css">
 
   </head>
-  <body>
+  <body class = "overflow-x-hidden relative">
     <!--Header-->
-    
-    <div class ="fixed z-20 items-center py-5 flex justify-between flex-nowrap w-screen" onload="selectPage">
+    <div class ="header fixed z-50 items-center py-5 flex justify-between flex-nowrap w-screen" id="header" onload="selectPage">
       <div class = "inline-block flex-none px-3">
         <img src="https://static.wixstatic.com/media/9dc5ac_7a4b227a0a2e4a63a0e451868bdc0cdb~mv2.png/v1/fill/w_266,h_39,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/STARRVectorFullDescriptionLogoWHITETEXT(TRANSP).png" alt="broken"/>
       </div>
@@ -42,7 +41,6 @@
 
     {% block content %}{% endblock %}
 
-
   </body>
 
 
@@ -62,15 +60,28 @@
       transition: 1s;
 
     }
-    .flow_in{
+    .flow_in_left{
       opacity: 0;
       transition: opacity 1s, transform 2s;
-      transform: translateX(-5%);
+      transform: translate(-5%);
+    }
+
+    .flow_in_top{
+      transition: opacity 1s, transform 2s;
+      transform: translate(0, -100%);
+    }
+
+    .header{
+      transition: 2s;
+    }
+
+    .header_hidden{
+      transform: translate(0, -100%);
     }
 
     .visible{
       opacity: 1;
-      transform: translateX(0);
+      transform: translate(0, 0);
     }
 
   </style>
@@ -89,7 +100,7 @@
       clearTimeout(timer);
     }
 
-    const transition_elements = document.querySelectorAll('.flow_in, .fade_in');
+    const transition_elements = document.querySelectorAll('.fade_in, .flow_in_left, .flow_in_top');
 
     function isInViewport(el) {
       const rect = el.getBoundingClientRect();
@@ -110,6 +121,27 @@
     }
     checkElements();
     window.addEventListener('scroll', checkElements);
+
+    function hideHeader() {
+      const scrollThreshold = 200;
+      if (window.scrollY > scrollThreshold) {
+        header = document.getElementById('header');
+        header.classList.add('header_hidden');
+      }
+    }
+
+    window.addEventListener('scroll', hideHeader);
+
+    function showHeader() {
+      if (window.scrollY <= 0) {
+        header = document.getElementById('header');
+        header.classList.remove('header_hidden');
+      }
+    }
+    window.addEventListener('scroll', showHeader);
+
+    
+    
     
   </script>
 </html>
