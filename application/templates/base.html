@@ -57,6 +57,22 @@
     .hidden {
       display: none;
     }
+    .fade_in{
+      opacity: 0;
+      transition: opacity 1s;
+      
+    }
+    .flow_in{
+      opacity: 0;
+      transition: opacity 2s;
+      transform: translateX(-50%);
+    }
+
+    .visible{
+      opacity: 1;
+      transform: translateX(0);
+    }
+
   </style>
   <script>
 
@@ -72,5 +88,28 @@
     function delayHidePopup() {
       clearTimeout(timer);
     }
+
+    const transition_elements = document.querySelectorAll('.fade_in', '.flow_in');
+
+    function isInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+
+    function checkElements() {
+      transition_elements.forEach((el) => {
+        if (isInViewport(el)) {
+          el.classList.add('visible');
+        }
+      });
+    }
+    checkElements();
+    window.addEventListener('scroll', checkElements);
+    
   </script>
 </html>
