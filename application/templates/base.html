@@ -1,0 +1,154 @@
+
+<!doctype html>
+<html>
+  <head>
+    <title>Welcome to UA STARR</title>
+      
+    <link rel="stylesheet" href="./../static/dist/main.css">
+
+  </head>
+  <body class = "overflow-x-hidden relative">
+    <!--Header-->
+    <div class ="header fixed z-50 items-center py-5 flex justify-between flex-nowrap w-screen" id="header" onload="selectPage">
+      <div class = "inline-block flex-none px-3">
+        <img src="https://static.wixstatic.com/media/9dc5ac_7a4b227a0a2e4a63a0e451868bdc0cdb~mv2.png/v1/fill/w_266,h_39,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/STARRVectorFullDescriptionLogoWHITETEXT(TRANSP).png" alt="broken"/>
+      </div>
+      <div class ="flex flex-nowrap">
+          <!--Navigation bar-->
+          <div class = "bg-gray-50 bg-opacity-10 rounded-full bg-cover px-20 py-3" style = "display: inline-block;">
+            <!--Navigation buttons-->
+            <div class ="flex flex-nowrap space-x-6">
+              <a class="hover:text-yellow-300 text-white" href="/index">Home</a> 
+              <a class="hover:text-yellow-300 text-white" href="/projects">Projects</a> 
+              <a class="hover:text-yellow-300 text-white whitespace-nowrap"href="/about-us">About Us</a> 
+              <a class="hover:text-yellow-300 text-white"href="/sponsors">Sponsors</a>
+              <div class="inline-block justify-items-center">
+                
+                <a class="popup hover:text-yellow-300 text-white" onmouseover="showPopup()" onmouseout="delayedHidePopup()" >More</a>
+                <div class="truepopup justify-items-center hidden" id ="popup" onmouseover="delayHidePopup()" onmouseout="delayedHidePopup()"> 
+                  <div class = "justify-items-center bg-gray-50 bg-opacity-10 rounded-full left-8 px-6 py-3">
+                    <div><a class="text-white hover:text-yellow-300 whitespace-nowrap" href="/index"> Photo Albums </a></div>
+                    <div><a class="text-white hover:text-yellow-300" href="/index"> Contact </a></div>
+                    <div><a class="text-white hover:text-yellow-300" href="/index"> Portfolio </a></div>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+          <!--Join Now Button-->
+          <div class = "inline-block px-5 pr-10"> 
+            <button onclick= "window.location.href = '/index'" class="text-white whitespace-nowrap bg-green-700 hover:transition-all duration-200 hover:bg-white hover:text-black rounded-full px-6 py-3" href="/index" type="button">Join Now</button>
+          </div>
+      </div>
+    </div>
+
+    {% block content %}{% endblock %}
+
+  </body>
+
+
+  <style>
+    .truepopup {
+      position: absolute;
+      transform: translate(-30px, 15px);
+    }
+    .popup {
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+    .fade_in{
+      opacity: 0;
+      transition: 1s;
+
+    }
+    .flow_in_left{
+      opacity: 0;
+      transition: opacity 1s, transform 2s;
+      transform: translate(-5%);
+    }
+
+    .flow_in_top{
+      transition: opacity 1s, transform 2s;
+      transform: translate(0, -100%);
+    }
+
+    .header{
+      position: fixed;
+    }
+
+    .header_hidden{
+      transition: 1s;
+      transform: translate(0, -100%);
+    }
+
+    .visible{
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+  </style>
+  <script>
+
+    function showPopup() {
+      document.getElementById("popup").classList.remove("hidden");
+    }
+    function hidePopup() {
+      document.getElementById("popup").classList.add("hidden");
+    }
+    function delayedHidePopup() {
+      timer = setTimeout(hidePopup, 500);              
+    }
+    function delayHidePopup() {
+      clearTimeout(timer);
+    }
+
+    const transition_elements = document.querySelectorAll('.fade_in, .flow_in_left, .flow_in_top');
+
+    function isInViewport(el) {
+      // checks whether an elements bounding box is completely within the vertical space of the window
+      const rect = el.getBoundingClientRect();  // rect is the bounding box of the element
+      return (
+        // compare rects top and bottom to the top and bottom of the window
+        rect.top >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+      );
+    }
+
+    function checkElements() {
+      // checks if each element is within the window and makes it visible if it is
+      transition_elements.forEach((el) => {
+        if (isInViewport(el)) {
+          el.classList.add('visible');
+        }
+      });
+    }
+    // run checkElements on page load
+    checkElements();
+    // run each time the user scrolls
+    window.addEventListener('scroll', checkElements);
+
+    function hideHeader() {
+      const scrollThreshold = 200;
+      if (window.scrollY > scrollThreshold) {
+        header = document.getElementById('header');
+        header.classList.add('header_hidden');
+      }
+    }
+
+    window.addEventListener('scroll', hideHeader);
+
+    function showHeader() {
+      if (window.scrollY <= 0) {
+        header = document.getElementById('header');
+        header.classList.remove('header_hidden');
+      }
+    }
+    window.addEventListener('scroll', showHeader);
+
+    
+    
+    
+  </script>
+</html>
