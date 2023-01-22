@@ -1,8 +1,11 @@
-# FRONTEND-RELEVANT FILES
+# PROJECT-WIDE RELEVANT FILES/DIRECTORIES
+.vscode/
+
+# FRONTEND-RELEVANT FILES/DIRECTORIES
 # Web Assets Cache
 application/static/.webassets-cache/
 
-# BACKEND-RELEVANT FILES
+# BACKEND-RELEVANT FILES/DIRECTORIES
 # Byte-compiled / optimized / DLL files
 __pycache__/
 application/__pycache__/
