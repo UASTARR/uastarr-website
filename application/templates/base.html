@@ -162,10 +162,10 @@
       extra = (rect_width - window.innerWidth);
       distance = window.innerHeight - rect.top;
       percent = (1.0 * distance) / (rect.bottom - rect.top);
-      pos = - (extra * percent);
-
+      pos_x = - (extra * percent);
+      pos_y = ((rect.bottom - rect.top));
       
-      postion_string = pos + 'px 0px'
+      postion_string = pos_x + 'px 50%'
 
       bkg.style.backgroundPosition = postion_string;
     };
