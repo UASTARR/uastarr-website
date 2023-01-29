@@ -87,6 +87,12 @@
       opacity: 1;
       transform: translate(0, 0);
     }
+    #bg-image{
+      background-image: url(https://static.wixstatic.com/media/9dc5ac_70978e0bd50149cc929b81fd4a068c31~mv2.jpg/v1/fill/w_1176,h_995,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9dc5ac_70978e0bd50149cc929b81fd4a068c31~mv2.jpg);
+      background-size: cover;
+      width: 120vw;
+
+    }
 
   </style>
   <script>
@@ -148,7 +154,24 @@
     window.addEventListener('scroll', showHeader);
 
     
+    function moveBkg() {
+      var value = window.scrollY;
+      bkg = document.getElementById('bg-image');
+      rect = bkg.getBoundingClientRect();
+      rect_width = rect.right - rect.left;
+      extra = (rect_width - window.innerWidth);
+      distance = window.innerHeight - rect.top;
+      percent = (1.0 * distance) / (rect.bottom - rect.top);
+      pos = - (extra * percent);
+
+      
+      postion_string = pos + 'px 0px'
+
+      bkg.style.backgroundPosition = postion_string;
+    };
     
-    
+    window.addEventListener('scroll', moveBkg);
+    window.addEventListener('resize', moveBkg);
+
   </script>
 </html>
