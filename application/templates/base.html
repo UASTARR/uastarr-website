@@ -192,6 +192,10 @@
       extra = (rect_width - window.innerWidth);
       distance = window.innerHeight - rect.top;
       percent = (1.0 * distance) / (rect.bottom - rect.top);
+      if (percent >= 1){
+        percent = 1;  
+      }
+
       pos_x = - (extra * percent);
       pos_y = ((rect.bottom - rect.top));
       
