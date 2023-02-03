@@ -26,15 +26,32 @@ function showPopup() {
   function checkElements() {
     // checks if each element is within the window and makes it visible if it is
     transition_elements.forEach((el) => {
-      if (isInViewport(el)) {
-        el.classList.add('visible');
-      }
+        if (isInViewport(el)) {
+            el.classList.add('visible');
+            console.log(el.tagName);
+            // set delay attribute and duration attribute to a baseline for all buttons
+            if (el.tagName == 'BUTTON'){
+                style = getComputedStyle(el);
+                delay = style.getPropertyValue("transition-delay");
+                delay = parseFloat(delay) * 1000;
+                // it appear you do not have to wait till the transtion is over, just till when it starts
+                //duration = style.getPropertyValue("transition-duration");
+                //duration = parseFloat(duration) * 1000;
+                setTimeout(removeDelay, delay, el);
+            }
+        }
     });
-  }
-  // run checkElements on page load
-  checkElements();
-  // run each time the user scrolls
-  window.addEventListener('scroll', checkElements);
+}
+
+function removeDelay(el) {
+    el.style.transitionDelay = '0s';
+    el.style.transitionDuration = '200ms';
+}
+
+// run checkElements on page load
+checkElements();
+// run each time the user scrolls
+window.addEventListener('scroll', checkElements);
 
   function hideHeader() {
     const scrollThreshold = 200;

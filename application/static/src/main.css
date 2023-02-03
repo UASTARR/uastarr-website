@@ -16,19 +16,26 @@ display: none;
 }
 
 .fade_in{
-opacity: 0;
-transition: 1s;
+    opacity: 0;
+    transition-duration: 1.5s;
+    transition-property: all;
 }
 
 .flow_in_left{
-opacity: 0;
-transition: opacity 1s, transform 2s;
-transform: translate(-5%);
+    opacity: 0;
+    transition-duration: 1.5s;
+    transition-property: all;
+    transform: translate(-50px);
+}
+
+.no_delay{
+    transition-delay: 0s;
 }
 
 .flow_in_top{
-transition: opacity 1s, transform 2s;
-transform: translate(0, -100%);
+    transition-duration: 2s;
+    transition-property: all;
+    transform: translate(0, -100%);
 }
 
 .header{
