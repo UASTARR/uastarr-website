@@ -13,9 +13,19 @@
                 It's Just Rocket <br> Science. 
                 </h1>
             </div>
-            <p class ="text-2xl text-white pl-4 flow_in_left whitespace-nowrap delay-500">Student Team for Alberta Rocketry Research, University of Alberta</p>
-            <div>
-                <button onclick= "window.location.href = '/index'" class="flow_in_left delay-1000 text-white whitespace-nowrap bg-green-700 hover:transition-all duration-200 hover:bg-white hover:text-black rounded-full px-6 py-3">Join Now</button>
+            <p class ="text-2xl text-white pl-4 flow_in_left whitespace-nowrap delay-300">Student Team for Alberta Rocketry Research, University of Alberta</p>
+            <!--Buttons-->
+            <div class = "flex space-x-5 pl-3 pt-6">
+                <button 
+                    onclick= "window.location.href = '/about-us'" 
+                    class="flow_in_left delay-700 whitespace-nowrap bg-yellow-500 hover:transition-all hover:bg-white rounded-full px-8 py-3">
+                    About Us
+                </button>
+                <button 
+                    onclick= "window.location.href = '/projects'" 
+                    class="flow_in_left delay-1000 whitespace-nowrap text-white bg-gray-50 bg-opacity-10 hover:transition-all hover:opacity-100 hover:bg-white hover:text-black rounded-full px-16 py-3">
+                    Our Projects
+            </button>
             </div>
         </div>
         <!--Info Box-->
@@ -23,19 +33,19 @@
             <div class="flex justify-between w-screen px-3 py-3 bg-black bg-opacity-70 basis-1 grow"> <!-- Textboxes -->
                 <div class = "flex items-center">
                     <div class="bg-green-800 h-20 w-2 rounded-full"></div>
-                    <p class="text-white text-xl px-3 whitespace-nowrap">70+ students</p>
+                    <p class="text-white text-xl px-3 whitespace-nowrap fade_in">70+ students</p>
                 </div>
                 <div class = "flex items-center">
                     <div class="bg-green-800 h-20 w-2 rounded-full"></div>
-                    <p class="text-white text-xl px-3 whitespace-nowrap">6 Sub-Teams</p>
+                    <p class="text-white text-xl px-3 whitespace-nowrap fade_in delay-400">6 Sub-Teams</p>
                 </div>
                 <div class = "flex items-center">
                     <div class="bg-green-800 h-20 w-2 rounded-full"></div>
-                    <p class="text-white text-xl px-3 whitespace-nowrap">Est. in 2018</p>
+                    <p class="text-white text-xl px-3 whitespace-nowrap fade_in delay-800">Est. in 2018</p>
                 </div>
                 <div class = "flex items-center">
                     <div class="bg-green-800 h-20 w-2 rounded-full"></div>
-                    <p class="text-white text-xl px-3 whitespace-nowrap">1 rocket launched</p>
+                    <p class="text-white text-xl px-3 whitespace-nowrap fade_in delay-1200">1 rocket launched</p>
                 </div>
             </div>
         </div>
@@ -68,25 +78,25 @@
 
     </div>
 
-        <!--Tile 3-->
-        <div class="z-10 relative flex flex-nowrap h-224 flex-col bg-emerald-900 bg-opacity-10 bg-local bg-cover bg-[center-10rem] justify-between" id="bg-image">
-            <div class="flex pl-20 overflow-hidden">
-                <h1 class = "flow_in_top px-3 pr-40 py-3 bg-white rounded-b-2xl text-xl font-bold">
-                    Our Vision
-                </h1>
-                <div>
-                </div>
-            </div>
-            <div class ="pl-16">
-                <h1 class="text-white text-bold text-5xl">
-                    From 3D printing, to electronics, to <br>assembly, we build our rockets in <br>house at UAlberta's very own Elko <br>Engineering Garage.
-                </h1>
-            </div>
+    <!--Tile 3-->
+    <div class="z-10 relative flex flex-nowrap h-224 flex-col bg-emerald-900 bg-opacity-10 bg-local bg-cover bg-[center-10rem] justify-between" id="bg-image">
+        <div class="flex pl-20 overflow-hidden">
+            <h1 class = "flow_in_top px-3 pr-40 py-3 bg-white rounded-b-2xl text-xl font-bold">
+                Our Vision
+            </h1>
             <div>
-    
             </div>
-    
         </div>
+        <div class ="pl-16">
+            <h1 class="text-white text-bold text-5xl">
+                From 3D printing, to electronics, to <br>assembly, we build our rockets in <br>house at UAlberta's very own Elko <br>Engineering Garage.
+            </h1>
+        </div>
+        <div>
+
+        </div>
+
+    </div>
 
 {% endblock %}
 

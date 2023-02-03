@@ -34,9 +34,10 @@ function checkElements() {
                 style = getComputedStyle(el);
                 delay = style.getPropertyValue("transition-delay");
                 delay = parseFloat(delay) * 1000;
-                duration = style.getPropertyValue("transition-duration");
-                duration = parseFloat(duration) * 1000;
-                setTimeout(removeDelay, delay + duration, el);
+                // it appear you do not have to wait till the transtion is over, just till when it starts
+                //duration = style.getPropertyValue("transition-duration");
+                //duration = parseFloat(duration) * 1000;
+                setTimeout(removeDelay, delay, el);
             }
         }
     });

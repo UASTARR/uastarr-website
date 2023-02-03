@@ -17,14 +17,15 @@
 
 .fade_in{
     opacity: 0;
-    transition: 1s;
+    transition-duration: 1.5s;
+    transition-property: all;
 }
 
 .flow_in_left{
     opacity: 0;
-    transition-duration: 2s;
+    transition-duration: 1.5s;
     transition-property: all;
-    transform: translate(-20px);
+    transform: translate(-50px);
 }
 
 .no_delay{
