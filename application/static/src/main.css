@@ -22,12 +22,18 @@
 
 .flow_in_left{
     opacity: 0;
-    transition: opacity 1s, transform 2s;
-    transform: translate(-5%);
+    transition-duration: 2s;
+    transition-property: all;
+    transform: translate(-20px);
+}
+
+.no_delay{
+    transition-delay: 0s;
 }
 
 .flow_in_top{
-    transition: opacity 1s, transform 2s;
+    transition-duration: 2s;
+    transition-property: all;
     transform: translate(0, -100%);
 }
 

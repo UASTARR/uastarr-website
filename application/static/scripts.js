@@ -27,9 +27,24 @@ function checkElements() {
     // checks if each element is within the window and makes it visible if it is
     transition_elements.forEach((el) => {
         if (isInViewport(el)) {
-        el.classList.add('visible');
+            el.classList.add('visible');
+            console.log(el.tagName);
+            // set delay attribute and duration attribute to a baseline for all buttons
+            if (el.tagName == 'BUTTON'){
+                style = getComputedStyle(el);
+                delay = style.getPropertyValue("transition-delay");
+                delay = parseFloat(delay) * 1000;
+                duration = style.getPropertyValue("transition-duration");
+                duration = parseFloat(duration) * 1000;
+                setTimeout(removeDelay, delay + duration, el);
+            }
         }
     });
+}
+
+function removeDelay(el) {
+    el.style.transitionDelay = '0s';
+    el.style.transitionDuration = '200ms';
 }
 
 // run checkElements on page load
