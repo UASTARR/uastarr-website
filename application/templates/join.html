@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contect Us</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Contect Us</h1>
+        <a href="/">Home</a>
+    </header>
+
+    <hr>
+
+    <main>
+        <section>
+            <h2> Our Contact Form </h2>
+            <form onsubmit=store(event)>
+                <fieldset>
+                    <legend>Join Us</legend>
+                    <p>
+                        <label for="First Name">Frist Name:</label>
+                        <input type="text" name="first_name" id="first_name" placeholder="your name" required>
+                    </p>
+                    <p>
+                        <label for="Last Name">Last Name:</label>
+                        <input type="text" name="last_name" id="last_name" placeholder="your email" required>
+                    </p>
+                    <p>
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" placeholder="your email" required>
+                    </p>
+                    <p>
+                        <label for="subject">Subject:</label>
+                        <input type="text" name="subject" id="subject" placeholder="your subject" required>
+                    </p>
+                    <p>
+                        <label for="message">Your Message:</label>
+                        <br>
+                        <textarea name="message" id="message" cols="30" rows="10"
+                            placeholder="Leave us a message"></textarea>
+                    </p>
+                    <div>
+                        <label for="subscribe">I would like to hear from UASTARR</label>
+                        <input type="radio" name="sub" value="yes" required/> Yes
+                        <input type="radio" name="sub" value="no" required/> No
+                    </div>
+                </fieldset>
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </form>
+            <script type="text/javascript">
+                function store(event) {
+                    event.preventDefault();
+
+                    const data = new FormData(event.target);
+                    const value = Object.fromEntries(data.entries());
+                    
+                    value.topics = data.getAll('sub');
+                    console.log(value);
+                }
+                const form = document.querySelector('form');
+                form.addEventListener('submit', store);
+
+            </script>
+        </section>
+    </main>
+
+</body>
+</html>
+
+{% extends "base.html" %}
+
+{% block background %}
+<div class="bg-local" style="background-image: url(https://static.wixstatic.com/media/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg/v1/fill/w_1225,h_1100,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg)"> 
+{% endblock %}
+
+{% block content %}
+    <h1>Join Us</h1>
+    <div><p>
+    Content 
+    </p></div>
+
+    <!--Tile 1 Background Video-->
+    <div class = "fixed top-0 justify-center w-screen h-screen">
+        <video autoplay muted loop style class ="object-cover min-w-full min-h-full">
+            <source src="{{url_for('static', filename='fireflies_background.mp4')}}" type="video/mp4" />
+        </video>
+    </div>
+
+       <!--Tile 1-->
+        <div class ="pl-16">
+            <img src="{{url_for('static', filename='ElkoLogo.png')}}"/>
+            <h1 class="text-white text-bold text-5xl flow_in_left py-1 whitespace-nowrap">
+                Contact Us
+            </h1>
+            <div class = "pt-3">
+                <h3 class = "flow_in_left delay-150 whitespace-nowrap text-white"
+                    style = "font-size:1.7vw">
+                    Want to join us? Want to become a sponsor? Any other questions? <br>
+                    Let us know! We'd love to hear what you think.
+                </h3>
+            </div>
+            <div class = "text-white">
+                <legend >Join Us</legend>
+                        <p>
+                            <label for="First Name">Frist Name:</label>
+                            <input type="text" name="first_name" id="first_name" placeholder="your name" required>
+                        </p>
+                        <p>
+                            <label for="Last Name">Last Name:</label>
+                            <input type="text" name="last_name" id="last_name" placeholder="your email" required>
+                        </p>
+                        <p>
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" id="email" placeholder="your email" required>
+                        </p>
+                        <p>
+                            <label for="subject">Subject:</label>
+                            <input type="text" name="subject" id="subject" placeholder="your subject" required>
+                        </p>
+                        <p>
+                            <label for="message">Your Message:</label>
+                            <br>
+                            <textarea name="message" id="message" cols="30" rows="10"
+                                placeholder="Leave us a message"></textarea>
+                        </p>
+                        <div>
+                            <label for="subscribe">I would like to hear from UASTARR</label>
+                            <input type="radio" name="sub" value="yes" required/> Yes
+                            <input type="radio" name="sub" value="no" required/> No
+                        </div>
+            </div>
+        </div>
+    
+    </div>
+
+    <div class = "pl-16">
+            <h2> Our Contact Form </h2>
+            <legend>Join Us</legend>
+                    <p>
+                        <label for="First Name">Frist Name:</label>
+                        <input type="text" name="first_name" id="first_name" placeholder="your name" required>
+                    </p>
+                    <p>
+                        <label for="Last Name">Last Name:</label>
+                        <input type="text" name="last_name" id="last_name" placeholder="your email" required>
+                    </p>
+                    <p>
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" placeholder="your email" required>
+                    </p>
+                    <p>
+                        <label for="subject">Subject:</label>
+                        <input type="text" name="subject" id="subject" placeholder="your subject" required>
+                    </p>
+                    <p>
+                        <label for="message">Your Message:</label>
+                        <br>
+                        <textarea name="message" id="message" cols="30" rows="10"
+                            placeholder="Leave us a message"></textarea>
+                    </p>
+                    <div>
+                        <label for="subscribe">I would like to hear from UASTARR</label>
+                        <input type="radio" name="sub" value="yes" required/> Yes
+                        <input type="radio" name="sub" value="no" required/> No
+                    </div>
+            <form onsubmit=store(event)>
+                <fieldset>
+                    <!-- <legend>Join Us</legend>
+                    <p>
+                        <label for="First Name">Frist Name:</label>
+                        <input type="text" name="first_name" id="first_name" placeholder="your name" required>
+                    </p>
+                    <p>
+                        <label for="Last Name">Last Name:</label>
+                        <input type="text" name="last_name" id="last_name" placeholder="your email" required>
+                    </p>
+                    <p>
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" placeholder="your email" required>
+                    </p>
+                    <p>
+                        <label for="subject">Subject:</label>
+                        <input type="text" name="subject" id="subject" placeholder="your subject" required>
+                    </p>
+                    <p>
+                        <label for="message">Your Message:</label>
+                        <br>
+                        <textarea name="message" id="message" cols="30" rows="10"
+                            placeholder="Leave us a message"></textarea>
+                    </p>
+                    <div>
+                        <label for="subscribe">I would like to hear from UASTARR</label>
+                        <input type="radio" name="sub" value="yes" required/> Yes
+                        <input type="radio" name="sub" value="no" required/> No
+                    </div> -->
+                </fieldset>
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </form>
+            <!-- <script type="text/javascript">
+                function store(event) {
+                    event.preventDefault();
+
+                    const data = new FormData(event.target);
+                    const value = Object.fromEntries(data.entries());
+                    
+                    value.topics = data.getAll('sub');
+                    console.log(value);
+                }
+                // const form = document.querySelector('form');
+                form.addEventListener('submit', store);
+
+            </script> -->
+
+    </div>
+{% endblock %}
+

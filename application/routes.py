@@ -17,3 +17,7 @@ def sponsors():
 @application.route('/about-us')
 def about_us():
     return render_template('about_us.html')
+
+@application.route('/join')
+def join():
+    return render_template('/join.html')
