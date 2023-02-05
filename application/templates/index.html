@@ -8,7 +8,7 @@
         <!--Main Text-->
         <div class = "pl-14">
             <div class = "flex items-center">
-                <img class = "flex-none" src="https://static.wixstatic.com/media/9dc5ac_9f8bf55beebd499998549f9a7b2b2d23~mv2.png/v1/fill/w_152,h_152,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/STARRVectorIconSquare(TRANSP).png">
+                <img class = "flex-none" src="{{url_for('static', filename='STARRVectorIconSquare.png')}}">
                 <h1 class =  "text-white text-8xl whitespace-nowrap font-bold flow_in_left" style="font-family: Arial">
                 It's Just Rocket <br> Science. 
                 </h1>
@@ -55,7 +55,7 @@
     <!--Tile 2 Background Video-->
     <div class = "fixed top-0 justify-center w-screen h-screen">
         <video autoplay muted loop style class ="object-cover min-w-full min-h-full">
-            <source src="https://video.wixstatic.com/video/c837a6_6459a5bb7e28481a83ac6e09537ee8a9/1080p/mp4/file.mp4" type="video/mp4" />
+            <source src="{{url_for('static', filename='3dPrinting.mp4')}}" type="video/mp4" />
         </video>
     </div>
 
