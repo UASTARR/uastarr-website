@@ -18,7 +18,6 @@ function showPopup() {
     const rect = el.getBoundingClientRect();  // rect is the bounding box of the element
     return (
       // compare rects top and bottom to the top and bottom of the window
-      rect.top >= 0 &&
       rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
     );
   }
