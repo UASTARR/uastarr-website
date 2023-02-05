@@ -11,7 +11,7 @@
     <!--Header-->
     <div class ="header fixed z-50 items-center py-5 flex justify-between flex-nowrap w-screen" id="header" onload="selectPage">
       <div class = "inline-block flex-none px-3">
-        <img src="https://static.wixstatic.com/media/9dc5ac_7a4b227a0a2e4a63a0e451868bdc0cdb~mv2.png/v1/fill/w_266,h_39,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/STARRVectorFullDescriptionLogoWHITETEXT(TRANSP).png" alt="broken"/>
+        <img src="{{url_for('static', filename='logo.png')}}" alt="broken"/>
       </div>
       <div class ="flex flex-nowrap">
           <!--Navigation bar-->
@@ -37,142 +37,76 @@
           </div>
           <!--Join Now Button-->
           <div class = "inline-block px-5 pr-10"> 
+<<<<<<< HEAD
             <!-- This for when you click on the join button. -->
             <button onclick= "window.location.href = '/join'" class="text-white whitespace-nowrap bg-green-700 hover:transition-all duration-200 hover:bg-white hover:text-black rounded-full px-6 py-3" href="/index" type="button">Join Now</button>
+=======
+            <button onclick= "window.location.href = '/index'" class="text-white whitespace-nowrap bg-green-700 hover:transition-all duration-200 hover:bg-white hover:text-black rounded-full px-6 py-3">Join Now</button>
+>>>>>>> Riley
           </div>
       </div>
     </div>
 
     {% block content %}{% endblock %}
+    <!--Footer-->
+    <div class ="bg-black z-10 relative flex-col justify-between">
+      <!--Catagories-->
+      <div class = "flex justify-between space-x-6 px-12 pt-12">
+        <div class = "space-y-4 basis-1">
+          <h1 class="text-white font-semibold text-lg whitespace-nowrap">
+            Student Team for Alberta <br> Rocketry Research  
+          </h1>
+          <p class="text-gray-400 text-base whitespace-nowrap">
+            Donadeo Innovation Centre <br>
+            for Engineering <br>
+            9211-116 St. NW <br>
+            ​Edmonton, AB T6G 1H9
+          </p>
+          <div class = "pt-4">
+            <button onclick= "window.location.href = '/index'" class="whitespace-nowrap bg-yellow-500 hover:transition-all duration-200 hover:bg-white rounded-full px-6 py-3" href="/index" type="button">Contact Us</button>
+          </div>
+        </div>
+        <div class = "space-y-4 basis-2">
+          <h1 class="text-white font-semibold text-lg whitespace-nowrap">  
+            Want to stay in the know about STARR? 💫  
+          </h1>
+          <p class="text-gray-400 text-base whitespace-nowrap">
+            Join our mailing list to keep up with our events, <br>
+            blog posts, and other news!
+          </p>
+        </div>
+        <div class = "flex flex-col basis-1">
+          <h1 class="text-white font-semibold text-lg whitespace-nowrap pb-4">  
+            Menu  
+          </h1>
+          <a class=" text-gray-400 text-base whitespace-nowrap" href="/index">Home</a> 
+          <a class="text-gray-400 text-base whitespace-nowrap" href="/projects">Projects</a> 
+          <a class="text-gray-400 text-base whitespace-nowrap"href="/about-us">About Us</a> 
+          <a class="text-gray-400 text-base whitespace-nowrap"href="/sponsors">Sponsors</a>
+          <a class="text-gray-400 text-base whitespace-nowrap"href="/index">Photo Albums</a>
+          <a class="text-gray-400 text-base whitespace-nowrap"href="/index">Sponsors</a>
+          <a class="text-gray-400 text-base whitespace-nowrap"href="/index">Contact Us</a>
+        </div>
+        <div class = "flex flex-col basis-1">
+          <h1 class="text-white font-semibold text-lg whitespace-nowrap pb-4">         
+            Follow us on
+          </h1>
+          <a class=" text-gray-400 text-base whitespace-nowrap" href="https://www.facebook.com/uastarr/">Facebook</a>
+          <a class=" text-gray-400 text-base whitespace-nowrap" href="https://www.instagram.com/uastarr/">Instagram</a> 
+          <a class=" text-gray-400 text-base whitespace-nowrap" href="https://twitter.com/uastarr">Twitter</a> 
+          <a class=" text-gray-400 text-base whitespace-nowrap" href="https://www.linkedin.com/company/uastarr/">LinkedIn</a> 
+        </div>
+      </div>
+      <!--Copywright Statement-->
+      <div class = "pt-16">
+        <h1 class="text-gray-400 text-base whitespace-nowrap">
+          Copyright © 2022 Student Team for Alberta Rocketry Research. All rights reserved.
+        </h1>
+      </div>
+    </div>
 
   </body>
 
+  <script src="{{url_for('static', filename='scripts.js')}}"></script>
 
-  <style>
-    .truepopup {
-      position: absolute;
-      transform: translate(-30px, 15px);
-    }
-    .popup {
-      cursor: pointer;
-    }
-    .hidden {
-      display: none;
-    }
-    .fade_in{
-      opacity: 0;
-      transition: 1s;
-
-    }
-    .flow_in_left{
-      opacity: 0;
-      transition: opacity 1s, transform 2s;
-      transform: translate(-5%);
-    }
-
-    .flow_in_top{
-      transition: opacity 1s, transform 2s;
-      transform: translate(0, -100%);
-    }
-
-    .header{
-      position: fixed;
-    }
-
-    .header_hidden{
-      transition: 1s;
-      transform: translate(0, -100%);
-    }
-
-    .visible{
-      opacity: 1;
-      transform: translate(0, 0);
-    }
-    #bg-image{
-      background-image: url(https://static.wixstatic.com/media/9dc5ac_70978e0bd50149cc929b81fd4a068c31~mv2.jpg/v1/fill/w_1176,h_995,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9dc5ac_70978e0bd50149cc929b81fd4a068c31~mv2.jpg);
-      background-size: cover;
-      width: 120vw;
-
-    }
-
-  </style>
-  <script>
-
-    function showPopup() {
-      document.getElementById("popup").classList.remove("hidden");
-    }
-    function hidePopup() {
-      document.getElementById("popup").classList.add("hidden");
-    }
-    function delayedHidePopup() {
-      timer = setTimeout(hidePopup, 500);              
-    }
-    function delayHidePopup() {
-      clearTimeout(timer);
-    }
-
-    const transition_elements = document.querySelectorAll('.fade_in, .flow_in_left, .flow_in_top');
-
-    function isInViewport(el) {
-      // checks whether an elements bounding box is completely within the vertical space of the window
-      const rect = el.getBoundingClientRect();  // rect is the bounding box of the element
-      return (
-        // compare rects top and bottom to the top and bottom of the window
-        rect.top >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-      );
-    }
-
-    function checkElements() {
-      // checks if each element is within the window and makes it visible if it is
-      transition_elements.forEach((el) => {
-        if (isInViewport(el)) {
-          el.classList.add('visible');
-        }
-      });
-    }
-    // run checkElements on page load
-    checkElements();
-    // run each time the user scrolls
-    window.addEventListener('scroll', checkElements);
-
-    function hideHeader() {
-      const scrollThreshold = 200;
-      if (window.scrollY > scrollThreshold) {
-        header = document.getElementById('header');
-        header.classList.add('header_hidden');
-      }
-    }
-
-    window.addEventListener('scroll', hideHeader);
-
-    function showHeader() {
-      if (window.scrollY <= 0) {
-        header = document.getElementById('header');
-        header.classList.remove('header_hidden');
-      }
-    }
-    window.addEventListener('scroll', showHeader);
-
-    
-    function moveBkg() {
-      var value = window.scrollY;
-      bkg = document.getElementById('bg-image');
-      rect = bkg.getBoundingClientRect();
-      rect_width = rect.right - rect.left;
-      extra = (rect_width - window.innerWidth);
-      distance = window.innerHeight - rect.top;
-      percent = (1.0 * distance) / (rect.bottom - rect.top);
-      pos_x = - (extra * percent);
-      pos_y = ((rect.bottom - rect.top));
-      
-      postion_string = pos_x + 'px 50%'
-
-      bkg.style.backgroundPosition = postion_string;
-    };
-    
-    window.addEventListener('scroll', moveBkg);
-    window.addEventListener('resize', moveBkg);
-
-  </script>
 </html>
