@@ -177,10 +177,12 @@
                 Current Competitions
             </h1>
         </div>
+        <div class = "h-20"></div>
         <!--Main content-->
-        <div class = "flex justify-center px-20 flex-none">
+        <div class = "flex justify-center flex-none">
+            <div class = "w-20 shrink-0"></div>
             <!--Text and Logo-->
-            <div class = "flex items-center space-x-5">
+            <div class = "flex items-center space-x-5 overflow-hidden">
                 <!--Text-->
                 <div>
                     <h1 class = "text-white text-3xl whitespace-nowrap">
@@ -196,21 +198,58 @@
                         universities.
                     </p>
                     <!--Learn more button-->
+                    <div class = "h-16"></div>
                     <div>
                         <button 
                                 onclick="location.href='https://www.launchcanada.org';"
-                                class="whitespace-nowrap bg-red-600 hover:transition-all text-white hover:bg-white hover:text-black rounded-full px-8 py-3">
+                                class="whitespace-nowrap bg-red-600 hover:transition-all text-white hover:bg-white hover:text-black rounded-full px-14 py-3">
                                 Learn More
                         </button>
                     </div>
                 </div>
                 <!--Logo-->
                 <img src="{{url_for('static', filename='LaunchCanadaLogo.png')}}" class = "h-72 w-72"/>
-            </div>
+                <div class = "shrink w-20 overflow-hidden"></div>
 
 
             </div>
         </div>
+        <div class = "h-20"></div>
+        <div class = "flex justify-center flex-none">
+            <div class = "w-20 shrink-0 grow-0"></div>
+            <!--Ad boxes-->
+            <div class = "flex overflow-hidden grow">
+                <div class = "flex flex-col grow">
+                    <!--Row 1-->
+                    <div class = "flex overflow-hidden min-w-max">
+                        <div class ="shrink-0 h-28 w-80 grow bg-cover flex justify-center items-center overflow-hidden" style="background-image: url(https://static.wixstatic.com/media/9dc5ac_39ff54e1dfa04e298cb7d58566700807~mv2.jpg/v1/fill/w_487,h_109,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/9dc5ac_39ff54e1dfa04e298cb7d58566700807~mv2.jpg)">
+                            <img src="{{url_for('static', filename='UofA.png')}}"/>
+                        </div>
+                        <div class ="shrink-0 h-28 w-80 grow bg-cover flex justify-center items-center overflow-hidden" style="background-image: url(https://static.wixstatic.com/media/9dc5ac_39ff54e1dfa04e298cb7d58566700807~mv2.jpg/v1/fill/w_487,h_109,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/9dc5ac_39ff54e1dfa04e298cb7d58566700807~mv2.jpg)">
+                            <img src="{{url_for('static', filename='UofA.png')}}"/>
+                        </div>
+                    </div>
+                    <!--Row 2-->
+                    <div class = "flex overflow-hidden min-w-max">
+                        <div class ="shrink-0 h-28 w-80 grow bg-cover flex justify-center items-center overflow-hidden" style="background-image: url(https://static.wixstatic.com/media/9dc5ac_39ff54e1dfa04e298cb7d58566700807~mv2.jpg/v1/fill/w_487,h_109,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/9dc5ac_39ff54e1dfa04e298cb7d58566700807~mv2.jpg)">
+                            <img src="{{url_for('static', filename='UofA.png')}}"/>
+                        </div>
+                        <div class ="shrink-0 h-28 w-80 grow bg-cover flex justify-center items-center overflow-hidden" style="background-image: url(https://static.wixstatic.com/media/9dc5ac_39ff54e1dfa04e298cb7d58566700807~mv2.jpg/v1/fill/w_487,h_109,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/9dc5ac_39ff54e1dfa04e298cb7d58566700807~mv2.jpg)">
+                            <img src="{{url_for('static', filename='UofA.png')}}"/>
+                        </div>
+                    </div>
+                    <!--Row 3-->
+                    <div class = "flex overflow-hidden min-w-max">
+                        <div class ="shrink-0 h-28 w-80 grow bg-cover flex justify-center items-center overflow-hidden" style="background-image: url(https://static.wixstatic.com/media/9dc5ac_39ff54e1dfa04e298cb7d58566700807~mv2.jpg/v1/fill/w_487,h_109,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/9dc5ac_39ff54e1dfa04e298cb7d58566700807~mv2.jpg)">
+                            <img src="{{url_for('static', filename='UofA.png')}}"/>
+                        </div>
+                        <div class ="shrink-0 h-28 w-80 grow bg-cover flex justify-center items-center overflow-hidden" style="background-image: url(https://static.wixstatic.com/media/9dc5ac_39ff54e1dfa04e298cb7d58566700807~mv2.jpg/v1/fill/w_487,h_109,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/9dc5ac_39ff54e1dfa04e298cb7d58566700807~mv2.jpg)">
+                            <img src="{{url_for('static', filename='UofA.png')}}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class = "shrink w-20 grow-0 overflow-hidden"></div>
+            </div>
         </div>
     </div>
 {% endblock %}
