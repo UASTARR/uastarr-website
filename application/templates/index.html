@@ -85,7 +85,7 @@
     </div>
 
     <!--Tile 3-->
-    <div class="z-10 relative flex flex-nowrap h-224 flex-col bg-local bg-cover bg-[center-10rem] justify-between" id="bg-image">
+    <div class="z-10 relative flex flex-nowrap h-224 flex-col bg-local bg-cover bg-[center-10rem] overflow-hidden justify-between" id="bg-image">
         <div class="flex pl-20 overflow-hidden">
             <h1 class = "flow_in_top px-3 w-72 py-3 bg-white rounded-b-2xl text-xl font-bold">
                 Our Vision
@@ -171,7 +171,7 @@
     </div>
 
     <!--Tile 4-->
-    <div class = "z-10 relative flex flex-nowrap h-448 flex-col bg-slate-900">
+    <div class = "z-10 relative flex flex-nowrap flex-col bg-slate-900">
         <div class="flex pl-20 overflow-hidden">
             <h1 class = "flow_in_top px-3  w-72 py-3 bg-white rounded-b-2xl text-xl font-bold">
                 Current Competitions
@@ -214,10 +214,18 @@
 
             </div>
         </div>
-        <div class = "h-20"></div>
-        <div class = "flex justify-center flex-none">
+        <div class = "h-28"></div>
+        <!--Sponsors Tag-->
+        <div class = "pl-20 z-10">
+            <h1 class = "flow_in_bottom px-3  w-72 py-3 bg-white rounded-t-2xl text-xl font-bold">
+                Thanks to Our Sponsors
+            </h1>
+        </div>
+        <!--Sponsors Boxes-->
+        <div class = "flex justify-center flex-none z-20">
             <div class = "w-20 shrink-0 grow-0"></div>
             <!--Ad boxes-->
+
             <div class = "flex overflow-hidden grow">
                 <div class = "flex flex-col grow">
                     <!--Row 1-->
@@ -250,6 +258,37 @@
                 </div>
                 <div class = "shrink w-20 grow-0 overflow-hidden"></div>
             </div>
+        </div>
+        <div class = "h-12"></div>
+        <!--FAQ-->
+        <div class = "pl-20">
+            <h1 class = "text-white text-4xl whitespace-nowrap overflow-hidden flow_in_left">
+                FAQ
+            </h1>
+            <div>
+                <div class = "flex">
+                    <h1 class="text-white">
+                        How Do I Join STARR?
+                    </h1>
+                    <button 
+                        id = "show1"
+                        onclick ="toggleShow('hidden1')"
+                        class="whitespace-nowrap bg-red-600 hover:transition-all text-white hover:bg-white hover:text-black rounded-full px-14 py-3">
+                        Learn More
+                    </button>
+                    <img class = "w-6 h-6 flex-none overflow-hidden"src = "{{url_for('static', filename='down.png')}}">
+                </div> 
+                <div id = "hidden1" class ="hidden">
+                    <p class ="text-white">
+                        Leave us a message through our contact page, and tell us:<br>
+                        What's your name?<br>
+                        What program are you in?<br>
+                        What year are you in?<br>
+                        Why do you want to join STARR?<br>
+                    </p>
+                </div>
+            </div>
+            <hr class = "transition-all duration-200">
         </div>
     </div>
 {% endblock %}

@@ -1,4 +1,4 @@
-function showPopup() {
+  function showPopup() {
     document.getElementById("popup").classList.remove("hidden");
   }
   function hidePopup() {
@@ -11,7 +11,22 @@ function showPopup() {
     clearTimeout(timer);
   }
 
-  const transition_elements = document.querySelectorAll('.fade_in, .flow_in_left, .flow_in_top');
+
+
+  function toggleShow(element_id){
+    element = document.getElementById(element_id);
+    if (element.classList.contains("hidden")) {
+      $('#' + element_id).slideDown("slow");
+      console.log("hidden still");
+      element.classList.remove("hidden");
+    } else {
+      $('#' + element_id).slideUp("slow");
+      element.classList.add("hidden");
+    }
+  }
+
+
+  const transition_elements = document.querySelectorAll('.fade_in, .flow_in_left, .flow_in_top, .flow_in_bottom');
 
   function isInViewport(el) {
     // checks whether an elements bounding box is completely within the vertical space of the window
@@ -27,7 +42,6 @@ function showPopup() {
     transition_elements.forEach((el) => {
         if (isInViewport(el)) {
             el.classList.add('visible');
-            console.log(el.tagName);
             // set delay attribute and duration attribute to a baseline for all buttons
             if (el.tagName == 'BUTTON'){
                 style = getComputedStyle(el);
