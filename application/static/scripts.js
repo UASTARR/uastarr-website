@@ -12,7 +12,6 @@
   }
 
 
-
   function toggleShow(element_id){
     element = document.getElementById(element_id);
     if (element.classList.contains("hidden")) {

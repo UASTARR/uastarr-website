@@ -3,6 +3,9 @@ module.exports = {
   content: ['./application/templates/**/*.html',],
   theme: {
     extend: {
+      colors:{
+        'DarkBlue': '#02060f',
+      },
       transitionDelay: {
         '0': '0ms',
         '400': '400ms',

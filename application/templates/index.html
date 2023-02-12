@@ -171,7 +171,7 @@
     </div>
 
     <!--Tile 4-->
-    <div class = "z-10 relative flex flex-nowrap flex-col bg-slate-900">
+    <div class = "z-10 relative flex flex-nowrap flex-col bg-DarkBlue">
         <div class="flex pl-20 overflow-hidden">
             <h1 class = "flow_in_top px-3  w-72 py-3 bg-white rounded-b-2xl text-xl font-bold">
                 Current Competitions
@@ -265,19 +265,20 @@
             <h1 class = "text-white text-4xl whitespace-nowrap overflow-hidden flow_in_left">
                 FAQ
             </h1>
-            <div>
-                <div class = "flex">
-                    <h1 class="text-white">
-                        How Do I Join STARR?
-                    </h1>
-                    <button 
-                        id = "show1"
-                        onclick ="toggleShow('hidden1')"
-                        class="whitespace-nowrap bg-red-600 hover:transition-all text-white hover:bg-white hover:text-black rounded-full px-14 py-3">
-                        Learn More
-                    </button>
-                    <img class = "w-6 h-6 flex-none overflow-hidden"src = "{{url_for('static', filename='down.png')}}">
-                </div> 
+            <div class = "h-4"></div>
+            <!--Dropdown 1-->
+            <div class = "flex flex-col w-192">
+                <button onclick="toggleShow('hidden1')">
+                    <div class = "flex justify-between py-6">
+                        <h1 class="text-white">
+                            How Do I Join STARR?
+                        </h1>
+                        <!--Placeholder down arrowd-->
+                        <img class = "w-6 h-6 flex-none overflow-hidden"src = "{{url_for('static', filename='down.png')}}">
+                    </div>
+                    <hr>
+                </button> 
+
                 <div id = "hidden1" class ="hidden">
                     <p class ="text-white">
                         Leave us a message through our contact page, and tell us:<br>
@@ -288,8 +289,54 @@
                     </p>
                 </div>
             </div>
-            <hr class = "transition-all duration-200">
+            <!--Dropdown 2-->
+            <div class = "flex flex-col w-192">
+                <button onclick="toggleShow('hidden2')">
+                    <div class = "flex justify-between py-6">
+                        <h1 class="text-white">
+                            How Do I Join STARR?
+                        </h1>
+                        <!--Placeholder down arrowd-->
+                        <img class = "w-6 h-6 flex-none overflow-hidden"src = "{{url_for('static', filename='down.png')}}">
+                    </div>
+                    <hr>
+                </button> 
+
+                <div id = "hidden2" class ="hidden">
+                    <p class ="text-white">
+                        Leave us a message through our contact page, and tell us:<br>
+                        What's your name?<br>
+                        What program are you in?<br>
+                        What year are you in?<br>
+                        Why do you want to join STARR?<br>
+                    </p>
+                </div>
+            </div>
+            <!--Dropdown 3-->
+            <div class = "flex flex-col w-192">
+                <button onclick="toggleShow('hidden3')">
+                    <div class = "flex justify-between py-6">
+                        <h1 class="text-white">
+                            How Do I Join STARR?
+                        </h1>
+                        <!--Placeholder down arrowd-->
+                        <img class = "w-6 h-6 flex-none overflow-hidden"src = "{{url_for('static', filename='down.png')}}">
+                    </div>
+                    <hr>
+                </button> 
+
+                <div id = "hidden3" class ="hidden">
+                    <p class ="text-white">
+                        Leave us a message through our contact page, and tell us:<br>
+                        What's your name?<br>
+                        What program are you in?<br>
+                        What year are you in?<br>
+                        Why do you want to join STARR?<br>
+                    </p>
+                </div>
+            </div>
         </div>
+        <div class = "h-24"></div>
     </div>
 {% endblock %}
 
