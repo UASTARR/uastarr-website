@@ -21,3 +21,7 @@ def about_us():
 @application.route('/join')
 def join():
     return render_template('/join.html')
+
+# @application.route('/join')
+# def join():
+#     return render_template('/contact_us.html')
