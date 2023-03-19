@@ -529,12 +529,16 @@ video {
   position: relative;
 }
 
+.top-0 {
+  top: 0px;
+}
+
 .left-8 {
   left: 2rem;
 }
 
-.top-0 {
-  top: 0px;
+.z-20 {
+  z-index: 20;
 }
 
 .z-50 {
@@ -543,10 +547,6 @@ video {
 
 .z-10 {
   z-index: 10;
-}
-
-.z-20 {
-  z-index: 20;
 }
 
 .block {
@@ -565,16 +565,24 @@ video {
   display: none;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
+.h-40 {
+  height: 10rem;
+}
+
+.h-8 {
+  height: 2rem;
+}
+
 .h-256 {
   height: 64rem;
 }
 
 .h-20 {
   height: 5rem;
-}
-
-.h-screen {
-  height: 100vh;
 }
 
 .h-224 {
@@ -617,14 +625,6 @@ video {
   height: 6rem;
 }
 
-.h-40 {
-  height: 10rem;
-}
-
-.h-8 {
-  height: 2rem;
-}
-
 .h-52 {
   height: 13rem;
 }
@@ -635,6 +635,10 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-192 {
+  width: 48rem;
 }
 
 .w-2 {
@@ -659,10 +663,6 @@ video {
 
 .w-80 {
   width: 20rem;
-}
-
-.w-192 {
-  width: 48rem;
 }
 
 .w-6 {
@@ -793,12 +793,12 @@ video {
   white-space: nowrap;
 }
 
-.rounded-full {
-  border-radius: 9999px;
-}
-
 .rounded-xl {
   border-radius: 0.75rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .rounded-b-2xl {
@@ -1030,6 +1030,20 @@ video {
   padding-bottom: 2rem;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -1050,11 +1064,6 @@ video {
   line-height: 2rem;
 }
 
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
 .text-5xl {
   font-size: 3rem;
   line-height: 1;
@@ -1068,11 +1077,6 @@ video {
 .text-6xl {
   font-size: 3.75rem;
   line-height: 1;
-}
-
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
 }
 
 .font-semibold {
@@ -1091,6 +1095,10 @@ video {
 .text-gray-400 {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+.delay-200 {
+  transition-delay: 200ms;
 }
 
 .delay-300 {
@@ -1119,10 +1127,6 @@ video {
 
 .delay-150 {
   transition-delay: 150ms;
-}
-
-.delay-100 {
-  transition-delay: 100ms;
 }
 
 .duration-200 {
