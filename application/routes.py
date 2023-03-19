@@ -17,3 +17,7 @@ def sponsors():
 @application.route('/about-us')
 def about_us():
     return render_template('about_us.html')
+
+@application.route('/photo-albums')
+def photos():
+    return render_template('photos.html')
