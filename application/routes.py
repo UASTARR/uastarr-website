@@ -27,7 +27,8 @@ def join():
     return render_template('/join.html')
 
 # We are going to use sqlite to store data into a database. Using 291.py as a reference.
-def init_database():
+def save_database():
+    # This function will start database, save(executing some queries), then close database.
     db = "default"
     conn = sqlite3.connect(db)
     cur = conn.cursor()
