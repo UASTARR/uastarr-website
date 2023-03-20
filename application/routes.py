@@ -1,6 +1,9 @@
 from app import application
 from flask import render_template
 
+import sqlite3
+from datetime import date # So that we can also save date and time
+
 @application.route('/')
 @application.route('/index')
 def index():
@@ -20,10 +23,15 @@ def about_us():
 
 @application.route('/join')
 def join():
+    # on click submit, init database, save, then close database.
     return render_template('/join.html')
 
 # We are going to use sqlite to store data into a database. Using 291.py as a reference.
 def init_database():
+    db = "default"
+    conn = sqlite3.connect(db)
+    cur = conn.cursor()
+
 
 # @application.route('/join')
 # def join():
