@@ -22,6 +22,9 @@ def about_us():
 def join():
     return render_template('/join.html')
 
+# We are going to use sqlite to store data into a database. Using 291.py as a reference.
+def init_database():
+
 # @application.route('/join')
 # def join():
 #     return render_template('/contact_us.html')
