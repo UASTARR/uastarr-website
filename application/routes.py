@@ -1,8 +1,14 @@
 from app import application
-from flask import render_template
+from flask import render_template,request
+
+
 
 import sqlite3
 from datetime import date # So that we can also save date and time
+
+message = [{'firstName' : 'fName', 'lastName' : 'lName', 'eMail' : 'mail',
+            'subject' : 'subjectField', 'know' : 'knowField', 'message' : 'messageField', 
+            'subscribe' : 'subscribeBool'}]
 
 @application.route('/')
 @application.route('/index')
@@ -33,6 +39,13 @@ def save_database():
     conn = sqlite3.connect(db)
     cur = conn.cursor()
 
+@app.route('/data/', methods = {'POST', 'GET'})
+def data():
+    if request.method == 'GET':
+        return f"The URL /data is accessed directly. Try going to '/form' to submit form"
+    if request.methd == 'POST':
+        form_data = request.form
+        return render_template('data.html', form_data = form_data)
 
 # @application.route('/join')
 # def join():
