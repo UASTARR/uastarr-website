@@ -5,16 +5,71 @@
     <img src="{{url_for('static', filename='assets/astronautBkg.jpeg')}}" class = "object-cover min-w-full min-h-full">
 </div>
 
-<div class = "flex flex-col items-center relative z-20">
-    <div class = "h-128"></div>
-    <h1 class = "text-white text-6xl">
-        Our Sponsors
-    </h1>
-    <div class ="h-2"></div>
-    <p1 class = "text-white text-xl">
-        Helping Us Reach the Stars.
-    </p1>
+<div class = "h-128"></div>
+
+<div class = "flex justify-center relative flex-none z-20">
+    <div class = "flex overflow-hidden grow">
+        <div class ="shrink-0 grow flex items-center flex-col overflow-hidden" >
+            <div class = "h-8"></div>
+            <h1 class = "text-white text-6xl overflow-hidden">
+                Our Sponsors
+            </h1>
+            <div class ="h-2"></div>
+            <p1 class = "text-white text-xl overflow-hidden">
+                Helping Us Reach the Stars.
+            </p1>
+        </div>
+    </div>
 </div>
-<div class = "h-448"></div>
+
+<div class = "h-10"></div>
+
+<div class = "flex justify-center relative flex-none z-20">
+    <div class = "flex overflow-hidden grow">
+        <div class ="shrink-0 grow flex justify-center overflow-hidden bg-white" >
+            <div class = "overflow-hidden flex flex-col items-center">
+                <div class = "h-20"></div>
+                <h1 class = "text-4xl text-black text-center">Sponsors go here</h1>
+                <div class = "h-20"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class = "flex justify-center relative flex-none z-20">
+    <div class = "flex overflow-hidden grow">
+        <div class ="shrink-0 grow flex justify-center overflow-hidden bg-white border-t border-black" >
+            <div class = "overflow-hidden flex flex-col items-center">
+                <div class = "h-20"></div>
+                <h1 class = "text-4xl text-black text-center">Sponsorship package</h1>
+                <div class = "h-20"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class = "flex justify-center relative flex-none z-20">
+    <div class = "flex overflow-hidden grow">
+        <div class ="shrink-0 grow flex justify-center overflow-hidden  bg-gradient-to-b from-blue-500 to-black black-white" >
+            <div class = "overflow-hidden flex flex-col items-center">
+                <div class = "h-20"></div>
+                <h1 class = "text-4xl text-white text-center">Want to be a sponsor?</h1>
+                <div class = "h-4"></div>
+                <p class = "w-192 text-lg text-center text-white">
+                    We're excited to have you on board. Our vision depends on generous sponsors like you, 
+                    and we look forward to seeing the heights we'll reach together.
+                </p>
+                <div class = "h-12"></div>
+                <!--Change href to contact page-->
+                <button 
+                    onclick= "window.location.href = 'index'" 
+                    class="whitespace-nowrap bg-yellow-500 hover:transition-all hover:bg-white rounded-full px-8 py-3">
+                    Contact Us
+                </button>
+                <div class ="h-20"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
