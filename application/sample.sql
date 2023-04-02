@@ -8,10 +8,11 @@ primary key (email)
 };
 
 create table message (
+numMessage integer,
 email text,
 subject text,
 how text,
 message text,
-primary key (email, subject),
-foreign key (email) references person
+primary key (numMessage, mail, subject),
+foreign key (email) references person on delete cascade
 );

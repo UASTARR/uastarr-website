@@ -1,8 +1,6 @@
 from app import application
 from flask import render_template,request
 
-
-
 import sqlite3
 from datetime import date # So that we can also save date and time
 
@@ -35,9 +33,17 @@ def join():
 # We are going to use sqlite to store data into a database. Using 291.py as a reference.
 def save_database():
     # This function will start database, save(executing some queries), then close database.
+    databaseName = input("What is the name of the database?: ")
     db = "default"
-    conn = sqlite3.connect(db)
+    conn = sqlite3.connect(databaseName)
     cur = conn.cursor()
+
+    # get the email
+    # if person is not in the database then add to the database. 
+    # if already in database check if they have any messages,
+        # if they have a message, add the message and subject and increment the message number
+        # if they don't have a message. Add the message and subject and set the message number to 1.
+    # save 
 
 @app.route('/data/', methods = {'POST', 'GET'})
 def data():
