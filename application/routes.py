@@ -38,12 +38,46 @@ def save_database():
     conn = sqlite3.connect(databaseName)
     cur = conn.cursor()
 
+    # Flask get: first name, last name, email, subject, how, message
+
     # get the email
     # if person is not in the database then add to the database. 
-    # if already in database check if they have any messages,
-        # if they have a message, add the message and subject and increment the message number
-        # if they don't have a message. Add the message and subject and set the message number to 1.
-    # save 
+    cur.execute('''
+    SELECT * FROM person WHERE email = :email AND fName = :firstName AND lname = :lastName;
+    ''', {'email' : email, 'firstName' : firstName, 'lastName' : lastName})
+
+    person_row = cur.fetchall()
+    person_exists = len(person_row) > 0 # if more than one then the person exists.
+    if not person_exists:
+        # If the person doesn't exist, make a table of the person.
+        print("The person does not exist. Will add to database.")
+        cur.execute('''
+        INSERT INTO person VALUES (:fName, :lName, :email);
+        ''', {'fName' : firstName, 'lName' : lastName, 'email' : email})
+        conn.commit()
+
+    newDate = date.now() ### some thing like this
+
+
+    ### Initialize first message so we can also tell when was the last message made by the person with this email
+    cur.execute('''
+        INSERT INTO message VALUES (0, :email, 0, 0, 0, :date);
+        ''', {'email' : email, 'date' : newDate})
+    conn.commit()
+    
+
+    cur.execute('''
+    SELECT numMessage FROM message WHERE email = :email ORDER BY DESC;
+    ''', {'email' : email})
+
+    message_count = cur.fetchone()[0]
+
+    cur.execute('''
+    INSERT INTO message VALUES (:num, :email, :subject, :how, :message, :date);
+    ''', {'num' : message_count+1, 'email' : email, 'subject' : subject, 'how' : howKnow, 'message' : messageText, 'date' : newDate})
+    conn.commit()
+    conn.close()
+
 
 @app.route('/data/', methods = {'POST', 'GET'})
 def data():
