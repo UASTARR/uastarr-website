@@ -7,21 +7,33 @@
             <source src="{{url_for('static', filename='assets/RipplingBkg.mp4')}}" type="video/mp4" />
         </video>
     </div>
-    <div class = "h-40"></div>
+    <div class = "h-32"></div>
+
+    <div class = "flex justify-center relative flex-none z-20">
+        <div class = "flex overflow-hidden grow">
+            <div class ="shrink-0 grow flex justify-center overflow-hidden bg-black bg-opacity-70" >
+                <div class = "overflow-hidden">
+                    <h1 class = "text-4xl text-white fade_in delay-200 text-center">About Us</h1>
+                    <div class = "h-8"></div>
+                    <p class = "w-192 text-white text-xl text-center">
+                        The Student Team for Alberta Rocketry Research (STARR) is a team of like-minded students 
+                        from an array of disciplines and faculties who have come together with the common goal of 
+                        expanding Alberta’s space industry through the development, testing, and launching of high 
+                        altitude sounding rockets.
+                    </p>
+                    <div class = "h-8"></div>
+                    <img src="{{url_for('static', filename='assets/TeamPhoto.jpeg')}}" class = "rounded-xl w-192 flex-none overflow-hidden">
+                    <div class = "h-8"></div>
+                    <div class = "h-8"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <!--Content-->
     <div class= "relative z-20 flex items-center flex-col">
-        <h1 class = "text-4xl text-white fade_in delay-200">About Us</h1>
-        <div class = "h-8"></div>
-        <p class = "w-192 text-white text-xl text-center">
-            The Student Team for Alberta Rocketry Research (STARR) is a team of like-minded students 
-            from an array of disciplines and faculties who have come together with the common goal of 
-            expanding Alberta’s space industry through the development, testing, and launching of high 
-            altitude sounding rockets.
-        </p>
-        <div class = "h-8"></div>
-        <img src="{{url_for('static', filename='assets/TeamPhoto.jpeg')}}" class = "rounded-xl w-192 flex-none overflow-hidden">
-        <div class = "h-8"></div>
+        
 
 
     </div>
