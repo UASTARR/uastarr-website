@@ -82,7 +82,7 @@ def save_database():
     conn.commit()
     conn.close()
 
-
+"""
 @app.route('/data/', methods = {'POST', 'GET'})
 def data():
     if request.method == 'GET':
@@ -90,6 +90,8 @@ def data():
     if request.methd == 'POST':
         form_data = request.form
         return render_template('data.html', form_data = form_data)
+
+"""
 
 # @application.route('/join')
 # def join():
