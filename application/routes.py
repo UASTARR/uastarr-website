@@ -90,3 +90,7 @@ def data():
 # @application.route('/join')
 # def join():
 #     return render_template('/contact_us.html')
+
+@application.route('/photo-albums')
+def photos():
+    return render_template('photos.html')

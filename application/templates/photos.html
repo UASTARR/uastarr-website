@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class = "fixed top-0 justify-center w-screen h-screen">
+    <video autoplay muted loop style class ="object-cover min-w-full min-h-full">
+        <source src="{{url_for('static', filename='assets/VectorBkg.mp4')}}" type="video/mp4" />
+    </video>
+</div>
+
+<div class = "h-24"></div>
+
+<div class = "flex justify-center relative flex-none z-20">
+    <div class = "flex overflow-hidden grow">
+        <div class ="shrink-0 grow flex items-center flex-col overflow-hidden" >
+            <div class = "h-8"></div>
+            <h1 class = "text-white text-6xl overflow-hidden">
+                A Blast Into the Past 🚀
+            </h1>
+            <div class ="h-2"></div>
+            <p1 class = "text-white text-xl overflow-hidden">
+                The STARR Photo Archive
+            </p1>
+        </div>
+    </div>
+</div>
+
+<div class = "h-20"></div>
+
+<div class = "flex justify-center relative flex-none z-20">
+    <p class = "text-xl text-white">Albums go here</p>
+</div>
+{% endblock %}
