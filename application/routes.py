@@ -25,6 +25,10 @@ def sponsors():
 def about_us():
     return render_template('about_us.html')
 
+@application.route('/photo-albums')
+def photos():
+    return render_template('photos.html')
+
 @application.route('/join')
 def join():
     # on click submit, init database, save, then close database.
@@ -91,6 +95,3 @@ def data():
 # def join():
 #     return render_template('/contact_us.html')
 
-@application.route('/photo-albums')
-def photos():
-    return render_template('photos.html')
