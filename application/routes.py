@@ -1,6 +1,6 @@
 from app import application
 from flask import render_template,request
-
+import os
 import sqlite3
 from datetime import date # So that we can also save date and time
 
@@ -15,7 +15,8 @@ def index():
 
 @application.route('/projects')
 def projects():
-    return render_template('projects.html')
+
+    return render_template('projects.html', value="null")
 
 @application.route('/sponsors')
 def sponsors():
@@ -23,16 +24,36 @@ def sponsors():
 
 @application.route('/about-us')
 def about_us():
-    return render_template('about_us.html')
+
+    
+    return render_template('about_us.html', image="https://static.wixstatic.com/media/9dc5ac_48daba6a1b7b4305abd2b904fb06edde~mv2.jpg/v1/crop/x_0,y_363,w_4000,h_5273/fill/w_245,h_323,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/9952B12D-A415-416A-91D9-F95050924A3F.jpg")
 
 @application.route('/photo-albums')
 def photos():
-    return render_template('photos.html')
+    relative_path = "application\databases\main.db"
+    conn = sqlite3.connect(relative_path)
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM albums;")
+    rows = cursor.fetchall()
+    photos = list()
+    for row in rows:
+        photo = dict()
+        photo["title"] = row[0]
+        photo["description"] = row[1]
+        photo["imglink"] = row[2]
+        photo["albumlink"] = row[3]
+        photos.append(photo)
+
+
+    return render_template('photos.html', photos=photos)
 
 @application.route('/join')
 def join():
     # on click submit, init database, save, then close database.
     return render_template('/join.html')
+
+"""
+Work related to email database
 
 # We are going to use sqlite to store data into a database. Using 291.py as a reference.
 def save_database():
@@ -82,7 +103,6 @@ def save_database():
     conn.commit()
     conn.close()
 
-"""
 @app.route('/data/', methods = {'POST', 'GET'})
 def data():
     if request.method == 'GET':
@@ -91,9 +111,10 @@ def data():
         form_data = request.form
         return render_template('data.html', form_data = form_data)
 
-"""
+
 
 # @application.route('/join')
 # def join():
 #     return render_template('/contact_us.html')
 
+"""
