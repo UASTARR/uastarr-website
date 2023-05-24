@@ -26,7 +26,17 @@
 
 <div class = "h-20"></div>
 
-<div class = "flex justify-center relative flex-none z-20">
-    <p class = "text-xl text-white">Albums go here</p>
+<div class = "flex flex-col relative z-20">
+    {% for photoline in photos|batch(3) %}
+        <div class = "flex justify-center space-x-12">
+            {% for photo in photoline %}
+                <div class="flex flex-col items-center flex-none">
+                    <img src={{photo.imglink}} class ="w-72 h-72 rounded-3xl">
+                    <h1 class ="text-white">{{photo.title}}</h1>
+                    <p class ="text-white">{{photo.description}}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
 </div>
 {% endblock %}
