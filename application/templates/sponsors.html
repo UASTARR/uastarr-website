@@ -22,18 +22,52 @@
         </div>
     </div>
 </div>
+<div class = "h-96"></div>
 
 <!--Sponsors Section-->
-<div class = "flex justify-center relative flex-none z-20">
-    <div class = "flex overflow-hidden grow">
-        <div class ="shrink-0 grow flex justify-center overflow-hidden bg-black" >
-            <div class = "overflow-hidden flex flex-col items-center">
-                <div class = "h-20"></div>
-                <h1 class = "text-4xl text-white text-center">Sponsors go here</h1>
-                <div class = "h-20"></div>
+<div class = "flex flex-col relative flex-none z-20">
+    {% for sponsor in sponsors %}
+        {% if loop.index is odd %}
+            <div class = "flex h-128 overflow-hidden">
+                <div class ="bg-cover grow overflow-hidden basis-1/2 flex justify-center items-center" style="background-image: url({{sponsor.bkgimgref}}); min-width: 512px;">
+                    <div class = "flex-none">
+                        <img class="flex-none overflow-hidden w-112" src={{sponsor.imgref}}>
+                    </div>
+                </div>
+                <div class ="bg-DarkBlue grow overflow-hidden min-w-fit flex justify-center items-center basis-1/2">
+                    <div class="w-128 shrink-0">
+                        <h1 class = "text-white text-4xl text-center">
+                            {{sponsor.name}}
+                        </h1>
+                        <div class ="h-10"></div>
+                        <p class = "text-white text-center">
+                            {{sponsor.description}}
+                        </p>
+                    </div>
+                </div>
             </div>
+        {% else %}
+        <div class = "flex h-128 overflow-hidden">
+            <div class ="bg-DarkBlue grow overflow-hidden min-w-fit flex justify-center items-center basis-1/2">
+                <div class="w-128 shrink-0">
+                    <h1 class = "text-white text-4xl text-center">
+                        {{sponsor.name}}
+                    </h1>
+                    <div class ="h-10"></div>
+                    <p class = "text-white text-center">
+                        {{sponsor.description}}
+                    </p>
+                </div>
+            </div>
+            <div class ="bg-cover grow overflow-hidden basis-1/2 flex justify-center items-center" style="background-image: url({{sponsor.bkgimgref}}); min-width: 512px;">
+                <div class = "flex-none">
+                    <img class="flex-none overflow-hidden w-112" src={{sponsor.imgref}}>
+                </div>
+            </div>
+            
         </div>
-    </div>
+        {% endif %}
+    {% endfor %}
 </div>
 
 <!--Sponsorship Package Section-->

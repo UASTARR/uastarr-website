@@ -20,7 +20,28 @@ def projects():
 
 @application.route('/sponsors')
 def sponsors():
-    return render_template('sponsors.html')
+    relative_path_to_imgs = "../static/assets/sponsor_logos/"   
+    bkgimgref = "/../static/assets/sponsor_bkgs/"
+    backgroundimgs = ["bkg1.jpeg", "bkg2.jpeg", "bkg3.jpeg", "bkg4.jpeg", "bkg5.jpeg"]
+
+    relative_path = "application\databases\main.db"
+    conn = sqlite3.connect(relative_path)
+    cursor = conn.cursor()
+    cursor.execute("SELECT name, description, imgref FROM sponsors;")
+    rows = cursor.fetchall()
+    sponsors = list()
+    i=0
+    for row in rows:
+        sponsor = dict()
+        sponsor["name"] = row[0]
+        sponsor["description"] = row[1]
+        sponsor["imgref"] = relative_path_to_imgs + row[2]
+        sponsor["bkgimgref"] = bkgimgref + backgroundimgs[i%5]
+        i += 1
+        sponsors.append(sponsor)
+
+    conn.close()
+    return render_template('sponsors.html', sponsors=sponsors)
 
 @application.route('/about-us')
 def about_us():
