@@ -20,13 +20,48 @@ def projects():
 
 @application.route('/sponsors')
 def sponsors():
-    return render_template('sponsors.html')
+    relative_path_to_imgs = "../static/assets/sponsor_logos/"   
+    bkgimgref = "/../static/assets/sponsor_bkgs/"
+    backgroundimgs = ["bkg1.jpeg", "bkg2.jpeg", "bkg3.jpeg", "bkg4.jpeg", "bkg5.jpeg"]
+
+    relative_path = "application\databases\main.db"
+    conn = sqlite3.connect(relative_path)
+    cursor = conn.cursor()
+    cursor.execute("SELECT name, description, imgref FROM sponsors;")
+    rows = cursor.fetchall()
+    sponsors = list()
+    i=0
+    for row in rows:
+        sponsor = dict()
+        sponsor["name"] = row[0]
+        sponsor["description"] = row[1]
+        sponsor["imgref"] = relative_path_to_imgs + row[2]
+        sponsor["bkgimgref"] = bkgimgref + backgroundimgs[i%5]
+        i += 1
+        sponsors.append(sponsor)
+
+    conn.close()
+    return render_template('sponsors.html', sponsors=sponsors)
 
 @application.route('/about-us')
 def about_us():
+    relative_path_to_imgs = "../static/assets/headshots/"
+    relative_path = "application\databases\main.db"
+    conn = sqlite3.connect(relative_path)
+    cursor = conn.cursor()
+    cursor.execute("SELECT name, title, imgref FROM members;")
+    rows = cursor.fetchall()
+    members = list()
+    for row in rows:
+        member = dict()
+        member["name"] = row[0]
+        member["title"] = row[1]
+        member["imgref"] = relative_path_to_imgs + row[2]
+        members.append(member)
 
-    
-    return render_template('about_us.html', image="https://static.wixstatic.com/media/9dc5ac_48daba6a1b7b4305abd2b904fb06edde~mv2.jpg/v1/crop/x_0,y_363,w_4000,h_5273/fill/w_245,h_323,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/9952B12D-A415-416A-91D9-F95050924A3F.jpg")
+    conn.close()
+
+    return render_template('about_us.html', members=members)
 
 @application.route('/photo-albums')
 def photos():
@@ -44,7 +79,7 @@ def photos():
         photo["albumlink"] = row[3]
         photos.append(photo)
 
-
+    conn.close()
     return render_template('photos.html', photos=photos)
 
 @application.route('/join')
