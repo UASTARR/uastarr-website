@@ -236,13 +236,20 @@
                         <div class ="shrink-0 h-28 w-80 grow bg-cover flex justify-center items-center overflow-hidden" style="background-image: url(/../static/assets/sponsor_bkgs/standardbkg.jpeg)">
                             <img class = "w-60 max-w-fit max-h-28" src={{sponsor.imgref}}/>
                         </div>
-                            {% if loop.last and outer_loop.last %}
+                            {% if loop.last and outer_loop.last and loop.index is odd %}
                                 <div class ="shrink-0 h-28 w-80 grow bg-cover flex justify-center items-center overflow-hidden" style="background-image: url(/../static/assets/sponsor_bkgs/standardbkg.jpeg)">
                                     <button onclick= "window.location.href = '/join'" class="whitespace-nowrap bg-yellow-500 hover:transition-all duration-200 hover:bg-white rounded-full px-6 py-3" href="/join" type="button">Want to become a sponsor?</button>    
                                 </div>
                             {% endif %}
                         {% endfor %}
                     </div>
+                    {% if loop.last and sponsors|length % 2 == 0 %}
+                    <div class = "flex overflow-hidden min-w-max">
+                        <div class ="shrink-0 h-28 w-80 grow bg-cover flex justify-center items-center overflow-hidden" style="background-image: url(/../static/assets/sponsor_bkgs/standardbkg.jpeg)">
+                            <button onclick= "window.location.href = '/join'" class="whitespace-nowrap bg-yellow-500 hover:transition-all duration-200 hover:bg-white rounded-full px-6 py-3" href="/join" type="button">Want to become a sponsor?</button>    
+                        </div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
                 <div class = "shrink w-20 grow-0 overflow-hidden"></div>

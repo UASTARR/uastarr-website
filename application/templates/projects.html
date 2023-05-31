@@ -78,13 +78,57 @@
                     <div class = "h-20"></div>
                 </div>
             </div>
-            <div class ="shrink-0 grow flex justify-center overflow-hidden bg-black bg-opacity-70 border border-l-0 border-gray-500">
+            <div class ="shrink-0 grow flex items-center justify-center overflow-hidden bg-black bg-opacity-70 border border-l-0 border-gray-500">
                 <div class = "overflow-hidden w-96">
-                    <h1 class = "text-white text-2xl"> Countdown goes here </h1>
-                    <p1 class = "text-white text-lg">
-                        There will be a clock counting down to the launch here! <br>
-                        The launch day is: {{value}}!
-                    </p1>
+                    <div class = "flex flex-col items-center space-y-3">
+                        <div class = "flex justify-center items-center" id="countdown">
+                            <div class = "flex flex-col items-center space-y-2">
+                                <div class = "bg-green-700 h-16 w-20 rounded-md flex justify-center items-center">
+                                    <p class = "text-white text-xl" id="days"></p>
+                                </div>
+                                <div class = "bg-green-700 h-8 w-20 flex justify-center items-center">
+                                    <p class = "text-white text-xl">Days</p>
+                                </div>
+                            </div>
+                            <div class = "flex flex-col items-center space-y-2">
+                                <div class = "h-16 w-4 rounded-md flex justify-center items-center"></div>
+                                <div class = "bg-green-700 h-8 w-4 flex justify-center items-center"></div>
+                            </div>
+                            <div class = "flex flex-col items-center space-y-2">
+                                <div class = "bg-green-700 h-16 w-20 rounded-md flex justify-center items-center">
+                                    <p class = "text-white text-xl" id="hours"></p>
+                                </div>
+                                <div class = "bg-green-700 h-8 w-20 flex justify-center items-center">
+                                    <p class = "text-white text-xl">Hours</p>
+                                </div>
+                            </div>
+                            <div class = "flex flex-col items-center space-y-2">
+                                <div class = "h-16 w-4 rounded-md flex justify-center items-center"></div>
+                                <div class = "bg-green-700 h-8 w-4 flex justify-center items-center"></div>
+                            </div>
+                            <div class = "flex flex-col items-center space-y-2">
+                                <div class = "bg-green-700 h-16 w-20 rounded-md flex justify-center items-center">
+                                    <p class = "text-white text-xl" id="minutes"></p>
+                                </div>
+                                <div class = "bg-green-700 h-8 w-20 flex justify-center items-center">
+                                    <p class = "text-white text-xl">Mins</p>
+                                </div>
+                            </div>
+                            <div class = "flex flex-col items-center space-y-2">
+                                <div class = "h-16 w-4 rounded-md flex justify-center items-center"></div>
+                                <div class = "bg-green-700 h-8 w-4 flex justify-center items-center"></div>
+                            </div>
+                            <div class = "flex flex-col items-center space-y-2">
+                                <div class = "bg-green-700 h-16 w-20 rounded-md flex justify-center items-center">
+                                    <p class = "text-white text-xl" id="seconds"></p>
+                                </div>
+                                <div class = "bg-green-700 h-8 w-20 flex justify-center items-center">
+                                    <p class = "text-white text-xl">Secs</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class = "text-white">Until Our Next Launch</p>
+                    </div>
                 </div>
               
             </div>
@@ -94,5 +138,12 @@
     </div>
 
     <div class = "h-16"></div>
+    
+{% endblock %}
 
+{% block script %}
+    <script> 
+        var launch_date = "{{launch_date}}";
+        startCountdown(launch_date); 
+    </script>
 {% endblock %}

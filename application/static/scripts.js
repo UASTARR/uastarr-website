@@ -1,3 +1,45 @@
+  
+  function startCountdown(date) {
+    // Set the countdown end date and time
+    const countdownDate = new Date(date).getTime();
+  
+    function updateCountdown() {
+      // Get the current date and time
+      const now = new Date().getTime();
+  
+      // Calculate the time remaining
+      const timeRemaining = countdownDate - now;
+  
+      // Calculate days, hours, minutes, and seconds
+      const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+  
+      // Update the countdown HTML elements
+      document.getElementById("days").innerHTML = days;
+      document.getElementById("hours").innerHTML = hours;
+      document.getElementById("minutes").innerHTML = minutes;
+      document.getElementById("seconds").innerHTML = seconds;
+  
+      // If the countdown is finished, clear the interval
+      if (timeRemaining <= 0) {
+        clearInterval(countdownInterval);
+        // Optionally, perform any desired action when the countdown reaches zero
+        document.getElementById("countdown").innerHTML = "Countdown is over!";
+      }
+    }
+  
+    // Call the updateCountdown function immediately
+    updateCountdown();
+  
+    // Update the countdown every second
+    const countdownInterval = setInterval(updateCountdown, 1000);
+  }
+  
+  
   function showPopup() {
     document.getElementById("popup").classList.remove("hidden");
   }

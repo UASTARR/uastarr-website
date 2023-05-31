@@ -16,7 +16,7 @@ def index():
     relative_path = "application\databases\main.db"
     conn = sqlite3.connect(relative_path)
     cursor = conn.cursor()
-    cursor.execute("SELECT imgref FROM sponsors;")
+    cursor.execute("SELECT imgref FROM sponsors WHERE mainpage = 1 AND hidden = 0;")
     rows = cursor.fetchall()
     sponsors = list()
     for row in rows:
@@ -29,8 +29,8 @@ def index():
 
 @application.route('/projects')
 def projects():
-
-    return render_template('projects.html', value="null")
+    launch_date = "2023-08-28T12:00:00"
+    return render_template('projects.html', value="null", launch_date=launch_date)
 
 @application.route('/sponsors')
 def sponsors():
@@ -41,7 +41,7 @@ def sponsors():
     relative_path = "application\databases\main.db"
     conn = sqlite3.connect(relative_path)
     cursor = conn.cursor()
-    cursor.execute("SELECT name, description, imgref FROM sponsors;")
+    cursor.execute("SELECT name, description, imgref FROM sponsors WHERE hidden = 0;")
     rows = cursor.fetchall()
     sponsors = list()
     i=0

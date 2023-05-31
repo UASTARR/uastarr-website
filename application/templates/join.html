@@ -1,40 +1,7 @@
-body {font-family: Arial, Helvetica, sans-serif;} * {box-sizing: border-box;}
 
-input[type=text], select, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
-}
-
-input[type=submit] {
-    background-color: #04AA6D; 
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-  
-.container {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-} 
 
 {% extends "base.html" %}
 
-{% block background %}
-<div class="bg-local" style="background-image: url(https://static.wixstatic.com/media/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg/v1/fill/w_1225,h_1100,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg)"> 
-{% endblock %}
 
 {% block content %}
 
@@ -54,7 +21,7 @@ input[type=submit]:hover {
         Contact Us
     </h1>
     <div class = "container">
-        <h3 class = "flow_in_left delay-150 whitespace-nowrap text-white"
+        <h3 class = "flow_in_left whitespace-nowrap text-white"
             style = "font-size:0.8vw">
             Want to join us? Want to become a sponsor? Any other questions? <br>
             Let us know! We'd love to hear what you think. Poop poo head
@@ -65,10 +32,6 @@ input[type=submit]:hover {
 </br>
 </br>
 </br>
-
-:input {
-    color: black;
-}
 
 <main class = "relative z-20">
     <section>
@@ -81,31 +44,31 @@ input[type=submit]:hover {
                     <input type = "text" name = "first_name" id = "first_name" placeholder="First Name" required>
                 </h3>
                 <br>
-                <h3 class = "flow_in_left whitespace-nowrap text-white"
+                <h3 class = "whitespace-nowrap text-white"
                 style = "font-size:0.8vw">
                     <label for = "last_name">Last Name:</label>
                     <input type ="text" name = "last_name" id = "last_name" placeholder="Last Name" required>
                 </h3>
                 <br>
-                <h3 class = "flow_in_left whitespace-nowrap text-white"
+                <h3 class = "whitespace-nowrap text-white"
                 style = "font-size:0.8vw">
                     <label for = "email">Email:</label>
                     <input type ="text" name = "email" id = "email" placeholder="Email" required>
                 </h3>   
                 <br>
-                <h3 class = "flow_in_left whitespace-nowrap text-white"
+                <h3 class = "whitespace-nowrap text-white"
                 style = "font-size:0.8vw">
                     <label for = "subject">Subject:</label>
                     <input type ="text" name = "subject" id = "subject" placeholder="Subject" required>
                 </h3>
                 <br>
-                <h3 class = "flow_in_left whitespace-nowrap text-white"
+                <h3 class = "whitespace-nowrap text-white"
                 style = "font-size:0.8vw">
                     <label for = "how_know">How do you know about us?</label>
                     <input type ="text-black" name = "how_know" id = "how_know" placeholder="Reason" required>
                 </h3>
                 <br>
-                <h3 class = "flow_in_left whitespace-nowrap text-white"
+                <h3 class = "whitespace-nowrap text-white"
                 style = "font-size:0.8vw">
                     <label for = "message">Leave us a Message:</label>
                     <br>
@@ -113,7 +76,7 @@ input[type=submit]:hover {
                 </h3>
                 <br>
                 <div>
-                    <h3 class = "flow_in_left whitespace-nowrap text-white"
+                    <h3 class = "whitespace-nowrap text-white"
                     style = "font-size:0.8vw">
                         <label for = "subscribe">I would like to hear from UASTARR</label>
                         <input type = "radio" name = "sub" value="yes" required/> Yes
@@ -121,22 +84,13 @@ input[type=submit]:hover {
                     </h3>
                 </div>
             </fieldset>
-            <h3 class = "flow_in_left whitespace-nowrap text-white"
+            <h3 class = "whitespace-nowrap text-white"
             style = "font-size:0.8vw">
                 <button type ="submit">Submit</button>
                 <button type ="reset">Reset</button>
             </h3>
         </form>
-        <script type = "text/javascript">
-            function store(evet) {
-                event.preventDefault();
-
-                // Need to make Javascript function that stores data
-                // to file.
-                
-                const data = new 
-            }
-        </script>
+        
     </section>
 </main>
 
