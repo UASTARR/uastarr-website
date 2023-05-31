@@ -24,12 +24,12 @@
                     <div class = "h-8"></div>
                     <div class = "flex items-center">
                         <div class="bg-green-800 h-14 w-2 rounded-full absolute -translate-x-6"></div>
-                        <h1 class = "text-white text-2xl delay-200 fade_in"> Ringo I </h1>
+                        <h1 class = "text-white text-2xl delay-200 fade_in no_check"> Ringo I </h1>
                     </div>
                     <div class = "h-8"></div>
                     <img src="{{url_for('static', filename='assets/LaunchCanadaCircleLogo.png')}}" class="w-52 h-52">
                     <div class = "h-8"></div>
-                    <p1 class = "text-white text-lg fade_in">
+                    <p1 class = "text-white text-lg delay-200 fade_in no_check">
                         Ringo I was the University of Alberta's first sounding rocket that competed in the inaugural 2022 Launch Canada Challenge. 
                         The launch vehicle employed a dual event recovery system and was propelled to 10,671 ft on August 2, 2022. 
                         Members of STARR worked and designed the rocket throughout the 2021-2022 academic year and was awarded first place in the 
@@ -46,7 +46,7 @@
                         This will be a photo album
                     </p>
                     <img src="{{url_for('static', filename='assets/placeholder_album.jpeg')}}">
-                    <p1 class = "text-white text-lg font-bold fade_in">
+                    <p1 class = "text-white text-lg font-bold delay-200 no_check fade_in">
                         STARR and Ringo I at Launch Canada 2022
                     </p1>
                 </div>
@@ -78,13 +78,57 @@
                     <div class = "h-20"></div>
                 </div>
             </div>
-            <div class ="shrink-0 grow flex justify-center overflow-hidden bg-black bg-opacity-70 border border-l-0 border-gray-500">
+            <div class ="shrink-0 grow flex items-center justify-center overflow-hidden bg-black bg-opacity-70 border border-l-0 border-gray-500">
                 <div class = "overflow-hidden w-96">
-                    <h1 class = "text-white text-2xl"> Countdown goes here </h1>
-                    <p1 class = "text-white text-lg">
-                        There will be a clock counting down to the launch here! <br>
-                        The launch day is: {{value}}!
-                    </p1>
+                    <div class = "flex flex-col items-center space-y-3">
+                        <div class = "flex justify-center items-center" id="countdown">
+                            <div class = "flex flex-col items-center space-y-2">
+                                <div class = "bg-green-700 h-16 w-20 rounded-md flex justify-center items-center">
+                                    <p class = "text-white text-xl" id="days"></p>
+                                </div>
+                                <div class = "bg-green-700 h-8 w-20 flex justify-center items-center">
+                                    <p class = "text-white text-xl">Days</p>
+                                </div>
+                            </div>
+                            <div class = "flex flex-col items-center space-y-2">
+                                <div class = "h-16 w-4 rounded-md flex justify-center items-center"></div>
+                                <div class = "bg-green-700 h-8 w-4 flex justify-center items-center"></div>
+                            </div>
+                            <div class = "flex flex-col items-center space-y-2">
+                                <div class = "bg-green-700 h-16 w-20 rounded-md flex justify-center items-center">
+                                    <p class = "text-white text-xl" id="hours"></p>
+                                </div>
+                                <div class = "bg-green-700 h-8 w-20 flex justify-center items-center">
+                                    <p class = "text-white text-xl">Hours</p>
+                                </div>
+                            </div>
+                            <div class = "flex flex-col items-center space-y-2">
+                                <div class = "h-16 w-4 rounded-md flex justify-center items-center"></div>
+                                <div class = "bg-green-700 h-8 w-4 flex justify-center items-center"></div>
+                            </div>
+                            <div class = "flex flex-col items-center space-y-2">
+                                <div class = "bg-green-700 h-16 w-20 rounded-md flex justify-center items-center">
+                                    <p class = "text-white text-xl" id="minutes"></p>
+                                </div>
+                                <div class = "bg-green-700 h-8 w-20 flex justify-center items-center">
+                                    <p class = "text-white text-xl">Mins</p>
+                                </div>
+                            </div>
+                            <div class = "flex flex-col items-center space-y-2">
+                                <div class = "h-16 w-4 rounded-md flex justify-center items-center"></div>
+                                <div class = "bg-green-700 h-8 w-4 flex justify-center items-center"></div>
+                            </div>
+                            <div class = "flex flex-col items-center space-y-2">
+                                <div class = "bg-green-700 h-16 w-20 rounded-md flex justify-center items-center">
+                                    <p class = "text-white text-xl" id="seconds"></p>
+                                </div>
+                                <div class = "bg-green-700 h-8 w-20 flex justify-center items-center">
+                                    <p class = "text-white text-xl">Secs</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class = "text-white">Until Our Next Launch</p>
+                    </div>
                 </div>
               
             </div>
@@ -94,5 +138,12 @@
     </div>
 
     <div class = "h-16"></div>
+    
+{% endblock %}
 
+{% block script %}
+    <script> 
+        var launch_date = "{{launch_date}}";
+        startCountdown(launch_date); 
+    </script>
 {% endblock %}
