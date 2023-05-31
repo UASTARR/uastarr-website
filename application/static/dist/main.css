@@ -651,8 +651,8 @@ video {
   height: 64rem;
 }
 
-.h-224 {
-  height: 56rem;
+.h-288 {
+  height: 72rem;
 }
 
 .h-14 {
@@ -1106,6 +1106,10 @@ video {
 
 .bg-left {
   background-position: left;
+}
+
+.bg-center {
+  background-position: center;
 }
 
 .object-cover {
