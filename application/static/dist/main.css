@@ -671,6 +671,10 @@ video {
   height: 6rem;
 }
 
+.h-36 {
+  height: 9rem;
+}
+
 .h-40 {
   height: 10rem;
 }
@@ -854,10 +858,6 @@ video {
 .-translate-y-128 {
   --tw-translate-y: -32rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.resize {
-  resize: both;
 }
 
 .flex-col {
@@ -1343,6 +1343,10 @@ video {
 
 .delay-150 {
   transition-delay: 150ms;
+}
+
+.delay-500 {
+  transition-delay: 500ms;
 }
 
 .duration-200 {

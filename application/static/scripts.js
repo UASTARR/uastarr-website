@@ -81,7 +81,7 @@
   function checkElements() {
     // checks if each element is within the window and makes it visible if it is
     transition_elements.forEach((el) => {
-        if (isInViewport(el)) {
+        if (el.classList.contains("no_check") || isInViewport(el)) {
             el.classList.add('visible');
             // set delay attribute and duration attribute to a baseline for all buttons
             if (el.tagName == 'BUTTON'){
