@@ -699,6 +699,10 @@ video {
   height: 36rem;
 }
 
+.max-h-28 {
+  max-height: 7rem;
+}
+
 .min-h-full {
   min-height: 100%;
 }
@@ -747,6 +751,10 @@ video {
   width: 20rem;
 }
 
+.w-60 {
+  width: 15rem;
+}
+
 .w-6 {
   width: 1.5rem;
 }
@@ -791,6 +799,11 @@ video {
 .min-w-fit {
   min-width: -moz-fit-content;
   min-width: fit-content;
+}
+
+.max-w-fit {
+  max-width: -moz-fit-content;
+  max-width: fit-content;
 }
 
 .flex-none {

@@ -11,7 +11,21 @@ message = [{'firstName' : 'fName', 'lastName' : 'lName', 'eMail' : 'mail',
 @application.route('/')
 @application.route('/index')
 def index():
-    return render_template('index.html')
+    sponsors = list()
+    relative_path_to_imgs = "../static/assets/sponsor_logos/" 
+    relative_path = "application\databases\main.db"
+    conn = sqlite3.connect(relative_path)
+    cursor = conn.cursor()
+    cursor.execute("SELECT imgref FROM sponsors;")
+    rows = cursor.fetchall()
+    sponsors = list()
+    for row in rows:
+        sponsor = dict()
+        sponsor["imgref"] = relative_path_to_imgs + row[0]
+        sponsors.append(sponsor)
+
+
+    return render_template('index.html', sponsors = sponsors)
 
 @application.route('/projects')
 def projects():
