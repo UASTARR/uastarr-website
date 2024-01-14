@@ -19,10 +19,10 @@ import {router as photosRoute} from "./routes/photo_albums.js";
 import {router as projectsRoute} from "./routes/projects.js";
 import {router as sponsorsRoute} from "./routes/sponsors.js";
 
-app.use('/contact', contactRoute);
-app.use('/about_us', aboutRoute);
+app.use('/join', contactRoute);
+app.use('/about-us', aboutRoute);
 app.use('/base', baseRoute);
-app.use('/photo_album', photosRoute);
+app.use('/photo-albums', photosRoute);
 app.use('/projects', projectsRoute);
 app.use('/sponsors', sponsorsRoute);
 
@@ -30,7 +30,7 @@ app.use('/sponsors', sponsorsRoute);
 app.get("/", (req, res) => {
     // console.log(req.rawHeaders);
     // res.send({data: "Contact us please"});
-    res.sendFile(path.join(__dirname, "templates", "base.html"));
+    res.sendFile(path.join(__dirname, "templates", "index.html"));
 });
 
 app.listen(port, () => {
