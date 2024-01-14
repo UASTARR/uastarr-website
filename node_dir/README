@@ -1,0 +1,17 @@
+1. Initialise the NPM
+    npm init -y
+    - to setup npm in that directory
+2. Install the Express Package
+    npm i express
+3. Write server application in index.js
+4. To load an ES module, we have to include "type": "module" in the package.json.
+5. Start server
+    node index.js
+        - make sure you end the server first
+
+Tools to use to help you code in node:
+Nodemon [https://www.npmjs.com/package/nodemon](Nodemon)
+- automatically restars the node applicaiton when file changes in the directory are detected 
+    npm install -g nodemon # or using yarn: yarn global add nodemon
+    Then run index.js using nodemon
+        nodemon index.js
