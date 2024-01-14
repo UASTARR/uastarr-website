@@ -1,8 +1,10 @@
+### I Don't think you need to do this if you are cloning from Repo.
 1. Initialise the NPM
     npm init -y
     - to setup npm in that directory
 2. Install the Express Package
     npm i express
+---
 3. Write server application in index.js
 4. To load an ES module, we have to include "type": "module" in the package.json.
 5. Start server
