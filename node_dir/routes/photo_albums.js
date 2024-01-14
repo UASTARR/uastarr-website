@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 router.get("/", (req, res) => {
     // console.log(req.rawHeaders);
     // res.send({data: "Contact us please"});
-    res.sendFile(path.join(__dirname, "../", "templates", "join.html"));
+    res.sendFile(path.join(__dirname, "../", "templates", "photos.html"));
 });
 
 router.post("/", (req, res) => {

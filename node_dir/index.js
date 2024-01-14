@@ -1,12 +1,39 @@
 import express from "express";
+import path from "path"
+import { fileURLToPath } from 'url';
+export const router = express.Router();
 const app = express(); // Creates our app using express
 
-const port = 3000; // localhost:3000
+// const http = require('node:http');
+import http from 'node:http';
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 import {router as contactRoute} from "./routes/contact.js";
+import {router as aboutRoute} from "./routes/about_us.js";
+import {router as baseRoute} from "./routes/base.js";
+import {router as photosRoute} from "./routes/photo_albums.js";
+import {router as projectsRoute} from "./routes/projects.js";
+import {router as sponsorsRoute} from "./routes/sponsors.js";
 
 app.use('/contact', contactRoute);
+app.use('/about_us', aboutRoute);
+app.use('/base', baseRoute);
+app.use('/photo_album', photosRoute);
+app.use('/projects', projectsRoute);
+app.use('/sponsors', sponsorsRoute);
+
+
+app.get("/", (req, res) => {
+    // console.log(req.rawHeaders);
+    // res.send({data: "Contact us please"});
+    res.sendFile(path.join(__dirname, "templates", "base.html"));
+});
 
 app.listen(port, () => {
-    console.log('Server started on port ${port}');
+    console.log(`Server running at http://${hostname}:${port}/`); 
+    console.log(`or running at http://localhost:${port}/`); //http://localhost:3000/
 })
