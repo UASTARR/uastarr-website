@@ -225,29 +225,30 @@
 
             <div class = "flex overflow-hidden grow">
                 <div class = "flex flex-col grow">
-                    {% for sponsorline in sponsors|batch(2) %}
-                    {% set outer_loop = loop %}
-                    <!--Row-->
-                    <div class = "flex overflow-hidden min-w-max">
-                        {% for sponsor in sponsorline %}
-                        <div class ="shrink-0 h-28 w-80 grow bg-cover flex justify-center items-center overflow-hidden" style="background-image: url(/../static/assets/sponsor_bkgs/standardbkg.jpeg)">
-                            <img class = "w-60 max-w-fit max-h-28" src={{sponsor.imgref}}/>
+                    <% for(let i = 0; i < sponsors.length; i += 2) { %>
+                        <!--Row-->
+                        <div class = "flex overflow-hidden min-w-max">
+                            <% for(let j = 0; j < 2; j++) { %>
+                                <% let sponsor = sponsors[i + j]; %>
+                                <% if(sponsor) { %>
+                                    <div class ="shrink-0 h-28 w-80 grow bg-cover flex justify-center items-center overflow-hidden" style="background-image: url(/../static/assets/sponsor_bkgs/standardbkg.jpeg)">
+                                        <img class = "w-60 max-w-fit max-h-28" src=<%= sponsor.imgref %>>
+                                    </div>
+                                <% } else if(j === 1) { %>
+                                    <div class ="shrink-0 h-28 w-80 grow bg-cover flex justify-center items-center overflow-hidden" style="background-image: url(/../static/assets/sponsor_bkgs/standardbkg.jpeg)">
+                                        <button onclick= "window.location.href = '/join'" class="whitespace-nowrap bg-yellow-500 hover:transition-all duration-200 hover:bg-white rounded-full px-6 py-3" href="/join" type="button">Want to become a sponsor?</button>    
+                                    </div>
+                                <% } %>
+                            <% } %>
                         </div>
-                            {% if loop.last and outer_loop.last and loop.index is odd %}
+                        <% if(i === sponsors.length - 2 && sponsors.length % 2 === 0) { %>
+                            <div class = "flex overflow-hidden min-w-max">
                                 <div class ="shrink-0 h-28 w-80 grow bg-cover flex justify-center items-center overflow-hidden" style="background-image: url(/../static/assets/sponsor_bkgs/standardbkg.jpeg)">
                                     <button onclick= "window.location.href = '/join'" class="whitespace-nowrap bg-yellow-500 hover:transition-all duration-200 hover:bg-white rounded-full px-6 py-3" href="/join" type="button">Want to become a sponsor?</button>    
                                 </div>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                    {% if loop.last and sponsors|length % 2 == 0 %}
-                    <div class = "flex overflow-hidden min-w-max">
-                        <div class ="shrink-0 h-28 w-80 grow bg-cover flex justify-center items-center overflow-hidden" style="background-image: url(/../static/assets/sponsor_bkgs/standardbkg.jpeg)">
-                            <button onclick= "window.location.href = '/join'" class="whitespace-nowrap bg-yellow-500 hover:transition-all duration-200 hover:bg-white rounded-full px-6 py-3" href="/join" type="button">Want to become a sponsor?</button>    
-                        </div>
-                    </div>
-                    {% endif %}
-                    {% endfor %}
+                            </div>
+                        <% } %>
+                    <% } %>
                 </div>
                 <div class = "shrink w-20 grow-0 overflow-hidden"></div>
             </div>

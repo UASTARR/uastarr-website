@@ -3,6 +3,7 @@ import path from "path"
 import { fileURLToPath } from 'url';
 export const router = express.Router();
 const app = express(); // Creates our app using express
+import fs from "fs";
 
 // const http = require('node:http');
 import http from 'node:http';
@@ -30,19 +31,27 @@ app.set('views', path.join(__dirname, "templates"));
 app.use('/static', express.static(path.join(__dirname, "static")));
 app.use('/dist', express.static(path.join(__dirname, "static/dist")));
 
+const sponsor_logos = "static/assets/sponsor_logos/";
+const sponsors = [];
+
+fs.readdirSync("./static/assets/sponsor_logos").forEach(file => {
+    let sponsor = {};
+    sponsor["imgref"] = sponsor_logos + file;
+    sponsors.push(sponsor);
+});
 
 app.get("/", (req, res) => {
     // console.log(req.rawHeaders);
     // res.send({data: "Contact us please"});
-    res.render('index');
     // res.sendFile(path.join(__dirname, "templates", "index.html"));
+    res.render('index', { sponsors: sponsors });
 });
 
 app.get("/index", (req, res) => {
     // console.log(req.rawHeaders);
     // res.send({data: "Contact us please"});
-    res.render('index');
     // res.sendFile(path.join(__dirname, "templates", "index.html"));
+    res.render('index', { sponsors: sponsors });
 });
 
 app.listen(port, () => {
