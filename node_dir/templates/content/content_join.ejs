@@ -1,14 +1,7 @@
-
-
-{% extends "base.html" %}
-
-
-{% block content %}
-
     <!--Tile 1 Background Video-->
 <div class = "fixed top-0 justify-center w-screen h-screen">
     <video autoplay muted loop style class ="object-cover min-w-full min-h-full">
-        <source src="{{url_for('static', filename='fireflies_background.mp4')}}" type="video/mp4" />
+        <source src="static/fireflies_background.mp4" type="video/mp4" />
     </video>
 </div>
 
@@ -84,6 +77,3 @@
 
        <!--Tile 1-->
        <!-- Need to figure out how to fix the flexing of the text, so that it doesn't minimize as the window is minimized. -->
-
-{% endblock %}
-

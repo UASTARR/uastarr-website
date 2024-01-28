@@ -1,9 +1,6 @@
-{% extends "base.html" %}
-
-{% block content %}
 <div class = "fixed top-0 justify-center w-screen h-screen">
     <video autoplay muted loop style class ="object-cover min-w-full min-h-full">
-        <source src="{{url_for('static', filename='assets/VectorBkg.mp4')}}" type="video/mp4" />
+        <source src="static/assets/VectorBkg.mp4" type="video/mp4" />
     </video>
 </div>
 
@@ -39,4 +36,3 @@
         </div>
     {% endfor %}
 </div>
-{% endblock %}

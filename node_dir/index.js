@@ -25,12 +25,24 @@ app.use('/base', baseRoute);
 app.use('/photo-albums', photosRoute);
 app.use('/projects', projectsRoute);
 app.use('/sponsors', sponsorsRoute);
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, "templates"));
+app.use('/static', express.static(path.join(__dirname, "static")));
+app.use('/dist', express.static(path.join(__dirname, "static/dist")));
 
 
 app.get("/", (req, res) => {
     // console.log(req.rawHeaders);
     // res.send({data: "Contact us please"});
-    res.sendFile(path.join(__dirname, "templates", "index.html"));
+    res.render('index');
+    // res.sendFile(path.join(__dirname, "templates", "index.html"));
+});
+
+app.get("/index", (req, res) => {
+    // console.log(req.rawHeaders);
+    // res.send({data: "Contact us please"});
+    res.render('index');
+    // res.sendFile(path.join(__dirname, "templates", "index.html"));
 });
 
 app.listen(port, () => {

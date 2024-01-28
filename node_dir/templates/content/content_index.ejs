@@ -1,14 +1,11 @@
-{% extends "base.html" %}
 
-
-{% block content %}
     <!--Tile 1-->
     <div class="z-20 relative flex flex-nowrap h-256 flex-col bg-local bg-cover bg-left justify-between" style="background-image: url(https://static.wixstatic.com/media/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg/v1/fill/w_1225,h_1100,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg)"> 
         <div></div>
         <!--Main Text-->
         <div class = "pl-14">
             <div class = "flex items-center">
-                <img class = "flex-none" src="{{url_for('static', filename='assets/STARRVectorIconSquare.png')}}">
+                <img class = "flex-none" src="static/assets/STARRVectorIconSquare.png">
                 <h1 class =  "text-white text-8xl whitespace-nowrap font-bold flow_in_left">
                 It's Just Rocket <br> Science. 
                 </h1>
@@ -55,7 +52,7 @@
     <!--Tile 2 Background Video-->
     <div class = "fixed top-0 justify-center w-screen h-screen">
         <video autoplay muted loop style class ="object-cover min-w-full min-h-full">
-            <source src="{{url_for('static', filename='assets/3dPrinting.mp4')}}" type="video/mp4" />
+            <source src="static/assets/3dPrinting.mp4" type="video/mp4" />
         </video>
     </div>
 
@@ -68,7 +65,7 @@
   
         </div>
         <div class ="pl-16">
-            <img src="{{url_for('static', filename='assets/ElkoLogo.png')}}"/>
+            <img src="static/assets/ElkoLogo.png"/>
             <h1 class="text-white text-bold text-5xl flow_in_left py-6 whitespace-nowrap">
                 From 3D printing, to electronics, to <br>assembly, we build our rockets in <br>house at UAlberta's very own Elko <br>Engineering Garage.
             </h1>
@@ -208,7 +205,7 @@
                     </div>
                 </div>
                 <!--Logo-->
-                <img src="{{url_for('static', filename='assets/LaunchCanadaLogo.png')}}" class = "h-72 w-72"/>
+                <img src="static/assets/LaunchCanadaLogo.png" class = "h-72 w-72"/>
                 <div class = "shrink w-20 overflow-hidden"></div>
 
 
@@ -270,7 +267,7 @@
                             How Do I Join STARR?
                         </h1>
                         <!--Placeholder down arrowd-->
-                        <img class = "w-6 h-6 flex-none overflow-hidden"src = "{{url_for('static', filename='assets/down.png')}}">
+                        <img class = "w-6 h-6 flex-none overflow-hidden"src = "static/assets/down.png">
                     </div>
                     <hr>
                 </button> 
@@ -293,7 +290,7 @@
                             How Do I Join STARR?
                         </h1>
                         <!--Placeholder down arrowd-->
-                        <img class = "w-6 h-6 flex-none overflow-hidden"src = "{{url_for('static', filename='assets/down.png')}}">
+                        <img class = "w-6 h-6 flex-none overflow-hidden"src = "static/assets/down.png">
                     </div>
                     <hr>
                 </button> 
@@ -316,7 +313,7 @@
                             How Do I Join STARR?
                         </h1>
                         <!--Placeholder down arrowd-->
-                        <img class = "w-6 h-6 flex-none overflow-hidden"src = "{{url_for('static', filename='assets/down.png')}}">
+                        <img class = "w-6 h-6 flex-none overflow-hidden"src = "static/assets/down.png">
                     </div>
                     <hr>
                 </button> 
@@ -334,5 +331,5 @@
         </div>
         <div class = "h-24"></div>
     </div>
-{% endblock %}
 
+    

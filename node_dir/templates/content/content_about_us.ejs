@@ -1,10 +1,7 @@
-{% extends "base.html" %}
-
-{% block content %}
     <!--Background Video-->
     <div class = "fixed top-0 justify-center w-screen h-screen">
         <video autoplay muted loop style class ="object-cover min-w-full min-h-full">
-            <source src="{{url_for('static', filename='assets/RipplingBkg.mp4')}}" type="video/mp4" />
+            <source src="static/assets/RipplingBkg.mp4" type="video/mp4" />
         </video>
     </div>
     <div class = "h-32"></div>
@@ -26,7 +23,7 @@
                         altitude sounding rockets.
                     </p>
                     <div class = "h-8"></div>
-                    <img src="{{url_for('static', filename='assets/TeamPhoto.jpeg')}}" class = "rounded-xl w-192 flex-none overflow-hidden">
+                    <img src="static/assets/TeamPhoto.jpeg" class = "rounded-xl w-192 flex-none overflow-hidden">
                     <div class = "h-8"></div>
                 </div>
             </div>
@@ -75,7 +72,7 @@
                         <div class = "h-12"></div>
                     </div>
                     <div class = "w-12"></div>
-                    <img src="{{url_for('static', filename='assets/STARRVectorIconSquare.png')}}" class = "rounded-xl flex-none overflow-hidden">
+                    <img src="static/assets/STARRVectorIconSquare.png" class = "rounded-xl flex-none overflow-hidden">
                 </div>
             </div>
         </div>
@@ -124,4 +121,3 @@
             </div>
         </div>
     </div>
-{% endblock %}

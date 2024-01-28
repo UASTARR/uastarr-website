@@ -1,8 +1,5 @@
-{% extends "base.html" %}
-
-{% block content %}
 <div class = "fixed w-screen h-screen flex items-center">
-    <img src="{{url_for('static', filename='assets/astronautBkg.jpeg')}}" class = "object-cover min-w-full min-h-full">
+    <img src="static/assets/astronautBkg.jpeg" class = "object-cover min-w-full min-h-full">
 </div>
 
 <div class = "h-128"></div>
@@ -82,7 +79,7 @@
                     <div class = "w-8 flex-none"></div>
 
                     <div class ="w-96 flex justify-center">
-                        <img src="{{url_for('static', filename='assets/sponsorsCover.jpeg')}}" style="width: 389px; height: 504px">
+                        <img src="static/assets/sponsorsCover.jpeg" style="width: 389px; height: 504px">
                     </div>
                     <div class = "w-56 flex-none"></div>
 
@@ -155,5 +152,3 @@
         </div>
     </div>
 </div>
-
-{% endblock %}
