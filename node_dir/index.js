@@ -32,15 +32,15 @@ app.use('/static', express.static(path.join(__dirname, "static")));
 app.use('/dist', express.static(path.join(__dirname, "static/dist")));
 
 const sponsor_logos = "static/assets/sponsor_logos/";
-const sponsors = [];
-
-fs.readdirSync("./static/assets/sponsor_logos").forEach(file => {
-    let sponsor = {};
-    sponsor["imgref"] = sponsor_logos + file;
-    sponsors.push(sponsor);
-});
 
 app.get("/", (req, res) => {
+    const sponsors = [];
+    
+    fs.readdirSync(sponsor_logos).forEach(file => {
+        let sponsor = {};
+        sponsor["imgref"] = sponsor_logos + file;
+        sponsors.push(sponsor);
+    });
     // console.log(req.rawHeaders);
     // res.send({data: "Contact us please"});
     // res.sendFile(path.join(__dirname, "templates", "index.html"));
@@ -48,6 +48,13 @@ app.get("/", (req, res) => {
 });
 
 app.get("/index", (req, res) => {
+    const sponsors = [];
+    
+    fs.readdirSync(sponsor_logos).forEach(file => {
+        let sponsor = {};
+        sponsor["imgref"] = sponsor_logos + file;
+        sponsors.push(sponsor);
+    });
     // console.log(req.rawHeaders);
     // res.send({data: "Contact us please"});
     // res.sendFile(path.join(__dirname, "templates", "index.html"));

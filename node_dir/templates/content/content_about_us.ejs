@@ -86,12 +86,13 @@
             <div class = "h-16"></div>
             <div class = "flex flex-wrap justify-center">
                 <% for (let i = 0; i < members.length; i += 1) { %>
-                <div class = "w-72 h-112 flex flex-col items-center justify-center">
-                    
-                    <img src=<%= member.imgref %>>
-                    <p class = "text-white"><%= member.name %></p>
-                    <p class = "text-white"><%= member.title %></p>
-                </div>
+                    <% let member = members[i] %>
+                    <div class = "w-72 h-112 flex flex-col items-center justify-center">
+                        
+                        <img src=<%= member.imgref %>>
+                        <p class = "text-white"><%= member.name %></p>
+                        <p class = "text-white"><%= member.title %></p>
+                    </div>
                 <% } %>
             </div>
             <div class = "h-16"></div>
