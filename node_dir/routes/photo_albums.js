@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
     // console.log(req.rawHeaders);
     // res.send({data: "Contact us please"});
     // res.sendFile(path.join(__dirname, "../", "templates", "photos.html"));
-    res.render('photos');
+    res.render('base', { page: 'photos' });
 });
 
 router.post("/", (req, res) => {

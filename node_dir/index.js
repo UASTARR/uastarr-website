@@ -44,7 +44,7 @@ app.get("/", (req, res) => {
     // console.log(req.rawHeaders);
     // res.send({data: "Contact us please"});
     // res.sendFile(path.join(__dirname, "templates", "index.html"));
-    res.render('index', { sponsors: sponsors });
+    res.render('base', { page: 'index', title: 'UASTARR | Student Team for Alberta Rocket Research', sponsors: sponsors });
 });
 
 app.get("/index", (req, res) => {
@@ -58,7 +58,7 @@ app.get("/index", (req, res) => {
     // console.log(req.rawHeaders);
     // res.send({data: "Contact us please"});
     // res.sendFile(path.join(__dirname, "templates", "index.html"));
-    res.render('index', { sponsors: sponsors });
+    res.render('base', { page: 'index', title: 'UASTARR | Student Team for Alberta Rocket Research', sponsors: sponsors });
 });
 
 app.listen(port, () => {

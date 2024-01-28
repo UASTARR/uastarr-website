@@ -1,7 +1,11 @@
 <!doctype html>
 <html>
   <head>
-    <title>Welcome to UA STARR</title>
+    <% if (locals.title) { %>
+      <title><%= title %></title>
+    <% } else { %>
+      <title>Welcome to UA STARR</title>
+    <% } %>
       
     <link rel="stylesheet" href="static/dist/main.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
@@ -15,6 +19,11 @@
     <!--Header-->
     <%- include('partials/header') -%>
 
+    <!-- Content -->
+    <% if (locals.page) { %>
+      <%- include(page) -%>
+    <% } %>
+    
     <!--Footer-->
     <%- include('partials/footer') -%>
 
