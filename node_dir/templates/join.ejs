@@ -9,6 +9,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact Us</title> -->
+<head>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -27,8 +30,8 @@
   input[type=text], input[type=email], select, textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: none;
+    border-bottom: 1px solid #ccc;
     margin-top: 6px;
     margin-bottom: 16px;
     box-sizing: border-box;
@@ -62,6 +65,11 @@
     font-size: 40px;
     font-family: 'Times New Roman', Times, serif; /* Add the desired font family here */
   }
+  .grecaptcha {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
 </style>
 <!-- </head> -->
 <!-- <body> -->
@@ -88,15 +96,15 @@
         <div class="half-input-container">
           <div class="half-input">
             First Name
-            <input type="text" id="fname" name="firstname" placeholder="First Name *" required>
+            <input type="text" id="fname" name="firstname" placeholder="" required>
           </div>
           <div class="half-input">
             Last Name
-            <input type="text" id="lname" name="lastname" placeholder="Last Name *" required>
+            <input type="text" id="lname" name="lastname" placeholder="" required>
           </div>
         </div>
         Email
-        <input type="email" id="email" name="email" placeholder="Email *" required>
+        <input type="email" id="email" name="email" placeholder="" required>
         
 
           <div>
@@ -113,22 +121,16 @@
 
         <div>
           How do you know about us?
-          <input type="text" id="know" name="know" placeholder="How do you know about us?">
+          <input type="text" id="know" name="know" placeholder="">
         </div>
         Leave a Message
-        <textarea id="message" name="message" placeholder="Leave us a message..." style="height:200px"></textarea>
+        <textarea id="message" name="message" placeholder="" style="height:150px"></textarea>
         
         <div class = "center-align">
           <input type="checkbox" id="subscribe" name="subscribe" value="newsletter">
           <label for="subscribe"> Subscribe to the STARR newsletter</label><br>
           
-          <!-- <div class="g-recaptcha center-align" data-sitekey="reCAPTCHA_site_key"></div> -->
-          <button class="g-recaptcha" 
-          data-sitekey="6Le53mUpAAAAAINJf78bOs9rapyZ3fSNpeVVzffb" 
-          data-callback='onSubmit' 
-          data-action='submit'>Submit</button>
-
-
+          <div class="g-recaptcha grecaptcha" data-sitekey="6Leo32UpAAAAAJmvvWFtlNfapVA2bn_qxHIbO77J"></div>
 
           <input style = "margin-top: 10px" type="submit" value="Submit">
 
