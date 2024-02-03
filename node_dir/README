@@ -1,3 +1,10 @@
+### Development Setup
+1. Make sure you are under node_dir
+2. [Install](#initialize-node-modules) all packages (need to do this every time you switch a branch)
+3. Start [tailwind](#how-to-start-tailwind-css)
+4. Start web server with `node .`
+5. Open the link on terminal
+
 ### Initialize node modules
 
 Make sure you are under node_dir in command line and run `npm install`.  
