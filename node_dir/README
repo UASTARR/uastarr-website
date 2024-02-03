@@ -1,13 +1,14 @@
 ### Initialize node modules
+
 Make sure you are under node_dir in command line and run `npm install`.  
-It should install (locally) all the packages needed into node_modules folder.  
+It should install (locally) all the packages needed (from package.json) into node_modules folder.  
 > **Note**  
 > Please run the command again when there's a change in package.json (i.e. adding packages).
 
 ### We are using ES Modules not CommonJS modules
 
 Tools to use to help you code in node:
-Nodemon [https://www.npmjs.com/package/nodemon](Nodemon)
+ [Nodemon](https://www.npmjs.com/package/nodemon)
 - automatically restars the node applicaiton when file changes in the directory are detected 
     npm install -g nodemon # or using yarn: yarn global add nodemon
     Then run index.js using nodemon
@@ -30,3 +31,9 @@ router.get("/", (req, res) => {
 });
 
 This will send the join.html file when the user requests the / route. You can also use other routes to send different HTML files, or use parameters to dynamically send files based on the request. For more information on how to use res.sendFile, you can check out this web page.
+
+### How to start [Tailwind CSS](https://tailwindcss.com/)
+- Make sure you have [installed](#initialize-node-modules) Tailwind.  
+- Open a <u>new</u> terminal under node_dir, run `npm run tail`.
+- This command will run a script in 'package.json' which will take the input 'main.css' file in the 'src' folder and builds a new one in 'dist' folder.  
+- This command rebuilds the css file upon change of the ejs files.
