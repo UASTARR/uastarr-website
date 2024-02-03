@@ -1,79 +1,135 @@
-    <!--Tile 1 Background Video-->
-<div class = "fixed top-0 justify-center w-screen h-screen">
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <div class = "fixed top-0 justify-center w-screen h-screen">
     <video autoplay muted loop style class ="object-cover min-w-full min-h-full">
-        <source src="static/fireflies_background.mp4" type="video/mp4" />
+        <source src="../static/fireflies_background.mp4" type="video/mp4" />
     </video>
 </div>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us</title> -->
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #0D0628;
+    color: white;
+    /* text-align: center; */
+  }
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: white; /* Updated background color to white */
+    padding: 20px;
+    border-radius: 8px;
+    color: black; /* Updated text color to black */
+  }
+  input[type=text], input[type=email], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+  }
+  input[type=submit] {
+    background-color: #FFC107;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  input[type=submit]:hover {
+    background-color: #DAA520;
+  }
+  .half-input-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .half-input {
+    width: 48%; /* Adjust the width as needed, ensuring they fit within the container */
+  }
+  .center-align {
+    text-align: center;
+  }
+</style>
+<!-- </head> -->
+<!-- <body> -->
+  <div class = "fixed top-0 justify-center w-screen h-screen">
+      <video autoplay muted loop style class ="object-cover min-w-full min-h-full">
+          <source src="../static/fireflies_background.mp4" type="video/mp4" />
+      </video>
+  </div>
 
-<div class = "h-36"></div>
-
-<div class= "relative z-20 pl-20">
-    <h1 class="text-white no_check text-bold text-3xl flow_in_left py-1">
-        Contact Us
-    </h1>
-    <div class = "container">
-        <h3 class = "flow_in_left no_check delay-200 whitespace-nowrap text-white text-lg">
-            Want to join us? Want to become a sponsor? Any other questions? <br>
-            Let us know! We'd love to hear what you think.
-        </h3>
+  <div class= "relative z-30 pl-40">
+    <div class = "h-40"></div>
+      <h1 class = "text-4xl text-white">Contact Us</h1>
+      <h2 style = "margin-bottom: 2px; margin-top: 10px;">Want to join us? Want to become a sponsor? Any other questions?</p>
+      <p style = "margin-top: 2px;">Let us know! We'd love to hear what you think</p>    
     </div>
-</div>
+  <div class = "h-12"></div>
+  <!-- <h2>Contact Us</h2> -->
 
-<div class = "h-20"></div>
+  <div class= "relative z-30 pl-40">
+    <div class = "h-3"></div>
+    <div class="container">
 
-<main class = "relative z-20 pl-20 flow_in_left no_check delay-500">
-    <section>
-        <form>
-            <fieldset>
-                <!-- <h3 class = "whitespace-nowrap text-white"
-                style = "font-size:0.8vw"> -->
-                <h3 class = "text-white">
-                    <label for = "first_name" >First Name:</label>
-                    <input class = "text-black" type = "text" name = "first_name" id = "first_name" placeholder="First Name" required>
-                </h3>
-                <br>
-                <h3 class = "whitespace-nowrap text-white">
-                    <label for = "last_name">Last Name:</label>
-                    <input class = "text-black" type ="text" name = "last_name" id = "last_name" placeholder="Last Name" required>
-                </h3>
-                <br>
-                <h3 class = "whitespace-nowrap text-white">
-                    <label for = "email">Email:</label>
-                    <input class = "text-black" type ="text" name = "email" id = "email" placeholder="Email" required>
-                </h3>   
-                <br>
-                <h3 class = "whitespace-nowrap text-white">
-                    <label for = "subject">Subject:</label>
-                    <input class = "text-black" type ="text" name = "subject" id = "subject" placeholder="Subject" required>
-                </h3>
-                <br>
-                <h3 class = "whitespace-nowrap text-white">
-                    <label for = "how_know">How do you know about us?</label>
-                    <input class = "text-black" type ="text-black" name = "how_know" id = "how_know" placeholder="Reason" required>
-                </h3>
-                <br>
-                <h3 class = "whitespace-nowrap text-white">
-                    <label for = "message">Leave us a Message:</label>
-                    <br>
-                    <textarea class = "text-black" cols = "100" rows = "10" type ="text" name = "message" id = "message" placeholder="Leave us a Message"></textarea>
-                </h3>
-                <br>
-                <div>
-                    <h3 class = "whitespace-nowrap text-white">
-                        <label for = "subscribe">I would like to hear from UASTARR</label>
-                        <input type = "radio" name = "sub" value="yes" required/> Yes
-                        <input type = "radio" name = "sub" value="no" required/> No
-                    </h3>
-                </div>
-            </fieldset>
-            <h3 class = "whitespace-nowrap text-white">
-                <button type ="submit">Submit</button>
-                <button type ="reset">Reset</button>
-            </h3>
-        </form>
+      <form action="/submit_contact_form" method="post">
+        <div class="half-input-container">
+          <div class="half-input">
+            First Name
+            <input type="text" id="fname" name="firstname" placeholder="First Name *" required>
+          </div>
+          <div class="half-input">
+            Last Name
+            <input type="text" id="lname" name="lastname" placeholder="Last Name *" required>
+          </div>
+        </div>
+        Email
+        <input type="email" id="email" name="email" placeholder="Email *" required>
         
-    </section>
-</main>
 
-       <!--Tile 1-->
-       <!-- Need to figure out how to fix the flexing of the text, so that it doesn't minimize as the window is minimized. -->
+          <div>
+            Subject
+            <select id="subject" name="subject" required>
+                <option value="" disabled selected hidden>Choose an option</option>
+              <option value="member_inquiry">Membership Application Inquiry</option>
+              <option value="sponsorship_inquiry">Sponsorship Inquiry</option>
+              <option value="donation_inquiry">Donation Inquiry</option>
+              <option value="event_inquiry">Event Enquiry</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+        <div>
+          How do you know about us?
+          <input type="text" id="know" name="know" placeholder="How do you know about us?">
+        </div>
+        Leave a Message
+        <textarea id="message" name="message" placeholder="Leave us a message..." style="height:200px"></textarea>
+        
+        <div class = "center-align">
+          <input type="checkbox" id="subscribe" name="subscribe" value="newsletter">
+          <label for="subscribe"> Subscribe to the STARR newsletter</label><br>
+          
+          <div class="g-recaptcha center-align" data-sitekey="your-site-key"></div>
+      
+          <input type="submit" value="Submit">
+
+        </div>
+
+      </form>
+    </div>
+
+  <div style="width: 100%" div class= "relative z-30 pl-40">
+    <iframe width="100%" height="600" frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAcBwWVLuUFQMaRS-eFzHm8UxtKW6wJM9Q&q=Donadeo+Innovation+Centre+for+Engineering,+9211+116+St+NW,+Edmonton,+AB+T6G+1H9" allowfullscreen>
+    </iframe>
+  </div>
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<!-- </body> -->
+<!-- </html> -->

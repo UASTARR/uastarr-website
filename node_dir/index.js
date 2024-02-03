@@ -8,7 +8,7 @@ import fs from "fs";
 // const http = require('node:http');
 import http from 'node:http';
 const hostname = '127.0.0.1';
-const port = 3000;
+const port = 8000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
