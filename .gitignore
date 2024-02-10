@@ -19,7 +19,6 @@ application/__pycache__/
 env/
 build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
@@ -68,3 +67,10 @@ target/
 
 # node modules
 node_modules/
+
+# google_api
+credentials.json
+token.json
+
+# dotenv
+*.env
