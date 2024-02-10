@@ -1,9 +1,30 @@
+### Development Setup
+1. Make sure you are under src
+2. [Install](#initialize-node-modules) all packages (need to do this every time you switch a branch)
+3. Start [tailwind](#how-to-start-tailwind-css)
+4. Start web server with `node .`
+5. Open the link on terminal
+
 ### Initialize node modules
 
-Make sure you are under node_dir in command line and run `npm install`.  
+Make sure you are under src in command line and run `npm install`.  
 It should install (locally) all the packages needed (from package.json) into node_modules folder.  
 > **Note**  
-> Please run the command again when there's a change in package.json (i.e. adding packages).
+> Please run the command again when there's a change in package.json (i.e. adding packages).  
+
+### Directory
+    src                    # (running everything within src)
+    ├── google_api
+    │   └── api.js              # The api interface functions for google
+    ├── routes                  # JS Files route to different pages
+    ├── static                  # ! PUBLIC ! resource files to the website NEEDS CLEAN UP
+    │   ├── dist                # main.css is needed for the website ('npm run tail')
+    │   └── ...
+    ├── templates               # ! PUBLIC ! pages
+    ├── index.js                # The main file to start the web server
+    ├── package-lock.json       # Do not touch
+    ├── package.json            # All package listing and scripts
+    └── tailwind.config.js
 
 ### We are using ES Modules not CommonJS modules
 
@@ -34,6 +55,6 @@ This will send the join.html file when the user requests the / route. You can al
 
 ### How to start [Tailwind CSS](https://tailwindcss.com/)
 - Make sure you have [installed](#initialize-node-modules) Tailwind.  
-- Open a <u>new</u> terminal under node_dir, run `npm run tail`.
+- Open a <u>new</u> terminal under src, run `npm run tail`.
 - This command will run a script in 'package.json' which will take the input 'main.css' file in the 'src' folder and builds a new one in 'dist' folder.  
 - This command rebuilds the css file upon change of the ejs files.
