@@ -1,0 +1,33 @@
+<header>
+    <div className ="header fixed z-50 items-center py-5 flex justify-between flex-nowrap w-screen" id="header" onLoad="selectPage">
+        <div className = "inline-block flex-none px-6">
+        <Link href="/index"><Image className="w-1/2" src={web_logo} alt="broken"/></a>
+        </div>
+        <div className ="flex flex-nowrap">
+            {/* Navigation bar */}
+            <div className = "bg-gray-50 bg-opacity-10 rounded-full bg-cover px-20 py-3" style = {{display: "inline-block"}}>
+            {/* Navigation buttons */}
+            <div className ="flex flex-nowrap space-x-6">
+                <a className="hover:text-yellow-300 text-white" href="/index">Home</a> 
+                <a className="hover:text-yellow-300 text-white" href="/projects">Projects</a> 
+                <a className="hover:text-yellow-300 text-white whitespace-nowrap"href="/about-us">About Us</a> 
+                <a className="hover:text-yellow-300 text-white"href="/sponsors">Sponsors</a>
+                <div className="inline-block justify-items-center">
+                
+                <a className="popup hover:text-yellow-300 text-white" onMouseOver={showPopup()} onMouseOut={delayedHidePopup()} >More</a>
+                <div className="truepopup justify-items-center hidden" id ="popup" onMouseOver={delayHidePopup()} onMouseOut={delayedHidePopup()}> 
+                    <div className = "justify-items-center bg-gray-50 bg-opacity-10 rounded-full left-8 px-6 py-3">
+                    <div><a className="text-white hover:text-yellow-300 whitespace-nowrap" href="/photo-albums"> Photo Albums </a></div>
+                    <div><a className="text-white hover:text-yellow-300" href="/join"> Contact </a></div>
+                    </div>
+                </div>
+                </div> 
+            </div>
+            </div>
+            {/* Join Now Button */}
+            <div className = "inline-block px-5 pr-10"> 
+            <button onClick= "window.location.href = '/join'" className="text-white whitespace-nowrap bg-green-700 hover:transition-all duration-200 hover:bg-white hover:text-black rounded-full px-6 py-3">Join Now</button>
+            </div>
+        </div>
+    </div>
+</header>

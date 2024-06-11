@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
+import web_logo from "../public/assets/logos/logo.png";
+import favicon from "../public/favicon.png";
+import { showPopup, delayHidePopup, delayedHidePopup } from "./scripts";
+import Link from "next/link";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +21,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      {/* <head> */}
+        {/* <link rel="icon" href="./favicon.png" /> */}
+      {/* </head> */}
+      
+      
+      <body className= {`overflow-y-scroll overflow-x-hidden relative ${inter.className}`} id="body">
+        {children}
+      </body>
     </html>
   );
 }
