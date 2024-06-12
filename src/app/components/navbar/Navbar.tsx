@@ -19,7 +19,7 @@ const Navbar = () => {
     return (
         <div className ="header fixed z-50 items-center py-5 flex justify-between flex-nowrap w-screen" id="header">
             <div className = "inline-block flex-none px-6">
-                <Link href="/"><Image className="size-11/12" src={web_logo} alt="starr logo broken"/></Link>
+                <Link href="/"><Image className="object-contain h-8 md:h-12 lg:h-16" src={web_logo} alt="starr logo broken"/></Link>
             </div>
             <div className ="flex flex-nowrap">
                 {/* Navigation bar */}
