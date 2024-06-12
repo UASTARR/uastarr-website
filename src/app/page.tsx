@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import Link from "next/link";
 import vectorIcon from "../public/assets/STARRVectorIconSquare.png";
@@ -64,7 +65,7 @@ const firstBg = { backgroundImage: 'url(https://static.wixstatic.com/media/9dc5a
     {/* <!--Tile 2 Background Video--> */}
     <div className = "fixed top-0 justify-center w-screen h-screen">
         <video autoPlay muted loop className ="object-cover min-w-full min-h-full">
-            <source src="../public/assets/backgrounds/3dPrinting.mp4" type="video/mp4" />
+            <source src="/assets/backgrounds/3dPrinting.mp4" type="video/mp4" />
         </video>
     </div>
 
@@ -95,7 +96,7 @@ const firstBg = { backgroundImage: 'url(https://static.wixstatic.com/media/9dc5a
     </div>
 
     {/* <!--Tile 3--> */}
-    <div className="z-10 relative flex flex-nowrap h-288 flex-col bg-cover overflow-hidden justify-between bg-center" style={{backgroundImage: 'url(../public/assets/backgrounds/rocket_bkg.jpeg)'}}>
+    <div className="z-10 relative flex flex-nowrap h-288 flex-col bg-cover overflow-hidden justify-between bg-center" style={{backgroundImage: 'url(/assets/backgrounds/rocket_bkg.jpeg)'}}>
         <div className="flex pl-20 overflow-hidden">
             <h1 className = "flow_in_top px-3 w-72 py-3 bg-white rounded-b-2xl text-xl font-bold">
                 Our Vision
