@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /*
 ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com
 */
@@ -413,7 +417,7 @@ Make sure disabled buttons don't get the pointer cursor.
 2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
    This can trigger a poorly considered lint error in some tools but is included by design.
 */
-
+Image,
 img,
 svg,
 video,
@@ -431,7 +435,7 @@ object {
 /*
 Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
 */
-
+Image,
 img,
 video {
   max-width: 100%;
@@ -1395,10 +1399,6 @@ video {
 .truepopup {
   position: absolute;
   transform: translate(-30px, 15px);
-}
-
-.popup {
-  cursor: pointer;
 }
 
 .hidden {
