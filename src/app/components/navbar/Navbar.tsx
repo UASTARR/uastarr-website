@@ -1,25 +1,34 @@
 'use client'
-import React, { useState } from 'react';
 import Image from 'next/image';
 import web_logo from '../../../public/assets/logos/logo.png';
 import Link from 'next/link';
 
 const Navbar = () => {
-    const [popup, setPopup] = useState(true);
     let timer: NodeJS.Timeout | undefined;
-    const showPopup = () => {
-        clearTimeout(timer);
-        setPopup(false);
+    function showPopup(): void {
+        const popupElement = document.getElementById("popup");
+        if (popupElement) {
+            popupElement.classList.remove("hidden");
+            clearTimeout(timer);
+        }
     }
-
-    const delayedHidePopup = () => {
-        timer = setTimeout(() => setPopup(true), 500);
+    function hidePopup(): void {
+        const popupElement = document.getElementById("popup");
+        if (popupElement) {
+            popupElement.classList.add("hidden");
+        }
+    }
+    function delayedHidePopup(): void {
+        timer = setTimeout(hidePopup, 500);
+    }
+    function delayHidePopup(): void {
+        clearTimeout(timer);
     }
 
     return (
         <div className ="header fixed z-50 items-center py-5 flex justify-between flex-nowrap w-screen" id="header">
             <div className = "inline-block flex-none px-6">
-                <Link href="/"><Image className="object-contain h-8 md:h-12 lg:h-16" src={web_logo} alt="starr logo broken"/></Link>
+                <Link href="/"><Image className="object-cover h-1/2 top-0 left-0" src={web_logo} alt="starr logo broken"/></Link>
             </div>
             <div className ="flex flex-nowrap">
                 {/* Navigation bar */}
@@ -32,11 +41,11 @@ const Navbar = () => {
                         <Link className="hover:text-yellow-300 text-white" href="/sponsors">Sponsors</Link>
                         <div className="inline-block justify-items-center">
                         
-                            <div className="hover:text-yellow-300 text-white cursor-default" onMouseOver={showPopup} onMouseOut={delayedHidePopup}> More </div>
-                            <div className="truepopup justify-items-center" id ="popup" hidden={popup} onMouseOver={() => clearTimeout(timer)} onMouseOut={delayedHidePopup}>
+                            <a className="popup hover:text-yellow-300 text-white cursor-default" onMouseOver={() => showPopup()} onMouseOut={() => delayedHidePopup()} >More</a>
+                            <div className="truepopup justify-items-center hidden" id ="popup" onMouseOver={() => delayHidePopup()} onMouseOut={() => delayedHidePopup()}> 
                                 <div className = "justify-items-center bg-gray-50 bg-opacity-10 rounded-full left-8 px-6 py-3">
-                                    <div><Link className="text-white hover:text-yellow-300 whitespace-nowrap" href="/photo-albums"> Photo Albums </Link></div>
-                                    <div><Link className="text-white hover:text-yellow-300" href="/contact"> Contact </Link></div>
+                                <div><a className="text-white hover:text-yellow-300 whitespace-nowrap" href="/photo-albums"> Photo Albums </a></div>
+                                <div><a className="text-white hover:text-yellow-300" href="/join"> Contact </a></div>
                                 </div>
                             </div>
                         </div>
