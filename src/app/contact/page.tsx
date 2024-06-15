@@ -2,7 +2,7 @@ import React from 'react'
 import BaseScripts from '@/app/components/scripts/BaseScripts'
 import ReCaptchaApi from '@/app/components/scripts/ReCaptchaApi'
 import ContactPageCSS from '@/app/components/scripts/ContactPageCSS'
-import { addResponse } from '@/google_api/api.js'
+import { addResponse } from '@/library/google/api.js'
 
 const ContactPage = () => {
     async function submitForm(formData: FormData) {
@@ -20,10 +20,11 @@ const ContactPage = () => {
         
         const dataArray = Object.values(data)
 
+        // TODO: Transition page
         if (await addResponse(dataArray)) {
-            alert("Message sent successfully!");
+            console.log("Message sent successfully!");
         } else {
-            alert("An error occurred. Please try again later.");
+            console.log("An error occurred. Please try again later.");
         }
         console.log(data)
     }

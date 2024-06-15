@@ -4,76 +4,98 @@
         "https://www.ualberta.ca/index.html",
         "University of Alberta",
         "The University of Alberta is a Top 5 Canadian university located in Edmonton, Alberta, and home to 40,000 students in a wide variety of programs.",
-        "/assets/sponsor_bkgs/bkg5.jpeg"
+        "/assets/sponsor_bkgs/bkg5.jpeg",
+        "01_SuperSTARR",
+        "01"
     ],
     [
         "/assets/sponsor_logos/EngUofA.png",
         "https://www.ualberta.ca/engineering/index.html",
         "Faculty of Engineering",
         "The University of Alberta's Faculty of Engineering is one of the largest engineering schools in Canada in terms of size, international impact, and reputation.",
-        "/assets/sponsor_bkgs/bkg4.jpeg"
+        "/assets/sponsor_bkgs/bkg4.jpeg",
+        "01_SuperSTARR",
+        "02"
     ],
     [
         "/assets/sponsor_logos/Elko.png",
         "https://confluence.garage.ualberta.ca/",
         "Elko Engineering Garage",
         "The Elko Engineering Garage is an open, hands-on maker space for community collaboration and physical prototyping, facilitated by providing training services, troubleshooting support, and fabrication resources.",
-        "/assets/sponsor_bkgs/bkg3.jpeg"
+        "/assets/sponsor_bkgs/bkg3.jpeg",
+        "01_SuperSTARR",
+        "03"
     ],
     [
         "/assets/sponsor_logos/ABB.png",
         "https://global.abb/group/en",
         "ABB",
         "ABB is a technology leader in electrification and automation, enabling a more sustainable and resource-efficient future. The company’s solutions connect engineering know-how and software to optimize how things are manufactured, moved, powered and operated.",
-        "/assets/sponsor_bkgs/bkg2.jpeg"
+        "/assets/sponsor_bkgs/bkg2.jpeg",
+        "02_Gold",
+        "01"
     ],
     [
         "/assets/sponsor_logos/SolidWorks.png",
         "https://www.solidworks.com/",
         "SolidWorks",
         "Dassault Systèmes SOLIDWORKS Corp. develops and markets 3D CAD design software, analysis software, and product data management.",
-        "/assets/sponsor_bkgs/bkg1.jpeg"
+        "/assets/sponsor_bkgs/bkg1.jpeg",
+        "02_Gold",
+        "02"
     ],
     [
         "/assets/sponsor_logos/IEEE.png",
         "https://www.ieeecanadianfoundation.org/EN/",
         "IEEE Canadian Foundation",
         "The IEEE Canadian Foundation cultivates relationships and resources to advance the IEEE core purpose to foster technological innovation and excellence for the benefit of humanity.",
-        "/assets/sponsor_bkgs/bkg5.jpeg"
+        "/assets/sponsor_bkgs/bkg5.jpeg",
+        "03_Silver",
+        "01"
     ],
     [
         "/assets/sponsor_logos/Altium.png",
         "https://www.altium.com/",
         "Altium",
         "Altium Limited is an Australian multinational software company that provides electronic design automation software to engineers who design printed circuit boards. Founded as Protel Systems Pty Ltd in Australia in 1985, the company has regional headquarters in the United States, Australia, China, Europe, and Japan.",
-        "/assets/sponsor_bkgs/bkg4.jpeg"
+        "/assets/sponsor_bkgs/bkg4.jpeg",
+        "03_Silver",
+        "02"
     ],
     [
         "/assets/sponsor_logos/ERC.png",
         "https://www.edmontonrocketry.net/",
         "Edmonton Rocketry Club",
         "The Edmonton Rocketry Club (ERC) is dedicated to the promotion of model rocketry as a hobby. They are a group of individuals interested in building and safely flying rockets of all sizes and power classes, as well as providing guidance & experience to those wanting to enter the world of high-powered rocketry.",
-        "/assets/sponsor_bkgs/bkg3.jpeg"
+        "/assets/sponsor_bkgs/bkg3.jpeg",
+        "03_Silver",
+        "03"
     ],
     [
         "/assets/sponsor_logos/PS.png",
         "https://www.polymershapes.com/",
         "Polymershapes",
         "Polymershapes is the premier distributor of plastic sheet, rod, tube, film, and associated products, with over 70 years of industry-leading heritage.",
-        "/assets/sponsor_bkgs/bkg2.jpeg"
+        "/assets/sponsor_bkgs/bkg2.jpeg",
+        "04_Bronze",
+        "01"
     ],
     [
         "/assets/sponsor_logos/RockSolar.png",
         "https://rocksolar.ca/",
         "ROCKSOLAR",
         "ROCKSOLAR is the Ultimate Portable Solar Power Solution for all Outdoor, Camping and Emergency Power Needs. Where There's Sun, There's Power!",
-        "/assets/sponsor_bkgs/bkg1.jpeg"
+        "/assets/sponsor_bkgs/bkg1.jpeg",
+        "04_Bronze",
+        "02"
     ],
     [
         "/assets/sponsor_logos/RS.png",
         "https://rocksolidcases.com/",
         "Rock Solid Cases",
         "With over 35 years of experience, Rock Solid Cases designs and manufactures custom reusable shipping cases, carrying cases and transport crating of the highest quality.",
-        "/assets/sponsor_bkgs/bkg5.jpeg"
+        "/assets/sponsor_bkgs/bkg5.jpeg",
+        "04_Bronze",
+        "03"
     ]
 ]
