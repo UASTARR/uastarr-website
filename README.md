@@ -1,17 +1,13 @@
-### Development Setup
+# Development Setup
 1. `cd src` Make sure you are under src directory
 2. `npm install` [Install](#initialize-node-modules) all packages (need to do this every time you switch a branch)
-3. `npm run dev` Start server
-4. Open the link on terminal (usually is localhost)
-
-### Initialize node modules
-
-Make sure you are under src in command line and run `npm install`.  
-It should install (locally) all the packages needed (from package.json) into node_modules folder.  
+3. [Create .env file](#create-dotenv-file)
+4. `npm run dev` Start server
+5. Open the link on terminal (usually is localhost)
 > **Note**  
-> Please run the command again when there's a change in package.json (i.e. adding packages).  
+> We are using ES Modules not CommonJS modules
 
-### Directory
+## Directory
     src                    # (running everything within src)
     ├── google_api
     │   └── api.js              # The api interface functions for google
@@ -25,5 +21,39 @@ It should install (locally) all the packages needed (from package.json) into nod
     ├── package-lock.json       # Do not touch
     ├── package.json            # All package listing and scripts
     └── tailwind.config.js
+    
+## Initialize node modules
 
-### We are using ES Modules not CommonJS modules
+Make sure you are under src in command line and run `npm install`.  
+It should install (locally) all the packages needed (from package.json) into node_modules folder.  
+> **Note**  
+> Please run the command again when there's a change in package.json (i.e. adding packages).  
+
+## Create dotenv file
+Make sure to create a `.env` file under `src` with the following attributes
+```
+credentials_client_id
+credentials_project_id
+credentials_auth_uri
+credentials_token_uri
+credentials_auth_provider_x509_cert_url
+credentials_client_secret
+
+spreadsheet_id
+
+token_type
+token_client_id
+token_client_secret
+token_refresh_token
+
+firebase_apiKey
+firebase_authDomain
+firebase_projectId
+firebase_storageBucket
+firebase_messagingSenderId
+firebase_appId
+```
+
+# References
+- [Cloud Firestore](https://firebase.google.com/docs/firestore?_gl=1*ez9530*_up*MQ..*_ga*MTgxNjkwNjgzOS4xNzE4NDM4MTQ5*_ga_CW55HF8NVT*MTcxODQzODE0OC4xLjAuMTcxODQzODE0OC4wLjAuMA..)
+- [Integrate Firebase with a Next.js app](https://firebase.google.com/codelabs/firebase-nextjs#0)
