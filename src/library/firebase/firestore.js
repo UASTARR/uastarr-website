@@ -20,6 +20,21 @@ import { firestoreDb } from "./clientApp.js";
 
 import { promises as fs } from 'fs';
 
+export async function getHeadshots(db = firestoreDb) {
+    const q = query(collection(db, "headshots"), orderBy("ordering"));
+    const results = await getDocs(q);
+    return results.docs.map(doc => {
+        return {
+            id: doc.id,
+            name: doc.data().name,
+            title: doc.data().title,
+            imgref: doc.data().imgref,
+            ordering: doc.data().ordering,
+            ...doc.data(),
+        };
+    });
+}
+
 export async function getSponsors(db = firestoreDb) {
     const q = query(collection(db, "sponsors"), orderBy("rank"), orderBy("rank_id"));
     const results = await getDocs(q);
@@ -67,5 +82,34 @@ async function resetSponsors() {
     }
 }
 
+async function putHeadshot(id, sponsor, db = firestoreDb) {
+    const docRef = await setDoc(doc(db, "headshots", id), sponsor);
+    // return docRef.id;
+}
 
+async function deleteHeadshots(db = firestoreDb) {
+    const q = query(collection(db, "headshots"));
+    const results = await getDocs(q);
+    for (const document of results.docs) {
+        await deleteDoc(doc(db, "headshots", document.id));
+    }
+}
+
+async function getHeadshotsJson() {
+    const file = await fs.readFile(process.cwd() + '/public/assets/database/headshots.json', 'utf-8');
+    const data = JSON.parse(file);
+    return data;
+}
+
+async function resetHeadshots() {
+    await deleteHeadshots()
+    const data = await getHeadshotsJson();
+    for (const headshot of data) {
+        console.log(headshot);
+        await putHeadshot(headshot[0], {ordering: parseInt(headshot[0]), name: headshot[1], title: headshot[2], imgref: headshot[3]});
+    }
+}
+
+// Uncomment the following lines to reset the sponsors and headshots from the JSON files to Firestore
 // resetSponsors();
+// resetHeadshots();

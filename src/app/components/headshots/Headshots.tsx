@@ -1,20 +1,17 @@
-import { promises as fs } from 'fs';
-
-async function getHeadshots() {
-    const file = await fs.readFile(process.cwd() + '/public/assets/database/headshots.json', 'utf-8');
-    const data = JSON.parse(file);
-    return data;
-}
+import { getHeadshots } from '@/library/firebase/firestore';
 
 const Headshots = async () => {
     const headshots = await getHeadshots();
     return (
         <div className="flex flex-wrap justify-center">
-            {headshots.map((headshot: Array<string>, index: number) => (
-                <div key={index} className="w-72 h-112 flex flex-col items-center justify-center">
-                    <img src={headshot[2]} alt={headshot[0]} />
-                    <p className="text-white">{headshot[0]}</p>
-                    <p className="text-white">{headshot[1]}</p>
+            {headshots.map((headshot: any, index: number) => (
+                <div key={index} className="w-80 h-112 flex flex-col items-center justify-center relative">
+                    <img src={headshot.imgref} alt={headshot.name} />
+                    <div className="absolute right-6 bottom-6 bg-green-700 h-20 w-52 py-3 px-3">
+                        <p className="text-white text-lg font-bold">{headshot.name}</p>
+                        <div className="h-1"></div>
+                        <p className="text-white text-sm">{headshot.title}</p>
+                    </div>
                 </div>
             ))}
         </div>

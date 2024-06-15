@@ -1,5 +1,4 @@
 import Link from "next/link";
-import getSponsorLogos from "./sponsors";
 import { getSponsors } from "@/library/firebase/firestore";
 
 const SponsorsLayoutSponsorPage = async () => {
