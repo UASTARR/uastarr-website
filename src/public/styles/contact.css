@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #0D0628;
+    color: white;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: white;
+    /* Updated background color to white */
+    padding: 20px;
+    border-radius: 8px;
+    color: black;
+    /* Updated text color to black */
+}
+
+input[type=text],
+input[type=email],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    background-color: #FFC107;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #DAA520;
+}
+
+.half-input-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.half-input {
+    width: 48%;
+}
+
+.center-align {
+    text-align: center;
+}
+
+div.banner {
+    background-color: #267337;
+    text-align: left;
+    padding: 20px;
+    color: whitesmoke;
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.grecaptcha {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}

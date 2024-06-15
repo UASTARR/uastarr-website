@@ -45,7 +45,7 @@ const Navbar = () => {
                             <div className="truepopup justify-items-center hidden" id ="popup" onMouseOver={() => delayHidePopup()} onMouseOut={() => delayedHidePopup()}> 
                                 <div className = "justify-items-center bg-gray-50 bg-opacity-10 rounded-full left-8 px-6 py-3">
                                 <div><a className="text-white hover:text-yellow-300 whitespace-nowrap" href="/photo-albums"> Photo Albums </a></div>
-                                <div><a className="text-white hover:text-yellow-300" href="/join"> Contact </a></div>
+                                <div><a className="text-white hover:text-yellow-300" href="/contact"> Contact </a></div>
                                 </div>
                             </div>
                         </div>

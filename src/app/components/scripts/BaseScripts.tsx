@@ -12,7 +12,7 @@ const BaseScripts = () => {
         };
     }, []);
     return (
-        <div></div>
+        <></>
     );
 }
 

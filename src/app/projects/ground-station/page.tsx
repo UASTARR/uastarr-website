@@ -1,5 +1,5 @@
 import React from 'react'
-import BaseScripts from '../components/scripts/BaseScripts'
+import BaseScripts from '../../components/scripts/BaseScripts'
 
 const ProjectsPage = () => {
     return (

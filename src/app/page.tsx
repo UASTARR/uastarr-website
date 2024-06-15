@@ -3,13 +3,14 @@ import Link from "next/link";
 import vectorIcon from "../public/assets/STARRVectorIconSquare.png";
 import elkoLogo from "../public/assets/logos/ElkoLogo.png";
 import launchCanadaLogo from "../public/assets/logos/LaunchCanadaLogo.png";
-import SponsorsLayout from "./components/sponsors/Sponsors";
+import SponsorsLayoutMainPage from "./components/sponsors/SponsorsLayoutMainPage";
 import BaseScripts from "./components/scripts/BaseScripts";
 
 export default function Home() {
     const firstBg = { backgroundImage: 'url(https://static.wixstatic.com/media/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg/v1/fill/w_1225,h_1100,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg)' };
     return (
         <main>
+            <BaseScripts />
             {/* <!--Tile 1--> */}
             <div className="z-20 relative flex flex-nowrap h-256 flex-col bg-local bg-cover bg-left justify-between" style={firstBg}>
                 <div></div>
@@ -241,7 +242,7 @@ export default function Home() {
 
                     <div className="flex overflow-hidden grow">
                         <div className="flex flex-col grow">
-                            <SponsorsLayout />
+                            <SponsorsLayoutMainPage />
                         </div>
                         <div className="shrink w-20 grow-0 overflow-hidden"></div>
                     </div>
@@ -251,7 +252,6 @@ export default function Home() {
 
                 <div className="h-24"></div>
             </div>
-            <BaseScripts />
         </main>
     );
 }
