@@ -5,9 +5,12 @@ import elkoLogo from "../public/assets/logos/ElkoLogo.png";
 import launchCanadaLogo from "../public/assets/logos/LaunchCanadaLogo.png";
 import SponsorsLayoutMainPage from "./components/sponsors/SponsorsLayoutMainPage";
 import BaseScripts from "./components/scripts/BaseScripts";
+import Competition from "./components/main/Competition";
 
 export default function Home() {
     const firstBg = { backgroundImage: 'url(https://static.wixstatic.com/media/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg/v1/fill/w_1225,h_1100,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg)' };
+    const spacePortLogo = 'https://static.wixstatic.com/media/9dc5ac_05c9d5bc50ba42bcbb1d7a5233e21d0e~mv2.png/v1/fill/w_136,h_151,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/two-color-rocket_orig.png'
+
     return (
         <main>
             <BaseScripts />
@@ -15,7 +18,7 @@ export default function Home() {
             <div className="z-20 relative flex flex-nowrap h-256 flex-col bg-local bg-cover bg-left justify-between" style={firstBg}>
                 <div></div>
                 {/* <!--Main Text--> */}
-                <div className="pl-14">
+                <div className="pl-20">
                     <div className="flex items-center">
                         <Image className="flex-none" src={vectorIcon} alt="Vector Icon" />
                         <h1 className="text-white text-8xl whitespace-nowrap font-bold flow_in_left">
@@ -40,16 +43,16 @@ export default function Home() {
                     </div>
                 </div>
                 {/* <!--Info Box--> */}
-                <div className="flex px-5 pb-32">
+                <div className="flex px-20 pb-32">
                     <div className="flex justify-between w-screen px-3 py-3 bg-black bg-opacity-70 basis-1 grow">
                         {/* <!-- Textboxes --> */}
                         <div className="flex items-center">
                             <div className="bg-green-800 h-20 w-2 rounded-full"></div>
-                            <p className="text-white text-xl px-3 whitespace-nowrap fade_in">70+ students</p>
+                            <p className="text-white text-xl px-3 whitespace-nowrap fade_in">100+ students</p>
                         </div>
                         <div className="flex items-center">
                             <div className="bg-green-800 h-20 w-2 rounded-full"></div>
-                            <p className="text-white text-xl px-3 whitespace-nowrap fade_in delay-400">6 Sub-Teams</p>
+                            <p className="text-white text-xl px-3 whitespace-nowrap fade_in delay-400">7 Sub-Teams</p>
                         </div>
                         <div className="flex items-center">
                             <div className="bg-green-800 h-20 w-2 rounded-full"></div>
@@ -57,7 +60,7 @@ export default function Home() {
                         </div>
                         <div className="flex items-center">
                             <div className="bg-green-800 h-20 w-2 rounded-full"></div>
-                            <p className="text-white text-xl px-3 whitespace-nowrap fade_in delay-1200">1 rocket launched</p>
+                            <p className="text-white text-xl px-3 whitespace-nowrap fade_in delay-1200">2 rockets launched</p>
                         </div>
                         <div></div>
                     </div>
@@ -65,7 +68,7 @@ export default function Home() {
             </div>
 
             {/* <!--Tile 2 Background Video--> */}
-            <div className="fixed top-0 justify-center w-screen h-screen">
+            <div className="fixed top-0 justify-center w-screen h-screen brightness-50">
                 <video autoPlay muted loop className="object-cover min-w-full min-h-full">
                     <source src="/assets/backgrounds/3dPrinting.mp4" type="video/mp4" />
                 </video>
@@ -79,9 +82,9 @@ export default function Home() {
                     </h1>
 
                 </div>
-                <div className="pl-16">
+                <div className="pl-20">
                     <Image src={elkoLogo} alt="Elko Logo" />
-                    <h1 className="text-pretty text-white text-bold text-2xl md:text-5xl flow_in_left py-6 w-1/2">
+                    <h1 className="text-pretty text-white text-bold text-2xl md:text-4xl flow_in_left py-6 w-1/2 md:w-1/3 leading-[5rem]">
                         From 3D printing, to electronics, to 
                         assembly, we build our rockets in
                         house at UAlberta's very own Elko
@@ -108,7 +111,7 @@ export default function Home() {
                     </h1>
                 </div>
                 {/* <!--Main Content--> */}
-                <div className="pl-16 space-y-8">
+                <div className="pl-20 space-y-8">
                     {/* <!--Row 1--> */}
                     <div className="flex space-x-16">
                         {/* <!--Col 1--> */}
@@ -190,46 +193,37 @@ export default function Home() {
             <div className="z-10 relative flex flex-nowrap flex-col bg-DarkBlue">
                 <div className="flex pl-20 overflow-hidden">
                     <h1 className="flow_in_top px-3  w-72 py-3 bg-white rounded-b-2xl text-xl font-bold">
-                        Current Competitions
+                        Upcoming Competitions
                     </h1>
                 </div>
                 <div className="h-20"></div>
                 {/* <!--Main content--> */}
-                <div className="flex justify-center flex-none">
-                    <div className="w-20 shrink-0"></div>
-                    {/* <!--Text and Logo--> */}
-                    <div className="flex items-center space-x-5 overflow-hidden">
-                        {/* <!--Text--> */}
-                        <div>
-                            <h1 className="text-white text-3xl whitespace-nowrap">
-                                2023
-                            </h1>
-                            <h2 className="text-white text-6xl pb-6 whitespace-nowrap">
-                                Launch Canada
-                            </h2>
-                            <hr className="w-24 h-2 pb-8" />
-                            <p className="text-white text-lg whitespace-nowrap">
-                                Launch Canada is a rocket competition designed to create <br />
-                                opportunities for amateur rocketeers from Canadian <br />
-                                universities.
-                            </p>
-                            {/* <!--Learn more button--> */}
-                            <div className="h-16"></div>
-                            <div>
-                                <a target="_blank" href="https://www.launchcanada.org" rel="noopener noreferrer">
-                                    <button
-                                        className="whitespace-nowrap bg-red-600 hover:transition-all text-white hover:bg-white hover:text-black rounded-full px-14 py-3">
-                                        Learn More
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                        {/* <!--Logo--> */}
-                        <Image src={launchCanadaLogo} className="h-72 w-72" alt="Launch Canada Logo" />
-                        <div className="shrink w-20 overflow-hidden"></div>
-
-
+                <div className="flex justify-center flex-col flex-none items-center">
+                    <div className="w-20 h-20 shrink-0"></div>
+                    <div className="flow_in_left">
+                        <Competition 
+                            year="2024" 
+                            name="Launch Canada" 
+                            link="https://www.launchcanada.org"
+                            logo={{src: launchCanadaLogo, alt: "Launch Canada Logo"}}
+                            description="Launch Canada is a rocket competition designed to create
+                            opportunities for amateur rocketeers from Canadian
+                            universities."
+                        />
                     </div>
+                    <div className="w-20 h-20 shrink-0"></div>
+                    <div className="flow_in_left">
+                        <Competition 
+                            year="2024" 
+                            name="Spaceport America Cup" 
+                            link="https://spaceportamericacup.com/"
+                            logo={{src: spacePortLogo, alt: "Space Port Logo"}}
+                            description="The Spaceport America Cup is the world's largest
+                            IREC - Intercollegiate Rocket Engineering Competition
+                            for student rocketry teams."
+                        />
+                    </div>
+
                 </div>
                 <div className="h-28"></div>
                 {/* <!--Sponsors Tag--> */}
