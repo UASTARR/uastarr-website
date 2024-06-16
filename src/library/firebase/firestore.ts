@@ -105,7 +105,6 @@ async function resetHeadshots() {
     await deleteHeadshots()
     const data = await getHeadshotsJson();
     for (const headshot of data) {
-        console.log(headshot);
         await putHeadshot(headshot[0], {ordering: parseInt(headshot[0]), name: headshot[1], title: headshot[2], imgref: headshot[3]});
     }
 }

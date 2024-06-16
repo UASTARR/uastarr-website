@@ -2,7 +2,6 @@ import {
     listAll,
     ref,
     getDownloadURL,
-    getMetadata,
 
 } from "firebase/storage";
 import { fireStorage } from "./clientApp";
@@ -22,7 +21,6 @@ export async function getPhotos(album: string, storage = fireStorage) {
     const listRef = ref(storage, `photo-albums/${album}`);
     const list = (await listAll(listRef)).items;
     return await Promise.all(list.map(async (photo) => {
-        console.log(await getMetadata(photo));
         const photoUrl = await getPhotoUrl(album, photo.name);
         return ({
             name: photo.name,

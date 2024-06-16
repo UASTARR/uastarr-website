@@ -31,7 +31,9 @@ It should install (locally) all the packages needed (from package.json) into nod
 
 ## Create dotenv file
 Make sure to create a `.env` file under `src` with the following attributes
+<!-- TODO: how to generate token -->
 ```
+# For project on cloud console
 credentials_client_id
 credentials_project_id
 credentials_auth_uri
@@ -39,13 +41,16 @@ credentials_token_uri
 credentials_auth_provider_x509_cert_url
 credentials_client_secret
 
+# Response from contact
 spreadsheet_id
 
+# Authorization Tokens
 token_type
 token_client_id
 token_client_secret
 token_refresh_token
 
+# Firebase
 firebase_apiKey
 firebase_authDomain
 firebase_projectId

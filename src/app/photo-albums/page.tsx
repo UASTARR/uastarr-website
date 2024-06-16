@@ -1,7 +1,8 @@
 import React from 'react'
-import BaseScripts from '../components/scripts/BaseScripts'
+import BaseScripts from '@/app/components/scripts/BaseScripts'
+import AlbumsCover from '../components/albumphotos/AlbumsCover'
 
-const PhotoAlbumsPage = () => {
+const PhotoAlbumsPage = async () => {
     return (
         <main>
             <BaseScripts />
@@ -26,6 +27,18 @@ const PhotoAlbumsPage = () => {
                         </p>
                     </div>
                 </div>
+            </div>
+
+            <div className="h-20"></div>
+
+            <div className="flex justify-center relative z-20">
+                <div className="w-32 grow-0 overflow-hidden"></div>
+                <div className="bg-black bg-opacity-70 grow-0">
+                    <div className="h-16"></div>
+                        <AlbumsCover />
+                    <div className="h-16"></div>
+                </div>
+                <div className="w-32 grow-0 overflow-hidden"></div>
             </div>
 
             <div className="h-20"></div>
