@@ -81,8 +81,11 @@ export default function Home() {
                 </div>
                 <div className="pl-16">
                     <Image src={elkoLogo} alt="Elko Logo" />
-                    <h1 className="text-white text-bold text-5xl flow_in_left py-6 whitespace-nowrap">
-                        From 3D printing, to electronics, to <br />assembly, we build our rockets in <br />house at UAlberta's very own Elko <br />Engineering Garage.
+                    <h1 className="text-pretty text-white text-bold text-2xl md:text-5xl flow_in_left py-6 w-1/2">
+                        From 3D printing, to electronics, to 
+                        assembly, we build our rockets in
+                        house at UAlberta's very own Elko
+                        Engineering Garage.
                     </h1>
                     <div className="pt-3">
                         <Link href="/about-us">
