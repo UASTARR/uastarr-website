@@ -10,8 +10,10 @@ import Navbar from "@/app/components/navbar/Navbar";
 const inter = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "UASTARR | Student Team for Alberta Rocketry Research",
-  description: "Student Team for Alberta Rocketry Research",
+  title: {
+    template: "%s | UASTARR",
+    default: "UASTARR | Student Team for Alberta Rocketry Research"
+  },
 };
 
 export default function RootLayout({

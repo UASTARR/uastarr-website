@@ -2,6 +2,11 @@ import React from 'react'
 import BaseScripts from '../components/scripts/BaseScripts'
 import SponsorsLayoutSponsorPage from '../components/sponsors/SponsorsLayoutSponsorPage'
 import Link from 'next/link'
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Sponsors",
+};
 
 const SponsorsPage = () => {
     return (

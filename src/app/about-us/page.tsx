@@ -2,6 +2,11 @@ import Link from 'next/link';
 import React from 'react'
 import BaseScripts from '../components/scripts/BaseScripts';
 import Headshots from '../components/headshots/Headshots';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "About Us",
+};
 
 const AboutUsPage = () => {
     return (

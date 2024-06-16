@@ -2,6 +2,12 @@ import React from 'react'
 import BaseScripts from '@/app/components/scripts/BaseScripts'
 import PhotoDisplay from '@/app/components/albumphotos/PhotosDisplay';
 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Album",
+};
+
 export default async function AlbumPage(
     { params }: { params: { album: string } }
 ) {

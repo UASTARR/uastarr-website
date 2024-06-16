@@ -4,6 +4,12 @@ import ReCaptchaApi from '@/app/components/scripts/ReCaptchaApi'
 import ContactPageCSS from '@/app/components/scripts/ContactPageCSS'
 import { addResponse } from '@/library/google/api.js'
 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Contact Us",
+};
+
 const ContactPage = () => {
     async function submitForm(formData: FormData) {
         'use server'

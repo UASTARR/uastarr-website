@@ -2,6 +2,12 @@ import React from 'react'
 import BaseScripts from '@/app/components/scripts/BaseScripts'
 import AlbumsCover from '../components/albumphotos/AlbumsCover'
 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Photo Albums",
+};
+
 const PhotoAlbumsPage = async () => {
     return (
         <main>
