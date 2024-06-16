@@ -16,7 +16,7 @@ import {
     deleteDoc,
 } from "firebase/firestore";
 
-import { firestoreDb } from "./clientApp.js";
+import { firestoreDb } from "./clientApp";
 
 import { promises as fs } from 'fs';
 
@@ -55,7 +55,7 @@ export async function getSponsors(db = firestoreDb) {
 
 // The following function is used to update the sponsors collection in Firestore
 
-async function putSponsor(id, sponsor, db = firestoreDb) {
+async function putSponsor(id: string, sponsor: any, db = firestoreDb) {
     const docRef = await setDoc(doc(db, "sponsors", id), sponsor);
     // return docRef.id;
 }
@@ -82,7 +82,7 @@ async function resetSponsors() {
     }
 }
 
-async function putHeadshot(id, sponsor, db = firestoreDb) {
+async function putHeadshot(id: string, sponsor: any, db = firestoreDb) {
     const docRef = await setDoc(doc(db, "headshots", id), sponsor);
     // return docRef.id;
 }
