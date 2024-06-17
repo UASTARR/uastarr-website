@@ -53,6 +53,19 @@ export async function getSponsors(db = firestoreDb) {
     });
 }
 
+export async function getAlbums(db = firestoreDb) {
+    const q = query(collection(db, "albums"), orderBy("ordering"));
+    const results = await getDocs(q);
+    return results.docs.map(doc => {
+        return {
+            id: doc.id,                 // The folder name under storage
+            name: doc.data().name,      // The name of the album to display
+            sub_name: doc.data().sub_name, // The sub name of the album to display
+            ...doc.data(),
+        };
+    });
+}
+
 // The following function is used to update the sponsors collection in Firestore
 
 async function putSponsor(id: string, sponsor: any, db = firestoreDb) {

@@ -5,38 +5,28 @@ import {
 
 } from "firebase/storage";
 import { fireStorage } from "./clientApp";
+import { getAlbums } from "./firestore";
 
-export async function getAllPhotos(storage = fireStorage) {
-    const listRef = ref(storage, 'photo-albums');
-    const list = await listAll(listRef);
-    var photos: { [key: string]: any } = {};
-    for (const folderRef of list.prefixes) {
-        const album = folderRef.name;
-        photos[album] = await getPhotos(album);
+export async function getAllPhotos() {
+    const albums = await getAlbums();
+    var photos: { [key: string]: {photos: any, name: string, sub_name: string} } = {};
+    for (const album of albums) {
+        const album_dir = album.id;
+        photos[album_dir] = {photos: await getPhotos(album_dir), name: album.name, sub_name: album.sub_name};
     }
     return photos;
 }
 
-export async function getPhotos(album: string, storage = fireStorage) {
-    const listRef = ref(storage, `photo-albums/${album}`);
+export async function getPhotos(album_dir: string, storage = fireStorage) {
+    const listRef = ref(storage, `photo-albums/${album_dir}`);
     const list = (await listAll(listRef)).items;
     return await Promise.all(list.map(async (photo) => {
-        const photoUrl = await getPhotoUrl(album, photo.name);
+        const photoUrl = await getPhotoUrl(album_dir, photo.name);
         return ({
             name: photo.name,
             url: photoUrl
         });
     }));
-}
-
-async function getAlbums(storage = fireStorage) {
-    const listRef = ref(storage, 'photo-albums');
-    const list = await listAll(listRef);
-    return list.prefixes.map((folderRef) => {
-        return {
-            name: folderRef.name,
-        };
-    });
 }
 
 async function getPhotoUrl(album: string, photo: string, storage = fireStorage) {
