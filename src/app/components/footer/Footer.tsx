@@ -2,12 +2,13 @@ import Link from "next/link";
 
 const Footer = () => {
     return (
-        <div className="bg-black z-10 relative flex-col justify-between">
+        <div className="bg-black z-10 relative flex-col justify-between ">
             {/* <!--Catagories--> */}
-            <div className="flex justify-between space-x-6 px-12 pt-12">
-                <div className="space-y-4 basis-1">
-                    <h1 className="text-white font-semibold text-lg whitespace-nowrap">
-                        Student Team for Alberta <br /> Rocketry Research
+            <div className="flex flex-col lg:flex-row lg:justify-between max-lg:space-y-6 lg:space-x-6 px-12 pt-12">
+                <div className="space-y-4 lg:basis-1">
+                    <h1 className="text-white font-semibold text-lg lg:whitespace-nowrap">
+                        Student Team for Alberta <br />
+                        Rocketry Research
                     </h1>
                     <p className="text-gray-400 text-base whitespace-nowrap">
                         Donadeo Innovation Centre <br />
@@ -21,16 +22,33 @@ const Footer = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="space-y-4 basis-2">
-                    <h1 className="text-white font-semibold text-lg whitespace-nowrap">
+                <div className="space-y-4 lg:basis-2">
+                    <h1 className="text-white font-semibold text-lg lg:whitespace-nowrap">
                         Want to stay in the know about STARR? 💫
                     </h1>
-                    <p className="text-gray-400 text-base whitespace-nowrap">
-                        Join our mailing list to keep up with our events, <br />
+                    <p className="text-gray-400 text-base text-pretty">
+                        Join our mailing list to keep up with our events,
                         blog posts, and other news!
                     </p>
                 </div>
-                <div className="flex flex-col basis-1">
+                <div className="flex flex-col lg:basis-1">
+                    <h1 className="text-white font-semibold text-lg whitespace-nowrap pb-4">
+                        Follow us on
+                    </h1>
+                    <Link target="_blank" href="https://www.facebook.com/uastarr/" rel="noopener noreferrer">
+                        <div className=" text-gray-400 text-base whitespace-nowrap">Facebook</div>
+                    </Link>
+                    <Link target="_blank" href="https://www.instagram.com/uastarr/" rel="noopener noreferrer">
+                        <div className=" text-gray-400 text-base whitespace-nowrap">Instagram</div>
+                    </Link>
+                    <Link target="_blank" href="https://twitter.com/uastarr" rel="noopener noreferrer">
+                        <div className=" text-gray-400 text-base whitespace-nowrap">Twitter</div>
+                    </Link>
+                    <Link target="_blank" href="https://www.linkedin.com/company/uastarr/" rel="noopener noreferrer">
+                        <div className=" text-gray-400 text-base whitespace-nowrap">LinkedIn</div>
+                    </Link>
+                </div>
+                <div className="flex flex-col lg:basis-1">
                     <h1 className="text-white font-semibold text-lg whitespace-nowrap pb-4">
                         Menu
                     </h1>
@@ -51,23 +69,6 @@ const Footer = () => {
                     </Link>
                     <Link href={"/contact"}>
                         <div className="text-gray-400 text-base whitespace-nowrap">Contact Us</div>
-                    </Link>
-                </div>
-                <div className="flex flex-col basis-1">
-                    <h1 className="text-white font-semibold text-lg whitespace-nowrap pb-4">
-                        Follow us on
-                    </h1>
-                    <Link target="_blank" href="https://www.facebook.com/uastarr/" rel="noopener noreferrer">
-                        <div className=" text-gray-400 text-base whitespace-nowrap">Facebook</div>
-                    </Link>
-                    <Link target="_blank" href="https://www.instagram.com/uastarr/" rel="noopener noreferrer">
-                        <div className=" text-gray-400 text-base whitespace-nowrap">Instagram</div>
-                    </Link>
-                    <Link target="_blank" href="https://twitter.com/uastarr" rel="noopener noreferrer">
-                        <div className=" text-gray-400 text-base whitespace-nowrap">Twitter</div>
-                    </Link>
-                    <Link target="_blank" href="https://www.linkedin.com/company/uastarr/" rel="noopener noreferrer">
-                        <div className=" text-gray-400 text-base whitespace-nowrap">LinkedIn</div>
                     </Link>
                 </div>
             </div>
