@@ -1400,11 +1400,6 @@ video {
   transition-duration: 200ms;
 }
 
-.truepopup {
-  position: absolute;
-  transform: translate(-30px, 15px);
-}
-
 .hidden {
   display: none;
 }

@@ -1,7 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['static.wixstatic.com', 'firebasestorage.googleapis.com'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'static.wixstatic.com',
+                pathname: '**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'firebasestorage.googleapis.com',
+                pathname: '**',
+            },
+        ]
     },
 };
 

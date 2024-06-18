@@ -39,13 +39,13 @@ const Navbar = () => {
                         <Link className="hover:text-yellow-300 text-white" href="/projects">Projects</Link> 
                         <Link className="hover:text-yellow-300 text-white whitespace-nowrap" href="/about-us">About Us</Link> 
                         <Link className="hover:text-yellow-300 text-white" href="/sponsors">Sponsors</Link>
-                        <div className="inline-block justify-items-center">
+                        <div className="inline-block justify-center flex">
                         
                             <a className="popup hover:text-yellow-300 text-white cursor-default" onMouseOver={() => showPopup()} onMouseOut={() => delayedHidePopup()} >More</a>
-                            <div className="truepopup justify-items-center hidden" id ="popup" onMouseOver={() => delayHidePopup()} onMouseOut={() => delayedHidePopup()}> 
-                                <div className = "justify-items-center bg-gray-50 bg-opacity-10 rounded-full left-8 px-6 py-3">
-                                <div><a className="text-white hover:text-yellow-300 whitespace-nowrap" href="/photo-albums"> Photo Albums </a></div>
-                                <div><a className="text-white hover:text-yellow-300" href="/contact"> Contact </a></div>
+                            <div className="truepopup absolute justify-items-center hidden translate-y-[45px]" id ="popup" onMouseOver={() => delayHidePopup()} onMouseOut={() => delayedHidePopup()}> 
+                                <div className = "flex flex-col justify-items-center bg-gray-50 bg-opacity-10 rounded-2xl left-20 px-3 py-3">
+                                    <Link href="/photo-albums" className="pb-2 text-white text-center hover:text-yellow-300 whitespace-nowrap">Photo Albums</Link>
+                                    <Link href="/contact" className="text-white text-center hover:text-yellow-300">Contact</Link>
                                 </div>
                             </div>
                         </div>
