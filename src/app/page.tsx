@@ -6,6 +6,7 @@ import launchCanadaLogo from "../public/assets/logos/LaunchCanadaLogo.png";
 import SponsorsLayoutMainPage from "./components/sponsors/SponsorsLayoutMainPage";
 import BaseScripts from "./components/scripts/BaseScripts";
 import Competition from "./components/main/Competition";
+import FAQ from "./components/main/FAQ";
 
 export default function Home() {
     const firstBg = { backgroundImage: 'url(https://static.wixstatic.com/media/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg/v1/fill/w_1225,h_1100,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg)' };
@@ -84,8 +85,8 @@ export default function Home() {
                 </div>
                 <div className="pl-20">
                     <Image src={elkoLogo} alt="Elko Logo" />
-                    <h1 className="text-pretty text-white text-bold text-2xl md:text-4xl flow_in_left py-6 w-1/2 md:w-1/3 leading-[5rem]">
-                        From 3D printing, to electronics, to 
+                    <h1 className="text-pretty text-white text-bold flow_in_left py-6 w-1/2 text-2xl leading-relaxed md:w-1/3 md:text-4xl md:leading-relaxed">
+                        From 3D printing, to electronics, to
                         assembly, we build our rockets in
                         house at UAlberta's very own Elko
                         Engineering Garage.
@@ -201,11 +202,11 @@ export default function Home() {
                 <div className="flex justify-center flex-col flex-none items-center">
                     <div className="w-20 h-20 shrink-0"></div>
                     <div className="flow_in_left">
-                        <Competition 
-                            year="2024" 
-                            name="Launch Canada" 
+                        <Competition
+                            year="2024"
+                            name="Launch Canada"
                             link="https://www.launchcanada.org"
-                            logo={{src: launchCanadaLogo, alt: "Launch Canada Logo"}}
+                            logo={{ src: launchCanadaLogo, alt: "Launch Canada Logo" }}
                             description="Launch Canada is a rocket competition designed to create
                             opportunities for amateur rocketeers from Canadian
                             universities."
@@ -213,11 +214,11 @@ export default function Home() {
                     </div>
                     <div className="w-20 h-20 shrink-0"></div>
                     <div className="flow_in_left">
-                        <Competition 
-                            year="2024" 
-                            name="Spaceport America Cup" 
+                        <Competition
+                            year="2024"
+                            name="Spaceport America Cup"
                             link="https://spaceportamericacup.com/"
-                            logo={{src: spacePortLogo, alt: "Space Port Logo"}}
+                            logo={{ src: spacePortLogo, alt: "Space Port Logo" }}
                             description="The Spaceport America Cup is the world's largest
                             IREC - Intercollegiate Rocket Engineering Competition
                             for student rocketry teams."
@@ -246,6 +247,7 @@ export default function Home() {
                 </div>
                 <div className="h-12"></div>
                 {/* <!--FAQ--> */}
+                <FAQ />
 
                 <div className="h-24"></div>
             </div>
