@@ -102,6 +102,13 @@ function headerDisplay() {
   const headerHeight = header.offsetHeight;
   const scrollY = window.scrollY;
 
+  // If window size is less than 1024px, do not hide the header
+  // For mobile view 1024px is the breakpoint for tailwind lg
+  if (window.innerWidth < 1024) {
+    header.classList.remove('header_hidden');
+    return;
+  }
+
   if (scrollY < headerHeight) {
     header.classList.remove('header_hidden');
     return;

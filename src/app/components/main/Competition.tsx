@@ -12,17 +12,19 @@ const Competition = ({
     year: string, name: string, link: string, logo: Logo, description: string
 }) => {
     return (
-        <div className="flex items-center space-x-5 overflow-hidden">
+        <div className="flex items-center max-lg:pl-6 lg:space-x-5">
             {/* <!--Text--> */}
             <div>
-                <h1 className="text-white text-3xl whitespace-nowrap">
+                <h1 className="text-white text-xl lg:text-3xl whitespace-nowrap">
                     {year}
                 </h1>
-                <h2 className="text-white text-6xl pb-6 w-128 text-pretty">
+                <h2 className="text-white text-2xl lg:text-6xl pb-6 lg:w-128 text-pretty">
                     {name}
                 </h2>
+                {/* Mobile Logo */}
+                <Image src={logo.src} className="lg:hidden h-24 w-24 object-contain pb-5" alt={logo.alt} width={700} height={700}/>
                 <hr className="w-24 h-2 pb-8" />
-                <p className="text-white text-lg w-128 text-pretty ">
+                <p className="text-white text-md lg:text-lg lg:w-128 text-pretty ">
                     {description}
                 </p>
                 {/* <!--Learn more button--> */}
@@ -38,7 +40,7 @@ const Competition = ({
             </div>
 
             {/* <!--Logo--> */}
-            <Image src={logo.src} className="h-72 w-72 object-contain" alt={logo.alt} width={700} height={700}/>
+            <Image src={logo.src} className="max-lg:hidden h-72 w-72 object-contain" alt={logo.alt} width={700} height={700}/>
         </div>
     )
 }

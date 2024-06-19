@@ -1,7 +1,7 @@
 'use client';
 import Link from "next/link"
 
-const DeaktopNavbar = () => {
+const DesktopNavbar = () => {
     let timer: NodeJS.Timeout | undefined;
     function showPopup(): void {
         const popupElement = document.getElementById("popup");
@@ -45,7 +45,7 @@ const DeaktopNavbar = () => {
                 </div>
             </div>
             {/* Join Now Button */}
-            <div className = "inline-block px-5 pr-10">
+            <div className = "inline-block pl-5">
                 <Link href="/contact">
                     <button className="text-white whitespace-nowrap bg-green-700 hover:transition-all duration-200 hover:bg-white hover:text-black rounded-full px-6 py-3">Join Now</button>
                 </Link>
@@ -54,4 +54,4 @@ const DeaktopNavbar = () => {
     )
 }
 
-export default DeaktopNavbar;
+export default DesktopNavbar;

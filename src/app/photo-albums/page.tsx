@@ -21,14 +21,14 @@ const PhotoAlbumsPage = async () => {
             <div className="h-24"></div>
 
             <div className="flex justify-center relative flex-none z-20">
-                <div className="flex overflow-hidden grow">
-                    <div className="shrink-0 grow flex items-center flex-col overflow-hidden" >
+                <div className="flex grow">
+                    <div className="shrink-0 grow flex items-center flex-col">
                         <div className="h-8"></div>
-                        <h1 className="text-white text-6xl overflow-hidden">
+                        <h1 className="text-white text-2xl lg:text-6xl">
                             A Blast Into the Past 🚀
                         </h1>
                         <div className="h-2"></div>
-                        <p className="text-white text-xl overflow-hidden">
+                        <p className="text-white text-xl">
                             The STARR Photo Archive
                         </p>
                     </div>

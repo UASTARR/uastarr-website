@@ -60,13 +60,13 @@ export default function FAQ() {
     }, [hidden3]); // This effect runs when elementIdToShow changes.
 
     return (
-        <div className = "pl-20">
-            <h1 className = "text-white text-4xl whitespace-nowrap overflow-hidden flow_in_left">
+        <div className = "lg:pl-20">
+            <h1 className = "max-lg:pl-6 text-white text-4xl whitespace-nowrap flow_in_left">
                 FAQ
             </h1>
             <div className = "h-4"></div>
             {/* <!--Dropdown 1--> */}
-            <div className = "flex flex-col w-192">
+            <div className = "flex flex-col w-screen max-lg:px-6 lg:w-192">
                 <button onClick={() => setHidden1(prev => !prev)}>
                     <div className = "flex justify-between py-6 pr-1 items-center">
                         <h1 className="text-white">
@@ -87,10 +87,10 @@ export default function FAQ() {
                         We'll get back to you as soon as possible! 🚀
                     </p>
                 </div>
-                <hr className="brightness-50 opacity-70" />
+                <hr className="brightness-50 opacity-70 max-lg:w-1/2" />
             </div>
             {/* <!--Dropdown 2--> */}
-            <div className = "flex flex-col w-192">
+            <div className = "flex flex-col w-screen max-lg:px-6 lg:w-192">
                 <button onClick={() => setHidden2(prev => !prev)}>
                     <div className = "flex justify-between py-6 pr-1 items-center">
                         <h1 className="text-white">
@@ -106,10 +106,10 @@ export default function FAQ() {
                         Thanks for supporting our vision in advancements and education of rocketry and aerospace engineering in Alberta and Canada! 🚀 Leave us a message through our contact page, and we'll get back to you as soon as possible.
                     </p>
                 </div>
-                <hr className="brightness-50 opacity-70" />
+                <hr className="brightness-50 opacity-70 max-lg:w-1/2" />
             </div>
             {/* <!--Dropdown 3--> */}
-            <div className = "flex flex-col w-192">
+            <div className = "flex flex-col w-screen max-lg:px-6 lg:w-192">
                 <button onClick={() => setHidden3(prev => !prev)}>
                     <div className = "flex justify-between py-6 pr-1 items-center">
                         <h1 className="text-white">
@@ -126,12 +126,12 @@ export default function FAQ() {
                         <p className ="text-white text-pretty py-3 px-3">
                             We build our rockets in house at the University of Alberta's Elko Engineering Garage. Head to the Rocket Specs page for more details.
                         </p>
-                        <video className="w-96 h-96" autoPlay muted loop>
+                        <video className="w-80 h-80 lg:w-96 lg:h-96" autoPlay muted loop>
                             <source src="/assets/simpson.mp4" type="video/mp4" />
                         </video>
                     </div>
                 </div>
-                <hr className="brightness-50 opacity-70" />
+                <hr className="brightness-50 opacity-70 max-lg:w-1/2" />
             </div>
         </div>
     )
