@@ -17,7 +17,7 @@ const SponsorsLayoutSponsorPage = async () => {
                 const currentSponsors = sponsors[index];
                 return (
                     <div key={index}>
-                        <div className={`relative py-3 lg:py-6 flex justify-center items-center ${currentRank.colour}`}>
+                        <div className={`relative py-5 lg:py-10 flex justify-center items-center ${currentRank.colour}`}>
                             <h1 className="text-2xl font-bold lg:text-4xl text-center text-white">
                                 {currentRank.title}
                             </h1>
