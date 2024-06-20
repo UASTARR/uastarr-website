@@ -7,6 +7,11 @@ import {
 import { fireStorage } from "./clientApp";
 import { getAlbums } from "./firestore";
 
+export async function getSponsorLogoUrl(sponsor: string, storage = fireStorage) {
+    const sponsorRef = ref(storage, `sponsors/${sponsor}`);
+    return getDownloadURL(sponsorRef);
+}
+
 export async function getAllPhotos() {
     const albums = await getAlbums();
     var photos: { [key: string]: {photos: any, name: string, sub_name: string} } = {};

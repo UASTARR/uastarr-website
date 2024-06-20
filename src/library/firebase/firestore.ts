@@ -20,6 +20,23 @@ import { firestoreDb } from "./clientApp";
 
 import { promises as fs } from 'fs';
 
+export async function getProjects(projectType: string, db = firestoreDb) {
+    const q = query(collection(db, "projects"), where("type", "==", projectType), orderBy("ordering"));
+    const results = await getDocs(q);
+    return results.docs.map(doc => {
+        return {
+            id: doc.id,
+            type: doc.data().type,
+            name: doc.data().name,
+            description: doc.data().description,
+            logoRef: doc.data().logoRef,
+            ordering: doc.data().ordering,
+            playlistLink: doc.data().playlistLink,
+            ...doc.data(),
+        };
+    });
+}
+
 export async function getHeadshots(db = firestoreDb) {
     const q = query(collection(db, "headshots"), orderBy("ordering"));
     const results = await getDocs(q);
@@ -35,8 +52,22 @@ export async function getHeadshots(db = firestoreDb) {
     });
 }
 
-export async function getSponsors(db = firestoreDb) {
-    const q = query(collection(db, "sponsors"), orderBy("rank"), orderBy("rank_id"));
+export async function getSponsorRanks(db = firestoreDb) {
+    const q = query(collection(db, "sponsors"), orderBy("rank_id"));
+    const results = await getDocs(q);
+    return results.docs.map(doc => {
+        return {
+            id: doc.id,
+            title: doc.data().title,
+            colour: doc.data().colour,
+            rank_id: doc.data().rank_id,
+            ...doc.data(),
+        };
+    });
+}
+
+export async function getSponsors(rank: string, db = firestoreDb) {
+    const q = query(collection(db, "sponsors", rank, "sponsors"), orderBy("rank_id"));
     const results = await getDocs(q);
     return results.docs.map(doc => {
         return {
@@ -46,7 +77,6 @@ export async function getSponsors(db = firestoreDb) {
             imgref: doc.data().imgref,
             link: doc.data().link,
             background: doc.data().background,
-            rank: doc.data().rank,
             rank_id: doc.data().rank_id,
             ...doc.data(),
         };

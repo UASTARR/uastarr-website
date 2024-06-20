@@ -1,58 +1,77 @@
 import Link from "next/link";
-import { getSponsors } from "@/library/firebase/firestore";
+import { getSponsorRanks, getSponsors } from "@/library/firebase/firestore";
 import SponsorWithImage from "./SponsorsLayoutSingleSponsorPage";
 import PackageBackground from "@/public/assets/sponsor_bkgs/bkg3.jpeg"
 import Image from "next/image";
 
 const SponsorsLayoutSponsorPage = async () => {
-    const sponsors = await getSponsors();
-    const sponsorRanks: { [key: string]: string } = {"01_SuperSTARR": "SuperSTARR ($3000+)", "02_Gold": "Gold ($1500-2999)", "03_Silver": "Silver ($500-1499)", "04_Bronze": "Bronze ($100-499)"};
-    const sponsorRanksBackground: { [key: string]: string } = {"01_SuperSTARR": "bg-gradient-to-r from-green-500 to-zinc-500", "02_Gold": "bg-gradient-to-r from-yellow-400 to-zinc-500", "03_Silver": "bg-gradient-to-r from-gray-400 to-zinc-500", "04_Bronze": "bg-gradient-to-r from-orange-400 to-zinc-500"};
+    const sponsorRanks = await getSponsorRanks();
+    const sponsors = [] as any[];
+    for (let i = 0; i < sponsorRanks.length; i++) {
+        sponsors[i] = await getSponsors(sponsorRanks[i].id);
+    }
+    let sponsorIndex = 0;
     return (
         <div className="flex flex-col relative flex-none z-20">
-            {sponsors.map((sponsor: any, index: number) => (
-                <div key={index}>
-                    {(index === 0 || sponsor.rank !== sponsors[index - 1].rank) && 
-                        <div className={`relative py-3 lg:py-6 flex justify-center items-center ${sponsorRanksBackground[sponsor.rank]}`}>
+            {sponsorRanks.map((currentRank: any, index: number) => {
+                const currentSponsors = sponsors[index];
+                return (
+                    <div key={index}>
+                        <div className={`relative py-3 lg:py-6 flex justify-center items-center ${currentRank.colour}`}>
                             <h1 className="text-2xl font-bold lg:text-4xl text-center text-white">
-                                {sponsorRanks[sponsor.rank]}
+                                {currentRank.title}
                             </h1>
                         </div>
-                    }
-                    {index % 2 === 0 ? (
-                        <SponsorWithImage
-                            side='left'
-                            link={sponsor.link}
-                            imgref={sponsor.imgref} name={sponsor.name}
-                            description={sponsor.description}
-                            background={sponsor.background}
-                        />
-                    ) : (
-                        <>
-                            <div className="max-lg:hidden">
-                                <SponsorWithImage
-                                    side='right'
-                                    link={sponsor.link}
-                                    imgref={sponsor.imgref}
-                                    name={sponsor.name}
-                                    description={sponsor.description}
-                                    background={sponsor.background}
-                                />
+                        {currentSponsors.length ? (currentSponsors.map((sponsor: any, index: number) => {
+                            sponsorIndex++;
+                            return (
+                                <div key={index}>
+                                    {sponsorIndex % 2 === 0 ? (
+                                        <SponsorWithImage
+                                            side='left'
+                                            link={sponsor.link}
+                                            imgref={sponsor.imgref} name={sponsor.name}
+                                            description={sponsor.description}
+                                            background={sponsor.background}
+                                        />
+                                    ) : (
+                                        <>
+                                            <div className="max-lg:hidden">
+                                                <SponsorWithImage
+                                                    side='right'
+                                                    link={sponsor.link}
+                                                    imgref={sponsor.imgref}
+                                                    name={sponsor.name}
+                                                    description={sponsor.description}
+                                                    background={sponsor.background}
+                                                />
+                                            </div>
+                                            <div className="lg:hidden">
+                                                <SponsorWithImage
+                                                    side='left'
+                                                    link={sponsor.link}
+                                                    imgref={sponsor.imgref}
+                                                    name={sponsor.name}
+                                                    description={sponsor.description}
+                                                    background={sponsor.background}
+                                                />
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                            )
+                        })) : (
+                            <div className="bg-DarkBlue grow min-w-fit flex justify-center items-center h-64">
+                                <div className="w-screen shrink-0 px-6">
+                                    <h1 className="text-white text-2xl lg:text-4xl text-center">
+                                        Get your sponsorship here!
+                                    </h1>
+                                </div>
                             </div>
-                            <div className="lg:hidden">
-                                <SponsorWithImage
-                                    side='left'
-                                    link={sponsor.link}
-                                    imgref={sponsor.imgref}
-                                    name={sponsor.name}
-                                    description={sponsor.description}
-                                    background={sponsor.background}
-                                />
-                            </div>
-                        </>
-                    )}
-                </div>
-            ))}
+                        )}
+                    </div>
+                )
+            })}
         </div>
     )
 }
@@ -147,7 +166,7 @@ const SponsorPackageMobile = () => {
                     </button>
                 </Link>
             </div>
-            <div className="bg-cover flex relative justify-center items-center w-screen py-6" style={{ backgroundImage: `url(${PackageBackground.src})`}}>
+            <div className="bg-cover flex relative justify-center items-center w-screen py-6" style={{ backgroundImage: `url(${PackageBackground.src})` }}>
                 <div className="flex-none">
                     {/* Link place holder */}
                     <Link href="/photo-albums" className="max-h-80 object-contain">

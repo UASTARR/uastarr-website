@@ -1,3 +1,4 @@
+import { getSponsorLogoUrl } from "@/library/firebase/storage";
 import Link from "next/link";
 
 const SponsorWithImage = ({
@@ -22,12 +23,12 @@ const SponsorWithImage = ({
     }
 }
 
-const SponsorImage = ({ imgref, link, background } : { imgref: string, link: string, background: string }) => {
+const SponsorImage = async ({ imgref, link, background } : { imgref: string, link: string, background: string }) => {
     return (
         <div className="bg-cover grow basis-1/2 flex justify-center items-center w-screen lg:w-512" style={{ backgroundImage: `url(${background})` }}>
             <div className="flex-none">
                 <Link target='_blank' href={link} rel="noopener noreferrer">
-                    <img className="flex-none w-screen px-6 lg:px-0 max-h-64 object-contain lg:w-112 fade_in" src={imgref} />
+                    <img className="flex-none w-screen px-6 lg:px-0 max-h-64 object-contain lg:w-112 fade_in" src={await getSponsorLogoUrl(imgref)} />
                 </Link>
             </div>
         </div>
