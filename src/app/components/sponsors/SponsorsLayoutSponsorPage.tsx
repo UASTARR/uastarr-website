@@ -13,11 +13,12 @@ const SponsorsLayoutSponsorPage = async () => {
     let sponsorIndex = 0;
     return (
         <div className="flex flex-col relative flex-none z-20">
-            {sponsorRanks.map((currentRank: any, index: number) => {
+            {sponsorRanks.map(async (currentRank: any, index: number) => {
                 const currentSponsors = sponsors[index];
+                const colour = await currentRank.colour;
                 return (
                     <div key={index}>
-                        <div className={`relative py-5 lg:py-10 flex justify-center items-center ${currentRank.colour}`}>
+                        <div className={`relative py-5 lg:py-10 flex justify-center items-center ${colour}`}>
                             <h1 className="text-2xl font-bold lg:text-4xl text-center text-white">
                                 {currentRank.title}
                             </h1>
