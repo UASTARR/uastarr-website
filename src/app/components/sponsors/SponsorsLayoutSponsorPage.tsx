@@ -7,15 +7,21 @@ import Image from "next/image";
 const SponsorsLayoutSponsorPage = async () => {
     const sponsorRanks = await getSponsorRanks();
     const sponsors = [] as any[];
+    const bannerColours: { [key: string]: string } = {
+        "bronze": "bg-gradient-to-r from-orange-400 to-zinc-500",
+        "silver": "bg-gradient-to-r from-gray-400 to-zinc-500",
+        "gold": "bg-gradient-to-r from-yellow-400 to-zinc-500",
+        "green": "bg-gradient-to-r from-green-500 to-zinc-500"
+    }
     for (let i = 0; i < sponsorRanks.length; i++) {
         sponsors[i] = await getSponsors(sponsorRanks[i].id);
     }
     let sponsorIndex = 0;
     return (
         <div className="flex flex-col relative flex-none z-20">
-            {sponsorRanks.map(async (currentRank: any, index: number) => {
+            {sponsorRanks.map((currentRank: any, index: number) => {
                 const currentSponsors = sponsors[index];
-                const colour = await currentRank.colour;
+                const colour = bannerColours[currentRank.colour];
                 return (
                     <div key={index}>
                         <div className={`relative py-5 lg:py-10 flex justify-center items-center ${colour}`}>
