@@ -22,22 +22,24 @@ const AboutUsPage = () => {
 
             {/* <!--Tile 1--> */}
             <div className="flex justify-center relative flex-none z-20">
-                <div className="flex overflow-hidden grow">
-                    <div className="shrink-0 grow flex justify-center overflow-hidden bg-black bg-opacity-70" >
-                        <div className="overflow-hidden flex flex-col items-center">
+                <div className="flex grow">
+                    <div className="shrink-0 grow flex justify-center bg-black bg-opacity-70" >
+                        <div className="flex flex-col items-center">
                             <div className="h-2"></div>
                             <h1 className="text-4xl text-white fade_in delay-200 text-center">About Us</h1>
                             <div className="h-3"></div>
                             <div className="w-12 h-1 bg-white rounded-xl justify-center"></div>
                             <div className="h-3"></div>
-                            <p className="w-192 text-white text-xl text-center fade_in delay-200">
+                            <p className="w-screen lg:w-192 text-white px-6 text-xl text-center fade_in delay-200 text-pretty">
                                 The Student Team for Alberta Rocketry Research (STARR) is a team of like-minded students
                                 from an array of disciplines and faculties who have come together with the common goal of
                                 expanding Alberta’s space industry through the development, testing, and launching of high
                                 altitude sounding rockets.
                             </p>
                             <div className="h-8"></div>
-                            <img src="/assets/TeamPhoto.jpeg" className="rounded-xl w-192 flex-none overflow-hidden" />
+                            <div className='flex justify-center items-center max-lg:px-6 w-screen lg:w-192'>
+                                <img src="/assets/TeamPhoto.jpeg" className="rounded-xl lg:rounded-xl w-screen lg:w-192 flex-none" />
+                            </div>
                             <div className="h-8"></div>
                         </div>
                     </div>
@@ -51,11 +53,11 @@ const AboutUsPage = () => {
                     <div className="shrink-0 grow flex justify-center overflow-hidden bg-yellow-400" >
                         <div className="overflow-hidden flex flex-col items-center">
                             <div className="h-2"></div>
-                            <h1 className="text-4xl text-black text-center">Our Mission and Vision</h1>
+                            <h1 className="w-screen px-6 text-4xl text-black text-center">Our Mission and Vision</h1>
                             <div className="h-3"></div>
                             <div className="w-12 h-1 bg-black rounded-xl justify-center"></div>
                             <div className="h-3"></div>
-                            <p className="w-192 text-lg text-center text-black">
+                            <p className="w-screen px-6 lg:w-192 text-lg text-center text-black">
                                 Our mission is to provide experience for students in developing launch vehicles and scientific
                                 payloads, educate the public through outreach activities, and promote STEM to students across Alberta.
                                 <br />
@@ -73,12 +75,12 @@ const AboutUsPage = () => {
             <div className="flex justify-center relative flex-none z-20">
                 <div className="flex overflow-hidden grow">
                     <div className="shrink-0 grow flex justify-center overflow-hidden" >
-                        <div className="overflow-hidden flex items-center">
+                        <div className="flex items-center max-lg:w-screen max-lg:px-6">
                             <div>
                                 <div className="h-12"></div>
                                 <h1 className="text-4xl text-white">Our Team</h1>
                                 <div className="h-4"></div>
-                                <p className="w-128 text-lg text-white">
+                                <p className="lg:w-128 text-lg text-white">
                                     Meet our 2022/2023 team leads. We are students from various disciplines and
                                     faculties, coming together in the name of student rocketry research!  🚀
                                     If you want to join any of our teams, contact us!
@@ -106,13 +108,13 @@ const AboutUsPage = () => {
 
             {/* <!--Album link--> */}
             <div className="flex justify-center relative flex-none z-20">
-                <div className="flex overflow-hidden grow">
-                    <div className="shrink-0 grow flex justify-center overflow-hidden" >
-                        <div className="overflow-hidden flex flex-col items-center">
+                <div className="flex grow">
+                    <div className="shrink-0 grow flex justify-center" >
+                        <div className="flex flex-col items-center max-lg:w-screen">
                             <div className="h-16"></div>
                             <h1 className="text-4xl text-white text-center">Looking for more photos?</h1>
                             <div className="h-8"></div>
-                            <p className="w-192 text-lg text-center text-white">
+                            <p className="px-6 w-screen lg:w-192 text-lg text-center text-white">
                                 Check out our photo albums to see our team and its experiences, events, and work throughout the years!
                             </p>
                             <div className="h-12"></div>
