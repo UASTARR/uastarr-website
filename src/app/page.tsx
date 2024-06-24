@@ -16,7 +16,7 @@ export default function Home() {
         <main>
             <BaseScripts />
             {/* <!--Tile 1--> */}
-            <div className="z-20 relative flex flex-nowrap h-224 flex-col bg-local bg-cover bg-left justify-between" style={firstBg}>
+            <div className="z-20 relative flex flex-nowrap h-288 lg:h-224 flex-col bg-local bg-cover bg-left justify-between" style={firstBg}>
                 <div className="h-32"></div>
                 {/* <!--Main Text--> */}
                 <div className="lg:pl-20">
