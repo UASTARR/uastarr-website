@@ -3,6 +3,8 @@ import BaseScripts from '../components/scripts/BaseScripts'
 import SponsorsLayoutSponsorPage, { SponsorPackageDesktop, SponsorPackageMobile } from '../components/sponsors/SponsorsLayoutSponsorPage'
 import Link from 'next/link'
 import { Metadata } from 'next';
+import Image from 'next/image';
+import astronautBkg from '@/public/assets/backgrounds/astronautBkg.jpeg'
 
 export const metadata: Metadata = {
     title: "Sponsors",
@@ -13,7 +15,7 @@ const SponsorsPage = () => {
         <main>
             <BaseScripts />
             <div className="fixed w-screen h-screen flex items-center">
-                <img src="/assets/backgrounds/astronautBkg.jpeg" className="object-cover min-w-full min-h-full" />
+                <Image src={astronautBkg} alt='' className="object-cover min-w-full min-h-full" />
             </div>
 
             <div className="h-96"></div>

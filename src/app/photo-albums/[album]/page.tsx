@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "Album",
 };
 
-export default async function AlbumPage(
+export default function AlbumPage(
     { params }: { params: { album: string } }
 ) {
     const album = params.album.split('%20').join(' ');

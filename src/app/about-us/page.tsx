@@ -25,7 +25,7 @@ const AboutUsPage = () => {
                 <div className="flex grow">
                     <div className="shrink-0 grow flex justify-center bg-black bg-opacity-70" >
                         <div className="flex flex-col items-center">
-                            <div className="h-2"></div>
+                            <div className="h-12"></div>
                             <h1 className="text-4xl text-white fade_in delay-200 text-center">About Us</h1>
                             <div className="h-3"></div>
                             <div className="w-12 h-1 bg-white rounded-xl justify-center"></div>
@@ -40,7 +40,7 @@ const AboutUsPage = () => {
                             <div className='flex justify-center items-center max-lg:px-6 w-screen lg:w-192'>
                                 <img src="/assets/TeamPhoto.jpeg" className="rounded-xl lg:rounded-xl w-screen lg:w-192 flex-none" />
                             </div>
-                            <div className="h-8"></div>
+                            <div className="h-12"></div>
                         </div>
                     </div>
 
@@ -52,7 +52,7 @@ const AboutUsPage = () => {
                 <div className="flex overflow-hidden grow">
                     <div className="shrink-0 grow flex justify-center overflow-hidden bg-yellow-400" >
                         <div className="overflow-hidden flex flex-col items-center">
-                            <div className="h-2"></div>
+                            <div className="h-12"></div>
                             <h1 className="w-screen px-6 text-4xl text-black text-center">Our Mission and Vision</h1>
                             <div className="h-3"></div>
                             <div className="w-12 h-1 bg-black rounded-xl justify-center"></div>
@@ -65,7 +65,7 @@ const AboutUsPage = () => {
                                 Our vision is to provide to our members the necessary experience and skills to pursue a career
                                 in the aerospace industry and strengthen Alberta's position as a leader in the Canadian aerospace community.
                             </p>
-                            <div className="h-8"></div>
+                            <div className="h-12"></div>
                         </div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@ const AboutUsPage = () => {
                     <div className="shrink-0 grow flex justify-center overflow-hidden" >
                         <div className="flex items-center max-lg:w-screen max-lg:px-6">
                             <div>
-                                <div className="h-12"></div>
+                                <div className="h-14"></div>
                                 <h1 className="text-4xl text-white">Our Team</h1>
                                 <div className="h-4"></div>
                                 <p className="lg:w-128 text-lg text-white">
@@ -85,7 +85,7 @@ const AboutUsPage = () => {
                                     faculties, coming together in the name of student rocketry research!  🚀
                                     If you want to join any of our teams, contact us!
                                 </p>
-                                <div className="h-12"></div>
+                                <div className="h-14"></div>
                             </div>
                             <div className="w-12"></div>
                             <img src="/assets/STARRVectorIconSquare.png" className="rounded-xl flex-none overflow-hidden" />

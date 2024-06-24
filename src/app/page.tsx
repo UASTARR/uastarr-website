@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import vectorIcon from "../public/assets/STARRVectorIconSquare.png";
-import elkoLogo from "../public/assets/logos/ElkoLogo.png";
+import elkoLogo from "../public/assets/logos/UofA_Elko_logo_outline_white.png";
 import launchCanadaLogo from "../public/assets/logos/LaunchCanadaLogo.png";
 import SponsorsLayoutMainPage from "./components/sponsors/SponsorsLayoutMainPage";
 import BaseScripts from "./components/scripts/BaseScripts";
@@ -22,24 +22,24 @@ export default function Home() {
                 <div className="lg:pl-20">
                     <div className="flex flex-col lg:flex-row items-center">
                         <Image className="flex-none" src={vectorIcon} alt="Vector Icon" />
-                        <h1 className="text-white text-center lg:text-left text-3xl lg:text-8xl whitespace-nowrap font-bold flow_in_left">
+                        <h1 className="text-white text-center lg:text-left text-5xl lg:text-8xl font-bold flow_in_left">
                             It's Just Rocket <br /> Science.
                         </h1>
                     </div>
-                    <p className="text-md lg:text-2xl text-white flow_in_left delay-300 text-pretty pl-6">
+                    <p className="text-lg lg:text-2xl text-white flow_in_left delay-300 text-pretty px-6">
                         Student Team for Alberta Rocketry Research, University of Alberta
                     </p>
                     {/* <!--Buttons--> */}
                     <div className="flex flex-col lg:flex-row space-x-0 lg:space-x-5 pl-5 pt-6">
                         <Link href="/about-us">
                             <button
-                                className="flow_in_left delay-700 whitespace-nowrap bg-yellow-500 hover:transition-all hover:bg-white rounded-full px-8 py-3">
+                                className="flow_in_left delay-700 whitespace-nowrap bg-yellow-500 hover:transition-all hover:bg-white rounded-full w-40 py-3">
                                 About Us
                             </button>
                         </Link>
                         <Link href="/projects" className="pt-6 lg:pt-0">
                             <button
-                                className="flow_in_left delay-1000 whitespace-nowrap text-white bg-gray-50 bg-opacity-10 hover:transition-all hover:opacity-100 hover:bg-white hover:text-black rounded-full px-16 py-3">
+                                className="flow_in_left delay-1000 whitespace-nowrap text-white bg-gray-50 bg-opacity-10 hover:transition-all hover:opacity-100 hover:bg-white hover:text-black rounded-full w-40 py-3">
                                 Our Projects
                             </button>
                         </Link>
@@ -70,7 +70,7 @@ export default function Home() {
                         <div className="flex items-center h-20">
                             <div className="bg-green-800 h-16 w-2 rounded-full"></div>
                             <p className="text-white text-xl px-3 whitespace-nowrap fade_in delay-1200">
-                                2 rockets launched
+                                3 rockets launched
                             </p>
                         </div>
                         <div></div>
@@ -94,7 +94,8 @@ export default function Home() {
 
                 </div>
                 <div className="px-6 lg:pl-20">
-                    <Image src={elkoLogo} alt="Elko Logo" />
+                    <Image className="w-80" src={elkoLogo} alt="Elko Logo" />
+                    <div className="h-6"></div>
                     <h1 className="text-pretty text-white text-bold flow_in_left py-6 w-3/4 text-2xl leading-loose lg:w-160 lg:text-4xl lg:leading-relaxed">
                         From 3D printing, to electronics, to
                         assembly, we build our rockets in
@@ -102,7 +103,7 @@ export default function Home() {
                         Engineering Garage.
                     </h1>
                     <div className="pt-3">
-                        <Link href="/about-us">
+                        <Link href="/down-for-maintenance">
                             <button
                                 className="flow_in_left delay-150 bg-yellow-500 hover:transition-all hover:bg-white rounded-full px-8 py-3">
                                 Learn more about how our rockets are made
