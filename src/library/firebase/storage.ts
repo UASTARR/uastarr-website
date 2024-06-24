@@ -27,6 +27,16 @@ export async function getAllPhotos() {
     return photos;
 }
 
+export async function getAlbumCover() {
+    const albums = await getAlbums();
+    var photos: { [key: string]: {coverPhoto: any, name: string, sub_name: string} } = {};
+    for (const album of albums) {
+        const album_dir = album.album_dir;
+        photos[album_dir] = {coverPhoto: await getUrl(['photo-albums', album.album_dir, album.coverFile].join('/')), name: album.name, sub_name: album.sub_name};
+    }
+    return photos;
+}
+
 export async function getPhotos(album_dir: string, storage = fireStorage) {
     const listRef = ref(storage, `photo-albums/${album_dir}`);
     const list = (await listAll(listRef)).items;

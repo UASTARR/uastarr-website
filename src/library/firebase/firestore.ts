@@ -93,6 +93,7 @@ export async function getAlbums(db = firestoreDb) {
             album_dir: doc.data().album_dir, // The folder name under storage
             name: doc.data().name,          // The name of the album to display
             sub_name: doc.data().sub_name,  // The sub name of the album to display
+            coverFile: doc.data().coverFile,
             ...doc.data(),
         };
     });
