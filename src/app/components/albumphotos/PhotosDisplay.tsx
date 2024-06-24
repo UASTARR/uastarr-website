@@ -14,7 +14,7 @@ const PhotoDisplay = ({ album }: { album: string }) => {
     useEffect(() => {
         const fetchPhotos = async () => {
             try {
-                const response = await fetch(`${album}/api/`);
+                const response = await fetch(`${album.split('/')[1]}/api/`);
                 if (!response.ok) throw new Error('Failed to fetch');
                 const loadedPhotos = await response.json();
                 setPhotos(loadedPhotos);
@@ -27,8 +27,8 @@ const PhotoDisplay = ({ album }: { album: string }) => {
     return (
         <div className="px-12 flex flex-wrap justify-center">
             {photos.map((photo) => (
-                <div key={photo.name} className="px-3 w-115 h-85 flex flex-col items-center justify-center relative">
-                    <Image onClick={() => openZoomedImage(photo.url)} priority className='cursor-pointer object-cover w-112 h-80' src={photo.url} alt={photo.name} width={500} height={500} />
+                <div key={photo.name} className="px-3 py-3 w-115 h-85 flex flex-col items-center justify-center relative">
+                    <Image onClick={() => openZoomedImage(photo.url)} priority className='cursor-pointer object-contain w-112 h-80' src={photo.url} alt={photo.name} width={500} height={500} />
                 </div>
             ))}
             {zoomedImage && (

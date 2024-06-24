@@ -21,7 +21,7 @@ export async function getAllPhotos() {
     const albums = await getAlbums();
     var photos: { [key: string]: {photos: any, name: string, sub_name: string} } = {};
     for (const album of albums) {
-        const album_dir = album.id;
+        const album_dir = album.album_dir;
         photos[album_dir] = {photos: await getPhotos(album_dir), name: album.name, sub_name: album.sub_name};
     }
     return photos;

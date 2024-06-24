@@ -3,9 +3,9 @@ import { getPhotos } from '@/library/firebase/storage';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { album: string } }
+  { params }: { params: { year:string,  album: string } }
 ) {
-  const album_name = params.album;
+  const album_name = [params.year, params.album].join('/');
   try {
     // Correct usage of req to access query parameters
     const photos = await getPhotos(album_name);

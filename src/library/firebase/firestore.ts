@@ -89,9 +89,24 @@ export async function getAlbums(db = firestoreDb) {
     const results = await getDocs(q);
     return results.docs.map(doc => {
         return {
-            id: doc.id,                 // The folder name under storage
-            name: doc.data().name,      // The name of the album to display
-            sub_name: doc.data().sub_name, // The sub name of the album to display
+            id: doc.id,                     // The folder name under storage
+            album_dir: doc.data().album_dir, // The folder name under storage
+            name: doc.data().name,          // The name of the album to display
+            sub_name: doc.data().sub_name,  // The sub name of the album to display
+            ...doc.data(),
+        };
+    });
+}
+
+export async function getAlbumNameFromPath(album_dir: string, db = firestoreDb) {
+    const q = query(collection(db, "albums"), where("album_dir", "==", album_dir));
+    const results = await getDocs(q);
+    return results.docs.map(doc => {
+        return {
+            id: doc.id,                     // The folder name under storage
+            album_dir: doc.data().album_dir, // The folder name under storage
+            name: doc.data().name,          // The name of the album to display
+            sub_name: doc.data().sub_name,  // The sub name of the album to display
             ...doc.data(),
         };
     });

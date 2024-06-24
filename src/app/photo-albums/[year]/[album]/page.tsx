@@ -3,15 +3,19 @@ import BaseScripts from '@/app/components/scripts/BaseScripts'
 import PhotoDisplay from '@/app/components/albumphotos/PhotosDisplay';
 
 import { Metadata } from 'next';
+import { getAlbumNameFromPath } from '@/library/firebase/firestore';
 
 export const metadata: Metadata = {
     title: "Album",
 };
 
-export default function AlbumPage(
-    { params }: { params: { album: string } }
+export default async function AlbumPage(
+    { params }: { params: { year: string, album: string } }
 ) {
-    const album = params.album.split('%20').join(' ');
+    const album = [params.year, params.album].join('/');
+    const albumInfo = (await getAlbumNameFromPath(album))[0];
+    const albumName = albumInfo.name;
+    const albumSubName = albumInfo.sub_name;
     return (
         <main>
             <BaseScripts />
@@ -22,6 +26,22 @@ export default function AlbumPage(
                 </video>
             </div>
             <div className="h-32"></div>
+
+            {/* <!--Header--> */}
+            <div className="flex justify-center relative flex-none z-20">
+                <div className="flex grow">
+                    <div className="shrink-0 grow flex items-center flex-col">
+                        <div className="h-8"></div>
+                        <h1 className="text-white text-2xl lg:text-6xl">
+                            {albumName}
+                        </h1>
+                        <div className="h-2"></div>
+                        <p className="text-white text-xl">
+                            {albumSubName}
+                        </p>
+                    </div>
+                </div>
+            </div>
 
             <div className="h-6"></div>
 
