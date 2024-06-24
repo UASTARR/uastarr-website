@@ -62,3 +62,6 @@ firebase_appId
 # References
 - [Cloud Firestore](https://firebase.google.com/docs/firestore?_gl=1*ez9530*_up*MQ..*_ga*MTgxNjkwNjgzOS4xNzE4NDM4MTQ5*_ga_CW55HF8NVT*MTcxODQzODE0OC4xLjAuMTcxODQzODE0OC4wLjAuMA..)
 - [Integrate Firebase with a Next.js app](https://firebase.google.com/codelabs/firebase-nextjs#0)
+- [Tailwind Styling (built in to next js)](https://tailwindcss.com/)
+- [Photo Zoomed in](https://medium.com/@thomasaugot/adding-zoom-functionality-to-an-image-viewer-in-react-next-js-4621be8eb770)
+- [Count Down (or copilot)](https://devpress.csdn.net/react/62eb6977648466712833a0e4.html)

@@ -41,7 +41,7 @@ const MobileNavbar = () => {
                 <Image className="w-10 h-10 invert" src={menuIcon} alt='menu' />
             </button>
             {/* Drawer */}
-            <div id="drawer" className="fixed hidden z-30 w-full h-full bg-zinc-800/90 top-0 left-0 flex-col justify-center items-center text-white">
+            <div id="drawer" className="fixed hidden z-40 w-full h-full bg-zinc-800/90 top-0 left-0 flex-col justify-center items-center text-white">
                 <div className="absolute flex top-8 right-8 bg-red-600 place-content-center">
                     <button className="text-white text-center relative w-10 h-10" onClick={drawerToggle}> X </button>
                 </div>

@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 const config: Config = {
   content: [
@@ -8,6 +9,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      dropShadow: {
+        glowPurple: [
+          "0 0px 5px rgba(193, 99, 247, 0.35)",
+          "0 0px 30px rgba(232, 197, 252, 0.2)"
+        ]
+      },
+      screens: {
+        'xs': '410px',
+        ...defaultTheme.screens,
+      },
       colors:{
         'DarkBlue': '#02060f',
       },

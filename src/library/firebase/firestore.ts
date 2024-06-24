@@ -18,10 +18,8 @@ import {
 
 import { firestoreDb } from "./clientApp";
 
-import { promises as fs } from 'fs';
-
 export async function getProjects(projectType: string, db = firestoreDb) {
-    const q = query(collection(db, "projects"), where("type", "==", projectType), orderBy("ordering"));
+    const q = query(collection(db, "projects"), where("type", "==", projectType), orderBy("ordering", "desc"));
     const results = await getDocs(q);
     return results.docs.map(doc => {
         return {
@@ -29,9 +27,12 @@ export async function getProjects(projectType: string, db = firestoreDb) {
             type: doc.data().type,
             name: doc.data().name,
             description: doc.data().description,
-            logoRef: doc.data().logoRef,
+            logosRef: doc.data().logosRef,
             ordering: doc.data().ordering,
             playlistLink: doc.data().playlistLink,
+            albumRef: doc.data().albumRef,
+            albumName: doc.data().albumName,
+            launchDate: doc.data().launchDate,
             ...doc.data(),
         };
     });
@@ -111,20 +112,6 @@ async function deleteSponsors(db = firestoreDb) {
     }
 }
 
-async function getSponsorsJson() {
-    const file = await fs.readFile(process.cwd() + '/public/assets/database/sponsors.json', 'utf-8');
-    const data = JSON.parse(file);
-    return data;
-}
-
-async function resetSponsors() {
-    await deleteSponsors()
-    const data = await getSponsorsJson();
-    for (const sponsor of data) {
-        await putSponsor([sponsor[5], sponsor[6]].join(''), {imgref: sponsor[0], link: sponsor[1], name: sponsor[2], description: sponsor[3], background: sponsor[4], rank: sponsor[5], rank_id: sponsor[6]});
-    }
-}
-
 async function putHeadshot(id: string, sponsor: any, db = firestoreDb) {
     const docRef = await setDoc(doc(db, "headshots", id), sponsor);
     // return docRef.id;
@@ -135,20 +122,6 @@ async function deleteHeadshots(db = firestoreDb) {
     const results = await getDocs(q);
     for (const document of results.docs) {
         await deleteDoc(doc(db, "headshots", document.id));
-    }
-}
-
-async function getHeadshotsJson() {
-    const file = await fs.readFile(process.cwd() + '/public/assets/database/headshots.json', 'utf-8');
-    const data = JSON.parse(file);
-    return data;
-}
-
-async function resetHeadshots() {
-    await deleteHeadshots()
-    const data = await getHeadshotsJson();
-    for (const headshot of data) {
-        await putHeadshot(headshot[0], {ordering: parseInt(headshot[0]), name: headshot[1], title: headshot[2], imgref: headshot[3]});
     }
 }
 
