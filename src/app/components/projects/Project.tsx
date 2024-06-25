@@ -10,7 +10,7 @@ function randomInt(max: number) {
 export default async function Project({
     title, playlist, logos, album, albumName, launchDate, children
 }: {
-    title: string, playlist: string, logos: string, album: string, albumName: string, launchDate: Timestamp, children: React.ReactNode
+    title: string, playlist: string, logos: string, album: string, albumName: string, launchDate: Timestamp, children: string
 }) {
     const listId = playlist ? playlist.search('list=PL') : -1
     const thePlaylist = listId > -1 ? playlist.slice(listId + 5) : playlist
@@ -34,10 +34,13 @@ export default async function Project({
                         <h1 className="pl-5 text-white text-2xl delay-200 fade_in no_check"> {title} </h1>
                     </div>
                     <div className="h-8"></div>
-                    <p className="text-white text-md delay-200 fade_in no_check text-justify lg:leading-loose ">
-                        {children}
-                    </p>
+
+                    {/* Description */}
+                    <div className="whitespace-pre-line text-white text-md delay-200 fade_in no_check text-justify leading-relaxed lg:leading-loose">
+                        {children.split('\\n').map((line, index) => <p key={index}>{line}<br /></p>)}
+                    </div>
                     <div className="h-3"></div>
+
                     {/* Logos */}
                     <div className="flex justify-center flex-row w-full flex-wrap">
                         {logoIds.map(async (logo: string, index: number) => {
@@ -54,22 +57,25 @@ export default async function Project({
                 {/* Albums */}
                 <div className="flex items-center flex-col w-full lg:w-144 lg:pl-8">
                     <div className="h-20"></div>
-                    {!launch ? (albumAllImages && (
-                        <img src={albumImage.url} />
-                    )) : (
+                    {launch ? (
                         <Countdown launchDate={launch} />
+                    ) : (albumAllImages && (
+                        <img className="rounded-lg lg:max-h-128" src={albumImage.url}/>
+                    )
                     )}
                     <div className="h-5"></div>
                     <p className="text-white text-lg font-bold delay-200 no_check fade_in text-center">
                         {albumTitle}
                     </p>
                     <div className="h-5"></div>
-                    <Link href={`/photo-albums/${album ? album : ''}`}>
-                        <button
-                            className="transition-all duration-300 whitespace-nowrap text-sm text-lime-700 bg-gray-50 hover:text-white hover:bg-black hover:drop-shadow-glowPurple rounded-full w-32 py-3">
-                            View More
-                        </button>
-                    </Link>
+                    {!launch && (
+                        <Link href={`/photo-albums/${album ? album : ''}`}>
+                            <button
+                                className="transition-all duration-300 whitespace-nowrap text-sm text-lime-700 bg-gray-50 hover:text-white hover:bg-black hover:drop-shadow-glowPurple rounded-full w-32 py-3">
+                                View More
+                            </button>
+                        </Link>
+                    )}
                 </div>
             </div>
             <div className="h-8"></div>

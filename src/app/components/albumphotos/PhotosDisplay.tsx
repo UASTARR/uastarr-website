@@ -45,7 +45,7 @@ const PhotoDisplay = ({ album }: { album: string }) => {
             )}
             {photos.map((photo) => (
                 <div key={photo.name} className="px-3 py-3 w-115 h-85 flex flex-col items-center justify-center relative">
-                    <Image onClick={() => openZoomedImage(photo.url)} priority className='cursor-pointer object-contain w-112 h-80' src={photo.url} alt={photo.name} width={500} height={500} />
+                    <Image onClick={() => openZoomedImage(photo.url)} priority className='cursor-pointer object-contain hover:object-cover hover:object-top w-112 h-80' src={photo.url} alt={photo.name} width={500} height={500} />
                 </div>
             ))}
             {zoomedImage && (

@@ -1,6 +1,7 @@
 import React from 'react'
 import BaseScripts from '@/app/components/scripts/BaseScripts'
 import PhotoDisplay from '@/app/components/albumphotos/PhotosDisplay';
+import { notFound } from 'next/navigation';
 
 import { Metadata } from 'next';
 import { getAlbumNameFromPath } from '@/library/firebase/firestore';
@@ -14,6 +15,10 @@ export default async function AlbumPage(
 ) {
     const album = [params.year, params.album].join('/');
     const albumInfo = (await getAlbumNameFromPath(album))[0];
+    if (!albumInfo) {
+        console.error('Album not found:', album);
+        return notFound();
+    }
     const albumName = albumInfo.name;
     const albumSubName = albumInfo.sub_name;
     return (
