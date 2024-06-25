@@ -8,6 +8,8 @@ export const metadata: Metadata = {
     title: "Payloads",
 };
 
+export const dynamic = 'force-dynamic';
+
 const ProjectsPage = async () => {
     const projects = await getProjects('payload')
     // console.log(projects)
