@@ -2,6 +2,7 @@ import { getPhotos, getUrl } from "@/library/firebase/storage"
 import { Timestamp } from "firebase/firestore";
 import Link from "next/link";
 import Countdown from "./Countdown";
+import Image from "next/image";
 
 function randomInt(max: number) {
     return Math.floor(Math.random() * max);
@@ -60,7 +61,7 @@ export default async function Project({
                     {launch ? (
                         <Countdown launchDate={launch} />
                     ) : (albumAllImages && (
-                        <img className="rounded-lg lg:max-h-128" src={albumImage.url}/>
+                        <Image className="rounded-lg lg:max-h-128 object-contain" priority src={albumImage.url} alt="" width={1000} height={1000}/>
                     )
                     )}
                     <div className="h-5"></div>
