@@ -47,7 +47,7 @@ export default async function Project({
                             const url = await getUrl(logo);
                             return (
                                 <div className="px-2">
-                                    <img key={index} src={url} className="w-32 h-32" />
+                                    <img key={index} src={url} className="h-32 object-contain" />
                                 </div>
                             )
                         })}
