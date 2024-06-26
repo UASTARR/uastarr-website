@@ -2,6 +2,8 @@ import { getAlbumCover, getAllPhotos } from '@/library/firebase/storage';
 import Image from 'next/image';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 const AlbumsCover = async () => {
     const photos = await getAlbumCover();
     return (
