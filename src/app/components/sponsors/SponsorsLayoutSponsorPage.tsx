@@ -125,7 +125,7 @@ const SponsorPackageDesktop = () => {
                                 </h1>
                                 <div className="h-12"></div>
                                 <p className="text-white text-base w-96">
-                                    Interested in learning more about us and our plans for Ringo II?
+                                    Interested in learning more about us and our plans for Ringo III? <br />
                                     Do you want to help support our mission? Check out our sponsorship package
                                     to see more of what we have to offer to the world of rocketry and engineering.
                                 </p>
@@ -159,7 +159,7 @@ const SponsorPackageMobile = () => {
                     </h1>
                     <div className="h-5 lg:h-10"></div>
                     <p className="text-white text-xs lg:text-lg text-center text-pretty">
-                        Interested in learning more about us and our plans for Ringo II?
+                        Interested in learning more about us and our plans for Ringo III? <br />
                         Do you want to help support our mission? Check out our sponsorship package
                         to see more of what we have to offer to the world of rocketry and engineering.
                     </p>
