@@ -96,7 +96,7 @@ const SponsorPackageDesktop = () => {
                             <div className="w-8 flex-none"></div>
 
                             <Link href={'/assets/sponsor_package/Sponsorship Package - STARR.pdf'} download={true} className="w-96 flex justify-center">
-                                <img src="/assets/sponsor_package/sponsorsCover.jpeg" style={{ width: '389px', height: '504px' }} />
+                                <img src="/assets/sponsor_package/sponsorsCover.jpg" style={{ width: '389px', height: '504px' }} />
                             </Link>
                             <div className="w-56 flex-none"></div>
 
@@ -177,7 +177,7 @@ const SponsorPackageMobile = () => {
                 <div className="flex-none">
                     {/* Link place holder */}
                     <Link href={'/assets/sponsor_package/Sponsorship Package - STARR.pdf'} download={true} className="max-h-80 object-contain">
-                        <Image className="justify-center object-contain max-h-80 w-screen" src="/assets/sponsor_package/sponsorsCover.jpeg" alt="Sponsor Package" width={389} height={504} />
+                        <Image className="justify-center object-contain max-h-80 w-screen" src="/assets/sponsor_package/sponsorsCover.jpg" alt="Sponsor Package" width={389} height={504} />
                     </Link>
                 </div>
             </div>
