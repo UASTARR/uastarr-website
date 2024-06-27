@@ -95,9 +95,9 @@ const SponsorPackageDesktop = () => {
                         <div className="flex">
                             <div className="w-8 flex-none"></div>
 
-                            <div className="w-96 flex justify-center">
-                                <img src="/assets/sponsorsCover.jpeg" style={{ width: '389px', height: '504px' }} />
-                            </div>
+                            <Link href={'/assets/sponsor_package/Sponsorship Package - STARR.pdf'} download={true} className="w-96 flex justify-center">
+                                <img src="/assets/sponsor_package/sponsorsCover.jpeg" style={{ width: '389px', height: '504px' }} />
+                            </Link>
                             <div className="w-56 flex-none"></div>
 
                         </div>
@@ -131,7 +131,7 @@ const SponsorPackageDesktop = () => {
                                 </p>
                                 <div className="h-12"></div>
                                 {/* Link place holder */}
-                                <Link href={'/photo-albums'}>
+                                <Link href={'/assets/sponsor_package/Sponsorship Package - STARR.pdf'} download={true}>
                                     <button
                                         className="whitespace-nowrap bg-yellow-500 hover:transition-all hover:bg-white rounded-full px-8 py-3">
                                         View Sponsorship Package
@@ -166,7 +166,7 @@ const SponsorPackageMobile = () => {
                 </div>
                 <div className="h-12"></div>
                 {/* Link place holder */}
-                <Link href={'/photo-albums'}>
+                <Link href={'/assets/sponsor_package/Sponsorship Package - STARR.pdf'} download={true}>
                     <button
                         className="bg-yellow-500 hover:transition-all hover:bg-white rounded-full px-8 py-3">
                         View Sponsorship Package
@@ -176,8 +176,8 @@ const SponsorPackageMobile = () => {
             <div className="bg-cover flex relative justify-center items-center w-screen py-6" style={{ backgroundImage: `url(${PackageBackground.src})` }}>
                 <div className="flex-none">
                     {/* Link place holder */}
-                    <Link href="/photo-albums" className="max-h-80 object-contain">
-                        <Image className="justify-center object-contain max-h-80 w-screen" src="/assets/sponsorsCover.jpeg" alt="Sponsor Package" width={389} height={504} />
+                    <Link href={'/assets/sponsor_package/Sponsorship Package - STARR.pdf'} download={true} className="max-h-80 object-contain">
+                        <Image className="justify-center object-contain max-h-80 w-screen" src="/assets/sponsor_package/sponsorsCover.jpeg" alt="Sponsor Package" width={389} height={504} />
                     </Link>
                 </div>
             </div>
