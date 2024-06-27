@@ -86,7 +86,7 @@ export default function Home() {
             </div>
 
             {/* <!--Tile 2--> */}
-            <div className="z-10 relative flex flex-nowrap h-256 flex-col bg-emerald-900 bg-opacity-10 bg-local bg-cover bg-[center-10rem] justify-between">
+            <div className="z-10 relative flex flex-nowrap h-192 flex-col bg-emerald-900 bg-opacity-10 bg-local bg-cover bg-[center-10rem] justify-between">
                 <div className="flex pl-3 lg:pl-20 overflow-hidden">
                     <h1 className="flow_in_top px-3 py-3 bg-white rounded-b-2xl text-xl font-bold basis w-72">
                         How we do it
@@ -103,12 +103,12 @@ export default function Home() {
                         Engineering Garage.
                     </h1>
                     <div className="pt-3">
-                        <Link href="/down-for-maintenance">
+                        {/* <Link href="/down-for-maintenance">
                             <button
                                 className="flow_in_left delay-150 bg-yellow-500 hover:transition-all hover:bg-white rounded-full px-8 py-3">
                                 Learn more about how our rockets are made
                             </button>
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
                 <div className="basis-1/4"></div>
