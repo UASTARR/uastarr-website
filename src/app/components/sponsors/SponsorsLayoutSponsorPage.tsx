@@ -121,7 +121,7 @@ const SponsorPackageDesktop = () => {
                             <div>
                                 <div className="h-12"></div>
                                 <h1 className="text-white text-6xl w-96">
-                                    Sponsorship Package 2022/2023
+                                    Sponsorship Package 2023/2024
                                 </h1>
                                 <div className="h-12"></div>
                                 <p className="text-white text-base w-96">
@@ -155,7 +155,7 @@ const SponsorPackageMobile = () => {
             <div className="bg-gradient-to-b from-cyan-950 to-black grow min-w-fit flex flex-col justify-center items-center z-20 relative py-6 min-h-80">
                 <div className="w-screen lg:w-128 px-6 lg:px-0">
                     <h1 className="text-white text-2xl lg:text-4xl text-center">
-                        Sponsorship Package 2022/2023
+                        Sponsorship Package 2023/2024
                     </h1>
                     <div className="h-5 lg:h-10"></div>
                     <p className="text-white text-xs lg:text-lg text-center text-pretty">
