@@ -85,7 +85,7 @@ export async function getSponsors(rank: string, db = firestoreDb) {
 }
 
 export async function getAlbums(db = firestoreDb) {
-    const q = query(collection(db, "albums"), orderBy("ordering"));
+    const q = query(collection(db, "albums"), orderBy("ordering", "desc"));
     const results = await getDocs(q);
     return results.docs.map(doc => {
         return {
