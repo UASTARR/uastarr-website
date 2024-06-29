@@ -5,7 +5,7 @@ import Loading from './Loading';
 
 const PhotoDisplay = ({ album }: { album: string }) => {
     const [loadState, setLoadState] = useState<'loading' | 'loaded' | 'error'>('loading');
-    const [photos, setPhotos] = useState<{ name: string; url: string; }[]>([]);
+    const [photos, setPhotos] = useState<{ name: string; url: string; type: string}[]>([]);
     const [zoomedImage, setZoomedImage] = useState<string | null>(null);
     const openZoomedImage = (imageUrl: string) => {
         setZoomedImage(imageUrl);
@@ -44,9 +44,15 @@ const PhotoDisplay = ({ album }: { album: string }) => {
                 </div>
             )}
             {photos.map((photo) => (
-                <div key={photo.name} className="px-3 py-3 w-115 h-85 flex flex-col items-center justify-center relative">
-                    <Image onClick={() => openZoomedImage(photo.url)} priority className='cursor-pointer object-contain hover:object-cover hover:object-top w-112 h-80' src={photo.url} alt={photo.name} width={500} height={500} />
-                </div>
+                photo.type.includes('video') ? (
+                    <div key={photo.name} className="px-3 py-3 w-115 h-85 flex flex-col items-center justify-center relative">
+                        <video className='cursor-pointer object-contain w-112 h-80' src={photo.url} controls />
+                    </div>
+                ) : (
+                    <div key={photo.name} className="px-3 py-3 w-115 h-85 flex flex-col items-center justify-center relative">
+                        <Image onClick={() => openZoomedImage(photo.url)} priority className='cursor-pointer object-contain hover:object-cover hover:object-top w-112 h-80' src={photo.url} alt={photo.name} width={500} height={500} />
+                    </div>
+                )
             ))}
             {zoomedImage && (
                 <div className="fixed top-0 left-0 w-full h-full bg-black/90 flex justify-center items-center z-[1000] cursor-pointer" onClick={closeZoomedImage}>

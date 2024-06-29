@@ -11,15 +11,16 @@ function randomInt(max: number) {
 export default async function Project({
     title, playlist, logos, album, albumName, launchDate, children
 }: {
-    title: string, playlist: string, logos: string, album: string, albumName: string, launchDate: Timestamp, children: string
+    title: string, playlist: string, logos: string, album: string | undefined, albumName: string, launchDate: Timestamp, children: string
 }) {
     const listId = playlist ? playlist.search('list=PL') : -1
     const thePlaylist = listId > -1 ? playlist.slice(listId + 5) : playlist
     const logoIds = logos ? logos.split(',') : []
 
     const albumAllImages = album ? await getPhotos(album) : []
-    const albumImage = albumAllImages.length ? albumAllImages[randomInt(albumAllImages.length)] : { url: '/assets/placeholder_album.jpeg' }
+    const albumImage = albumAllImages.length !== 0 ? albumAllImages[randomInt(albumAllImages.length)] : ({ url: '/assets/placeholder_album.jpeg' })
     const albumTitle = albumName ? albumName : ''
+    const albumIsVideo = albumAllImages.length ? (albumImage as { name: string; url: string; type: string | void | undefined; }).type?.includes("video") : false
 
     const now = new Date().getTime();
     const difference = launchDate ? launchDate.toDate().getTime() - now : 0;
@@ -44,8 +45,8 @@ export default async function Project({
 
                     {/* Logos */}
                     <div className="flex justify-center flex-row w-full flex-wrap">
-                        {logoIds.map(async (logo: string, index: number) => {
-                            const url = await getUrl(logo);
+                        {logoIds && logoIds.map(async (logo: string, index: number) => {
+                            const url = (await getUrl(logo)).string;
                             return (
                                 <div className="px-2">
                                     <img key={index} src={url} className="h-32 object-contain" />
@@ -60,8 +61,15 @@ export default async function Project({
                     <div className="h-20"></div>
                     {launch ? (
                         <Countdown launchDate={launch} />
-                    ) : (albumAllImages && (
-                        <Image className="rounded-lg lg:max-h-128 object-contain" priority src={albumImage.url} alt="" width={1000} height={1000}/>
+                    ) : (albumImage && (
+                        albumIsVideo ? (
+                            <video className="rounded-lg lg:max-h-128 object-contain" controls>
+                                <source src={albumImage.url} type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        ) : (
+                            <Image className="rounded-lg lg:max-h-128 object-contain" priority src={albumImage.url} alt="" width={1000} height={1000}/>
+                        )
                     )
                     )}
                     <div className="h-5"></div>

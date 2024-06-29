@@ -2,14 +2,22 @@ import {
     listAll,
     ref,
     getDownloadURL,
+    getMetadata,
 
 } from "firebase/storage";
 import { fireStorage } from "./clientApp";
 import { getAlbums } from "./firestore";
 
-export async function getUrl(filepath: string, storage = fireStorage): Promise<string> {
+export async function getUrl(filepath: string, storage = fireStorage): Promise<{ string: string; type: string | undefined | void }> {
     const fileRef = ref(storage, filepath);
-    return getDownloadURL(fileRef);
+    let url = {string: "", type: ("" as string | undefined | void)};
+    url.string = await getDownloadURL(fileRef);
+    url.type = await getMetadata(fileRef).then((metadata) => {
+        return metadata.contentType;
+    }).catch((error) => {
+        console.log(error);
+    });
+    return url;
 }
 
 export async function getSponsorLogoUrl(sponsor: string, storage = fireStorage) {
@@ -32,7 +40,7 @@ export async function getAlbumCover() {
     var photos: { [key: string]: {coverPhoto: any, name: string, sub_name: string} } = {};
     for (const album of albums) {
         const album_dir = album.album_dir;
-        photos[album_dir] = {coverPhoto: await getUrl(['photo-albums', album.album_dir, album.coverFile].join('/')), name: album.name, sub_name: album.sub_name};
+        photos[album_dir] = {coverPhoto: (await getUrl(['photo-albums', album.album_dir, album.coverFile].join('/'))).string, name: album.name, sub_name: album.sub_name};
     }
     return photos;
 }
@@ -41,15 +49,11 @@ export async function getPhotos(album_dir: string, storage = fireStorage) {
     const listRef = ref(storage, `photo-albums/${album_dir}`);
     const list = (await listAll(listRef)).items;
     return await Promise.all(list.map(async (photo) => {
-        const photoUrl = await getPhotoUrl(album_dir, photo.name);
+        const photoUrl = await getUrl(["photo-albums", album_dir, photo.name].join("/"));
         return ({
             name: photo.name,
-            url: photoUrl
+            url: photoUrl.string,
+            type: photoUrl.type
         });
     }));
-}
-
-async function getPhotoUrl(album: string, photo: string, storage = fireStorage) {
-    const photoRef = ref(storage, `photo-albums/${album}/${photo}`);
-    return getDownloadURL(photoRef);
 }
