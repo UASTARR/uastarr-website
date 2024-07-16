@@ -1,4 +1,4 @@
-import { getAlbumCover, getAllPhotos } from '@/library/firebase/storage';
+import { getAlbumCover } from '@/library/firebase/storage';
 import Image from 'next/image';
 import Link from 'next/link';
 

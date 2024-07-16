@@ -16,6 +16,7 @@ export async function getUrl(filepath: string, storage = fireStorage): Promise<{
         return metadata.contentType;
     }).catch((error) => {
         console.log(error);
+        return undefined;
     });
     return url;
 }

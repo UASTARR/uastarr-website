@@ -31,6 +31,7 @@ export async function getProjects(projectType: string, db = firestoreDb) {
             ordering: doc.data().ordering,
             playlistLink: doc.data().playlistLink,
             albumRef: doc.data().albumRef,
+            coverFile: doc.data().coverFile,
             albumName: doc.data().albumName,
             launchDate: doc.data().launchDate,
             ...doc.data(),

@@ -1,26 +1,21 @@
-import { getPhotos, getUrl } from "@/library/firebase/storage"
+import { getUrl } from "@/library/firebase/storage"
 import { Timestamp } from "firebase/firestore";
 import Link from "next/link";
 import Countdown from "./Countdown";
 import Image from "next/image";
 
-function randomInt(max: number) {
-    return Math.floor(Math.random() * max);
-}
-
 export default async function Project({
-    title, playlist, logos, album, albumName, launchDate, children
+    title, playlist, logos, album, albumName, launchDate, children, albumUrl
 }: {
-    title: string, playlist: string, logos: string, album: string | undefined, albumName: string, launchDate: Timestamp, children: string
+    title: string, playlist: string, logos: string, album: string | undefined, albumName: string, launchDate: Timestamp, children: string, albumUrl: string | undefined
 }) {
     const listId = playlist ? playlist.search('list=PL') : -1
     const thePlaylist = listId > -1 ? playlist.slice(listId + 5) : playlist
     const logoIds = logos ? logos.split(',') : []
 
-    const albumAllImages = album ? await getPhotos(album) : []
-    const albumImage = albumAllImages.length !== 0 ? albumAllImages[randomInt(albumAllImages.length)] : ({ url: '/assets/placeholder_album.jpeg' })
+    const albumImage = albumUrl ? ({ url: albumUrl}) : ({ url: '/assets/placeholder_album.jpeg' })
     const albumTitle = albumName ? albumName : ''
-    const albumIsVideo = albumAllImages.length ? (albumImage as { name: string; url: string; type: string | void | undefined; }).type?.includes("video") : false
+    // const albumIsVideo = albumAllImages.length ? (albumImage as { name: string; url: string; type: string | void | undefined; }).type?.includes("video") : false
 
     const now = new Date().getTime();
     const difference = launchDate ? launchDate.toDate().getTime() - now : 0;
@@ -61,16 +56,8 @@ export default async function Project({
                     <div className="h-20"></div>
                     {launch ? (
                         <Countdown launchDate={launch} />
-                    ) : (albumImage && (
-                        albumIsVideo ? (
-                            <video className="rounded-lg lg:max-h-128 object-contain" controls>
-                                <source src={albumImage.url} type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-                        ) : (
-                            <Image className="rounded-lg lg:max-h-128 object-contain" priority src={albumImage.url} alt="" width={1000} height={1000}/>
-                        )
-                    )
+                    ) : (
+                        <Image className="rounded-lg lg:max-h-128 object-contain" priority src={albumImage.url} alt="" width={1000} height={1000}/>
                     )}
                     <div className="h-5"></div>
                     <p className="text-white text-lg font-bold delay-200 no_check fade_in text-center">
