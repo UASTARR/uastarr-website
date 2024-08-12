@@ -4,7 +4,6 @@ import AlbumsCover from '../components/albumphotos/AlbumsCover'
 
 import { Metadata } from 'next';
 
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
     title: "Photo Albums",
