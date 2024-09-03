@@ -228,7 +228,7 @@ export default function Home() {
                             logo={{ src: launchCanadaLogo, alt: "Launch Canada Logo" }}
                             description="Launch Canada is a rocket competition designed to create
                             opportunities for amateur rocketeers from Canadian
-                            universities. We plan to launch Ringo V-B and Ringo IV"
+                            universities. We plan to launch Ringo V-B and Ringo IV."
                         />
                     </div>
                     <div className="w-20 h-20 shrink-0"></div>
@@ -240,7 +240,7 @@ export default function Home() {
                             logo={{ src: spacePortLogo, alt: "Space Port Logo" }}
                             description="The Spaceport America Cup is the world's largest
                             IREC - Intercollegiate Rocket Engineering Competition
-                            for student rocketry teams. We plan to launch Ringo V-A"
+                            for student rocketry teams. We plan to launch Ringo V-A."
                         />
                     </div>
 
