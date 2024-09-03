@@ -1,7 +1,7 @@
 import React from 'react'
 import BaseScripts from '@/app/components/scripts/BaseScripts'
 import PhotoDisplay from '@/app/components/albumphotos/PhotosDisplay';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 
 import { Metadata } from 'next';
 import { getAlbumNameFromPath } from '@/library/firebase/firestore';
@@ -13,6 +13,8 @@ export const metadata: Metadata = {
 export default async function AlbumPage(
     { params }: { params: { year: string, album: string } }
 ) {
+    // TODO: Convert from firebase to google drive api and remove redirect
+    redirect('/down-for-maintenance')
     const album = [params.year, params.album].join('/');
     const albumInfo = (await getAlbumNameFromPath(album))[0];
     if (!albumInfo) {

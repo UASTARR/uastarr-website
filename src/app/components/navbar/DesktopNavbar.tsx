@@ -75,7 +75,7 @@ const DesktopNavbar = () => {
             </div>
             {/* Join Now Button */}
             <div className="inline-block pl-5">
-                <Link href="/contact">
+                <Link target="_blank" href="https://forms.gle/rjTRr46NLjMoaXFMA" rel="noopener noreferrer">
                     <button className="text-white whitespace-nowrap bg-green-700 hover:transition-all duration-200 hover:bg-white hover:text-black rounded-full px-6 py-3">Join Now</button>
                 </Link>
             </div>

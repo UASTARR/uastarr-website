@@ -26,11 +26,11 @@ const AboutUsPage = () => {
                     <div className="shrink-0 grow flex justify-center bg-black bg-opacity-70" >
                         <div className="flex flex-col items-center">
                             <div className="h-12"></div>
-                            <h1 className="text-4xl text-white fade_in delay-200 text-center">About Us</h1>
+                            <h1 className="text-5xl text-white fade_in delay-200 text-center">About Us</h1>
                             <div className="h-3"></div>
                             <div className="w-12 h-1 bg-white rounded-xl justify-center"></div>
                             <div className="h-3"></div>
-                            <p className="w-screen lg:w-192 text-white px-6 text-xl text-center fade_in delay-200 text-pretty">
+                            <p className="w-screen lg:w-192 text-white px-6 text-center fade_in delay-200 text-pretty leading-8">
                                 The Student Team for Alberta Rocketry Research (STARR) is a team of like-minded students
                                 from an array of disciplines and faculties who have come together with the common goal of
                                 expanding Alberta’s space industry through the development, testing, and launching of high
@@ -57,7 +57,7 @@ const AboutUsPage = () => {
                             <div className="h-3"></div>
                             <div className="w-12 h-1 bg-black rounded-xl justify-center"></div>
                             <div className="h-3"></div>
-                            <p className="w-screen px-6 lg:w-192 text-lg text-center text-black">
+                            <p className="w-screen px-6 lg:w-192 text-center text-black leading-8">
                                 Our mission is to provide experience for students in developing launch vehicles and scientific
                                 payloads, educate the public through outreach activities, and promote STEM to students across Alberta.
                                 <br />
@@ -80,10 +80,10 @@ const AboutUsPage = () => {
                                 <div className="h-14"></div>
                                 <h1 className="text-4xl text-white">Our Team</h1>
                                 <div className="h-4"></div>
-                                <p className="lg:w-128 text-lg text-white">
-                                    Meet our 2022/2023 team leads. We are students from various disciplines and
+                                <p className="lg:w-128 text-white leading-8">
+                                    Meet our 2024/2025 executives and team leads. We are students from various disciplines and
                                     faculties, coming together in the name of student rocketry research!  🚀
-                                    If you want to join any of our teams, contact us!
+                                    If you want to join any of our teams, click the join now button!
                                 </p>
                                 <div className="h-14"></div>
                             </div>

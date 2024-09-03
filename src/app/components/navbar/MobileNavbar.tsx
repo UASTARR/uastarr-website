@@ -50,6 +50,9 @@ const MobileNavbar = () => {
                 <NavButton page="/about-us">About Us</NavButton>
                 <NavButton page="/sponsors">Sponsors</NavButton>
                 <NavButton page="/photo-albums">Photo Albums</NavButton>
+                <button className="hover:text-yellow-300 whitespace-nowrap text-4xl py-3" onClick={drawerToggle}>
+                    <Link target="_blank" href="https://forms.gle/rjTRr46NLjMoaXFMA" rel="noopener noreferrer">Join Us!</Link>
+                </button>
                 <NavButton page="/contact">Contact</NavButton>
             </div>
         </div>

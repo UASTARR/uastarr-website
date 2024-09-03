@@ -5,12 +5,15 @@ import ContactPageCSS from '@/app/components/scripts/ContactPageCSS'
 import { addResponse } from '@/library/google/api.js'
 
 import { Metadata } from 'next';
+import { redirect } from 'next/navigation'
 
 export const metadata: Metadata = {
     title: "Contact Us",
 };
 
 const ContactPage = () => {
+    // TODO: Add recaptcha and remove redirect
+    redirect('/down-for-maintenance')
     async function submitForm(formData: FormData) {
         'use server'
 

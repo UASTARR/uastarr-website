@@ -3,6 +3,7 @@ import BaseScripts from '@/app/components/scripts/BaseScripts'
 import AlbumsCover from '../components/albumphotos/AlbumsCover'
 
 import { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 
 
 export const metadata: Metadata = {
@@ -10,6 +11,8 @@ export const metadata: Metadata = {
 };
 
 const PhotoAlbumsPage = async () => {
+    // TODO: Convert from firebase to google drive api and remove redirect
+    redirect('/down-for-maintenance')
     return (
         <main>
             <BaseScripts />

@@ -4,7 +4,7 @@
 3. [Create .env file](#create-dotenv-file)
 4. `npm run dev` Start server
 5. Open the link on terminal (usually is localhost)
-> **Note**  
+> [!NOTE]  
 > We are using ES Modules not CommonJS modules
 
 ## Directory
