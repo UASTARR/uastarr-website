@@ -126,7 +126,8 @@ export default function FAQ() {
                         <p className ="text-white text-pretty py-3 px-3">
                             We build our rockets in house at the University of Alberta's Elko Engineering Garage. Head to the Rocket Specs page for more details.
                         </p>
-                        <video className="w-80 h-80 lg:w-96 lg:h-96" autoPlay muted loop>
+                        {/* <video className="w-80 h-80 lg:w-96 lg:h-96" autoPlay muted loop> */}
+                        <video className="w-80 h-80 lg:w-96 lg:h-96" muted loop>
                             <source src="/assets/simpson.mp4" type="video/mp4" />
                         </video>
                     </div>
