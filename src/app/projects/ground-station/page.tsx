@@ -18,7 +18,7 @@ const ProjectsPage = async () => {
         <main>
             <BaseScripts />
             {/* <!--Background Video--> */}
-            <div className="fixed top-0 justify-center w-screen h-screen">
+            <div className="fixed top-0 justify-center w-screen h-screen z-0">
                 <video autoPlay muted loop className="object-cover min-w-full min-h-full">
                     <source src="/assets/backgrounds/RipplingBkg.mp4" type="video/mp4" />
                 </video>
