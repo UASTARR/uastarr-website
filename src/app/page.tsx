@@ -92,7 +92,7 @@ export default function Home() {
 
             {/* <!--Tile 2 Background Video--> */}
             <div className="fixed top-0 justify-center w-screen h-screen brightness-50">
-                <video autoPlay muted loop className="object-cover min-w-full min-h-full">
+                <video autoPlay muted loop className="object-cover min-w-full min-h-full playsInline">
                     <source src="/assets/backgrounds/3dPrinting.mp4" type="video/mp4" />
                 </video>
             </div>
