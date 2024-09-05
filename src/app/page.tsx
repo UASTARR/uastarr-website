@@ -84,7 +84,7 @@ export default function Home() {
                 <div className="lg:pl-20">
                     <div className="flex flex-col lg:flex-row items-center">
                         <h1 className="text-black text-center lg:text-left text-3xl lg:text-5xl font-bold flow_in_left">
-                            AGM (Annual General Meeting) is comming up end of September!
+                            AGM (Annual General Meeting) is coming up end of September!
                         </h1>
                     </div>
                 </div>
