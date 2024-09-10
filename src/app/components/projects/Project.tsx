@@ -13,7 +13,7 @@ export default async function Project({
     const thePlaylist = listId > -1 ? playlist.slice(listId + 5) : playlist
     const logoIds = logos ? logos.split(',') : []
 
-    const albumImage = albumUrl ? ({ url: albumUrl}) : ({ url: '/assets/placeholder_album.jpeg' })
+    const albumImage = albumUrl ? ({ url: albumUrl}) : ({ url: '/assets/logos/logo.png' })
     const albumTitle = albumName ? albumName : ''
     // const albumIsVideo = albumAllImages.length ? (albumImage as { name: string; url: string; type: string | void | undefined; }).type?.includes("video") : false
 
