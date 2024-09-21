@@ -81,10 +81,13 @@ export default function Home() {
             {/* <!-- AGM Banner --> */}
             <div className="z-20 relative flex flex-nowrap py-6 flex-col bg-local bg-cover bg-left justify-between bg-yellow-500">
                 {/* <!--Main Text--> */}
-                <div className="lg:pl-20">
-                    <div className="flex flex-col lg:flex-row items-center">
-                        <h1 className="text-black text-center lg:text-left text-3xl lg:text-5xl font-bold flow_in_left">
-                            AGM (Annual General Meeting) is coming up end of September!
+                <div className="px-5 lg:px-20">
+                    <div className="flex flex-col lg:flex-col items-center">
+                        <h1 className="text-black text-center text-3xl lg:text-5xl font-bold flow_in_left">
+                            AGM (Annual General Meeting)
+                        </h1>
+                        <h1 className="text-black text-center text-3xl lg:text-5xl flow_in_left">
+                            September 26th at 6 PM in CCIS L1-140!<br/> or <Link className="text-blue-600 hover:text-blue-800 underline" target="_blank" href="meet.google.com/wsv-jpxa-kxe" rel="noopener noreferrer">Online</Link> <br/> Join us to learn more about STARR and how you can get involved!
                         </h1>
                     </div>
                 </div>
