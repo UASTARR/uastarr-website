@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import $ from 'jquery';
 import Image from 'next/image';
+import Link from "next/link";
 
 export default function FAQ() {
     const [hidden1, setHidden1] = useState(true);
@@ -78,14 +79,11 @@ export default function FAQ() {
                 </button> 
 
                 <div id = "hidden1" className ="hidden">
-                    <p className ="text-white text-pretty py-3 px-3">
-                        Leave us a message through our contact page, and tell us:<br />
-                        - What's your name?<br />
-                        - What program are you in?<br />
-                        - What year are you in?<br />
-                        - Why do you want to join STARR?<br />
-                        We'll get back to you as soon as possible! 🚀
-                    </p>
+                    <div  className="pb-5">
+                        <Link target="_blank" href="/join" rel="noopener noreferrer">
+                            <button className="text-white whitespace-nowrap bg-green-700 hover:transition-all duration-200 hover:bg-white hover:text-black rounded-full px-6 py-3">Click Here</button>
+                        </Link>
+                    </div>
                 </div>
                 <hr className="brightness-50 opacity-70 max-lg:w-1/2" />
             </div>
