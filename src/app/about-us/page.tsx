@@ -3,6 +3,7 @@ import React from 'react'
 import BaseScripts from '../components/scripts/BaseScripts';
 import Headshots from '../components/headshots/Headshots';
 import { Metadata } from 'next';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
     title: "About Us",
@@ -39,7 +40,7 @@ const AboutUsPage = () => {
                             </p>
                             <div className="h-8"></div>
                             <div className='flex justify-center items-center max-lg:px-6 w-screen lg:w-192'>
-                                <img src="/assets/TeamPhoto.jpg" className="rounded-xl lg:rounded-xl w-screen lg:w-192 flex-none" />
+                                <Image src="/assets/TeamPhoto.jpg" className="rounded-xl lg:rounded-xl w-screen lg:w-192 flex-none" alt="team photo"/>
                             </div>
                             <div className="h-12"></div>
                         </div>

@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+export default {
     images: {
         remotePatterns: [
             {
@@ -16,4 +16,13 @@ const nextConfig = {
     },
 };
 
-export default nextConfig;
+export async function redirects() {
+    return [
+        {
+            source: '/join',
+            destination: 'https://forms.gle/rjTRr46NLjMoaXFMA',
+            permanent: true,
+        },
+    ]
+}
+
