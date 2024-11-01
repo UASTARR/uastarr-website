@@ -13,10 +13,9 @@ export const metadata: Metadata = {
 
 const ContactPage = () => {
     // TODO: Add recaptcha and remove redirect
-    redirect('/down-for-maintenance')
+    //redirect('/down-for-maintenance')
     async function submitForm(formData: FormData) {
         'use server'
-
         const data = {
             firstName: formData.get('firstname'),
             lastName: formData.get('lastname'),
@@ -25,17 +24,24 @@ const ContactPage = () => {
             know: formData.get('know'),
             subscribe: formData.get('subscribe'),
             message: formData.get('message'),
+            
         }
         
-        const dataArray = Object.values(data)
-
-        // TODO: Transition page
-        if (await addResponse(dataArray)) {
-            console.log("Message sent successfully!");
-        } else {
-            console.log("An error occurred. Please try again later.");
+        const dataArray = Object.values(data) 
+        const captchaResponse= formData.get('g-recaptcha-response') //Used to check if recaptcha was attempted or not.
+        //IMPORTANT: Still need to add some verification using secret key to check if the g-captcha-response was not edited via scripts.
+        if (String(captchaResponse).length == 0){
+            throw new Error("Captcha failed")
         }
-        console.log(data)
+        // TODO: Transition page
+        //if (await addResponse(dataArray)) {
+            //console.log("Message sent successfully!");
+        //} else {
+            //console.log("An error occurred. Please try again later.");
+        //}
+        else{
+            console.log(data)
+        }
     }
     return (
         <main>
@@ -97,13 +103,9 @@ const ContactPage = () => {
                         <div className="center-align">
                             <input type="checkbox" id="subscribe" name="subscribe" value="newsletter" />
                             <label htmlFor="subscribe"> Subscribe to the STARR newsletter</label><br />
-
-                            <div className="g-recaptcha grecaptcha" data-sitekey="6Leo32UpAAAAAJmvvWFtlNfapVA2bn_qxHIbO77J"></div>
-
+                            <div className="g-recaptcha" data-sitekey="6Lfo_HAqAAAAAJcPuy-kssLrQTa5K6BhRfqDAVZT"></div>
                             <input style={{ marginTop: "10px" }} type="submit" value="Submit" />
-
                         </div>
-
                     </form>
                 </div>
             </div>
