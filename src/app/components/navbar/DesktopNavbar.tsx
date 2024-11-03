@@ -62,6 +62,7 @@ const DesktopNavbar = () => {
                     </div>
                     <Link className="hover:text-yellow-300 text-white whitespace-nowrap" href="/about-us">About Us</Link>
                     <Link className="hover:text-yellow-300 text-white" href="/sponsors">Sponsors</Link>
+                    <Link className="hover:text-yellow-300 text-white" href="/merch">Merch</Link>
                     <div className="flex justify-center">
                         <a className="popup hover:text-yellow-300 text-white cursor-default" onMouseOver={() => showPopup()} onMouseOut={() => delayedHidePopup()} >More</a>
                         <div className="absolute justify-items-center hidden translate-y-[45px]" id="popup" onMouseOver={() => delayHidePopup()} onMouseOut={() => delayedHidePopup()}>
