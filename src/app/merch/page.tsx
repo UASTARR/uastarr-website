@@ -34,8 +34,8 @@ const MerchPage = async () => {
             {/* Content Section */}
             <div className="flex justify-center relative z-20">
                 <div className="w-32 grow-0 overflow-hidden"></div>
-                <div className="bg-black bg-opacity-70 grow-0 rounded-lg">
-                    <div className="h-10"></div>
+                <div className="bg-black bg-opacity-70 grow-0">
+                    <div className="h-11"></div>
 
                     <div className="flex flex-wrap justify-center">
                         {merchItems.map((item, index) => (
@@ -50,7 +50,7 @@ const MerchPage = async () => {
                                         height={300}
                                     />
                                 </Link>
-                                <div className="mt-2 w-56 py-3 px-3 place-content-center">
+                                <div className="mt-2 w-56 py-1 px-3 place-content-center">
                                     <p className="text-white text-2xl text-center align-middle">{item.name}</p>
                                 </div>
                                 <p className="text-white text-lg text-center">${item.price}</p>
@@ -58,7 +58,7 @@ const MerchPage = async () => {
                         ))}
                     </div>
 
-                    <div className="h-7"></div>
+                    <div className="h-4"></div>
                 </div>
                 <div className="w-32 grow-0 overflow-hidden"></div>
             </div>

@@ -30,7 +30,7 @@ const MerchDetailPage = async ({ params }: MerchDetailPageProps) => {
 
         {/* Content Section */}
         <div className="flex justify-center relative z-20 fade_in no_check">
-          <div className="w-full max-w-screen-lg bg-black bg-opacity-70 p-10 rounded-lg">
+          <div className="w-full max-w-screen-lg bg-black bg-opacity-70 p-10">
             <MerchItem
               name={merchItem.name}
               description={merchItem.description}
@@ -40,7 +40,7 @@ const MerchDetailPage = async ({ params }: MerchDetailPageProps) => {
           </div>
         </div>
 
-        <div className="h-20"></div>
+        <div className="h-16"></div>
       </main>
     );
   } catch (error) {
