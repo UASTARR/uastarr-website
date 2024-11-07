@@ -114,6 +114,35 @@ export async function getAlbumNameFromPath(album_dir: string, db = firestoreDb) 
     });
 }
 
+export async function getMerchItems(db = firestoreDb) {
+    const q = query(collection(db, "merch"), orderBy("name"));
+    const results = await getDocs(q);
+    return results.docs.map(doc => ({
+        id: doc.id,
+        name: doc.data().name,
+        description: doc.data().description,
+        price: doc.data().price,
+        imgref: doc.data().image,
+        ...doc.data(),
+    }));
+}
+
+export async function getMerchItemById(id: string, db = firestoreDb) {
+    const docRef = doc(db, "merch", id);
+    const docSnap = await getDoc(docRef);
+    if (!docSnap.exists()) {
+        throw new Error("Merch item not found");
+    }
+    return {
+        id: docSnap.id,
+        name: docSnap.data().name,
+        description: docSnap.data().description,
+        price: docSnap.data().price,
+        imgref: docSnap.data().image,
+        ...docSnap.data(),
+    };
+}
+
 // The following function is used to update the sponsors collection in Firestore
 
 async function putSponsor(id: string, sponsor: any, db = firestoreDb) {
