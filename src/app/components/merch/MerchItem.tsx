@@ -23,7 +23,7 @@ export default function MerchItem({
                     alt={name}
                     width={400}
                     height={400}
-                    className="w-full h-full object-cover rounded-lg"
+                    className="w-full h-full object-contain rounded-lg"
                 />
             </div>
 

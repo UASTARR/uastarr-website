@@ -39,7 +39,7 @@ const MerchPage = async () => {
 
                     <div className="flex flex-wrap justify-center">
                         {merchItems.map((item, index) => (
-                            <div key={item.id} className={`w-80 lg:w-96 h-112 flex flex-col items-center justify-center relative fade_in no_check delay-${(index * 3) * 100}`}>
+                            <div key={item.id} className={`w-80 lg:w-96 h-{150} flex flex-col items-center justify-center relative fade_in no_check delay-${(index * 3) * 100}`}>
                                 <Link href={`/merch/${item.id}`}>
                                     <Image
                                         priority
@@ -53,7 +53,7 @@ const MerchPage = async () => {
                                 <div className="mt-2 w-56 py-1 px-3 place-content-center">
                                     <p className="text-white text-2xl text-center align-middle">{item.name}</p>
                                 </div>
-                                <p className="text-white text-lg text-center">${item.price}</p>
+                                <p className="pb-2 text-white text-lg text-center">${item.price}</p>
                             </div>
                         ))}
                     </div>
