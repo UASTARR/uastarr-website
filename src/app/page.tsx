@@ -224,24 +224,24 @@ export default function Home() {
                     <div className="flow_in_left">
                         <Competition
                             year="2025"
-                            name="Launch Canada"
-                            link="https://www.launchcanada.org"
-                            logo={{ src: launchCanadaLogo, alt: "Launch Canada Logo" }}
-                            description="Launch Canada is a rocket competition designed to create
-                            opportunities for amateur rocketeers from Canadian
-                            universities. We plan to launch Ringo V-B and Ringo IV."
+                            name="International Rocket Engineering Competition"
+                            link="https://spaceportamericacup.com/"
+                            logo={{ src: spacePortLogo, alt: "IREC Logo" }}
+                            description="The Spaceport America Cup is the world's largest
+                            IREC - Intercollegiate Rocket Engineering Competition
+                            for student rocketry teams. We plan to launch Ringo IV."
                         />
                     </div>
                     <div className="w-20 h-20 shrink-0"></div>
                     <div className="flow_in_left">
                         <Competition
                             year="2025"
-                            name="Spaceport America Cup"
-                            link="https://spaceportamericacup.com/"
-                            logo={{ src: spacePortLogo, alt: "Space Port Logo" }}
-                            description="The Spaceport America Cup is the world's largest
-                            IREC - Intercollegiate Rocket Engineering Competition
-                            for student rocketry teams. We plan to launch Ringo V-A."
+                            name="Launch Canada"
+                            link="https://www.launchcanada.org"
+                            logo={{ src: launchCanadaLogo, alt: "Launch Canada Logo" }}
+                            description="Launch Canada is a rocket competition designed to create
+                            opportunities for amateur rocketeers from Canadian
+                            universities. We plan to launch Ringo V."
                         />
                     </div>
 
