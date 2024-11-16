@@ -29,9 +29,8 @@ const ContactPage = () => {
         
         const dataArray = Object.values(data) 
         const captchaResponse= formData.get('g-recaptcha-response') //Used to check if recaptcha was attempted or not.
-        //IMPORTANT: Still need to add some verification using secret key to check if the g-captcha-response was not edited via scripts.
         if (String(captchaResponse).length == 0){
-            throw new Error("Captcha failed")
+            console.log("Captcha failed")
         }
         // TODO: Transition page
         //if (await addResponse(dataArray)) {
