@@ -3,6 +3,7 @@ import BaseScripts from '@/app/components/scripts/BaseScripts'
 import rocketsImage from '@/public/assets/projects/DSC_4722_JPG.jpeg'
 import payloadImage from '@/public/assets/projects/IMG_0626_edited.jpeg'
 import groundStationImage from '@/public/assets/projects/20230721_175306_edited.jpeg'
+import propulsionImage from '@/public/assets/projects/DSC_4722_JPG.jpeg'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -13,8 +14,8 @@ export const metadata: Metadata = {
 };
 
 const ProjectsPage = async () => {
-    const images = [rocketsImage, payloadImage, groundStationImage];
-    const names = ['Rockets', 'Payloads', 'Ground Station']
+    const images = [rocketsImage, payloadImage, groundStationImage, propulsionImage];
+    const names = ['Rockets', 'Payloads', 'Ground Station', 'Propulsion']
     return (
         <main>
             <BaseScripts />

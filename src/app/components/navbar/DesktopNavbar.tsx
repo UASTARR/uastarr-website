@@ -56,7 +56,8 @@ const DesktopNavbar = () => {
                             <div className="flex flex-col justify-items-center bg-gray-50 bg-opacity-10 rounded-2xl left-20 px-3 py-3">
                                 <Link href="/projects/rockets" className="pb-2 text-white text-center hover:text-yellow-300">Rockets</Link>
                                 <Link href="/projects/payloads" className="pb-2 text-white text-center hover:text-yellow-300">Payloads</Link>
-                                <Link href="/projects/ground-station" className="text-white text-center hover:text-yellow-300">Ground Station</Link>
+                                <Link href="/projects/ground-station" className="pb-2 text-white text-center hover:text-yellow-300">Ground Station</Link>
+                                <Link href="/projects/propulsion" className="text-white text-center hover:text-yellow-300">Propulsion</Link>
                             </div>
                         </div>
                     </div>
