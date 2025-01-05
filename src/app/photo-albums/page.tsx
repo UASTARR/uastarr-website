@@ -3,6 +3,7 @@ import BaseScripts from '@/app/components/scripts/BaseScripts';
 import AlbumsCover from '../components/albumphotos/AlbumsCover';
 import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
+import VectorBackground from '../components/videos/VectorBackground';
 
 export const metadata: Metadata = {
   title: 'Photo Albums',
@@ -16,16 +17,7 @@ const PhotoAlbumsPage = async () => {
   return (
     <main>
       <BaseScripts />
-      <div className="fixed top-0 justify-center w-screen h-screen">
-        <video
-          autoPlay
-          muted
-          loop
-          className="object-cover min-w-full min-h-full"
-        >
-          <source src="/assets/backgrounds/VectorBkg.mp4" type="video/mp4" />
-        </video>
-      </div>
+      <VectorBackground />
 
       <div className="h-24"></div>
 

@@ -4,6 +4,7 @@ import BaseScripts from '@/app/components/scripts/BaseScripts';
 import ReCaptchaApi from '@/app/components/scripts/ReCaptchaApi';
 import ContactForm from '../components/contact/ContactForm';
 import { redirect } from 'next/navigation';
+import FirefliesBackground from '../components/videos/FirefliesBackground';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -17,16 +18,7 @@ const ContactPage: React.FC = () => {
     <main className="relative bg-gray-900 text-white">
       <BaseScripts />
       <ReCaptchaApi />
-
-      {/* Background Video */}
-      <div className="fixed inset-0 z-0">
-        <video autoPlay muted loop className="w-full h-full object-cover">
-          <source
-            src="/assets/backgrounds/fireflies_background.mp4"
-            type="video/mp4"
-          />
-        </video>
-      </div>
+      <FirefliesBackground />
 
       {/* Header Section */}
       <div className="relative z-10 px-10 py-16">

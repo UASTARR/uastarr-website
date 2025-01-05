@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getMerchItems } from "@/library/firebase/firestore";
 import { Metadata } from "next";
+import RipplingBackground from "../components/videos/RipplingBackground";
 
 export const metadata: Metadata = {
     title: "Merchandise",
@@ -16,13 +17,9 @@ const MerchPage = async () => {
     return (
         <main>
             <BaseScripts />
-            
             {/* Background Video */}
-            <div className="fixed top-0 justify-center w-screen h-screen z-0">
-                <video muted loop className="object-cover min-w-full min-h-full playsInline">
-                    <source src="/assets/backgrounds/RipplingBkg.mp4" type="video/mp4" />
-                </video>
-            </div>
+            <RipplingBackground />
+
             
             <div className="h-24"></div>
 

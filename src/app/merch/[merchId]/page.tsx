@@ -2,6 +2,7 @@ import React from 'react';
 import { getMerchItemById } from '@/library/firebase/firestore';
 import MerchItem from '@/app/components/merch/MerchItem';
 import BaseScripts from '@/app/components/scripts/BaseScripts';
+import RipplingBackground from '@/app/components/videos/RipplingBackground';
 
 interface MerchDetailPageProps {
   params: {
@@ -18,13 +19,8 @@ const MerchDetailPage = async ({ params }: MerchDetailPageProps) => {
     return (
       <main>
         <BaseScripts />
-
         {/* Background Video */}
-        <div className="fixed top-0 justify-center w-screen h-screen z-0">
-          <video muted loop className="object-cover min-w-full min-h-full playsInline">
-            <source src="/assets/backgrounds/RipplingBkg.mp4" type="video/mp4" />
-          </video>
-        </div>
+        <RipplingBackground />
 
         <div className="h-40"></div>
 
@@ -46,7 +42,9 @@ const MerchDetailPage = async ({ params }: MerchDetailPageProps) => {
   } catch (error) {
     return (
       <main className="min-h-screen flex items-center justify-center">
-        <p className="text-center text-white bg-black bg-opacity-70 p-4 rounded">Merch item not found</p>
+        <p className="text-center text-white bg-black bg-opacity-70 p-4 rounded">
+          Merch item not found
+        </p>
       </main>
     );
   }

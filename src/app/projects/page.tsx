@@ -8,6 +8,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { Metadata } from 'next';
+import RipplingBackground from '../components/videos/RipplingBackground'
 
 export const metadata: Metadata = {
     title: "Projects",
@@ -20,12 +21,7 @@ const ProjectsPage = async () => {
         <main>
             <BaseScripts />
             {/* <!--Background Video--> */}
-            <div className="fixed top-0 justify-center w-screen h-screen z-0">
-                {/* <video autoPlay muted loop className="object-cover min-w-full min-h-full playsInline"> */}
-                <video muted loop className="object-cover min-w-full min-h-full playsInline">
-                    <source src="/assets/backgrounds/RipplingBkg.mp4" type="video/mp4" />
-                </video>
-            </div>
+            <RipplingBackground />
             
             <div className="h-24"></div>
             <div className="z-20 relative h-32 content-center max-lg:flex max-lg:justify-center max-lg:items-center">
