@@ -12,6 +12,8 @@ const MerchDetailPage = async ({
   try {
     const merchItem = await getMerchItemById(merchId);
 
+    const images = ['/assets/placeholder_album.jpeg', '/assets/TeamPhoto.jpg'];
+
     return (
       <main>
         <BaseScripts />
@@ -21,14 +23,12 @@ const MerchDetailPage = async ({
 
         <div className="relative z-20 w-full bg-black bg-opacity-70 p-10 flex justify-center">
           <div className="mt-4 lg:mt-12 lg:mr-60 mb-20 shadow-lg flex flex-col lg:flex-row items-start space-y-8 lg:space-x-20">
-            {/* Image on the Left */}
-            <div className="flow_in_left self-center h-full flex justify-center">
-              <PhotoCarousel
-                imgrefs={[merchItem.imgref]}
-                altText={merchItem.name}
-              />
+            {/* Carousel has to be use client - https://github.com/YIZHUANG/react-multi-carousel/issues/379 */}
+            <div className="flow_in_left w-128 h-full lg:mr-24">
+              <PhotoCarousel imgrefs={images} />
             </div>
 
+            {/* Merch Details */}
             <div className="flex-1 flex flex-col">
               <h1 className="text-4xl font-bold text-white mb-4">
                 {merchItem.name}
@@ -55,7 +55,7 @@ const MerchDetailPage = async ({
     return (
       <main className="min-h-screen flex items-center justify-center">
         <p className="text-center text-white bg-black bg-opacity-70 p-4 rounded">
-          Merch item not found.
+          Merch item not found, or an internal error has occurred!
         </p>
       </main>
     );
