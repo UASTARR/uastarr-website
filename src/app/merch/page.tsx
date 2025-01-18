@@ -1,19 +1,15 @@
-import React from 'react';
-import BaseScripts from '@/app/components/scripts/BaseScripts';
-import Link from 'next/link';
-import Image from 'next/image';
-import { getMerchItems } from '@/library/firebase/firestore';
 import { Metadata } from 'next';
+import React, { Suspense } from 'react';
+import BaseScripts from '@/app/components/scripts/BaseScripts';
 import FirefliesBackground from '../components/videos/FirefliesBackground';
+import MerchItemsSkeleton from '../components/merch/MerchItemsSkeleton';
+import MerchItems from '../components/merch/MerchItems';
 
 export const metadata: Metadata = {
   title: 'Merchandise',
 };
 
-const MerchPage = async () => {
-  const merchItems = await getMerchItems();
-  const placeholderImage = '/assets/placeholder_album.jpeg';
-
+const MerchPage = () => {
   return (
     <main className="text-white bg-gray-900">
       <BaseScripts />
@@ -27,43 +23,13 @@ const MerchPage = async () => {
         <p className="mt-2 flow_in_left delay-200">Limited edition.</p>
       </div>
 
-      {/* Content Section */}
+      {/* Content */}
+      {/* Possible improvement: fetch itemCount from server every couple of hours, cache it */}
       <div className="flex justify-center relative z-20 mt-14">
         <div className="bg-black bg-opacity-70 grow p-6 pb-32">
-          <div className="mt-11 flex flex-wrap justify-center gap-14">
-            {merchItems.map((item, index) => (
-              <div
-                key={item.id}
-                className={`flex flex-col relative fade_in no_check delay-${
-                  index * 3 * 100
-                }`}
-              >
-                <div className="text-gray-200 hover:text-white transition-colors">
-                  <div className="w-96 h-96 relative overflow-hidden rounded-sm">
-                    <Link href={`/merch/${item.id}`}>
-                      <Image
-                        priority
-                        fill
-                        className="object-cover aspect-square"
-                        sizes="w-96"
-                        src={item.imgref ?? placeholderImage}
-                        alt={item.name}
-                      />
-                    </Link>
-                  </div>
-
-                  <div className="mt-4 flex flex-col">
-                    <Link className="text-lg" href={`/merch/${item.id}`}>
-                      {item.name}
-                    </Link>
-                    <Link className="text-2xl" href={`/merch/${item.id}`}>
-                      ${item.price} CAD
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <Suspense fallback={<MerchItemsSkeleton itemCount={3} />}>
+            <MerchItems />
+          </Suspense>
         </div>
       </div>
 

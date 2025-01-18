@@ -3,6 +3,7 @@ import { getMerchItemById } from '@/library/firebase/firestore';
 import BaseScripts from '@/app/components/scripts/BaseScripts';
 import FirefliesBackground from '@/app/components/videos/FirefliesBackground';
 import PhotoCarousel from '@/app/components/merch/PhotoCarousel';
+import BackButton from '@/app/components/merch/BackButton';
 
 const MerchDetailPage = async ({
   params: { merchId },
@@ -12,8 +13,6 @@ const MerchDetailPage = async ({
   try {
     const merchItem = await getMerchItemById(merchId);
 
-    const images = ['/assets/placeholder_album.jpeg', '/assets/TeamPhoto.jpg'];
-
     return (
       <main>
         <BaseScripts />
@@ -21,15 +20,19 @@ const MerchDetailPage = async ({
 
         <div className="h-40"></div>
 
-        <div className="relative z-20 w-full bg-black bg-opacity-70 p-10 flex justify-center">
-          <div className="mt-4 lg:mt-12 lg:mr-60 mb-20 shadow-lg flex flex-col lg:flex-row items-start space-y-8 lg:space-x-20">
-            {/* Carousel has to be use client - https://github.com/YIZHUANG/react-multi-carousel/issues/379 */}
-            <div className="flow_in_left w-128 h-full lg:mr-24">
-              <PhotoCarousel imgrefs={images} />
+        <div className="relative z-20 w-full bg-black bg-opacity-70 p-10 pt-7 flex flex-col items-center">
+          <div className="self-start lg:ml-10">
+            <BackButton redirectPath="/merch" />
+          </div>
+
+          <div className="mt-8 justify-center mb-20 w-full shadow-lg flex flex-col items-center lg:flex-row space-y-10 lg:space-x-20">
+            {/* Carousel  - has to be client - https://github.com/YIZHUANG/react-multi-carousel/issues/379 */}
+            <div className="flow_in_left flex flex-1 max-w-128 w-full max-h-128 lg:mr-24">
+              <PhotoCarousel imgrefs={merchItem.imgrefs} />
             </div>
 
             {/* Merch Details */}
-            <div className="flex-1 flex flex-col">
+            <div className="flex-1 flex flex-col max-w-xl">
               <h1 className="text-4xl font-bold text-white mb-4">
                 {merchItem.name}
               </h1>
