@@ -2,14 +2,16 @@ import { Metadata } from 'next';
 import React, { Suspense } from 'react';
 import BaseScripts from '@/app/components/scripts/BaseScripts';
 import FirefliesBackground from '../components/videos/FirefliesBackground';
-import MerchItemsSkeleton from '../components/merch/MerchItemsSkeleton';
-import MerchItems from '../components/merch/MerchItems';
+import MerchItemsLayout from '../components/merch/MerchItemsLayout';
+import { getMerchItems } from '@/library/firebase/firestore';
 
 export const metadata: Metadata = {
   title: 'Merchandise',
 };
 
 const MerchPage = () => {
+  const merchItemsPromise = getMerchItems();
+
   return (
     <main className="text-white bg-gray-900">
       <BaseScripts />
@@ -27,8 +29,8 @@ const MerchPage = () => {
       {/* Possible improvement: fetch itemCount from server every couple of hours, cache it */}
       <div className="flex justify-center relative z-20 mt-14">
         <div className="bg-black bg-opacity-70 grow p-6 pb-32">
-          <Suspense fallback={<MerchItemsSkeleton itemCount={3} />}>
-            <MerchItems />
+          <Suspense fallback={<MerchItemsLayout isLoading itemCount={3} />}>
+            <MerchPageContent promise={merchItemsPromise} />
           </Suspense>
         </div>
       </div>
@@ -36,6 +38,11 @@ const MerchPage = () => {
       <div className="h-16"></div>
     </main>
   );
+};
+
+const MerchPageContent = async ({ promise }: { promise: Promise<any> }) => {
+  const merchItems = await promise;
+  return <MerchItemsLayout items={merchItems} />;
 };
 
 export default MerchPage;
