@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import Popup from './Popup';
 
 const schema = z.object({
   firstname: z.string().min(1, 'First name is required'),
@@ -20,7 +21,7 @@ const schema = z.object({
   ),
   know: z.string().optional(),
   subscribe: z.boolean().optional(),
-  message: z.string().optional(),
+  message: z.string().min(1, 'Please leave a message'),
 });
 
 export type FormSchema = z.infer<typeof schema>;
@@ -36,6 +37,8 @@ const ContactForm = () => {
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [recaptchaError, setRecaptchaError] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [popupMessage, setPopupMessage] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -56,7 +59,7 @@ const ContactForm = () => {
       setRecaptchaError(true);
       return;
     }
-    console.log('Submitting form:', data);
+    setIsSubmitting(true);
 
     try {
       const response = await fetch('/api/submit-form', {
@@ -66,18 +69,33 @@ const ContactForm = () => {
       });
 
       if (response.ok) {
-        console.log('Form submitted successfully');
+        const result = await response.json();
+        setPopupMessage(result.message || 'Form submitted successfully!');
       } else {
         const errorData = await response.json();
-        console.error('Error submitting form:', errorData.error);
+
+        setPopupMessage(
+          errorData.error || 'An error occurred while submitting.'
+        );
       }
     } catch (error) {
       console.error('Network error submitting form:', error);
+      setPopupMessage('Network error. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
     <div className="max-w-2xl mx-auto bg-white text-black p-6 rounded-lg shadow-lg">
+      {popupMessage && (
+        <Popup
+          message={popupMessage}
+          onClose={() => setPopupMessage(null)}
+          duration={5000}
+        />
+      )}
+
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="flex flex-wrap gap-4">
           <div className="flex-1">
@@ -156,6 +174,46 @@ const ContactForm = () => {
           )}
         </div>
 
+        <div>
+          <label htmlFor="know" className="block font-medium">
+            How did you hear about us? (optional)
+          </label>
+          <input
+            type="text"
+            id="know"
+            {...register('know')}
+            className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-yellow-500"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="message" className="block font-medium">
+            Leave a Message
+          </label>
+          <textarea
+            id="message"
+            {...register('message')}
+            rows={5}
+            className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-yellow-500"
+          ></textarea>
+          {errors.message && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors.message.message}
+            </p>
+          )}
+        </div>
+
+        <div>
+          <label className="inline-flex items-center">
+            <input
+              type="checkbox"
+              {...register('subscribe')}
+              className="mr-2"
+            />
+            Subscribe to the STARR newsletter
+          </label>
+        </div>
+
         {/* reCAPTCHA */}
         {isClient && (
           <div className="mt-4">
@@ -174,9 +232,25 @@ const ContactForm = () => {
 
         <button
           type="submit"
-          className="mt-4 px-6 py-3 bg-yellow-500 text-white font-medium rounded hover:bg-yellow-600"
+          className={`mt-4 px-6 py-3 bg-yellow-500 text-white font-medium rounded flex items-center justify-center ${
+            isSubmitting
+              ? 'opacity-75 cursor-not-allowed'
+              : 'hover:bg-yellow-600'
+          }`}
+          disabled={isSubmitting}
         >
-          Submit
+          {isSubmitting ? (
+            <>
+              <div
+                className="w-5 h-5 border-2 mr-4
+                        border-t-transparent rounded-full 
+                        animate-spin"
+              ></div>
+              Processing...
+            </>
+          ) : (
+            'Submit'
+          )}
         </button>
       </form>
     </div>
