@@ -1,10 +1,8 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect } from 'react';
-import { useState } from 'react';
 
 const schema = z.object({
   firstname: z.string().min(1, 'First name is required'),
@@ -35,20 +33,36 @@ const ContactForm = () => {
   } = useForm<FormSchema>({
     resolver: zodResolver(schema),
   });
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [recaptchaError, setRecaptchaError] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
+
+    const handleRecaptchaCallback = (token: string) => {
+      setRecaptchaToken(token);
+      setRecaptchaError(false);
+    };
+    (window as any).onRecaptchaSuccess = handleRecaptchaCallback;
+
+    return () => {
+      (window as any).onRecaptchaSuccess = null;
+    };
   }, []);
 
   const onSubmit: SubmitHandler<FormSchema> = async (data) => {
+    if (!recaptchaToken) {
+      setRecaptchaError(true);
+      return;
+    }
     console.log('Submitting form:', data);
 
     try {
       const response = await fetch('/api/submit-form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, recaptchaToken }),
       });
 
       if (response.ok) {
@@ -142,59 +156,28 @@ const ContactForm = () => {
           )}
         </div>
 
-        <div>
-          <label htmlFor="know" className="block font-medium">
-            How did you hear about us?
-          </label>
-          <input
-            type="text"
-            id="know"
-            {...register('know')}
-            className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-yellow-500"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="message" className="block font-medium">
-            Leave a Message
-          </label>
-          <textarea
-            id="message"
-            {...register('message')}
-            rows={5}
-            className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-yellow-500"
-          ></textarea>
-          {errors.message && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.message.message}
-            </p>
-          )}
-        </div>
-
-        <div className="text-center">
-          <label className="inline-flex items-center">
-            <input
-              type="checkbox"
-              {...register('subscribe')}
-              className="mr-2"
-            />
-            Subscribe to the STARR newsletter
-          </label>
-
-          {isClient && (
+        {/* reCAPTCHA */}
+        {isClient && (
+          <div className="mt-4">
             <div
-              className="g-recaptcha mt-4 flex justify-center"
-              data-sitekey="6Leo32UpAAAAAJmvvWFtlNfapVA2bn_qxHIbO77J"
+              className="g-recaptcha"
+              data-sitekey="6Lfo_HAqAAAAAJcPuy-kssLrQTa5K6BhRfqDAVZT"
+              data-callback="onRecaptchaSuccess"
             ></div>
-          )}
+            {recaptchaError && (
+              <p className="text-red-500 text-sm mt-1">
+                Please complete the reCAPTCHA.
+              </p>
+            )}
+          </div>
+        )}
 
-          <button
-            type="submit"
-            className="mt-4 px-6 py-3 bg-yellow-500 text-white font-medium rounded hover:bg-yellow-600"
-          >
-            Submit
-          </button>
-        </div>
+        <button
+          type="submit"
+          className="mt-4 px-6 py-3 bg-yellow-500 text-white font-medium rounded hover:bg-yellow-600"
+        >
+          Submit
+        </button>
       </form>
     </div>
   );

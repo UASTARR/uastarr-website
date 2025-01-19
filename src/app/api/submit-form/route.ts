@@ -1,10 +1,41 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { addResponse } from '@/library/google/api';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
-    const success = await addResponse(body);
+    const { recaptchaToken, ...formData } = await req.json();
+    const recaptchaSecretKey = process.env.recaptcha_secret_key;
+
+    if (!recaptchaSecretKey) {
+      return NextResponse.json(
+        { error: 'Missing reCAPTCHA secret key in the server configuration' },
+        { status: 500 }
+      );
+    }
+
+    const recaptchaResponse = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          secret: recaptchaSecretKey,
+          response: recaptchaToken,
+        }),
+      }
+    );
+    const recaptchaResult = await recaptchaResponse.json();
+
+    if (!recaptchaResult.success) {
+      return NextResponse.json(
+        { error: 'reCAPTCHA verification failed' },
+        { status: 400 }
+      );
+    }
+    const success = await addResponse(formData);
 
     if (success) {
       return NextResponse.json(

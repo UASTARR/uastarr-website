@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import BaseScripts from '@/app/components/scripts/BaseScripts';
 import ReCaptchaApi from '@/app/components/scripts/ReCaptchaApi';
 import ContactForm from '../components/contact/ContactForm';
-import { redirect } from 'next/navigation';
 import FirefliesBackground from '../components/videos/FirefliesBackground';
 
 export const metadata: Metadata = {
@@ -11,14 +10,11 @@ export const metadata: Metadata = {
 };
 
 const ContactPage: React.FC = () => {
-  // TODO: temporary
-  redirect('/down-for-maintenance');
-
   return (
     <main className="relative bg-gray-900 text-white">
       <BaseScripts />
-      <ReCaptchaApi />
       <FirefliesBackground />
+      <ReCaptchaApi />
 
       {/* Header Section */}
       <div className="relative z-10 px-10 py-16">
@@ -34,7 +30,6 @@ const ContactPage: React.FC = () => {
         <ContactForm />
       </div>
 
-      {/* Banner */}
       <div className="relative z-10 bg-green-700 text-white py-6 px-10 text-2xl mt-24">
         Looking for us? We got you.
       </div>

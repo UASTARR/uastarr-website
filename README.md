@@ -34,15 +34,16 @@ Make sure to create a `.env` file under `src` with the following attributes
 <!-- TODO: how to generate token -->
 ```
 # For project on cloud console
-credentials_client_id
-credentials_project_id
-credentials_auth_uri
-credentials_token_uri
-credentials_auth_provider_x509_cert_url
-credentials_client_secret
+credentials_client_id=
+credentials_project_id=
+credentials_auth_uri=
+credentials_token_uri=
+credentials_auth_provider_x509_cert_url=
+credentials_client_secret=
 
 # Response from contact
-spreadsheet_id
+spreadsheet_id=
+recaptcha_secret_key=
 
 # Authorization Tokens
 token_type
@@ -51,12 +52,12 @@ token_client_secret
 token_refresh_token
 
 # Firebase
-firebase_apiKey
-firebase_authDomain
-firebase_projectId
-firebase_storageBucket
-firebase_messagingSenderId
-firebase_appId
+firebase_apiKey=
+firebase_authDomain=
+firebase_projectId=
+firebase_storageBucket=
+firebase_messagingSenderId=
+firebase_appId=
 ```
 
 # References
