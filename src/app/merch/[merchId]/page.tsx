@@ -23,16 +23,26 @@ const MerchDetailPage = async ({
 };
 
 const MerchDetailContent = async ({ promise }: { promise: Promise<any> }) => {
-  const merchItem = await promise;
+  try {
+    const merchItem = await promise;
 
-  return (
-    <MerchDetailLayout
-      imgrefs={merchItem.imgrefs}
-      name={merchItem.name}
-      description={merchItem.description}
-      price={merchItem.price}
-    />
-  );
+    return (
+      <MerchDetailLayout
+        imgrefs={merchItem.imgrefs}
+        name={merchItem.name}
+        description={merchItem.description}
+        price={merchItem.price}
+      />
+    );
+  } catch (e) {
+    return (
+      <main className="w-full min-h-screen flex items-center justify-center">
+        <p className="text-center text-lg text-white p-4 rounded z-50">
+          Merch item not found.
+        </p>
+      </main>
+    );
+  }
 };
 
 export default MerchDetailPage;
