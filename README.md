@@ -41,9 +41,11 @@ credentials_token_uri=
 credentials_auth_provider_x509_cert_url=
 credentials_client_secret=
 
-# Response from contact
+# Contact us form
 spreadsheet_id=
 recaptcha_secret_key=
+NEXT_PUBLIC_RECAPTCHA_SITEKEY=
+NEXT_PUBLIC_MAP_KEY=
 
 # Authorization Tokens
 token_type

@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 };
 
 const ContactPage: React.FC = () => {
+  var mapKey = process.env.NEXT_PUBLIC_MAP_KEY;
+
   return (
     <main className="relative bg-gray-900 text-white">
       <BaseScripts />
@@ -41,7 +43,7 @@ const ContactPage: React.FC = () => {
           height="400"
           className="border-2 border-gray-300"
           referrerPolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAcBwWVLuUFQMaRS-eFzHm8UxtKW6wJM9Q&q=Donadeo+Innovation+Centre+for+Engineering,+9211+116+St+NW,+Edmonton,+AB+T6G+1H9&maptype=satellite&zoom=15"
+          src={`https://www.google.com/maps/embed/v1/place?key=${mapKey}&q=Donadeo+Innovation+Centre+for+Engineering,+9211+116+St+NW,+Edmonton,+AB+T6G+1H9&maptype=satellite&zoom=15`}
           allowFullScreen
         ></iframe>
       </div>

@@ -39,6 +39,7 @@ const ContactForm = () => {
   const [isClient, setIsClient] = useState(false);
   const [popupMessage, setPopupMessage] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  var dataSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITEKEY;
 
   useEffect(() => {
     setIsClient(true);
@@ -219,7 +220,7 @@ const ContactForm = () => {
           <div className="mt-4">
             <div
               className="g-recaptcha"
-              data-sitekey="6Lfo_HAqAAAAAJcPuy-kssLrQTa5K6BhRfqDAVZT"
+              data-sitekey={dataSiteKey}
               data-callback="onRecaptchaSuccess"
             ></div>
             {recaptchaError && (
