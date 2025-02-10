@@ -4,6 +4,7 @@ import BaseScripts from '@/app/components/scripts/BaseScripts';
 import ReCaptchaApi from '@/app/components/scripts/ReCaptchaApi';
 import ContactForm from '../components/contact/ContactForm';
 import FirefliesBackground from '../components/videos/FirefliesBackground';
+import { redirect } from 'next/navigation'
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -11,6 +12,8 @@ export const metadata: Metadata = {
 
 const ContactPage: React.FC = () => {
   var mapKey = process.env.NEXT_PUBLIC_MAP_KEY;
+  // TODO: make map key variable not being public and remove this redirect
+  redirect('/down-for-maintenance');
 
   return (
     <main className="relative bg-gray-900 text-white">
