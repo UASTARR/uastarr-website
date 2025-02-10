@@ -1,19 +1,21 @@
 import BackButton from './BackButton';
 import PhotoCarousel from './PhotoCarousel';
 
+interface MerchDetailLayoutProps {
+  isLoading?: boolean;
+  imgrefs?: string[];
+  name?: string;
+  description?: string;
+  price?: string | number;
+}
+
 const MerchDetailLayout = ({
   isLoading = false,
   imgrefs = [],
   name = '',
   description = '',
   price = '',
-}: {
-  isLoading?: boolean;
-  imgrefs?: string[];
-  name?: string;
-  description?: string;
-  price?: string | number;
-}) => {
+}: MerchDetailLayoutProps) => {
   return (
     <main>
       <div className="h-40"></div>
@@ -33,7 +35,7 @@ const MerchDetailLayout = ({
             {!isLoading && <PhotoCarousel imgrefs={imgrefs} />}
           </div>
 
-          <div className="flex-1 flex flex-col max-w-xl space-y-6">
+          <div className="flex-1 flex flex-col max-w-xl space-y-6 px-3 w-full">
             {/* Title */}
             <div
               className={`${
@@ -49,9 +51,9 @@ const MerchDetailLayout = ({
             <div className="space-y-3">
               {isLoading ? (
                 <>
-                  <div className="w-5/6 h-5 bg-gray-700 animate-pulse rounded"></div>
-                  <div className="w-5/6 h-5 bg-gray-700 animate-pulse rounded"></div>
-                  <div className="w-2/3 h-5 bg-gray-700 animate-pulse rounded"></div>
+                  <div className="w-5/6 h-5 bg-gray-700 animate-pulse rounded" />
+                  <div className="w-5/6 h-5 bg-gray-700 animate-pulse rounded" />
+                  <div className="w-2/3 h-5 bg-gray-700 animate-pulse rounded" />
                 </>
               ) : (
                 <p className="text-gray-300 text-lg leading-relaxed mb-10 flex-grow">
@@ -60,26 +62,42 @@ const MerchDetailLayout = ({
               )}
             </div>
 
-            {/* Price */}
-            <div className="mt-auto space-y-2">
-              <p
-                className={`${
-                  isLoading
-                    ? 'w-1/5 h-5 bg-gray-700 animate-pulse rounded'
-                    : 'text-gray-300 mb-1 font-semibold'
-                }`}
-              >
-                {!isLoading && 'Price:'}
-              </p>
-              <p
-                className={`${
-                  isLoading
-                    ? 'w-1/5 h-8 bg-gray-600 animate-pulse rounded'
-                    : 'text-3xl font-semibold text-lime-600'
-                }`}
-              >
-                {!isLoading && `$${price}`}
-              </p>
+            <div className="flex gap-5 lg:gap-14 items-center flex-col lg:items-end lg:flex-row">
+              {/* Price */}
+              <div className="mt-auto space-y-2 self-start">
+                <p
+                  className={`${
+                    isLoading
+                      ? 'w-1/5 h-5 bg-gray-700 animate-pulse rounded'
+                      : 'text-gray-300 mb-1 font-semibold'
+                  }`}
+                >
+                  {!isLoading && 'Price:'}
+                </p>
+                <p
+                  className={`${
+                    isLoading
+                      ? 'w-1/5 h-8 bg-gray-600 animate-pulse rounded'
+                      : 'text-3xl font-semibold text-lime-600'
+                  }`}
+                >
+                  {!isLoading && `$${price}`}
+                </p>
+              </div>
+
+              {/* Buy Button */}
+              {isLoading ? (
+                <div className="w-32 h-12 bg-gray-700 animate-pulse rounded-full" />
+              ) : (
+                <a
+                  href="https://forms.gle/WQsiwyKVoKLkEDnf8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="whitespace-nowrap bg-yellow-500 hover:transition-all hover:bg-white rounded-full w-32 h-12 flex items-center justify-center"
+                >
+                  Buy
+                </a>
+              )}
             </div>
           </div>
         </div>
