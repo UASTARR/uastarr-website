@@ -7,6 +7,7 @@ import SponsorsLayoutMainPage from "./components/sponsors/SponsorsLayoutMainPage
 import BaseScripts from "./components/scripts/BaseScripts";
 import Competition from "./components/main/Competition";
 import FAQ from "./components/main/FAQ";
+import PrintingBackground from "./components/videos/PrintingBackground";
 
 export default function Home() {
     const firstBg = { backgroundImage: 'url(https://static.wixstatic.com/media/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg/v1/fill/w_1225,h_1100,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg)' };
@@ -79,12 +80,7 @@ export default function Home() {
             </div>
 
             {/* <!--Tile 2 Background Video--> */}
-            <div className="fixed top-0 justify-center w-screen h-screen brightness-50">
-                {/* <video autoPlay muted loop className="object-cover min-w-full min-h-full playsInline"> */}
-                <video muted loop className="object-cover min-w-full min-h-full playsInline">
-                    <source src="/assets/backgrounds/3dPrinting.mp4" type="video/mp4" />
-                </video>
-            </div>
+            <PrintingBackground />
 
             {/* <!--Tile 2--> */}
             <div className="z-10 relative flex flex-nowrap h-192 flex-col bg-emerald-900 bg-opacity-10 bg-local bg-cover bg-[center-10rem] justify-between">

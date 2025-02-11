@@ -17,6 +17,11 @@ export default (phase, { defaultConfig }) => {
                     hostname: 'firebasestorage.googleapis.com',
                     pathname: '**',
                 },
+                {
+                    protocol: 'https',
+                    hostname: 'drive.google.com',
+                    pathname: '**',
+                },
             ]
         },
         redirects: async () => {
@@ -30,4 +35,3 @@ export default (phase, { defaultConfig }) => {
         },
     };
 };
-

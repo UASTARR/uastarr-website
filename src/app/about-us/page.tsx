@@ -4,6 +4,7 @@ import BaseScripts from '../components/scripts/BaseScripts';
 import Headshots from '../components/headshots/Headshots';
 import { Metadata } from 'next';
 import Image from 'next/image';
+import RipplingBackground from '../components/videos/RipplingBackground';
 
 export const metadata: Metadata = {
     title: "About Us",
@@ -14,12 +15,8 @@ const AboutUsPage = () => {
         <main>
             <BaseScripts />
             {/* <!--Background Video--> */}
-            <div className="fixed top-0 justify-center w-screen h-screen z-0">
-                {/* <video autoPlay muted loop className="object-cover min-w-full min-h-full playsInline"> */}
-                <video muted loop className="object-cover min-w-full min-h-full playsInline">
-                    <source src="/assets/backgrounds/RipplingBkg.mp4" type="video/mp4" />
-                </video>
-            </div>
+            <RipplingBackground />
+
             <div className="h-32"></div>
 
             {/* <!--Tile 1--> */}

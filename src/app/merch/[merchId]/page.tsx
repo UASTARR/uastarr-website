@@ -1,52 +1,45 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { getMerchItemById } from '@/library/firebase/firestore';
-import MerchItem from '@/app/components/merch/MerchItem';
 import BaseScripts from '@/app/components/scripts/BaseScripts';
+import FirefliesBackground from '@/app/components/videos/FirefliesBackground';
+import MerchDetailLayout from '@/app/components/merch/MerchDetailLayout';
 
-interface MerchDetailPageProps {
-  params: {
-    merchId: string;
-  };
-}
+const MerchDetailPage = async ({
+  params: { merchId },
+}: {
+  params: { merchId: string };
+}) => {
+  const merchItemPromise = getMerchItemById(merchId);
 
-const MerchDetailPage = async ({ params }: MerchDetailPageProps) => {
-  const { merchId } = params;
+  return (
+    <>
+      <BaseScripts />
+      <FirefliesBackground />
+      <Suspense fallback={<MerchDetailLayout isLoading />}>
+        <MerchDetailContent promise={merchItemPromise} />
+      </Suspense>
+    </>
+  );
+};
 
+const MerchDetailContent = async ({ promise }: { promise: Promise<any> }) => {
   try {
-    const merchItem = await getMerchItemById(merchId);
+    const merchItem = await promise;
 
     return (
-      <main>
-        <BaseScripts />
-
-        {/* Background Video */}
-        <div className="fixed top-0 justify-center w-screen h-screen z-0">
-          <video muted loop className="object-cover min-w-full min-h-full playsInline">
-            <source src="/assets/backgrounds/RipplingBkg.mp4" type="video/mp4" />
-          </video>
-        </div>
-
-        <div className="h-40"></div>
-
-        {/* Content Section */}
-        <div className="flex justify-center relative z-20 fade_in no_check">
-          <div className="w-full max-w-screen-lg bg-black bg-opacity-70 p-10">
-            <MerchItem
-              name={merchItem.name}
-              description={merchItem.description}
-              price={merchItem.price}
-              imgref={merchItem.imgref}
-            />
-          </div>
-        </div>
-
-        <div className="h-16"></div>
-      </main>
+      <MerchDetailLayout
+        imgrefs={merchItem.imgrefs}
+        name={merchItem.name}
+        description={merchItem.description}
+        price={merchItem.price}
+      />
     );
-  } catch (error) {
+  } catch (e) {
     return (
-      <main className="min-h-screen flex items-center justify-center">
-        <p className="text-center text-white bg-black bg-opacity-70 p-4 rounded">Merch item not found</p>
+      <main className="w-full min-h-screen flex items-center justify-center">
+        <p className="text-center text-lg text-white p-4 rounded z-50">
+          Merch item not found.
+        </p>
       </main>
     );
   }

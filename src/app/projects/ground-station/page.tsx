@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import { getProjects } from '@/library/firebase/firestore';
 import Project from '@/app/components/projects/Project';
 import { getUrl } from '@/library/firebase/storage';
+import RipplingBackground from '@/app/components/videos/RipplingBackground';
 
 export const metadata: Metadata = {
     title: "Ground Station",
@@ -18,12 +19,8 @@ const ProjectsPage = async () => {
         <main>
             <BaseScripts />
             {/* <!--Background Video--> */}
-            <div className="fixed top-0 justify-center w-screen h-screen z-0">
-                {/* <video autoPlay muted loop className="object-cover min-w-full min-h-full playsInline"> */}
-                <video muted loop className="object-cover min-w-full min-h-full playsInline">
-                    <source src="/assets/backgrounds/RipplingBkg.mp4" type="video/mp4" />
-                </video>
-            </div>
+            <RipplingBackground />
+
             {/* <!--Content--> */}
             <div className="h-24"></div>
             <div className="z-20 relative h-32 content-center max-lg:flex max-lg:justify-center max-lg:items-center">
