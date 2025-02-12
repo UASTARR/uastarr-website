@@ -34,7 +34,7 @@ const MerchItemsLayout = ({
       {(isLoading ? skeletonItems : items).map((item, index) => (
         <div
           key={item.id}
-          className={'flex-1 min-w-full sm:min-w-80 max-w-96 flex flex-col relative'}
+          className={'flex-1 min-w-full sm:min-w-80 lg:min-w-96 max-w-96 flex flex-col relative'}
           suppressHydrationWarning
         >
           <div className="w-full text-gray-200 hover:text-white transition-colors">
