@@ -1,18 +1,19 @@
-import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
-import "@/app/globals.css";
-import Footer from "@/app/components/footer/Footer";
-import Navbar from "@/app/components/navbar/Navbar";
+import type { Metadata } from 'next';
+import { Montserrat } from 'next/font/google';
+import '@/app/globals.css';
+import Footer from '@/app/components/footer/Footer';
+import Navbar from '@/app/components/navbar/Navbar';
+import { CartProvider } from './contexts/CartContext';
 // The following is an example of how to use dynamic imports in Next.js (to fix hydration error)
 // import dynamic from 'next/dynamic'
 // const Navbar = dynamic(() => import('./components/navbar/Navbar'), { ssr: false })
 
-const inter = Montserrat({ subsets: ["latin"] });
+const inter = Montserrat({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | UASTARR",
-    default: "UASTARR | Student Team for Alberta Rocketry Research"
+    template: '%s | UASTARR',
+    default: 'UASTARR | Student Team for Alberta Rocketry Research',
   },
 };
 
@@ -23,10 +24,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className= {`bg-black overflow-y-scroll overflow-x-hidden relative ${inter.className}`} id="body">
-        <Navbar />
-        {children}
-        <Footer />
+      <body
+        className={`bg-black overflow-y-scroll overflow-x-hidden relative ${inter.className}`}
+        id="body"
+      >
+        <CartProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );
