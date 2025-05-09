@@ -28,10 +28,12 @@ const MerchDetailContent = async ({ promise }: { promise: Promise<any> }) => {
 
     return (
       <MerchDetailLayout
+        id={merchItem.id}
         imgrefs={merchItem.imgrefs}
         name={merchItem.name}
         description={merchItem.description}
         price={merchItem.price}
+        availableSizesLetters={merchItem.sizes}
       />
     );
   } catch (e) {

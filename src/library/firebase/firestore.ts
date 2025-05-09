@@ -125,6 +125,7 @@ export async function getMerchItems(db = firestoreDb) {
             name: data.name,
             description: data.description,
             price: data.price,
+            sizes: data.sizes,
             imgrefs: data.images,
             ...data,
         };
@@ -144,6 +145,7 @@ export async function getMerchItemById(id: string, db = firestoreDb) {
         name: data.name,
         description: data.description,
         price: data.price,
+        sizes: data.sizes,
         imgrefs: data.images,
         ...data,
     };
