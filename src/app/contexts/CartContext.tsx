@@ -5,6 +5,7 @@ import {
   useEffect,
   ReactNode,
   useContext,
+  useCallback,
 } from 'react';
 
 export interface CartItem {
@@ -18,8 +19,8 @@ export interface CartItem {
 interface CartContextType {
   cart: CartItem[];
   addToCart: (product: CartItem) => void;
-  removeFromCart: (productId: string) => void;
-  updateQuantity: (productId: string, quantity: number) => void;
+  removeFromCart: (productId: string, size: string) => void;
+  updateQuantity: (productId: string, size: string, quantity: number) => void;
   clearCart: () => void;
   getCartTotal: () => number;
   getItemCount: () => number;
@@ -52,11 +53,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [cart]);
 
-  const addToCart = (product: CartItem) => {
+  const addToCart = useCallback((product: CartItem) => {
     setCart((prevCart) => {
-      // Note: In development mode with StrictMode, this function may be called
-      // twice, resulting in doubled quantities in the cart during development.
-      // This behavior is normal and won't occur in production.
       const existingItemIndex = prevCart.findIndex(
         (item) => item.id === product.id && item.size === product.size
       );
@@ -69,32 +67,40 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         return [...prevCart, product];
       }
     });
-  };
+  }, []);
 
-  const removeFromCart = (productId: string) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
-  };
-
-  const updateQuantity = (productId: string, quantity: number) => {
-    if (quantity < 1) return;
+  const removeFromCart = useCallback((productId: string, size: string) => {
     setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === productId ? { ...item, quantity } : item
-      )
+      prevCart.filter((item) => !(item.id === productId && item.size === size))
     );
-  };
+  }, []);
 
-  const clearCart = () => {
+  const updateQuantity = useCallback(
+    (productId: string, size: string, quantity: number) => {
+      if (quantity < 1) return;
+
+      setCart((prevCart) =>
+        prevCart.map((item) =>
+          item.id === productId && item.size === size
+            ? { ...item, quantity }
+            : item
+        )
+      );
+    },
+    []
+  );
+
+  const clearCart = useCallback(() => {
     setCart([]);
-  };
+  }, []);
 
-  const getCartTotal = (): number => {
+  const getCartTotal = useCallback((): number => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
+  }, [cart]);
 
-  const getItemCount = (): number => {
+  const getItemCount = useCallback((): number => {
     return cart.reduce((count, item) => count + item.quantity, 0);
-  };
+  }, [cart]);
 
   const contextValue: CartContextType = {
     cart,
@@ -116,5 +122,17 @@ export const useCart = (): CartContextType => {
   if (context === undefined) {
     throw new Error('useCart must be used within a CartProvider');
   }
+
   return context;
+};
+
+export const formatPrice = (price: number): string => {
+  // Round up to the nearest cent
+  const roundedPrice = Math.ceil(price * 100) / 100;
+
+  if (roundedPrice % 1 === 0) {
+    return roundedPrice.toString();
+  } else {
+    return roundedPrice.toFixed(2);
+  }
 };
