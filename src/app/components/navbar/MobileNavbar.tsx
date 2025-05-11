@@ -3,11 +3,13 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import menuIcon from '@/public/assets/menu-svgrepo-com.svg';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation';
+import CartIcon from './CartIcon';
 
 const MobileNavbar = () => {
     const [showDrawer, setShowDrawer] = useState(false);
     const pathName = usePathname();
+    
     const NavButton = ({ page, children }: { page: string, children: React.ReactNode }) => {
         if (pathName === page) {
             return (
@@ -23,6 +25,7 @@ const MobileNavbar = () => {
             );
         }
     }
+    
     useEffect(() => {
         if (showDrawer) {
             document.getElementById("drawer")?.classList.remove("hidden");
@@ -32,14 +35,22 @@ const MobileNavbar = () => {
             document.getElementById("drawer")?.classList.remove("flex");
         }
     }, [showDrawer]);
+    
     const drawerToggle = () => {
         setShowDrawer(prev => !prev);
     }
+    
     return (
-        <div>
+        <div className="flex items-center">
+            <div className="pl-3 pr-3">
+                <CartIcon />
+            </div>
+            
+            {/* Menu button */}
             <button className="lg:hidden" onClick={drawerToggle}>
                 <Image className="w-10 h-10 invert" src={menuIcon} alt='menu' />
             </button>
+            
             {/* Drawer */}
             <div id="drawer" className="fixed hidden z-40 w-full h-full bg-zinc-800/90 top-0 left-0 flex-col justify-center items-center text-white">
                 <div className="absolute flex top-8 right-8 bg-red-600 place-content-center">

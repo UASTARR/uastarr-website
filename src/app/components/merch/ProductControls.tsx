@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { useCart, CartItem } from '@/app/contexts/CartContext';
+import { useCart, CartItem, formatPrice } from '@/app/contexts/CartContext';
 
 interface ProductControlsProps {
   id: string;
@@ -8,17 +8,6 @@ interface ProductControlsProps {
   price: number;
   availableSizesLetters: string[];
 }
-
-const formatPrice = (price: number): string => {
-  // Round up to the nearest cent
-  const roundedPrice = Math.ceil(price * 100) / 100;
-
-  if (roundedPrice % 1 === 0) {
-    return roundedPrice.toString();
-  } else {
-    return roundedPrice.toFixed(2);
-  }
-};
 
 const ProductControls = ({
   id,
@@ -40,7 +29,7 @@ const ProductControls = ({
     if (addedToCart) {
       const timer = setTimeout(() => {
         setAddedToCart(false);
-      }, 1800);
+      }, 400);
       return () => clearTimeout(timer);
     }
   }, [addedToCart]);
@@ -123,17 +112,12 @@ const ProductControls = ({
             disabled={addedToCart}
             className={`whitespace-nowrap ${
               addedToCart
-                ? 'bg-gray-300 hover:bg-gray-300'
+                ? 'bg-gray-400 hover:bg-gray-400'
                 : 'bg-yellow-500 hover:bg-white'
             } hover:text-black transition-all rounded-full w-40 h-12 flex items-center justify-center font-semibold`}
           >
             Add to Cart
           </button>
-          {addedToCart && (
-            <span className="absolute top-14 text-green-500 mt-2 text-sm">
-              Added to cart!
-            </span>
-          )}
         </div>
       </div>
     </div>

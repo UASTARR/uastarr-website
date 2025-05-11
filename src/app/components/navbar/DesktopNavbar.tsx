@@ -1,5 +1,6 @@
 'use client';
 import Link from "next/link"
+import CartIcon from "./CartIcon";
 
 const DesktopNavbar = () => {
     let timer: NodeJS.Timeout | undefined;
@@ -43,7 +44,7 @@ const DesktopNavbar = () => {
         clearTimeout(projectTimer);
     }
     return (
-        <div className="flex flex-nowrap">
+        <div className="flex flex-nowrap items-center">
             {/* Navigation bar */}
             <div className="bg-gray-50 bg-opacity-10 rounded-full bg-cover px-12 py-3" style={{ display: "inline-block" }}>
                 {/* Navigation buttons */}
@@ -75,8 +76,14 @@ const DesktopNavbar = () => {
                     </div>
                 </div>
             </div>
+            
+            {/* Cart Icon */}
+            <div className="inline-block pl-3 pr-3">
+                <CartIcon />
+            </div>
+            
             {/* Join Now Button */}
-            <div className="inline-block pl-5">
+            <div className="inline-block pl-2">
                 <Link target="_blank" href="/join" rel="noopener noreferrer">
                     <button className="text-white whitespace-nowrap bg-green-700 hover:transition-all duration-200 hover:bg-white hover:text-black rounded-full px-6 py-3">Join Now</button>
                 </Link>

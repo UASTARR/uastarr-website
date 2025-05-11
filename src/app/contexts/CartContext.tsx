@@ -28,6 +28,12 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
+/* 
+WARNING: React Strict mode duplicates cart items due to re-invoking functions twice.
+This behavior is only seen in development.
+In the production build, the cart works as intended.
+*/
+
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
 
