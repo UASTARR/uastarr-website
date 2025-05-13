@@ -1,11 +1,12 @@
 'use client';
 import { useCart, formatPrice } from '@/app/contexts/CartContext';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const CartPage = () => {
   const { cart, removeFromCart, updateQuantity, getCartTotal, clearCart } =
     useCart();
+  const router = useRouter();
 
   if (cart.length === 0) {
     return (
@@ -134,6 +135,7 @@ const CartPage = () => {
             </button>
 
             <button
+              onClick={() => router.push('/cart/checkout')}
               className="px-6 py-3 bg-yellow-500 hover:bg-white hover:text-black text-black font-semibold rounded-full transition-colors"
             >
               Proceed to Checkout
