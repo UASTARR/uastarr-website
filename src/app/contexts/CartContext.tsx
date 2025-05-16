@@ -7,14 +7,8 @@ import {
   useContext,
   useCallback,
 } from 'react';
+import { CartItem } from '../types/checkout';
 
-export interface CartItem {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-  size: string;
-}
 
 interface CartContextType {
   cart: CartItem[];
