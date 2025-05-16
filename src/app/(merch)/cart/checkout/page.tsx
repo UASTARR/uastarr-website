@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import FirefliesBackground from '@/app/components/videos/FirefliesBackground';
 import BaseScripts from '@/app/components/scripts/BaseScripts';
 import ReCaptchaApi from '@/app/components/scripts/ReCaptchaApi';
-import CheckoutForm from '@/app/components/checkout/CheckoutForm';
+import CheckoutContainer from '@/app/components/checkout/CheckoutContainer';
 
 export const metadata: Metadata = {
   title: 'Checkout | UASTARR',
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const CheckoutPage = () => {
   return (
-    <main className="min-h-screen pt-40 pb-20">
+    <main className="pt-40 pb-20">
       <BaseScripts />
       <FirefliesBackground />
       <ReCaptchaApi />
@@ -23,7 +23,7 @@ const CheckoutPage = () => {
             <p>Please enter your shipping details to complete your order.</p>
           </div>
 
-          <CheckoutForm />
+          <CheckoutContainer />
         </div>
       </div>
     </main>
