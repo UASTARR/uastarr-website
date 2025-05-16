@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { useCart, CartItem, formatPrice } from '@/app/contexts/CartContext';
+import { useCart, formatPrice } from '@/app/contexts/CartContext';
+import { CartItem } from '@/app/types/checkout';
 
 interface ProductControlsProps {
   id: string;

@@ -61,9 +61,7 @@ export async function handleRecaptchaVerification(
         { status: 400 }
       );
     }
-    // TODO: testing
-    // const isValid = await verifyRecaptcha(token);
-    const isValid = true;
+    const isValid = await verifyRecaptcha(token);
 
     if (!isValid) {
       return NextResponse.json(
