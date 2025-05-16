@@ -41,11 +41,17 @@ credentials_token_uri=
 credentials_auth_provider_x509_cert_url=
 credentials_client_secret=
 
-# Contact us form
-spreadsheet_id=
+# ReCaptcha
 recaptcha_secret_key=
 NEXT_PUBLIC_RECAPTCHA_SITEKEY=
+
+# Contact us form
+spreadsheet_id=
 NEXT_PUBLIC_MAP_KEY=
+
+# Merch checkout workflow
+stripe_secret_key=
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
 
 # Authorization Tokens
 token_type
@@ -60,6 +66,11 @@ firebase_projectId=
 firebase_storageBucket=
 firebase_messagingSenderId=
 firebase_appId=
+
+# Firebase admin SDK
+# Firebase console -> Project settings -> Service accounts -> Generate key
+firebase_client_email=
+firebase_private_key=
 ```
 
 # References
