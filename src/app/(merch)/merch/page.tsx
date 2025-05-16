@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import React, { Suspense } from 'react';
 import BaseScripts from '@/app/components/scripts/BaseScripts';
-import FirefliesBackground from '../components/videos/FirefliesBackground';
-import MerchItemsLayout from '../components/merch/MerchItemsLayout';
+import FirefliesBackground from '@/app/components/videos/FirefliesBackground';
+import MerchItemsLayout from '@/app/components/merch/MerchItemsLayout';
 import { getMerchItems } from '@/library/firebase/firestore';
 
 export const metadata: Metadata = {
