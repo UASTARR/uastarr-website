@@ -26,7 +26,7 @@ const ProjectsPage = async () => {
             <div className="z-20 relative h-32 content-center max-lg:flex max-lg:justify-center max-lg:items-center">
                 <h1 className="text-white text-4xl text-left lg:pl-28 flow_in_left delay-200">Propulsion</h1>
             </div>
-            <div className="flex justify-center flex-row relative z-20">
+            <div className="flex justify-center flex-row relative z-20 min-h-[60vh]">
                 <div className="w-10 lg:w-64 grow-0 overflow-hidden"></div>
                 <div className="flex flex-col items-center justify-center w-full">
                     {projects.map(async (project, index) => {
