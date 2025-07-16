@@ -71,7 +71,7 @@ export default function Home() {
                         <div className="flex items-center h-20">
                             <div className="bg-green-800 h-16 w-2 rounded-full"></div>
                             <p className="text-white text-xl px-3 whitespace-nowrap fade_in delay-1200">
-                                4 rockets launched
+                                5 rockets launched
                             </p>
                         </div>
                         <div></div>
