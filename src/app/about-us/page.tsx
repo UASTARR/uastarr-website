@@ -37,7 +37,7 @@ const AboutUsPage = () => {
                             </p>
                             <div className="h-8"></div>
                             <div className='flex justify-center items-center max-lg:px-6 w-screen lg:w-192'>
-                                <Image src="/assets/TeamPhoto.jpg" className="rounded-xl lg:rounded-xl w-screen lg:w-192 flex-none" alt="team photo"/>
+                                <Image width={2048} height={1365} src="/assets/TeamPhoto.jpg" className="rounded-xl lg:rounded-xl w-screen lg:w-192 flex-none" alt="team photo"/>
                             </div>
                             <div className="h-12"></div>
                         </div>
