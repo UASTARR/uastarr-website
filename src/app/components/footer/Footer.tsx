@@ -73,9 +73,9 @@ const Footer = () => {
                 </div>
             </div>
             {/* <!--Copywright Statement--> */}
-            <div className="pt-16">
+            <div className="pt-12">
                 <h1 className="text-gray-400 text-base text-pretty">
-                    Copyright © 2024 Student Team for Alberta Rocketry Research. All rights reserved.
+                    Copyright © 2024-2025 Student Team for Alberta Rocketry Research. All rights reserved.
                 </h1>
             </div>
         </div>
