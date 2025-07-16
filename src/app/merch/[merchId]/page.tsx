@@ -4,11 +4,17 @@ import BaseScripts from '@/app/components/scripts/BaseScripts';
 import FirefliesBackground from '@/app/components/videos/FirefliesBackground';
 import MerchDetailLayout from '@/app/components/merch/MerchDetailLayout';
 
-const MerchDetailPage = async ({
-  params: { merchId },
-}: {
-  params: { merchId: string };
-}) => {
+const MerchDetailPage = async (
+  props: {
+    params: Promise<{ merchId: string }>;
+  }
+) => {
+  const params = await props.params;
+
+  const {
+    merchId
+  } = params;
+
   const merchItemPromise = getMerchItemById(merchId);
 
   return (

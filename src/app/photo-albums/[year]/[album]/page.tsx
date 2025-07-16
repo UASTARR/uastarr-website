@@ -11,11 +11,12 @@ export const metadata: Metadata = {
   title: 'Album',
 };
 
-export default async function AlbumPage({
-  params,
-}: {
-  params: { year: string; album: string };
-}) {
+export default async function AlbumPage(
+  props: {
+    params: Promise<{ year: string; album: string }>;
+  }
+) {
+  const params = await props.params;
   // TODO: Convert from firebase to google drive api and remove redirect
   // TODO - Jake: Please do not use google drive api! Let's use firebase cloud storage.
   redirect('/down-for-maintenance');
