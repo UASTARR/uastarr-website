@@ -3,8 +3,9 @@ import { getPhotos } from '@/library/firebase/storage';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { year: string; album: string } }
+  props: { params: Promise<{ year: string; album: string }> }
 ) {
+  const params = await props.params;
   const { year, album } = params;
   const albumName = `${year}/${album}`;
 

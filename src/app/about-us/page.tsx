@@ -37,7 +37,11 @@ const AboutUsPage = () => {
                             </p>
                             <div className="h-8"></div>
                             <div className='flex justify-center items-center max-lg:px-6 w-screen lg:w-192'>
-                                <Image src="/assets/TeamPhoto.jpg" className="rounded-xl lg:rounded-xl w-screen lg:w-192 flex-none" alt="team photo"/>
+                                <Image width={2048} height={745} src="/assets/team_photos/2024_2025.jpg" className="rounded-xl lg:rounded-xl w-screen lg:w-192 flex-none" alt="team photo"/>
+                            </div>
+                            <div className="h-8"></div>
+                            <div className='flex justify-center items-center max-lg:px-6 w-screen lg:w-192'>
+                                <Image width={2048} height={1365} src="/assets/team_photos/2023_2024.jpg" className="rounded-xl lg:rounded-xl w-screen lg:w-192 flex-none" alt="team photo"/>
                             </div>
                             <div className="h-12"></div>
                         </div>
