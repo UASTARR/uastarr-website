@@ -28,7 +28,7 @@ export default (phase, { defaultConfig }) => {
             return [
                 {
                     source: '/join',
-                    destination: 'https://forms.gle/fqpVatJeDecr324QA',
+                    destination: 'https://forms.gle/4ds4ACGLKkrwFAAJ9',
                     permanent: false,
                 },
             ]
