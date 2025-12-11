@@ -13,14 +13,14 @@
     "@google-cloud/local-auth": "^3.0.1",
     "@hookform/resolvers": "^3.9.1",
     "dotenv": "^16.4.5",
-    "firebase": "^10.12.2",
+    "firebase": "^12.6.0",
     "googleapis": "^140.0.0",
     "jquery": "^3.7.1",
     "next": "^15.5.7",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-hook-form": "^7.54.2",
-    "react-multi-carousel": "^2.8.6",
+    "react-multi-carousel": "^2.8.5",
     "zod": "^3.24.1"
   },
   "devDependencies": {
