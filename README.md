@@ -68,3 +68,9 @@ firebase_appId=
 - [Tailwind Styling (built in to next js)](https://tailwindcss.com/)
 - [Photo Zoomed in](https://medium.com/@thomasaugot/adding-zoom-functionality-to-an-image-viewer-in-react-next-js-4621be8eb770)
 - [Count Down (or copilot)](https://devpress.csdn.net/react/62eb6977648466712833a0e4.html)
+
+# Dependency Vulnerability Fixes
+## googleapis
+- qs
+    - Affected version `< 6.14.1`
+    - Patched version `6.14.1`
