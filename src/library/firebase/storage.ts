@@ -9,6 +9,7 @@ import { fireStorage } from "./clientApp";
 import { getAlbums } from "./firestore";
 
 export async function getUrl(filepath: string, storage = fireStorage): Promise<{ string: string; type: string | undefined | void }> {
+    return {string: "", type: ""};
     const fileRef = ref(storage, filepath);
     let url = {string: "", type: ("" as string | undefined | void)};
     url.string = await getDownloadURL(fileRef);
@@ -22,11 +23,13 @@ export async function getUrl(filepath: string, storage = fireStorage): Promise<{
 }
 
 export async function getSponsorLogoUrl(sponsor: string, storage = fireStorage) {
+    return null as any;
     const sponsorRef = ref(storage, `sponsors/${sponsor}`);
     return getDownloadURL(sponsorRef);
 }
 
 export async function getAllPhotos() {
+    return null as any;
     const albums = await getAlbums();
     var photos: { [key: string]: {photos: any, name: string, sub_name: string} } = {};
     for (const album of albums) {
@@ -37,6 +40,7 @@ export async function getAllPhotos() {
 }
 
 export async function getAlbumCover() {
+    return null as any;
     const albums = await getAlbums();
     var photos: { [key: string]: {coverPhoto: any, name: string, sub_name: string} } = {};
     for (const album of albums) {
@@ -47,6 +51,7 @@ export async function getAlbumCover() {
 }
 
 export async function getPhotos(album_dir: string, storage = fireStorage) {
+    return null as any;
     const listRef = ref(storage, `photo-albums/${album_dir}`);
     const list = (await listAll(listRef)).items;
     return await Promise.all(list.map(async (photo) => {

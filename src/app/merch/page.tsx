@@ -4,12 +4,14 @@ import BaseScripts from '@/app/components/scripts/BaseScripts';
 import FirefliesBackground from '../components/videos/FirefliesBackground';
 import MerchItemsLayout from '../components/merch/MerchItemsLayout';
 import { getMerchItems } from '@/library/firebase/firestore';
+import { redirect } from 'next/navigation'
 
 export const metadata: Metadata = {
   title: 'Merchandise',
 };
 
 const MerchPage = () => {
+  redirect('/down-for-maintenance');
   const merchItemsPromise = getMerchItems();
 
   return (

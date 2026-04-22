@@ -42,6 +42,10 @@ export default async function Project({
                     <div className="flex justify-center flex-row w-full flex-wrap">
                         {logoIds && logoIds.map(async (logo: string, index: number) => {
                             const url = (await getUrl(logo)).string;
+                            if (!url) {
+                                console.log(`Project: Failed to get URL for logo: ${logo}`);
+                                return null;
+                            }
                             return (
                                 <div className="px-2">
                                     <img key={index} src={url} className="h-32 object-contain" />

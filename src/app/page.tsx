@@ -216,7 +216,7 @@ export default function Home() {
                 <div className="h-20"></div>
                 {/* <!--Main content--> */}
                 <div className="flex justify-center flex-col flex-none lg:items-center">
-                    <div className="w-20 h-20 shrink-0"></div>
+                    {/* <div className="w-20 h-20 shrink-0"></div>
                     <div className="flow_in_left">
                         <Competition
                             year="2025"
@@ -227,11 +227,11 @@ export default function Home() {
                             IREC - Intercollegiate Rocket Engineering Competition
                             for student rocketry teams. We plan to launch Ringo IV."
                         />
-                    </div>
+                    </div> */}
                     <div className="w-20 h-20 shrink-0"></div>
                     <div className="flow_in_left">
                         <Competition
-                            year="2025"
+                            year="2026"
                             name="Launch Canada"
                             link="https://www.launchcanada.org"
                             logo={{ src: launchCanadaLogo, alt: "Launch Canada Logo" }}

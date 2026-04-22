@@ -5,6 +5,7 @@ import { getProjects } from '@/library/firebase/firestore';
 import Project from '@/app/components/projects/Project';
 import { getUrl } from '@/library/firebase/storage';
 import RipplingBackground from '@/app/components/videos/RipplingBackground';
+import { redirect } from 'next/navigation'
 
 export const metadata: Metadata = {
     title: "Rockets",
@@ -14,6 +15,9 @@ export const dynamic = 'force-dynamic';
 
 const ProjectsPage = async () => {
     const projects = await getProjects('rocket')
+    if (!projects) {
+        redirect('/down-for-maintenance');
+    }
     // console.log(projects)
     return (
         <main>
