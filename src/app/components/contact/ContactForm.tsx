@@ -5,20 +5,28 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Popup from './Popup';
 
+const SUBJECT_VALUES = [
+  "member_inquiry",
+  "sponsorship_inquiry",
+  "donation_inquiry",
+  "event_inquiry",
+  "other",
+] as const;
+
+const SubjectOptions = z.enum(SUBJECT_VALUES, {
+  errorMap: (issue, ctx) => {
+    if (issue.code === "invalid_enum_value") {
+      return { message: "Please select a valid subject." };
+    }
+    return { message: ctx.defaultError };
+  },
+});
+
 const schema = z.object({
   firstname: z.string().min(1, 'First name is required'),
   lastname: z.string().min(1, 'Last name is required'),
-  email: z.string().email('Invalid email address'),
-  subject: z.enum(
-    [
-      'member_inquiry',
-      'sponsorship_inquiry',
-      'donation_inquiry',
-      'event_inquiry',
-      'other',
-    ],
-    { errorMap: () => ({ message: 'Please select a subject' }) }
-  ),
+  email: z.email('Invalid email address'),
+  subject: SubjectOptions,
   know: z.string().optional(),
   subscribe: z.boolean().optional(),
   message: z.string().min(1, 'Please leave a message'),
@@ -233,11 +241,10 @@ const ContactForm = () => {
 
         <button
           type="submit"
-          className={`mt-4 px-6 py-3 bg-yellow-500 text-white font-medium rounded flex items-center justify-center ${
-            isSubmitting
-              ? 'opacity-75 cursor-not-allowed'
-              : 'hover:bg-yellow-600'
-          }`}
+          className={`mt-4 px-6 py-3 bg-yellow-500 text-white font-medium rounded flex items-center justify-center ${isSubmitting
+            ? 'opacity-75 cursor-not-allowed'
+            : 'hover:bg-yellow-600'
+            }`}
           disabled={isSubmitting}
         >
           {isSubmitting ? (
