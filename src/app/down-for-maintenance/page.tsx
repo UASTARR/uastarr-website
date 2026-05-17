@@ -33,7 +33,7 @@ const DownPage = () => {
                         </Link>
                     </div>
                     <div className="w-12"></div>
-                    <img src="/assets/STARRVectorIconSquare.png" className="w-64 h-64" />
+                    <img src="/assets/logos/logo-square.png" className="w-64 h-64" />
                 </div>
                 <div className="h-24"></div>
             </div>

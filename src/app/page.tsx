@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import vectorIcon from "../public/assets/STARRVectorIconSquare.png";
+import vectorIcon from "../public/assets/logos/logo-square.png";
 import elkoLogo from "../public/assets/logos/UofA_Elko_logo_outline_white.png";
 import launchCanadaLogo from "../public/assets/logos/LaunchCanadaLogo.png";
 import SponsorsLayoutMainPage from "./components/sponsors/SponsorsLayoutMainPage";
@@ -22,7 +22,7 @@ export default function Home() {
                 {/* <!--Main Text--> */}
                 <div className="lg:pl-20">
                     <div className="flex flex-col lg:flex-row items-center">
-                        <Image className="flex-none" src={vectorIcon} alt="Vector Icon" />
+                        <Image loading='eager' className="flex-none" src={vectorIcon} alt="Vector Icon" />
                         <h1 className="text-white text-center lg:text-left text-5xl lg:text-8xl font-bold flow_in_left">
                             It's Just Rocket <br /> Science.
                         </h1>
