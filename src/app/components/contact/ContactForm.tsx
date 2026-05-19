@@ -14,12 +14,7 @@ const SUBJECT_VALUES = [
 ] as const;
 
 const SubjectOptions = z.enum(SUBJECT_VALUES, {
-  errorMap: (issue, ctx) => {
-    if (issue.code === "invalid_enum_value") {
-      return { message: "Please select a valid subject." };
-    }
-    return { message: ctx.defaultError };
-  },
+  message: "Please select a valid subject.",
 });
 
 const schema = z.object({
