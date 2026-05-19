@@ -34,6 +34,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "library/google/api.js",
+    "library/google/drive.ts",
     "app/photo-albums/[year]/[album]/api/route.ts",
     ".next/dev/types/**/*.ts"
   ],

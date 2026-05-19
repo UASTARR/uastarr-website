@@ -1,11 +1,34 @@
 import Link from "next/link";
-import { getSponsorRanks, getSponsors } from "@/library/firebase/firestore";
+import { getSponsorRanks, getSponsors } from "@/library/neon/database";
 import SponsorWithImage from "./SponsorsLayoutSingleSponsorPage";
 import PackageBackground from "@/public/assets/sponsor_bkgs/bkg3.jpeg"
 import Image from "next/image";
+import { getSponsorshipPdfUrlFromFolder, getSponsorLogoDicts } from '@/library/google/drive';
+
+export const revalidate = 86400; // 60 * 60 * 24 Revalidate once a day
+
+const driveId = process.env.google_drive_id || '';
+const logoFolderId = process.env.google_drive_sponsor_logos_folder_id || '';
+const sponsorPackagesFolderId = process.env.google_drive_sponsor_pacakges_folder_id || '';
+const sponsorshipPdfUrl = await getSponsorshipPdfUrlFromFolder(driveId, sponsorPackagesFolderId);
+const backgroundImages = [
+  '/assets/sponsor_bkgs/bkg1.jpeg',
+  '/assets/sponsor_bkgs/bkg2.jpeg',
+  '/assets/sponsor_bkgs/bkg3.jpeg',
+  '/assets/sponsor_bkgs/bkg4.jpeg',
+  '/assets/sponsor_bkgs/bkg5.jpeg',
+];
+const sponsorLogoDict = await getSponsorLogoDicts(driveId, logoFolderId);
+
+const getSponsorLogoUrl = (sponsorName: string): string => {
+    const formattedName = sponsorName.toLowerCase().replace(/ /g, '_');
+    return sponsorLogoDict[formattedName] || '';
+}
 
 const SponsorsLayoutSponsorPage = async () => {
-    const sponsorRanks = await getSponsorRanks();
+    const sponsorRanksResponse = await getSponsorRanks();
+    const sponsorRanksData = await sponsorRanksResponse.json();
+    const sponsorRanks = sponsorRanksData.rows ?? [];
     const sponsors = [] as any[];
     const bannerColours: { [key: string]: string } = {
         "bronze": "bg-gradient-to-r from-orange-400 to-zinc-500",
@@ -14,14 +37,16 @@ const SponsorsLayoutSponsorPage = async () => {
         "green": "bg-gradient-to-r from-green-500 to-zinc-500"
     }
     for (let i = 0; i < sponsorRanks.length; i++) {
-        sponsors[i] = await getSponsors(sponsorRanks[i].id);
+        const sponsorsResponse = await getSponsors(sponsorRanks[i].name);
+        const sponsorsData = await sponsorsResponse.json();
+        sponsors[i] = sponsorsData.rows ?? [];
     }
     let sponsorIndex = 0;
     return (
         <div className="flex flex-col relative flex-none z-20">
             {sponsorRanks.map((currentRank: any, index: number) => {
                 const currentSponsors = sponsors[index];
-                const colour = bannerColours[currentRank.colour];
+                const colour = bannerColours[currentRank.banner_colour] || "bg-gradient-to-r from-gray-400 to-zinc-500";
                 return (
                     <div key={index}>
                         <div className={`relative py-5 lg:py-10 flex justify-center items-center ${colour}`}>
@@ -36,31 +61,31 @@ const SponsorsLayoutSponsorPage = async () => {
                                     {sponsorIndex % 2 === 0 ? (
                                         <SponsorWithImage
                                             side='left'
-                                            link={sponsor.link}
-                                            imgref={sponsor.imgref} name={sponsor.name}
+                                            link={sponsor.website || '#'}
+                                            imgref={getSponsorLogoUrl(sponsor.name)} name={sponsor.name}
                                             description={sponsor.description}
-                                            background={sponsor.background}
+                                            background={backgroundImages[sponsorIndex % backgroundImages.length]}
                                         />
                                     ) : (
                                         <>
                                             <div className="max-lg:hidden">
                                                 <SponsorWithImage
                                                     side='right'
-                                                    link={sponsor.link}
-                                                    imgref={sponsor.imgref}
+                                                    link={sponsor.website || '#'}
+                                                    imgref={getSponsorLogoUrl(sponsor.name)}
                                                     name={sponsor.name}
                                                     description={sponsor.description}
-                                                    background={sponsor.background}
+                                                    background={backgroundImages[sponsorIndex % backgroundImages.length]}
                                                 />
                                             </div>
                                             <div className="lg:hidden">
                                                 <SponsorWithImage
                                                     side='left'
-                                                    link={sponsor.link}
-                                                    imgref={sponsor.imgref}
+                                                    link={sponsor.website || '#'}
+                                                    imgref={getSponsorLogoUrl(sponsor.name)}
                                                     name={sponsor.name}
                                                     description={sponsor.description}
-                                                    background={sponsor.background}
+                                                    background={backgroundImages[sponsorIndex % backgroundImages.length]}
                                                 />
                                             </div>
                                         </>
@@ -95,7 +120,7 @@ const SponsorPackageDesktop = () => {
                         <div className="flex">
                             <div className="w-8 flex-none"></div>
 
-                            <Link href={'/assets/sponsor_package/Sponsorship Package - STARR.pdf'} download={true} className="w-96 flex justify-center">
+                            <Link href={sponsorshipPdfUrl || '/assets/sponsor_package/Sponsorship Package - STARR.pdf'} download={true} className="w-96 flex justify-center">
                                 <img src="/assets/sponsor_package/sponsorsCover.jpg" style={{ width: '389px', height: '504px' }} />
                             </Link>
                             <div className="w-56 flex-none"></div>
@@ -131,7 +156,7 @@ const SponsorPackageDesktop = () => {
                                 </p>
                                 <div className="h-12"></div>
                                 {/* Link place holder */}
-                                <Link href={'/assets/sponsor_package/Sponsorship Package - STARR.pdf'} download={true}>
+                                <Link href={sponsorshipPdfUrl || '/assets/sponsor_package/Sponsorship Package - STARR.pdf'} download={true}>
                                     <button
                                         className="whitespace-nowrap bg-yellow-500 hover:transition-all hover:bg-white rounded-full px-8 py-3">
                                         View Sponsorship Package
@@ -166,7 +191,7 @@ const SponsorPackageMobile = () => {
                 </div>
                 <div className="h-12"></div>
                 {/* Link place holder */}
-                <Link href={'/assets/sponsor_package/Sponsorship Package - STARR.pdf'} download={true}>
+                <Link href={sponsorshipPdfUrl || '/assets/sponsor_package/Sponsorship Package - STARR.pdf'} download={true}>
                     <button
                         className="bg-yellow-500 hover:transition-all hover:bg-white rounded-full px-8 py-3">
                         View Sponsorship Package
@@ -176,7 +201,7 @@ const SponsorPackageMobile = () => {
             <div className="bg-cover flex relative justify-center items-center w-screen py-6" style={{ backgroundImage: `url(${PackageBackground.src})` }}>
                 <div className="flex-none">
                     {/* Link place holder */}
-                    <Link href={'/assets/sponsor_package/Sponsorship Package - STARR.pdf'} download={true} className="max-h-80 object-contain">
+                    <Link href={sponsorshipPdfUrl || '/assets/sponsor_package/Sponsorship Package - STARR.pdf'} download={true} className="max-h-80 object-contain">
                         <Image className="justify-center object-contain max-h-80 w-screen" src="/assets/sponsor_package/sponsorsCover.jpg" alt="Sponsor Package" width={389} height={504} />
                     </Link>
                 </div>

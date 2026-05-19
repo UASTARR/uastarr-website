@@ -1,30 +1,44 @@
 import Link from 'next/link';
-import { getSponsorRanks, getSponsors } from '@/library/firebase/firestore';
-import { getSponsorLogoUrl } from "@/library/firebase/storage";
+import Image from 'next/image';
+import { getSponsorRanks, getSponsors } from '@/library/neon/database';
+import { getSponsorLogoDicts } from '@/library/google/drive';
+
+const driveId = process.env.google_drive_id || '';
+const logoFolderId = process.env.google_drive_sponsor_logos_folder_id || '';
+const sponsorLogoDict = await getSponsorLogoDicts(driveId, logoFolderId);
+
+const getSponsorLogoUrl = (sponsorName: string): string => {
+    const formattedName = sponsorName.toLowerCase().replace(/ /g, '_');
+    return sponsorLogoDict[formattedName] || '';
+}
 
 const SponsorsLayoutMainPage = async () => {
-    const sponsorRanks = await getSponsorRanks();
+    const sponsorRanksResponse = await getSponsorRanks();
+    const sponsorRanksData = await sponsorRanksResponse.json();
+    const sponsorRanks = sponsorRanksData.rows ?? [];
     let sponsors = [] as any[];
     for (let i = 0; i < sponsorRanks.length; i++) {
-        sponsors = sponsors.concat(await getSponsors(sponsorRanks[i].id));
+        const sponsorsResponse = await getSponsors(sponsorRanks[i].name);
+        const sponsorsData = await sponsorsResponse.json();
+        sponsors = sponsors.concat(sponsorsData.rows ?? []);
     }
     // For even number of sponsors
     // Displays 'become a sponsor' button at the end as wide as two sponsor logos
     if (sponsors.length % 2 === 0) {
         return (
             <div>
-                {sponsors.map(async (sponsor: any, index: number) => (
+                {sponsors.map((sponsor: any, index: number) => (
                     <div key={index} className="flex flex-col lg:flex-row overflow-hidden min-w-max">
                         {index % 2 === 0 && (
                             <>
                                 <div className="shrink-0 h-28 w-screen lg:w-80 grow bg-cover flex justify-center items-center overflow-hidden border-t lg:border-r border-black" style={{ backgroundImage: "url(/assets/sponsor_bkgs/standardbkg.jpeg)" }}>
-                                    <Link target="_blank" href={sponsor.link} rel="noopener noreferrer" className="flex justify-center object-contain">
-                                        <img className="max-w-80 max-h-28" src={await getSponsorLogoUrl(sponsor.imgref)} alt={sponsor.name} />
+                                    <Link target="_blank" href={sponsor.website} rel="noopener noreferrer" className="flex justify-center object-contain">
+                                        {getSponsorLogoUrl(sponsor.name) ? <Image width={2048} height={1024} className="max-w-80 max-h-28 object-contain" src={getSponsorLogoUrl(sponsor.name)} alt={sponsor.name} /> : null}
                                     </Link>
                                 </div>
                                 <div className="shrink-0 h-28 w-screen lg:w-80 grow bg-cover flex justify-center items-center overflow-hidden border-t border-black" style={{ backgroundImage: "url(/assets/sponsor_bkgs/standardbkg.jpeg)" }}>
-                                    <Link target="_blank" href={sponsors[index + 1].link} rel="noopener noreferrer" className="flex justify-center object-contain">
-                                        <img className="max-w-80 max-h-28" src={await getSponsorLogoUrl(sponsors[index + 1].imgref)} alt={sponsors[index + 1].name} />
+                                    <Link target="_blank" href={sponsors[index + 1].website} rel="noopener noreferrer" className="flex justify-center object-contain">
+                                        {getSponsorLogoUrl(sponsors[index + 1].name) ? <Image width={2048} height={1024} className="max-w-80 max-h-28 object-contain" src={getSponsorLogoUrl(sponsors[index + 1].name)} alt={sponsors[index + 1].name} /> : null}
                                     </Link>
                                 </div>
                             </>
@@ -46,20 +60,20 @@ const SponsorsLayoutMainPage = async () => {
     } else {
         return (
             <div>
-                {sponsors.map(async (sponsor: any, index: number) => (
+                {sponsors.map((sponsor: any, index: number) => (
                     <div key={index} className="flex flex-col lg:flex-row overflow-hidden min-w-max">
                         {index % 2 === 0 && (
                             <div className="shrink-0 h-28 w-screen lg:w-80 grow bg-cover flex justify-center items-center overflow-hidden border-t lg:border-r border-black" style={{ backgroundImage: "url(/assets/sponsor_bkgs/standardbkg.jpeg)" }}>
-                                <Link target="_blank" href={sponsor.link} rel="noopener noreferrer" className="flex justify-center object-contain">
-                                    <img className="max-w-80 max-h-28" src={await getSponsorLogoUrl(sponsor.imgref)} alt={sponsor.name} />
+                                <Link target="_blank" href={sponsor.website} rel="noopener noreferrer" className="flex justify-center object-contain">
+                                    {getSponsorLogoUrl(sponsor.name) ? <Image width={2048} height={1024} className="max-w-80 max-h-28 object-contain" src={getSponsorLogoUrl(sponsor.name)} alt={sponsor.name} /> : null}
                                 </Link>
                             </div>
                         )}
                         {index % 2 === 0 && (
                             index + 1 !== sponsors.length ? (
                                 <div className="shrink-0 h-28 w-screen lg:w-80 grow bg-cover flex justify-center items-center overflow-hidden border-t border-black" style={{ backgroundImage: "url(/assets/sponsor_bkgs/standardbkg.jpeg)" }}>
-                                    <Link target="_blank" href={sponsors[index + 1].link} rel="noopener noreferrer" className="flex justify-center object-contain">
-                                        <img className="max-w-80 max-h-28" src={await getSponsorLogoUrl(sponsors[index + 1].imgref)} alt={sponsors[index + 1].name} />
+                                    <Link target="_blank" href={sponsors[index + 1].website} rel="noopener noreferrer" className="flex justify-center object-contain">
+                                        {getSponsorLogoUrl(sponsors[index + 1].name) ? <Image width={2048} height={1024} className="max-w-80 max-h-28 object-contain" src={getSponsorLogoUrl(sponsors[index + 1].name)} alt={sponsors[index + 1].name} /> : null}
                                     </Link>
                                 </div>
                             ) : (
