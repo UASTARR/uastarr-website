@@ -3,7 +3,7 @@ import { getSponsorRanks, getSponsors } from "@/library/neon/database";
 import SponsorWithImage from "./SponsorsLayoutSingleSponsorPage";
 import PackageBackground from "@/public/assets/sponsor_bkgs/bkg3.jpeg"
 import Image from "next/image";
-import { getSponsorshipPdfUrlFromFolder, getSponsorLogoDicts } from '@/library/google/drive';
+import { getSponsorshipPdfUrlFromFolder, getImageUrlDicts } from '@/library/google/drive';
 
 export const revalidate = 86400; // 60 * 60 * 24 Revalidate once a day
 
@@ -18,7 +18,7 @@ const backgroundImages = [
   '/assets/sponsor_bkgs/bkg4.jpeg',
   '/assets/sponsor_bkgs/bkg5.jpeg',
 ];
-const sponsorLogoDict = await getSponsorLogoDicts(driveId, logoFolderId);
+const sponsorLogoDict = await getImageUrlDicts(driveId, logoFolderId);
 
 const getSponsorLogoUrl = (sponsorName: string): string => {
     const formattedName = sponsorName.toLowerCase().replace(/ /g, '_');

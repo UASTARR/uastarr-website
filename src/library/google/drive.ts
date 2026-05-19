@@ -9,7 +9,7 @@ function removeExtension(filename: string): string {
     return filename.split('.').slice(0, -1).join('.');
 }
 
-export async function getImagesFromFolder(driveId: string, folderId: string): Promise<{ id: string; name: string; imageUrl: string }[]> {
+export async function getImagesFromFolder(driveId: string, folderId: string): Promise<{ id: string; name: string; webViewLink: string }[]> {
     const drive: drive_v3.Drive = google.drive({
       version: 'v3',
       auth: process.env.google_api_key
@@ -25,7 +25,7 @@ export async function getImagesFromFolder(driveId: string, folderId: string): Pr
         supportsAllDrives: true
     };
 
-    const files: { id: string; name: string; imageUrl: string }[] = [];
+    const files: { id: string; name: string; webViewLink: string }[] = [];
     let pageToken: string | undefined;
 
     do {
@@ -38,9 +38,9 @@ export async function getImagesFromFolder(driveId: string, folderId: string): Pr
         const res = await drive.files.list(params);
         files.push(...(res.data.files?.filter((file) => file.id && file.name).map((file) => ({
             id: file.id!,
-            name: removeExtension(file.name!),
-            imageUrl: getImageUrlFromId(file.id!)
-        })) as { id: string; name: string; imageUrl: string }[] ?? []));
+            name: file.name!,
+            webViewLink: file.webViewLink || ''
+        })) as { id: string; name: string; webViewLink: string }[] ?? []));
         pageToken = res.data.nextPageToken ?? undefined;
     } while (pageToken);
 
@@ -79,12 +79,12 @@ export async function getSponsorshipPdfUrlFromFolder(driveId: string, folderId: 
     }
 }
 
-export async function getSponsorLogoDicts(driveId: string, logoFolderId: string): Promise<{ [key: string]: string }> {
-    const sponsorLogos = await getImagesFromFolder(driveId, logoFolderId);
+export async function getImageUrlDicts(driveId: string, imageFolderId: string): Promise<{ [key: string]: string }> {
+    const images = await getImagesFromFolder(driveId, imageFolderId);
     // Key is the image name, value is the image URL
-    const sponsorLogoDict: { [key: string]: string } = {};
-    sponsorLogos.forEach((logo) => {
-        sponsorLogoDict[logo.name] = logo.imageUrl;
+    const nameImageUrlDict: { [key: string]: string } = {};
+    images.forEach((image) => {
+        nameImageUrlDict[removeExtension(image.name)] = getImageUrlFromId(image.id);
     });
-    return sponsorLogoDict;
+    return nameImageUrlDict;
 }

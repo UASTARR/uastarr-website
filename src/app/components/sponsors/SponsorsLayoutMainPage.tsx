@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getSponsorRanks, getSponsors } from '@/library/neon/database';
-import { getSponsorLogoDicts } from '@/library/google/drive';
+import { getImageUrlDicts } from '@/library/google/drive';
 
 const driveId = process.env.google_drive_id || '';
 const logoFolderId = process.env.google_drive_sponsor_logos_folder_id || '';
-const sponsorLogoDict = await getSponsorLogoDicts(driveId, logoFolderId);
+const sponsorLogoDict = await getImageUrlDicts(driveId, logoFolderId);
 
 const getSponsorLogoUrl = (sponsorName: string): string => {
     const formattedName = sponsorName.toLowerCase().replace(/ /g, '_');

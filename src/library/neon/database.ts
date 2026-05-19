@@ -17,8 +17,16 @@ export async function getSponsorRanks() {
 // Members
 export async function getActiveExecutives() {
     const sql = neon(process.env.neon_db_connection_url!);
-    const all_executives = await sql`SELECT * FROM members WHERE display_order IS NOT NULL AND active = TRUE ORDER BY display_order ASC`;
-    const other_members = await sql`SELECT * FROM members WHERE display_order IS NULL AND active = TRUE ORDER BY title ASC, first_name ASC`;
-    all_executives.push(...other_members);
+    const all_executives = await sql`
+    SELECT m.first_name, m.last_name, m.title, m.img_ref_link 
+    FROM members m
+        LEFT JOIN member_types mt ON m.member_type = mt.name
+    WHERE active = TRUE 
+    ORDER BY 
+        mt.type_order ASC,
+        display_order ASC,
+        title ASC,
+        first_name ASC`;
+        
     return Response.json(all_executives);
 }
