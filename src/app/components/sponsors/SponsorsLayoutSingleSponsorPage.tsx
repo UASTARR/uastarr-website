@@ -1,4 +1,4 @@
-import { getSponsorLogoUrl } from "@/library/firebase/storage";
+import Image from "next/image";
 import Link from "next/link";
 
 const SponsorWithImage = ({
@@ -9,7 +9,7 @@ const SponsorWithImage = ({
     if (side === 'left') {
         return (
             <div className="flex flex-col lg:flex-row h-128">
-                <SponsorImage imgref={imgref} link={link} background={background} />
+                <SponsorImage imgref={imgref} link={link} background={background} alt={name} />
                 <SponsorText name={name} description={description} />
             </div>
         );
@@ -17,18 +17,18 @@ const SponsorWithImage = ({
         return (
             <div className="flex flex-col lg:flex-row h-128">
                 <SponsorText name={name} description={description} />
-                <SponsorImage imgref={imgref} link={link} background={background} />
+                <SponsorImage imgref={imgref} link={link} background={background} alt={name} />
             </div>
         );
     }
 }
 
-const SponsorImage = async ({ imgref, link, background } : { imgref: string, link: string, background: string }) => {
+const SponsorImage = async ({ imgref, link, background, alt } : { imgref: string, link: string, background: string, alt: string }) => {
     return (
         <div className="bg-cover grow basis-1/2 flex justify-center items-center w-screen lg:w-512" style={{ backgroundImage: `url(${background})` }}>
             <div className="flex-none">
                 <Link target='_blank' href={link} rel="noopener noreferrer">
-                    <img className="flex-none w-screen px-6 lg:px-0 max-h-64 object-contain lg:w-112 fade_in" src={await getSponsorLogoUrl(imgref)} />
+                    {imgref ? <Image width={2048} height={1024} src={imgref} className="flex-none w-screen px-6 lg:px-0 max-h-64 object-contain lg:w-112 fade_in" alt={alt} /> : null }
                 </Link>
             </div>
         </div>

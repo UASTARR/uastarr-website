@@ -93,7 +93,7 @@ const AboutUsPage = () => {
                                 <div className="h-14"></div>
                             </div>
                             <div className="w-12"></div>
-                            <img src="/assets/STARRVectorIconSquare.png" className="rounded-xl flex-none overflow-hidden" />
+                            <img src="/assets/logos/logo-square.png" className="rounded-xl flex-none overflow-hidden" />
                         </div>
                     </div>
                 </div>

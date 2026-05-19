@@ -2,9 +2,15 @@
 import { neon } from '@neondatabase/serverless';
 
 // Sponsors
-export async function getSponsors() {
+export async function getSponsors(sponsorLevel: string) {
     const sql = neon(process.env.neon_db_connection_url!);
-    const rows = await sql`SELECT * FROM sponsors`;
+    const rows = await sql`SELECT * FROM sponsors WHERE sponsor_level = ${sponsorLevel} ORDER BY display_order ASC`;
+    return Response.json({rows});
+}
+
+export async function getSponsorRanks() {
+    const sql = neon(process.env.neon_db_connection_url!);
+    const rows = await sql`SELECT * FROM sponsor_levels ORDER BY level_order ASC`;
     return Response.json({rows});
 }
 
