@@ -31,6 +31,11 @@ export default (phase, { defaultConfig }) => {
                     destination: 'https://forms.gle/4ds4ACGLKkrwFAAJ9',
                     permanent: false,
                 },
+                {
+                    source: '/cf',
+                    destination: 'https://ualberta.alumniq.com/crowdfunding/Crowdfunding/starrcf',
+                    permanent: false,
+                }
             ]
         },
     };
