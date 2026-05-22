@@ -30,3 +30,15 @@ export async function getActiveExecutives() {
         
     return Response.json(all_executives);
 }
+
+// Projects
+export async function getProjects(projectType: string) {
+    const sql = neon(process.env.neon_db_connection_url!);
+    const rows = await sql`
+    SELECT 
+        *
+    FROM projects p
+    WHERE project_type = ${projectType}
+    ORDER BY id DESC`;
+    return Response.json({rows});
+}
