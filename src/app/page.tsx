@@ -257,7 +257,7 @@ export default function Home() {
                             logo={{ src: launchCanadaLogo, alt: "Launch Canada Logo" }}
                             description="Launch Canada is a rocket competition designed to create
                             opportunities for amateur rocketeers from Canadian
-                            universities. We plan to launch Alberio."
+                            universities. We plan to launch Albireo."
                         />
                     </div>
 
