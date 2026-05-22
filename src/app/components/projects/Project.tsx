@@ -1,17 +1,16 @@
-import { getUrl } from "@/library/firebase/storage"
 import { Timestamp } from "firebase/firestore";
 import Link from "next/link";
 import Countdown from "./Countdown";
 import Image from "next/image";
 
 export default async function Project({
-    title, playlist, logos, album, albumName, launchDate, children, albumUrl
+    title, playlist, albumYear, albumName, launchDate, children, albumUrl
 }: {
-    title: string, playlist: string, logos: string, album: string | undefined, albumName: string, launchDate: Timestamp, children: string, albumUrl: string | undefined
+    title: string, playlist: string, albumYear: string | undefined, albumName: string, launchDate: Timestamp, children: string, albumUrl: string | undefined
 }) {
     const listId = playlist ? playlist.search('list=PL') : -1
     const thePlaylist = listId > -1 ? playlist.slice(listId + 5) : playlist
-    const logoIds = logos ? logos.split(',') : []
+    // const logoIds = logos ? logos.split(',') : []
 
     const albumImage = albumUrl ? ({ url: albumUrl}) : ({ url: '/assets/logos/logo.png' })
     const albumTitle = albumName ? albumName : ''
@@ -40,7 +39,7 @@ export default async function Project({
 
                     {/* Logos */}
                     <div className="flex justify-center flex-row w-full flex-wrap">
-                        {logoIds && logoIds.map(async (logo: string, index: number) => {
+                        {/* {logoIds && logoIds.map(async (logo: string, index: number) => {
                             const url = (await getUrl(logo)).string;
                             if (!url) {
                                 console.log(`Project: Failed to get URL for logo: ${logo}`);
@@ -51,7 +50,7 @@ export default async function Project({
                                     <img key={index} src={url} className="h-32 object-contain" />
                                 </div>
                             )
-                        })}
+                        })} */}
                     </div>
                 </div>
                 {/* Right side for desktop, bottom for mobile */}
@@ -69,7 +68,7 @@ export default async function Project({
                     </p>
                     <div className="h-5"></div>
                     {!launch && (
-                        <Link href={`/photo-albums/${album ? album : ''}`}>
+                        <Link href={`/photo-albums/${albumYear && albumName ? `${albumYear}/${albumName}` : ''}`}>
                             <button
                                 className="transition-all duration-300 whitespace-nowrap text-sm text-lime-700 bg-gray-50 hover:text-white hover:bg-black hover:drop-shadow-glowPurple rounded-full w-32 py-3">
                                 View More
