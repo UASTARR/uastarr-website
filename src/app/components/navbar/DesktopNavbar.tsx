@@ -1,5 +1,6 @@
 'use client';
 import Link from "next/link"
+import { mainHref, wikiHref } from "@/library/siteUrls"
 
 const DesktopNavbar = () => {
     let timer: NodeJS.Timeout | undefined;
@@ -48,28 +49,29 @@ const DesktopNavbar = () => {
             <div className="bg-gray-50 bg-opacity-10 rounded-full bg-cover px-12 py-3" style={{ display: "inline-block" }}>
                 {/* Navigation buttons */}
                 <div className="flex flex-nowrap space-x-6">
-                    <Link className="hover:text-yellow-300 text-white" href="/">Home</Link>
-                    {/* <Link className="hover:text-yellow-300 text-white" href="/projects">Projects</Link>  */}
+                    <Link className="hover:text-yellow-300 text-white" href={mainHref("/")}>Home</Link>
+                    {/* <Link className="hover:text-yellow-300 text-white" href={mainHref("/projects")}>Projects</Link>  */}
                     <div className="flex justify-center">
-                        <Link href="/projects" className="popupProject hover:text-yellow-300 text-white" onMouseOver={() => showPopupProject()} onMouseOut={() => delayedHidePopupProject()}>Projects</Link>
+                        <Link href={mainHref("/projects")} className="popupProject hover:text-yellow-300 text-white" onMouseOver={() => showPopupProject()} onMouseOut={() => delayedHidePopupProject()}>Projects</Link>
                         <div className="absolute justify-items-center hidden translate-y-[45px]" id="popupProject" onMouseOver={() => delayHidePopupProject()} onMouseOut={() => delayedHidePopupProject()}>
                             <div className="flex flex-col justify-items-center bg-gray-50 bg-opacity-10 rounded-2xl left-20 px-3 py-3">
-                                <Link href="/projects/rockets" className="pb-2 text-white text-center hover:text-yellow-300">Rockets</Link>
-                                <Link href="/projects/payloads" className="pb-2 text-white text-center hover:text-yellow-300">Payloads</Link>
-                                <Link href="/projects/ground-station" className="pb-2 text-white text-center hover:text-yellow-300">Ground Station</Link>
-                                <Link href="/projects/propulsion" className="text-white text-center hover:text-yellow-300">Propulsion</Link>
+                                <Link href={mainHref("/projects/rockets")} className="pb-2 text-white text-center hover:text-yellow-300">Rockets</Link>
+                                <Link href={mainHref("/projects/payloads")} className="pb-2 text-white text-center hover:text-yellow-300">Payloads</Link>
+                                <Link href={mainHref("/projects/ground-station")} className="pb-2 text-white text-center hover:text-yellow-300">Ground Station</Link>
+                                <Link href={mainHref("/projects/propulsion")} className="text-white text-center hover:text-yellow-300">Propulsion</Link>
                             </div>
                         </div>
                     </div>
-                    <Link className="hover:text-yellow-300 text-white whitespace-nowrap" href="/about-us">About Us</Link>
-                    <Link className="hover:text-yellow-300 text-white" href="/sponsors">Sponsors</Link>
+                    <Link className="hover:text-yellow-300 text-white whitespace-nowrap" href={mainHref("/about-us")}>About Us</Link>
+                    <Link className="hover:text-yellow-300 text-white" href={mainHref("/sponsors")}>Sponsors</Link>
                     <div className="flex justify-center">
                         <a className="popup hover:text-yellow-300 text-white cursor-default" onMouseOver={() => showPopup()} onMouseOut={() => delayedHidePopup()} >More</a>
                         <div className="absolute justify-items-center hidden translate-y-[45px]" id="popup" onMouseOver={() => delayHidePopup()} onMouseOut={() => delayedHidePopup()}>
                             <div className="flex flex-col justify-items-center bg-gray-50 bg-opacity-10 rounded-2xl left-20 px-3 py-3">
-                                <Link href="/merch" className="pb-2 text-white text-center hover:text-yellow-300 whitespace-nowrap">Merch</Link>
-                                <Link href="/photo-albums" className="pb-2 text-white text-center hover:text-yellow-300 whitespace-nowrap">Photo Albums</Link>
-                                <Link href="/contact" className="text-white text-center hover:text-yellow-300">Contact</Link>
+                                <Link href={mainHref("/merch")} className="pb-2 text-white text-center hover:text-yellow-300 whitespace-nowrap">Merch</Link>
+                                <Link href={mainHref("/photo-albums")} className="pb-2 text-white text-center hover:text-yellow-300 whitespace-nowrap">Photo Albums</Link>
+                                <Link href={wikiHref()} className="pb-2 text-white text-center hover:text-yellow-300">Wiki</Link>
+                                <Link href={mainHref("/contact")} className="text-white text-center hover:text-yellow-300">Contact</Link>
                             </div>
                         </div>
                     </div>
@@ -77,7 +79,7 @@ const DesktopNavbar = () => {
             </div>
             {/* Join Now Button */}
             <div className="inline-block pl-5">
-                <Link target="_blank" href="/join" rel="noopener noreferrer">
+                <Link target="_blank" href={mainHref("/join")} rel="noopener noreferrer">
                     <button className="text-white whitespace-nowrap bg-green-700 hover:transition-all duration-200 hover:bg-white hover:text-black rounded-full px-6 py-3">Join Now</button>
                 </Link>
             </div>

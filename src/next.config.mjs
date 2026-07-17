@@ -32,9 +32,9 @@ export default (phase, { defaultConfig }) => {
                     permanent: false,
                 },
                 {
-                    source: '/cf',
-                    destination: 'https://ualberta.alumniq.com/crowdfunding/Crowdfunding/starrcf',
-                    permanent: false,
+                    source: '/wiki',
+                    destination: process.env.NEXT_PUBLIC_WIKI_URL ?? '/wiki',
+                    permanent: true,
                 }
             ]
         },

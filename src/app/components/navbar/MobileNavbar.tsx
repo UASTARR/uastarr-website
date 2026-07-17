@@ -4,24 +4,39 @@ import { useEffect, useState } from 'react';
 import menuIcon from '@/public/assets/menu-svgrepo-com.svg';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation'
+import { mainHref, wikiHref } from '@/library/siteUrls'
+
+function isWikiHost() {
+    if (typeof window === 'undefined') return false;
+    const host = window.location.hostname.toLowerCase();
+    return host === 'wiki.localhost' || host.startsWith('wiki.');
+}
 
 const MobileNavbar = () => {
     const [showDrawer, setShowDrawer] = useState(false);
+    const [onWikiHost, setOnWikiHost] = useState(false);
     const pathName = usePathname();
+
+    useEffect(() => {
+        setOnWikiHost(isWikiHost());
+    }, []);
+
+    const onWiki =
+        pathName === '/wiki' || pathName.startsWith('/wiki/') || onWikiHost;
+
     const NavButton = ({ page, children }: { page: string, children: React.ReactNode }) => {
-        if (pathName === page) {
-            return (
-                <button className="text-yellow-300 hover:text-bold whitespace-nowrap text-4xl py-3" onClick={drawerToggle}>
-                    <Link href={page}>{children}</Link>
-                </button>
-            );
-        } else {
-            return (
-                <button className="hover:text-yellow-300 whitespace-nowrap text-4xl py-3" onClick={drawerToggle}>
-                    <Link href={page}>{children}</Link>
-                </button>
-            );
-        }
+        const href = mainHref(page);
+        const isActive = page === '/'
+            ? pathName === '/' && !onWiki
+            : pathName === page;
+        return (
+            <button
+                className={`${isActive ? 'text-yellow-300 hover:text-bold' : 'hover:text-yellow-300'} whitespace-nowrap text-4xl py-3`}
+                onClick={drawerToggle}
+            >
+                <Link href={href}>{children}</Link>
+            </button>
+        );
     }
     useEffect(() => {
         if (showDrawer) {
@@ -51,8 +66,14 @@ const MobileNavbar = () => {
                 <NavButton page="/sponsors">Sponsors</NavButton>
                 <NavButton page="/merch">Merch</NavButton>
                 <NavButton page="/photo-albums">Photo Albums</NavButton>
+                <button
+                    className={`${onWiki ? 'text-yellow-300 hover:text-bold' : 'hover:text-yellow-300'} whitespace-nowrap text-4xl py-3`}
+                    onClick={drawerToggle}
+                >
+                    <Link href={wikiHref()}>Wiki</Link>
+                </button>
                 <button className="hover:text-yellow-300 whitespace-nowrap text-4xl py-3" onClick={drawerToggle}>
-                    <Link target="_blank" href="/join" rel="noopener noreferrer">Join Us!</Link>
+                    <Link target="_blank" href={mainHref("/join")} rel="noopener noreferrer">Join Us!</Link>
                 </button>
                 <NavButton page="/contact">Contact</NavButton>
             </div>
