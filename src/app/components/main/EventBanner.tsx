@@ -18,11 +18,11 @@ function getTimeLeft(now: number) {
     };
 }
 
-const TimeUnit = ({ value, label }: { value: number; label: string }) => (
+const TimeUnit = ({ value, label }: { value: number | null; label: string }) => (
     <div className="flex flex-col items-center space-y-2">
         <div className="bg-black h-14 w-16 lg:h-16 lg:w-20 rounded-md flex justify-center items-center">
             <p className="text-yellow-500 text-xl lg:text-2xl font-bold tabular-nums">
-                {String(value).padStart(2, '0')}
+                {value === null ? '--' : String(value).padStart(2, '0')}
             </p>
         </div>
         <p className="text-black text-sm lg:text-base font-semibold">{label}</p>
@@ -30,14 +30,17 @@ const TimeUnit = ({ value, label }: { value: number; label: string }) => (
 );
 
 const EventBanner = () => {
-    const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(Date.now()));
+    // null until mount so SSR and first client render match (avoids Date.now hydration mismatch)
+    const [timeLeft, setTimeLeft] = useState<ReturnType<typeof getTimeLeft> | null>(null);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setTimeLeft(getTimeLeft(Date.now()));
-        }, 1000);
+        const tick = () => setTimeLeft(getTimeLeft(Date.now()));
+        tick();
+        const interval = setInterval(tick, 1000);
         return () => clearInterval(interval);
     }, []);
+
+    const finished = timeLeft?.finished ?? false;
 
     return (
         <div className="z-20 relative flex flex-nowrap py-8 lg:py-10 flex-col bg-yellow-500">
@@ -52,20 +55,20 @@ const EventBanner = () => {
                         Launch Canada 2026
                     </h1>
                     <p className="text-black text-center text-lg lg:text-2xl flow_in_left delay-300 pb-6">
-                        {timeLeft.finished
+                        {finished
                             ? "We're live in Timmins — follow along as we launch Albireo!"
                             : 'Countdown to competition week in Timmins, Ontario'}
                     </p>
 
-                    {!timeLeft.finished && (
+                    {!finished && (
                         <div className="flex justify-center items-end gap-2 lg:gap-3 flow_in_left delay-600 pb-6">
-                            <TimeUnit value={timeLeft.days} label="Days" />
+                            <TimeUnit value={timeLeft?.days ?? null} label="Days" />
                             <span className="text-black text-2xl lg:text-3xl font-bold pb-8"></span>
-                            <TimeUnit value={timeLeft.hours} label="Hours" />
+                            <TimeUnit value={timeLeft?.hours ?? null} label="Hours" />
                             <span className="text-black text-2xl lg:text-3xl font-bold pb-8"></span>
-                            <TimeUnit value={timeLeft.minutes} label="Mins" />
+                            <TimeUnit value={timeLeft?.minutes ?? null} label="Mins" />
                             <span className="text-black text-2xl lg:text-3xl font-bold pb-8"></span>
-                            <TimeUnit value={timeLeft.seconds} label="Secs" />
+                            <TimeUnit value={timeLeft?.seconds ?? null} label="Secs" />
                         </div>
                     )}
 
