@@ -6,6 +6,7 @@ import launchCanadaLogo from "../public/assets/logos/LaunchCanadaLogo.png";
 import SponsorsLayoutMainPage from "./components/sponsors/SponsorsLayoutMainPage";
 import BaseScripts from "./components/scripts/BaseScripts";
 import Competition from "./components/main/Competition";
+import EventBanner from "./components/main/EventBanner";
 import FAQ from "./components/main/FAQ";
 import PrintingBackground from "./components/videos/PrintingBackground";
 
@@ -83,24 +84,7 @@ export default function Home() {
             <PrintingBackground />
 
             {/* <!-- Event Banner --> */}
-            <div className="z-20 relative flex flex-nowrap py-6 flex-col bg-local bg-cover bg-left justify-between bg-yellow-500">
-                {/* <!--Main Text--> */}
-                <div className="px-5 lg:px-20">
-                    <div className="flex flex-col lg:flex-col items-center">
-                        <h1 className="text-black text-center text-3xl lg:text-5xl font-bold flow_in_left pb-5">
-                            Help us reach for the STARRs
-                        </h1>
-                        <div className="text-black text-center text-xl lg:text-3xl flow_in_left leading-[1] lg:leading-[1.5] pb-3">
-                            <span className="block">
-                                Support our crowdfunding campaign to help us reach new heights!
-                            </span>
-                            <span className="block"> 
-                                <Link target="_blank" href="https://ualberta.alumniq.com/crowdfunding/Crowdfunding/starrcf" rel="noopener noreferrer" className="underline hover:text-blue-600">Donate Here</Link>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <EventBanner />
 
             {/* <!--Tile 2--> */}
             <div className="z-10 relative flex flex-nowrap h-192 flex-col bg-emerald-900 bg-opacity-10 bg-local bg-cover bg-[center-10rem] justify-between">
