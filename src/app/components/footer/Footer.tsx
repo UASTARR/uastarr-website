@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { mainHref, wikiHref } from "@/library/siteUrls";
 
 const Footer = () => {
     return (
@@ -17,7 +18,7 @@ const Footer = () => {
                         Edmonton, AB T6G 1H9
                     </p>
                     <div className="pt-4">
-                        <Link href={"/contact"}>
+                        <Link href={mainHref("/contact")}>
                             <button className="whitespace-nowrap bg-yellow-500 hover:transition-all duration-200 hover:bg-white rounded-full px-6 py-3" type="button">Contact Us</button>
                         </Link>
                     </div>
@@ -52,22 +53,25 @@ const Footer = () => {
                     <h1 className="text-white font-semibold text-lg whitespace-nowrap pb-4">
                         Menu
                     </h1>
-                    <Link href={"/"}>
+                    <Link href={mainHref("/")}>
                         <div className=" text-gray-400 text-base whitespace-nowrap">Home</div>
                     </Link>
-                    <Link href={"/projects"}>
+                    <Link href={mainHref("/projects")}>
                         <div className="text-gray-400 text-base whitespace-nowrap">Projects</div>
                     </Link>
-                    <Link href={"/about-us"}>
+                    <Link href={mainHref("/about-us")}>
                         <div className="text-gray-400 text-base whitespace-nowrap">About Us</div>
                     </Link>
-                    <Link href={"/sponsors"}>
+                    <Link href={mainHref("/sponsors")}>
                         <div className="text-gray-400 text-base whitespace-nowrap">Sponsors</div>
                     </Link>
-                    <Link href={"/photo-albums"}>
+                    <Link href={mainHref("/photo-albums")}>
                         <div className="text-gray-400 text-base whitespace-nowrap">Photo Albums</div>
                     </Link>
-                    <Link href={"/contact"}>
+                    <Link href={wikiHref()}>
+                        <div className="text-gray-400 text-base whitespace-nowrap">Wiki</div>
+                    </Link>
+                    <Link href={mainHref("/contact")}>
                         <div className="text-gray-400 text-base whitespace-nowrap">Contact Us</div>
                     </Link>
                 </div>
