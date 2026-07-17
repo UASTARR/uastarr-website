@@ -10,6 +10,10 @@ function removeExtension(filename: string): string {
 }
 
 export async function getImagesFromFolder(driveId: string, folderId: string): Promise<{ id: string; name: string; webViewLink: string }[]> {
+    if (process.env.google_api_key === undefined) {
+        return Promise.resolve([]);
+    }
+    
     const drive: drive_v3.Drive = google.drive({
       version: 'v3',
       auth: process.env.google_api_key
@@ -53,6 +57,9 @@ export function getImageUrlFromId(imageId: string): string {
 }
 
 export async function getSponsorshipPdfUrlFromFolder(driveId: string, folderId: string): Promise<string | null> {
+    if (process.env.google_api_key === undefined) {
+        return Promise.resolve(null);
+    }
     const drive: drive_v3.Drive = google.drive({
       version: 'v3',
       auth: process.env.google_api_key

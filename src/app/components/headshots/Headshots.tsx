@@ -4,7 +4,8 @@ import Image from 'next/image';
 
 const Headshots = async () => {
     const membersResponse = await getActiveExecutives();
-    const members = await membersResponse.json();
+    const membersData = await membersResponse.json();
+    const members = membersData.rows ?? [];
     const photosDict = await getImageUrlDicts(process.env.google_drive_id!, process.env.google_drive_executive_photos_folder_id!);
 
     // Update member img_ref_link with the corresponding image URL from Google Drive
