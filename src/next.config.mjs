@@ -33,8 +33,8 @@ export default (phase, { defaultConfig }) => {
                 },
                 {
                     source: '/wiki',
-                    destination: process.env.NEXT_PUBLIC_WIKI_URL ?? '/wiki',
-                    permanent: true,
+                    destination: process.env.NEXT_PUBLIC_WIKI_URL ?? '/down-for-maintenance',
+                    permanent: false,
                 }
             ]
         },
