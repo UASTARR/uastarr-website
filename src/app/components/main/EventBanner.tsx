@@ -60,11 +60,11 @@ const EventBanner = () => {
                     {!timeLeft.finished && (
                         <div className="flex justify-center items-end gap-2 lg:gap-3 flow_in_left delay-600 pb-6">
                             <TimeUnit value={timeLeft.days} label="Days" />
-                            <span className="text-black text-2xl lg:text-3xl font-bold pb-8">:</span>
+                            <span className="text-black text-2xl lg:text-3xl font-bold pb-8"></span>
                             <TimeUnit value={timeLeft.hours} label="Hours" />
-                            <span className="text-black text-2xl lg:text-3xl font-bold pb-8">:</span>
+                            <span className="text-black text-2xl lg:text-3xl font-bold pb-8"></span>
                             <TimeUnit value={timeLeft.minutes} label="Mins" />
-                            <span className="text-black text-2xl lg:text-3xl font-bold pb-8">:</span>
+                            <span className="text-black text-2xl lg:text-3xl font-bold pb-8"></span>
                             <TimeUnit value={timeLeft.seconds} label="Secs" />
                         </div>
                     )}
