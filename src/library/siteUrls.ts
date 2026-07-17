@@ -1,12 +1,25 @@
 const trimTrailingSlash = (url: string) => url.replace(/\/$/, "");
 
-/** Main site origin, e.g. http://localhost:3000 or https://uastarr.ca */
-export const siteUrl = trimTrailingSlash(process.env.NEXT_PUBLIC_SITE_URL ?? "");
+let siteUrl: string;
+let wikiUrl: string;
 
-/** Wiki subdomain origin, e.g. http://wiki.localhost:3000 or https://wiki.uastarr.ca */
-export const wikiUrl = trimTrailingSlash(process.env.NEXT_PUBLIC_WIKI_URL ?? "");
+switch (process.env.NEXT_PUBLIC_VERCEL_ENV) {
+  case "production":
+    // Production site URL is set in the Vercel environment variables
+    // The variable shouldn't contain the protocol
+    siteUrl = `https://${process.env.NEXT_PUBLIC_SITE_URL ?? ""}`;
+    wikiUrl = `https://wiki.${process.env.NEXT_PUBLIC_SITE_URL ?? ""}`;
+    break;
+  case "preview":
+    siteUrl = `https://${process.env.NEXT_PUBLIC_VERCEL_URL ?? ""}`;
+    wikiUrl = `https://wiki.${process.env.NEXT_PUBLIC_VERCEL_URL ?? ""}`;
+    break;
+  default:
+    siteUrl = "http://localhost:3000";
+    wikiUrl = "http://wiki.localhost:3000";
+    break;
+}
 
-/** Absolute (or relative) href onto the main site — needed when the navbar is shown on wiki.* */
 export function mainHref(path: string) {
   const normalized = path.startsWith("/") ? path : `/${path}`;
   return siteUrl ? `${siteUrl}${normalized}` : normalized;
