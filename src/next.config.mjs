@@ -32,8 +32,8 @@ export default (phase, { defaultConfig }) => {
                     permanent: false,
                 },
                 {
-                    source: '/cf',
-                    destination: 'https://ualberta.alumniq.com/crowdfunding/Crowdfunding/starrcf',
+                    source: '/wiki',
+                    destination: process.env.NEXT_PUBLIC_SITE_URL ? `https://wiki.${process.env.NEXT_PUBLIC_SITE_URL}` : '/down-for-maintenance',
                     permanent: false,
                 }
             ]
