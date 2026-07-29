@@ -21,7 +21,7 @@ export async function getImagesFromFolder(driveId: string, folderId: string): Pr
 
     const query = `'${folderId}' in parents and mimeType contains 'image/' and trashed = false`;
     const params: drive_v3.Params$Resource$Files$List = {
-        corpora: 'drive',   // Search within the specified drive
+        corpora: 'drive',   // Search within the specified drive // change 'user' back to drive for deployment; change drive to 'user' for dev.
         driveId: driveId,   // Specify the drive ID to search within
         q: query,
         fields: 'nextPageToken, files(id, name)',
@@ -67,7 +67,7 @@ export async function getSponsorshipPdfUrlFromFolder(driveId: string, folderId: 
 
     const query = `'${folderId}' in parents and trashed = false`;
     const params: drive_v3.Params$Resource$Files$List = {
-        corpora: 'drive',
+        corpora: 'drive', // change 'user' back to drive for deployment; change drive to 'user' for dev.
         driveId: driveId,
         q: query,
         fields: 'nextPageToken, files(id)',

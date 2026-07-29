@@ -9,8 +9,13 @@ import Competition from "./components/main/Competition";
 import EventBanner from "./components/main/EventBanner";
 import FAQ from "./components/main/FAQ";
 import PrintingBackground from "./components/videos/PrintingBackground";
+import EventsCalendar from "./components/main/EventsCalendar";
+import { getUpcomingEvents } from "@/library/google/calendar";
 
-export default function Home() {
+export default async function Home() {
+
+    // DEV: fetches from dummy calendar. See library/google/calendar.ts for prod notes.
+    const events = await getUpcomingEvents(4);
     const firstBg = { backgroundImage: 'url(https://static.wixstatic.com/media/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg/v1/fill/w_1225,h_1100,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg)' };
     const spacePortLogo = 'https://static.wixstatic.com/media/9dc5ac_05c9d5bc50ba42bcbb1d7a5233e21d0e~mv2.png/v1/fill/w_136,h_151,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/two-color-rocket_orig.png'
 
@@ -210,7 +215,14 @@ export default function Home() {
 
             </div>
 
+            {/* <!--Events Calendar--> */}
             {/* <!--Tile 4--> */}
+
+            <EventsCalendar events={events} />
+
+            {/* <!--Tile 5--> */}
+
+            {/* <!--Tile 5--> */}
             <div className="z-10 relative flex flex-nowrap flex-col bg-DarkBlue">
                 <div className="flex pl-3 lg:pl-20 overflow-hidden">
                     <h1 className="flow_in_top px-3 w-72 py-3 bg-white rounded-b-2xl text-xl font-bold">
