@@ -2,6 +2,7 @@ const trimTrailingSlash = (url: string) => url.replace(/\/$/, "");
 
 let siteUrl: string;
 let wikiUrl: string;
+let blogsUrl: string;
 
 switch (process.env.NEXT_PUBLIC_VERCEL_ENV) {
   case "production":
@@ -9,14 +10,17 @@ switch (process.env.NEXT_PUBLIC_VERCEL_ENV) {
     // The variable shouldn't contain the protocol
     siteUrl = `https://${process.env.NEXT_PUBLIC_SITE_URL ?? ""}`;
     wikiUrl = `https://wiki.${process.env.NEXT_PUBLIC_SITE_URL ?? ""}`;
+    blogsUrl = `https://blogs.${process.env.NEXT_PUBLIC_SITE_URL ?? ""}`;
     break;
   case "preview":
     siteUrl = `https://${process.env.NEXT_PUBLIC_VERCEL_URL ?? ""}`;
     wikiUrl = `https://wiki.${process.env.NEXT_PUBLIC_VERCEL_URL ?? ""}`;
+    blogsUrl = `https://blogs.${process.env.NEXT_PUBLIC_VERCEL_URL ?? ""}`;
     break;
   default:
     siteUrl = "http://localhost:3000";
     wikiUrl = "http://wiki.localhost:3000";
+    blogsUrl = "http://blogs.localhost:3000";
     break;
 }
 
@@ -32,4 +36,13 @@ export function wikiHref(path = "/") {
     return normalized === "/" ? wikiUrl : `${wikiUrl}${normalized}`;
   }
   return normalized === "/" ? "/wiki" : `/wiki${normalized}`;
+}
+
+/** Absolute href to the blogs subdomain */
+export function blogsHref(path = "/") {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  if (blogsUrl) {
+    return normalized === "/" ? blogsUrl : `${blogsUrl}${normalized}`;
+  }
+  return normalized === "/" ? "/blogs" : `/blogs${normalized}`;
 }

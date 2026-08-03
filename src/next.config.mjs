@@ -35,6 +35,11 @@ export default (phase, { defaultConfig }) => {
                     source: '/wiki',
                     destination: process.env.NEXT_PUBLIC_SITE_URL ? `https://wiki.${process.env.NEXT_PUBLIC_SITE_URL}` : '/down-for-maintenance',
                     permanent: false,
+                },
+                {
+                    source: '/blogs',
+                    destination: process.env.NEXT_PUBLIC_SITE_URL ? `https://blogs.${process.env.NEXT_PUBLIC_SITE_URL}` : '/down-for-maintenance',
+                    permanent: false,
                 }
             ]
         },

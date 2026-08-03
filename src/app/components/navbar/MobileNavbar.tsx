@@ -4,30 +4,34 @@ import { useEffect, useState } from 'react';
 import menuIcon from '@/public/assets/menu-svgrepo-com.svg';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation'
-import { mainHref, wikiHref } from '@/library/siteUrls'
+import { blogsHref, mainHref, wikiHref } from '@/library/siteUrls'
 
-function isWikiHost() {
+function isSubdomainHost(sub: string) {
     if (typeof window === 'undefined') return false;
     const host = window.location.hostname.toLowerCase();
-    return host === 'wiki.localhost' || host.startsWith('wiki.');
+    return host === `${sub}.localhost` || host.startsWith(`${sub}.`);
 }
 
 const MobileNavbar = () => {
     const [showDrawer, setShowDrawer] = useState(false);
     const [onWikiHost, setOnWikiHost] = useState(false);
+    const [onBlogsHost, setOnBlogsHost] = useState(false);
     const pathName = usePathname();
 
     useEffect(() => {
-        setOnWikiHost(isWikiHost());
+        setOnWikiHost(isSubdomainHost('wiki'));
+        setOnBlogsHost(isSubdomainHost('blogs'));
     }, []);
 
     const onWiki =
         pathName === '/wiki' || pathName.startsWith('/wiki/') || onWikiHost;
+    const onBlogs =
+        pathName === '/blogs' || pathName.startsWith('/blogs/') || onBlogsHost;
 
     const NavButton = ({ page, children }: { page: string, children: React.ReactNode }) => {
         const href = mainHref(page);
         const isActive = page === '/'
-            ? pathName === '/' && !onWiki
+            ? pathName === '/' && !onWiki && !onBlogs
             : pathName === page;
         return (
             <button
@@ -71,6 +75,12 @@ const MobileNavbar = () => {
                     onClick={drawerToggle}
                 >
                     <Link href={wikiHref()}>Wiki</Link>
+                </button>
+                <button
+                    className={`${onBlogs ? 'text-yellow-300 hover:text-bold' : 'hover:text-yellow-300'} whitespace-nowrap text-4xl py-3`}
+                    onClick={drawerToggle}
+                >
+                    <Link href={blogsHref()}>Blogs</Link>
                 </button>
                 <button className="hover:text-yellow-300 whitespace-nowrap text-4xl py-3" onClick={drawerToggle}>
                     <Link target="_blank" href={mainHref("/join")} rel="noopener noreferrer">Join Us!</Link>

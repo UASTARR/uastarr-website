@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { mainHref, wikiHref } from "@/library/siteUrls";
+import { blogsHref, mainHref, wikiHref } from "@/library/siteUrls";
 
 const Footer = () => {
     return (
@@ -70,6 +70,9 @@ const Footer = () => {
                     </Link>
                     <Link href={wikiHref()}>
                         <div className="text-gray-400 text-base whitespace-nowrap">Wiki</div>
+                    </Link>
+                    <Link href={blogsHref()}>
+                        <div className="text-gray-400 text-base whitespace-nowrap">Blogs</div>
                     </Link>
                     <Link href={mainHref("/contact")}>
                         <div className="text-gray-400 text-base whitespace-nowrap">Contact Us</div>
