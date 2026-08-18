@@ -5,22 +5,19 @@ import { getImageUrlDicts } from '@/library/google/drive';
 
 const driveId = process.env.google_drive_id || '';
 const logoFolderId = process.env.google_drive_sponsor_logos_folder_id || '';
-const sponsorLogoDict = await getImageUrlDicts(driveId, logoFolderId);
-
-const getSponsorLogoUrl = (sponsorName: string): string => {
-    const formattedName = sponsorName.toLowerCase().replace(/ /g, '_');
-    return sponsorLogoDict[formattedName] || '';
-}
 
 const SponsorsLayoutMainPage = async () => {
-    const sponsorRanksResponse = await getSponsorRanks();
-    const sponsorRanksData = await sponsorRanksResponse.json();
-    const sponsorRanks = sponsorRanksData.rows ?? [];
+    const sponsorLogoDict = await getImageUrlDicts(driveId, logoFolderId);
+
+    const getSponsorLogoUrl = (sponsorName: string): string => {
+        const formattedName = sponsorName.toLowerCase().replace(/ /g, '_');
+        return sponsorLogoDict[formattedName] || '';
+    };
+
+    const { rows: sponsorRanks } = await getSponsorRanks();
     let sponsors = [] as any[];
     for (let i = 0; i < sponsorRanks.length; i++) {
-        const sponsorsResponse = await getSponsors(sponsorRanks[i].name);
-        const sponsorsData = await sponsorsResponse.json();
-        sponsors = sponsors.concat(sponsorsData.rows ?? []);
+        const { rows } = await getSponsors(sponsorRanks[i].name as string);
     }
     // For even number of sponsors
     // Displays 'become a sponsor' button at the end as wide as two sponsor logos

@@ -5,22 +5,26 @@ import FirefliesBackground from '@/app/components/videos/FirefliesBackground';
 import MerchDetailLayout from '@/app/components/merch/MerchDetailLayout';
 import { redirect } from 'next/navigation';
 
-// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
-// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
-export const instant = false;
+export function generateStaticParams() {
+  return [{ merchId: 'placeholder' }];
+}
 
-const MerchDetailPage = async (
-  props: {
-    params: Promise<{ merchId: string }>;
-  }
-) => {
+const MerchDetailPage = (props: { params: Promise<{ merchId: string }> }) => {
+  return (
+    <Suspense fallback={null}>
+      <MerchDetailPageContent params={props.params} />
+    </Suspense>
+  );
+};
+
+const MerchDetailPageContent = async ({
+  params,
+}: {
+  params: Promise<{ merchId: string }>;
+}) => {
   redirect('/down-for-maintenance');
-  const params = await props.params;
 
-  const {
-    merchId
-  } = params;
-
+  const { merchId } = await params;
   const merchItemPromise = getMerchItemById(merchId);
 
   return (

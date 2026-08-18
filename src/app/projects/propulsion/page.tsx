@@ -6,20 +6,14 @@ import Project from '@/app/components/projects/Project';
 import RipplingBackground from '@/app/components/videos/RipplingBackground';
 import { redirect } from 'next/navigation';
 
-// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
-// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
-export const instant = false;
 
 export const metadata: Metadata = {
     title: "Propulsion",
 };
 
-export const revalidate = 86400; // 60 * 60 * 24 Revalidate once a day
 
 const ProjectsPage = async () => {
-    const projectsResponse = await getProjects('propulsion');
-    const projectsData = await projectsResponse.json();
-    const projects = projectsData.rows ?? [];
+    const { rows: projects } = await getProjects('propulsion');
 
     if (!projects) {
         redirect('/down-for-maintenance');
@@ -39,8 +33,7 @@ const ProjectsPage = async () => {
             <div className="flex justify-center flex-row relative z-20 min-h-[60vh]">
                 <div className="w-10 lg:w-64 grow-0 overflow-hidden"></div>
                 <div className="flex flex-col items-center justify-center w-full">
-                    {projects.map(async (project: any, index: number) => {
-                        // const albumUrl = project.coverFile ? (await getUrl(['photo-albums', project.albumRef, project.coverFile].join('/'))).string : ''
+                    {projects.map((project: any, index: number) => {
                         const albumUrl = '';
                         return (
                             <div key={index} className="flex flex-col w-full items-center">

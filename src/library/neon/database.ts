@@ -1,29 +1,37 @@
-
+import { cacheLife } from 'next/cache';
 import { neon } from '@neondatabase/serverless';
 
+type QueryResult = { rows: Record<string, unknown>[] };
+
 // Sponsors
-export async function getSponsors(sponsorLevel: string) {
+export async function getSponsors(sponsorLevel: string): Promise<QueryResult> {
+    'use cache'
+    cacheLife('days')
     if (process.env.neon_db_connection_url === undefined) {
-        return Response.json({rows: []});
+        return { rows: [] };
     }
     const sql = neon(process.env.neon_db_connection_url!);
     const rows = await sql`SELECT * FROM sponsors WHERE sponsor_level = ${sponsorLevel} ORDER BY display_order ASC`;
-    return Response.json({rows});
+    return { rows };
 }
 
-export async function getSponsorRanks() {
+export async function getSponsorRanks(): Promise<QueryResult> {
+    'use cache'
+    cacheLife('days')
     if (process.env.neon_db_connection_url === undefined) {
-        return Response.json({rows: []});
+        return { rows: [] };
     }
     const sql = neon(process.env.neon_db_connection_url!);
     const rows = await sql`SELECT * FROM sponsor_levels ORDER BY level_order ASC`;
-    return Response.json({rows});
+    return { rows };
 }
 
 // Members
-export async function getActiveExecutives() {
+export async function getActiveExecutives(): Promise<QueryResult> {
+    'use cache'
+    cacheLife('days')
     if (process.env.neon_db_connection_url === undefined) {
-        return Response.json({rows: []});
+        return { rows: [] };
     }
     const sql = neon(process.env.neon_db_connection_url!);
     const rows = await sql`
@@ -36,14 +44,16 @@ export async function getActiveExecutives() {
         display_order ASC,
         title ASC,
         first_name ASC`;
-        
-    return Response.json({rows});
+
+    return { rows };
 }
 
 // Projects
-export async function getProjects(projectType: string) {
+export async function getProjects(projectType: string): Promise<QueryResult> {
+    'use cache'
+    cacheLife('days')
     if (process.env.neon_db_connection_url === undefined) {
-        return Response.json({rows: []});
+        return { rows: [] };
     }
     const sql = neon(process.env.neon_db_connection_url!);
     const rows = await sql`
@@ -52,5 +62,5 @@ export async function getProjects(projectType: string) {
     FROM projects p
     WHERE project_type = ${projectType}
     ORDER BY id DESC`;
-    return Response.json({rows});
+    return { rows };
 }
