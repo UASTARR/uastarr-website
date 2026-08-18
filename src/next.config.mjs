@@ -5,6 +5,7 @@
 */
 export default (phase, { defaultConfig }) => {
     return {
+        cacheComponents: true,
         images: {
             remotePatterns: [
                 {
