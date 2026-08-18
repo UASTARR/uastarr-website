@@ -18,6 +18,7 @@ const SponsorsLayoutMainPage = async () => {
     let sponsors = [] as any[];
     for (let i = 0; i < sponsorRanks.length; i++) {
         const { rows } = await getSponsors(sponsorRanks[i].name as string);
+        sponsors = sponsors.concat(rows ?? []);
     }
     // For even number of sponsors
     // Displays 'become a sponsor' button at the end as wide as two sponsor logos
