@@ -2,6 +2,7 @@ import {
     google,   // The top level object used to access services
     drive_v3, // For every service client, there is an exported namespace
 } from 'googleapis';
+import { cacheLife } from 'next/cache';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -10,6 +11,8 @@ function removeExtension(filename: string): string {
 }
 
 export async function getImagesFromFolder(driveId: string, folderId: string): Promise<{ id: string; name: string; webViewLink: string }[]> {
+    'use cache'
+    cacheLife('days')
     if (process.env.google_api_key === undefined) {
         return Promise.resolve([]);
     }
@@ -57,6 +60,8 @@ export function getImageUrlFromId(imageId: string): string {
 }
 
 export async function getSponsorshipPdfUrlFromFolder(driveId: string, folderId: string): Promise<string | null> {
+    'use cache'
+    cacheLife('days')
     if (process.env.google_api_key === undefined) {
         return Promise.resolve(null);
     }
@@ -87,6 +92,8 @@ export async function getSponsorshipPdfUrlFromFolder(driveId: string, folderId: 
 }
 
 export async function getImageUrlDicts(driveId: string, imageFolderId: string): Promise<{ [key: string]: string }> {
+    'use cache'
+    cacheLife('days')
     const images = await getImagesFromFolder(driveId, imageFolderId);
     // Key is the image name, value is the image URL
     const nameImageUrlDict: { [key: string]: string } = {};

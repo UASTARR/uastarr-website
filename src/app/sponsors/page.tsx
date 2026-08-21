@@ -6,6 +6,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import astronautBkg from '@/public/assets/backgrounds/astronautBkg.jpeg'
 
+
 export const metadata: Metadata = {
     title: "Sponsors",
 };

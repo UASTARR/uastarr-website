@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import VectorBackground from '../components/videos/VectorBackground';
 
+
 export const metadata: Metadata = {
   title: 'Photo Albums',
 };

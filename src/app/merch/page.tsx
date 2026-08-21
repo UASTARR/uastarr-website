@@ -6,6 +6,7 @@ import MerchItemsLayout from '../components/merch/MerchItemsLayout';
 import { getMerchItems } from '@/library/firebase/firestore';
 import { redirect } from 'next/navigation'
 
+
 export const metadata: Metadata = {
   title: 'Merchandise',
 };

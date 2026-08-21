@@ -10,6 +10,7 @@ import Image from 'next/image'
 import { Metadata } from 'next';
 import RipplingBackground from '../components/videos/RipplingBackground'
 
+
 export const metadata: Metadata = {
     title: "Projects",
 };

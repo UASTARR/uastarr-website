@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import RipplingBackground from '../components/videos/RipplingBackground';
 
-export const revalidate = 86400; // 60 * 60 * 24 Revalidate once a day
+
 
 export const metadata: Metadata = {
     title: "About Us",

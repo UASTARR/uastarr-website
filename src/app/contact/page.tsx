@@ -6,6 +6,7 @@ import ContactForm from '../components/contact/ContactForm';
 import FirefliesBackground from '../components/videos/FirefliesBackground';
 import { redirect } from 'next/navigation'
 
+
 export const metadata: Metadata = {
   title: 'Contact Us',
 };

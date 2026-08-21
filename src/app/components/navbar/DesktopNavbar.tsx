@@ -1,6 +1,6 @@
 'use client';
 import Link from "next/link"
-import { mainHref, wikiHref } from "@/library/siteUrls"
+import { blogsHref, mainHref, wikiHref } from "@/library/siteUrls"
 
 const DesktopNavbar = () => {
     let timer: NodeJS.Timeout | undefined;
@@ -71,6 +71,7 @@ const DesktopNavbar = () => {
                                 <Link href={mainHref("/merch")} className="pb-2 text-white text-center hover:text-yellow-300 whitespace-nowrap">Merch</Link>
                                 <Link href={mainHref("/photo-albums")} className="pb-2 text-white text-center hover:text-yellow-300 whitespace-nowrap">Photo Albums</Link>
                                 <Link href={wikiHref()} className="pb-2 text-white text-center hover:text-yellow-300">Wiki</Link>
+                                <Link href={blogsHref()} className="pb-2 text-white text-center hover:text-yellow-300">Blogs</Link>
                                 <Link href={mainHref("/contact")} className="text-white text-center hover:text-yellow-300">Contact</Link>
                             </div>
                         </div>

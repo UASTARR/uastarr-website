@@ -7,16 +7,14 @@ import { getUrl } from '@/library/firebase/storage';
 import RipplingBackground from '@/app/components/videos/RipplingBackground';
 import { redirect } from 'next/navigation';
 
+
 export const metadata: Metadata = {
     title: "Rockets",
 };
 
-export const revalidate = 86400; // 60 * 60 * 24 Revalidate once a day
 
 const ProjectsPage = async () => {
-    const projectsResponse = await getProjects('rocket');
-    const projectsData = await projectsResponse.json();
-    const projects = projectsData.rows ?? [];
+    const { rows: projects } = await getProjects('rocket');
 
     if (!projects) {
         redirect('/down-for-maintenance');
@@ -36,8 +34,7 @@ const ProjectsPage = async () => {
             <div className="flex justify-center flex-row relative z-20">
                 <div className="w-10 lg:w-64 grow-0 overflow-hidden"></div>
                 <div className="flex flex-col items-center justify-center w-full">
-                    {projects.map( async (project: any, index: number) => {
-                        // const albumUrl = project.coverFile ? (await getUrl(['photo-albums', project.albumRef, project.coverFile].join('/'))).string : ''
+                    {projects.map((project: any, index: number) => {
                         const albumUrl = '';
                         return (
                             <div key={index} className="flex flex-col w-full items-center">

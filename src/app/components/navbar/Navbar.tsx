@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import web_logo from '../../../public/assets/logos/logo.png';
 import Link from 'next/link';
+import { Suspense } from 'react';
 import DesktopNavbar from './DesktopNavbar';
 import MobileNavbar from './MobileNavbar';
 import { mainHref } from '@/library/siteUrls';
@@ -14,7 +15,9 @@ const Navbar = () => {
             </div>
             {/* Mobile Navbar */}
             <div className = "lg:hidden">
-                <MobileNavbar />
+                <Suspense fallback={null}>
+                    <MobileNavbar />
+                </Suspense>
             </div>
 
             {/* Desktop Navbar */}

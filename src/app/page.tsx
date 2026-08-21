@@ -10,6 +10,7 @@ import EventBanner from "./components/main/EventBanner";
 import FAQ from "./components/main/FAQ";
 import PrintingBackground from "./components/videos/PrintingBackground";
 
+
 export default function Home() {
     const firstBg = { backgroundImage: 'url(https://static.wixstatic.com/media/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg/v1/fill/w_1225,h_1100,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg)' };
     const spacePortLogo = 'https://static.wixstatic.com/media/9dc5ac_05c9d5bc50ba42bcbb1d7a5233e21d0e~mv2.png/v1/fill/w_136,h_151,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/two-color-rocket_orig.png'

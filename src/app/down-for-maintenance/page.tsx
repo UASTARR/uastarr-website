@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import RipplingBackground from '../components/videos/RipplingBackground';
 
+
 export const metadata: Metadata = {
     title: "Landing Page",
 };

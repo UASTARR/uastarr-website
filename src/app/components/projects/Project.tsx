@@ -1,24 +1,33 @@
-import { Timestamp } from "firebase/firestore";
-import Link from "next/link";
-import Countdown from "./Countdown";
-import Image from "next/image";
+import ProjectLaunchMedia from "./ProjectLaunchMedia";
+
+function getLaunchDateMs(launchDate: unknown): number | null {
+    if (!launchDate) return null;
+    if (typeof launchDate === 'string' || typeof launchDate === 'number') {
+        const ms = new Date(launchDate).getTime();
+        return Number.isNaN(ms) ? null : ms;
+    }
+    if (
+        typeof launchDate === 'object' &&
+        launchDate !== null &&
+        'toDate' in launchDate &&
+        typeof (launchDate as { toDate: () => Date }).toDate === 'function'
+    ) {
+        return (launchDate as { toDate: () => Date }).toDate().getTime();
+    }
+    return null;
+}
 
 export default async function Project({
     title, playlist, albumYear, albumName, launchDate, children, albumUrl
 }: {
-    title: string, playlist: string, albumYear: string | undefined, albumName: string, launchDate: Timestamp, children: string, albumUrl: string | undefined
+    title: string, playlist: string, albumYear: string | undefined, albumName: string, launchDate: unknown, children: string, albumUrl: string | undefined
 }) {
     const listId = playlist ? playlist.search('list=PL') : -1
     const thePlaylist = listId > -1 ? playlist.slice(listId + 5) : playlist
-    // const logoIds = logos ? logos.split(',') : []
 
-    const albumImage = albumUrl ? ({ url: albumUrl}) : ({ url: '/assets/logos/logo.png' })
+    const albumImageUrl = albumUrl ? albumUrl : '/assets/logos/logo.png'
     const albumTitle = albumName ? albumName : ''
-    // const albumIsVideo = albumAllImages.length ? (albumImage as { name: string; url: string; type: string | void | undefined; }).type?.includes("video") : false
-
-    const now = new Date().getTime();
-    const difference = launchDate ? launchDate.toDate().getTime() - now : 0;
-    const launch = difference > 0 ? launchDate.toDate() : null;
+    const launchDateMs = getLaunchDateMs(launchDate);
     return (
         <div className="relative flex flex-col justify-center w-full lg:w-288 px-6 lg:px-16">
             <div className="flex flex-col lg:flex-row justify-center">
@@ -57,24 +66,13 @@ export default async function Project({
                 {/* Albums */}
                 <div className="flex items-center flex-col w-full lg:w-144 lg:pl-8">
                     <div className="h-20"></div>
-                    {launch ? (
-                        <Countdown launchDate={launch} />
-                    ) : (
-                        <Image className="rounded-lg lg:max-h-128 object-contain" priority src={albumImage.url} alt="" width={1000} height={1000}/>
-                    )}
-                    <div className="h-5"></div>
-                    <p className="text-white text-lg font-bold delay-200 no_check fade_in text-center">
-                        {albumTitle}
-                    </p>
-                    <div className="h-5"></div>
-                    {!launch && (
-                        <Link href={`/photo-albums/${albumYear && albumName ? `${albumYear}/${albumName}` : ''}`}>
-                            <button
-                                className="transition-all duration-300 whitespace-nowrap text-sm text-lime-700 bg-gray-50 hover:text-white hover:bg-black hover:drop-shadow-glowPurple rounded-full w-32 py-3">
-                                View More
-                            </button>
-                        </Link>
-                    )}
+                    <ProjectLaunchMedia
+                        launchDateMs={launchDateMs}
+                        albumImageUrl={albumImageUrl}
+                        albumTitle={albumTitle}
+                        albumYear={albumYear}
+                        albumName={albumName}
+                    />
                 </div>
             </div>
             <div className="h-8"></div>

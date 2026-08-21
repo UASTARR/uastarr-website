@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import BaseScripts from '@/app/components/scripts/BaseScripts';
 import PhotoDisplay from '@/app/components/albumphotos/PhotosDisplay';
 import { notFound, redirect } from 'next/navigation';
@@ -11,17 +11,33 @@ export const metadata: Metadata = {
   title: 'Album',
 };
 
-export default async function AlbumPage(
+export function generateStaticParams() {
+  return [{ year: 'placeholder', album: 'placeholder' }];
+}
+
+export default function AlbumPage(
   props: {
     params: Promise<{ year: string; album: string }>;
   }
 ) {
-  const params = await props.params;
+  return (
+    <Suspense fallback={null}>
+      <AlbumPageContent params={props.params} />
+    </Suspense>
+  );
+}
+
+async function AlbumPageContent({
+  params,
+}: {
+  params: Promise<{ year: string; album: string }>;
+}) {
   // TODO: Convert from firebase to google drive api and remove redirect
   // TODO - Jake: Please do not use google drive api! Let's use firebase cloud storage.
   redirect('/down-for-maintenance');
 
-  const album = [params.year, params.album].join('/');
+  const { year, album: albumSlug } = await params;
+  const album = [year, albumSlug].join('/');
   const albumInfo = (await getAlbumNameFromPath(album))[0];
 
   if (!albumInfo) {
@@ -38,7 +54,6 @@ export default async function AlbumPage(
 
       <div className="h-32"></div>
 
-      {/* <!--Header--> */}
       <div className="flex justify-center relative flex-none z-20">
         <div className="flex grow">
           <div className="shrink-0 grow flex items-center flex-col">
@@ -52,7 +67,6 @@ export default async function AlbumPage(
 
       <div className="h-6"></div>
 
-      {/* <!--Photos--> */}
       <div className="flex justify-center relative z-20">
         <div className="w-32 grow-0 overflow-hidden"></div>
         <div className="bg-black bg-opacity-70 grow-0">
