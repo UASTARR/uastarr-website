@@ -29,7 +29,7 @@ export default (phase, { defaultConfig }) => {
             return [
                 {
                     source: '/join',
-                    destination: 'https://forms.gle/4ds4ACGLKkrwFAAJ9',
+                    destination: 'https://docs.google.com/forms/d/e/1FAIpQLSfE1OcHA_KgcEfORc2od4RhBmEpq4Bf3K6TuKXuwQwaHSUrSg/viewform?usp=dialog',
                     permanent: false,
                 },
                 {
