@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import vectorIcon from "../public/assets/logos/logo-square.png";
@@ -9,7 +10,14 @@ import Competition from "./components/main/Competition";
 import EventBanner from "./components/main/EventBanner";
 import FAQ from "./components/main/FAQ";
 import PrintingBackground from "./components/videos/PrintingBackground";
+import EventsCalendar from "./components/main/EventsCalendar";
+import { getUpcomingEvents } from "@/library/google/calendar";
 
+async function UpcomingEvents() {
+    // DEV: fetches from dummy calendar. See library/google/calendar.ts for prod notes.
+    const events = await getUpcomingEvents(4);
+    return <EventsCalendar events={events} />;
+}
 
 export default function Home() {
     const firstBg = { backgroundImage: 'url(https://static.wixstatic.com/media/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg/v1/fill/w_1225,h_1100,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg)' };
@@ -211,7 +219,18 @@ export default function Home() {
 
             </div>
 
+            {/* <!--Events Calendar--> */}
             {/* <!--Tile 4--> */}
+
+            <Suspense fallback={
+                <div className="z-10 relative min-h-[80vh] lg:min-h-0 lg:aspect-[16/9] bg-cover bg-center" style={{ backgroundImage: "url(/assets/backgrounds/staticVectorBkg.png)" }} />
+            }>
+                <UpcomingEvents />
+            </Suspense>
+
+            {/* <!--Tile 5--> */}
+
+            {/* <!--Tile 5--> */}
             <div className="z-10 relative flex flex-nowrap flex-col bg-DarkBlue">
                 <div className="flex pl-3 lg:pl-20 overflow-hidden">
                     <h1 className="flow_in_top px-3 w-72 py-3 bg-white rounded-b-2xl text-xl font-bold">
