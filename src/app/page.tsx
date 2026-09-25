@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import vectorIcon from "../public/assets/logos/logo-square.png";
@@ -218,7 +219,11 @@ export default async function Home() {
             {/* <!--Events Calendar--> */}
             {/* <!--Tile 4--> */}
 
-            <EventsCalendar events={events} />
+            <Suspense fallback={
+                <div className="z-10 relative min-h-[80vh] lg:min-h-0 lg:aspect-[16/9] bg-cover bg-center" style={{ backgroundImage: "url(/assets/backgrounds/staticVectorBkg.png)" }} />
+            }>
+                <EventsCalendar events={events} />
+            </Suspense>
 
             {/* <!--Tile 5--> */}
 

@@ -1,5 +1,6 @@
 import { google } from 'googleapis';
 import dotenv from 'dotenv';
+import { cacheLife } from 'next/cache';
 dotenv.config();
 
 export interface CalendarEvent {
@@ -33,8 +34,11 @@ function cleanDescription(html?: string | null): string | undefined {
 // Fetches events from the start of the current month up to `monthsAhead` months ahead.
 // DEV: Uses dummy calendar. Before deploying to production, replace
 // google_calendar_id in .env with the real UASTARR calendar ID,
-// and ensure the production calendar is shared with the service account.
+// and ensure the production calendar is public (it is read with an API key only).
 export async function getUpcomingEvents(monthsAhead: number = 4): Promise<CalendarEvent[]> {
+    'use cache'
+    cacheLife('hours')
+
     if (!process.env.google_calendar_id) {
         console.warn('google_calendar_id is not set in .env');
         return [];
