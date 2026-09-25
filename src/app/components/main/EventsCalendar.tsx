@@ -63,23 +63,32 @@ export default function EventsCalendar({ events }: Props) {
     const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
  
     const sectionRef = useRef<HTMLDivElement>(null);
+    const headingRef = useRef<HTMLHeadingElement>(null);
+    const [headingRevealed, setHeadingRevealed] = useState(false);
+    const [revealed, setRevealed] = useState(false);
  
-    // Reveal the fade_in elements once half the section has scrolled into view.
-    // Mirrors the site's scripts.js mechanism (adds .visible), just with an
-    // earlier trigger point scoped to this section.
+    // Reveal animations are driven by state instead of the global fade_in / flow_in_*
+    // classes: scripts.js adds .visible to those directly, which can run before this
+    // streamed (Suspense) section hydrates and causes a hydration mismatch.
+    // Heading slides in once fully on screen (like scripts.js); the rest fades in
+    // once half the section has scrolled into view.
     useEffect(() => {
         const section = sectionRef.current;
-        if (!section) return;
+        const heading = headingRef.current;
+        if (!section || !heading) return;
  
         function reveal() {
-            if (!section) return;
-            const rect = section.getBoundingClientRect();
+            if (!section || !heading) return;
             const viewportH = window.innerHeight;
+            if (heading.getBoundingClientRect().bottom <= viewportH) setHeadingRevealed(true);
+ 
+            const rect = section.getBoundingClientRect();
             const visiblePx = Math.min(rect.bottom, viewportH) - Math.max(rect.top, 0);
             const halfway = Math.min(rect.height, viewportH) * 0.5;
  
             if (visiblePx >= halfway) {
-                section.querySelectorAll('.fade_in').forEach(el => el.classList.add('visible'));
+                setHeadingRevealed(true);
+                setRevealed(true);
                 window.removeEventListener('scroll', reveal);
             }
         }
@@ -88,6 +97,8 @@ export default function EventsCalendar({ events }: Props) {
         window.addEventListener('scroll', reveal);
         return () => window.removeEventListener('scroll', reveal);
     }, []);
+ 
+    const fadeIn = `transition-all duration-[1500ms] ${revealed ? 'opacity-100' : 'opacity-0'}`;
  
     // --- build grid of actual Dates (includes leading/trailing adjacent-month days) ---
     const firstDay    = new Date(year, month, 1).getDay();
@@ -228,7 +239,7 @@ export default function EventsCalendar({ events }: Props) {
  
                 {/* Section label */}
                 <div className="flex overflow-hidden mb-4">
-                    <h2 className="flow_in_top px-3 py-3 bg-white rounded-b-2xl text-xl font-bold w-72">
+                    <h2 ref={headingRef} className={`transition-all duration-[2000ms] ${headingRevealed ? 'translate-y-0' : '-translate-y-full'} px-3 py-3 bg-white rounded-b-2xl text-xl font-bold w-72`}>
                         Upcoming Events
                     </h2>
                 </div>
@@ -239,7 +250,7 @@ export default function EventsCalendar({ events }: Props) {
                     {/* Header: arrows + month label + chevron dropdown.
                         relative z-50 lifts the whole header (and its dropdown) above the
                         calendar grid / agenda list that follow it in the DOM. */}
-                    <div className="fade_in flex items-center justify-between mb-2 relative z-50">
+                    <div className={`${fadeIn} flex items-center justify-between mb-2 relative z-50`}>
                         <button
                             onClick={() => changeMonth(-1)}
                             aria-label="Previous month"
@@ -300,7 +311,7 @@ export default function EventsCalendar({ events }: Props) {
                     </div>
  
                     {/* Day-of-week headers — desktop only */}
-                    <div className="fade_in delay-200 hidden lg:grid grid-cols-7 border-t border-l border-white border-opacity-20">
+                    <div className={`${fadeIn} delay-200 hidden lg:grid grid-cols-7 border-t border-l border-white border-opacity-20`}>
                         {DAYS.map(d => (
                             <div
                                 key={d}
@@ -313,7 +324,7 @@ export default function EventsCalendar({ events }: Props) {
                     </div>
  
                     {/* Calendar grid — desktop only */}
-                    <div className="fade_in delay-400 hidden lg:flex flex-1 flex-col border-l border-white border-opacity-20 min-h-0">
+                    <div className={`${fadeIn} delay-400 hidden lg:flex flex-1 flex-col border-l border-white border-opacity-20 min-h-0`}>
                         {rows.map((row, ri) => {
                             const spans = computeSpans(row);
                             const laneCount = spans.reduce((m, s) => Math.max(m, s.lane + 1), 0);
@@ -414,7 +425,7 @@ export default function EventsCalendar({ events }: Props) {
  
                     {/* Mobile: agenda list (7-col grid is unusable at phone widths) */}
                     <div
-                        className="lg:hidden fade_in delay-400 flex flex-col gap-2 overflow-y-auto pr-1"
+                        className={`lg:hidden ${fadeIn} delay-400 flex flex-col gap-2 overflow-y-auto pr-1`}
                         style={{ maxHeight: '65vh', scrollbarWidth: 'thin' }}
                     >
                         {monthEvents.length === 0 ? (
