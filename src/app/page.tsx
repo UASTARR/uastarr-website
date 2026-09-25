@@ -13,10 +13,13 @@ import PrintingBackground from "./components/videos/PrintingBackground";
 import EventsCalendar from "./components/main/EventsCalendar";
 import { getUpcomingEvents } from "@/library/google/calendar";
 
-export default async function Home() {
-
+async function UpcomingEvents() {
     // DEV: fetches from dummy calendar. See library/google/calendar.ts for prod notes.
     const events = await getUpcomingEvents(4);
+    return <EventsCalendar events={events} />;
+}
+
+export default function Home() {
     const firstBg = { backgroundImage: 'url(https://static.wixstatic.com/media/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg/v1/fill/w_1225,h_1100,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9dc5ac_f8ff2a1c0ac045669658cae9288656b4~mv2.jpg)' };
     const spacePortLogo = 'https://static.wixstatic.com/media/9dc5ac_05c9d5bc50ba42bcbb1d7a5233e21d0e~mv2.png/v1/fill/w_136,h_151,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/two-color-rocket_orig.png'
 
@@ -222,7 +225,7 @@ export default async function Home() {
             <Suspense fallback={
                 <div className="z-10 relative min-h-[80vh] lg:min-h-0 lg:aspect-[16/9] bg-cover bg-center" style={{ backgroundImage: "url(/assets/backgrounds/staticVectorBkg.png)" }} />
             }>
-                <EventsCalendar events={events} />
+                <UpcomingEvents />
             </Suspense>
 
             {/* <!--Tile 5--> */}
