@@ -85,6 +85,7 @@ export default function Home() {
             <PrintingBackground />
 
             {/* <!-- Event Banner --> */}
+            {/* <EventBanner /> */}
             
 
             {/* <!--Tile 2--> */}
@@ -236,7 +237,7 @@ export default function Home() {
                     <div className="w-20 h-20 shrink-0"></div>
                     <div className="flow_in_left">
                         <Competition
-                            year="2026"
+                            year="2027"
                             name="Launch Canada"
                             link="https://www.launchcanada.org"
                             logo={{ src: launchCanadaLogo, alt: "Launch Canada Logo" }}
