@@ -86,7 +86,7 @@ const AboutUsPage = () => {
                                 <h1 className="text-4xl text-white">Our Team</h1>
                                 <div className="h-4"></div>
                                 <p className="lg:w-128 text-white leading-8">
-                                    Meet our 2025/2026 executives and team leads. We are students from various disciplines and
+                                    Meet our 2026/2027 executives and team leads. We are students from various disciplines and
                                     faculties, coming together in the name of student rocketry research!  🚀
                                     If you want to join any of our teams, click the join now button!
                                 </p>
