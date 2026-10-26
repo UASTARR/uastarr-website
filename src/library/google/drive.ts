@@ -59,37 +59,86 @@ export function getImageUrlFromId(imageId: string): string {
     return `https://drive.google.com/uc?export=view&id=${imageId}`;
 }
 
-export async function getSponsorshipPdfUrlFromFolder(driveId: string, folderId: string): Promise<string | null> {
+export interface SponsorshipPackageDetails {
+    title: string;
+    pdfUrl: string;
+    coverImageUrl: string;
+}
+
+export async function getSponsorshipPackageDetails(driveId: string, folderId: string): Promise<SponsorshipPackageDetails> {
     'use cache'
     cacheLife('days')
-    if (process.env.google_api_key === undefined) {
-        return Promise.resolve(null);
-    }
-    const drive: drive_v3.Drive = google.drive({
-      version: 'v3',
-      auth: process.env.google_api_key
-    });
 
-    const query = `'${folderId}' in parents and trashed = false`;
-    const params: drive_v3.Params$Resource$Files$List = {
-        corpora: 'drive',
-        driveId: driveId,
-        q: query,
-        fields: 'nextPageToken, files(id)',
-        includeItemsFromAllDrives: true,
-        supportsAllDrives: true,
-        orderBy: 'modifiedTime desc' // Get the most recently created PDF
+    const fallback: SponsorshipPackageDetails = {
+        title: 'Sponsorship Package 2026/2027',
+        pdfUrl: '/assets/sponsor_package/Sponsorship Package - STARR.pdf',
+        coverImageUrl: '/assets/sponsor_package/sponsorsCover.jpg'
     };
 
-    const res = await drive.files.list(params);
-    const pdfFile = res.data.files?.[0]; // Get the first (most recent) PDF file
+    if (process.env.google_api_key === undefined || !folderId) {
+        return fallback;
+    }
 
-    if (pdfFile && pdfFile.id) {
-        return pdfFile.webViewLink || `https://drive.google.com/file/d/${pdfFile.id}/view`;
-    } else {
-        return null; // No PDF found
+    try {
+        const drive: drive_v3.Drive = google.drive({
+            version: 'v3',
+            auth: process.env.google_api_key
+        });
+
+        const query = `'${folderId}' in parents and trashed = false`;
+        const params: drive_v3.Params$Resource$Files$List = {
+            corpora: 'drive',
+            driveId: driveId,
+            q: query,
+            fields: 'nextPageToken, files(id, name, mimeType, webViewLink, thumbnailLink)',
+            includeItemsFromAllDrives: true,
+            supportsAllDrives: true,
+            orderBy: 'modifiedTime desc'
+        };
+
+        const res = await drive.files.list(params);
+        const files = res.data.files || [];
+
+        if (files.length === 0) {
+            return fallback;
+        }
+
+        const pdfFile = files.find(f => f.mimeType === 'application/pdf' || f.name?.toLowerCase().endsWith('.pdf')) || files[0];
+        const coverImageFile = files.find(f => f.mimeType?.startsWith('image/') || /\.(jpe?g|png|webp|avif)$/i.test(f.name || ''));
+
+        let title = fallback.title;
+        if (pdfFile && pdfFile.name) {
+            title = removeExtension(pdfFile.name);
+        }
+
+        let pdfUrl = fallback.pdfUrl;
+        if (pdfFile && pdfFile.id) {
+            pdfUrl = pdfFile.webViewLink || `https://drive.google.com/file/d/${pdfFile.id}/view`;
+        }
+
+        let coverImageUrl = fallback.coverImageUrl;
+        if (coverImageFile && coverImageFile.id) {
+            coverImageUrl = getImageUrlFromId(coverImageFile.id);
+        } else if (pdfFile && pdfFile.id) {
+            coverImageUrl = getImageUrlFromId(pdfFile.id);
+        }
+
+        return {
+            title,
+            pdfUrl,
+            coverImageUrl
+        };
+    } catch (error) {
+        console.error('Failed to get sponsorship package details from Google Drive:', error);
+        return fallback;
     }
 }
+
+export async function getSponsorshipPdfUrlFromFolder(driveId: string, folderId: string): Promise<string | null> {
+    const details = await getSponsorshipPackageDetails(driveId, folderId);
+    return details.pdfUrl;
+}
+
 
 export async function getImageUrlDicts(driveId: string, imageFolderId: string): Promise<{ [key: string]: string }> {
     'use cache'

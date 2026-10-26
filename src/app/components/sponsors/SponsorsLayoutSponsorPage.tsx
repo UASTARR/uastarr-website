@@ -3,11 +3,11 @@ import { getSponsorRanks, getSponsors } from "@/library/neon/database";
 import SponsorWithImage from "./SponsorsLayoutSingleSponsorPage";
 import PackageBackground from "@/public/assets/sponsor_bkgs/bkg3.jpeg"
 import Image from "next/image";
-import { getSponsorshipPdfUrlFromFolder, getImageUrlDicts } from '@/library/google/drive';
+import { getSponsorshipPackageDetails, getImageUrlDicts } from '@/library/google/drive';
 
 const driveId = process.env.google_drive_id || '';
 const logoFolderId = process.env.google_drive_sponsor_logos_folder_id || '';
-const sponsorPackagesFolderId = process.env.google_drive_sponsor_pacakges_folder_id || '';
+const sponsorPackagesFolderId = process.env.google_drive_sponsor_packages_folder_id || process.env.google_drive_sponsor_pacakges_folder_id || '';
 const backgroundImages = [
   '/assets/sponsor_bkgs/bkg1.jpeg',
   '/assets/sponsor_bkgs/bkg2.jpeg',
@@ -104,8 +104,7 @@ const SponsorsLayoutSponsorPage = async () => {
 }
 
 const SponsorPackageDesktop = async () => {
-    const sponsorshipPdfUrl = await getSponsorshipPdfUrlFromFolder(driveId, sponsorPackagesFolderId);
-    const pdfHref = sponsorshipPdfUrl || '/assets/sponsor_package/Sponsorship Package - STARR.pdf';
+    const packageDetails = await getSponsorshipPackageDetails(driveId, sponsorPackagesFolderId);
 
     return (
         <div className="z-20 bg-white relative h-192" style={{ backgroundImage: "url(https://static.wixstatic.com/media/9dc5ac_39ff54e1dfa04e298cb7d58566700807~mv2.jpg/v1/fill/w_1960,h_1652,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/9dc5ac_39ff54e1dfa04e298cb7d58566700807~mv2.jpg)" }}>
@@ -117,8 +116,14 @@ const SponsorPackageDesktop = async () => {
                         <div className="flex">
                             <div className="w-8 flex-none"></div>
 
-                            <Link href={pdfHref} download={true} className="w-96 flex justify-center">
-                                <img src="/assets/sponsor_package/sponsorsCover.jpg" style={{ width: '389px', height: '504px' }} />
+                            <Link href={packageDetails.pdfUrl} target="_blank" rel="noopener noreferrer" className="w-96 flex justify-center">
+                                <Image
+                                    src={packageDetails.coverImageUrl}
+                                    alt={packageDetails.title}
+                                    width={389}
+                                    height={504}
+                                    className="object-contain max-h-[504px] w-auto rounded shadow-lg"
+                                />
                             </Link>
                             <div className="w-56 flex-none"></div>
 
@@ -142,8 +147,8 @@ const SponsorPackageDesktop = async () => {
                             <div className="w-6 flex-none"></div>
                             <div>
                                 <div className="h-12"></div>
-                                <h1 className="text-white text-6xl w-96">
-                                    Sponsorship Package 2023/2024
+                                <h1 className="text-white text-5xl lg:text-6xl w-96 font-bold">
+                                    {packageDetails.title}
                                 </h1>
                                 <div className="h-12"></div>
                                 <p className="text-white text-base w-96">
@@ -152,9 +157,9 @@ const SponsorPackageDesktop = async () => {
                                     to see more of what we have to offer to the world of rocketry and engineering.
                                 </p>
                                 <div className="h-12"></div>
-                                <Link href={pdfHref} download={true}>
+                                <Link href={packageDetails.pdfUrl} target="_blank" rel="noopener noreferrer">
                                     <button
-                                        className="whitespace-nowrap bg-yellow-500 hover:transition-all hover:bg-white rounded-full px-8 py-3">
+                                        className="whitespace-nowrap bg-yellow-500 hover:transition-all hover:bg-white rounded-full px-8 py-3 font-semibold text-black">
                                         View Sponsorship Package
                                     </button>
                                 </Link>
@@ -171,15 +176,14 @@ const SponsorPackageDesktop = async () => {
 }
 
 const SponsorPackageMobile = async () => {
-    const sponsorshipPdfUrl = await getSponsorshipPdfUrlFromFolder(driveId, sponsorPackagesFolderId);
-    const pdfHref = sponsorshipPdfUrl || '/assets/sponsor_package/Sponsorship Package - STARR.pdf';
+    const packageDetails = await getSponsorshipPackageDetails(driveId, sponsorPackagesFolderId);
 
     return (
         <>
             <div className="bg-gradient-to-b from-cyan-950 to-black grow min-w-fit flex flex-col justify-center items-center z-20 relative py-6 min-h-80">
                 <div className="w-screen lg:w-128 px-6 lg:px-0">
-                    <h1 className="text-white text-2xl lg:text-4xl text-center">
-                        Sponsorship Package 2023/2024
+                    <h1 className="text-white text-2xl lg:text-4xl text-center font-bold">
+                        {packageDetails.title}
                     </h1>
                     <div className="h-5 lg:h-10"></div>
                     <p className="text-white text-xs lg:text-lg text-center text-pretty">
@@ -189,17 +193,17 @@ const SponsorPackageMobile = async () => {
                     </p>
                 </div>
                 <div className="h-12"></div>
-                <Link href={pdfHref} download={true}>
+                <Link href={packageDetails.pdfUrl} target="_blank" rel="noopener noreferrer">
                     <button
-                        className="bg-yellow-500 hover:transition-all hover:bg-white rounded-full px-8 py-3">
+                        className="bg-yellow-500 hover:transition-all hover:bg-white rounded-full px-8 py-3 font-semibold text-black">
                         View Sponsorship Package
                     </button>
                 </Link>
             </div>
             <div className="bg-cover flex relative justify-center items-center w-screen py-6" style={{ backgroundImage: `url(${PackageBackground.src})` }}>
                 <div className="flex-none">
-                    <Link href={pdfHref} download={true} className="max-h-80 object-contain">
-                        <Image className="justify-center object-contain max-h-80 w-screen" src="/assets/sponsor_package/sponsorsCover.jpg" alt="Sponsor Package" width={389} height={504} />
+                    <Link href={packageDetails.pdfUrl} target="_blank" rel="noopener noreferrer" className="max-h-80 object-contain">
+                        <Image className="justify-center object-contain max-h-80 w-auto rounded shadow-lg" src={packageDetails.coverImageUrl} alt={packageDetails.title} width={389} height={504} />
                     </Link>
                 </div>
             </div>
