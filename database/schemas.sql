@@ -111,3 +111,16 @@ CREATE TABLE merchandise_images (
     merchandise_id INT REFERENCES merchandise(id) ON DELETE CASCADE,
     img_ref_link VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE competitions (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    year VARCHAR(10) NOT NULL,
+    location VARCHAR(255),
+    event_date TIMESTAMP NOT NULL,
+    end_date TIMESTAMP,
+    link VARCHAR(255),
+    description TEXT,
+    display BOOLEAN NOT NULL DEFAULT TRUE,
+    display_order INT
+);
